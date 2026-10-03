@@ -16,12 +16,12 @@
        Theme: Maroon, Burgundy, Antique Gold, Ivory & Warm Glow
        ======================================================== */
     :root {
-      --maroon-deep: #220308;
-      --maroon-rich: #3f0914;
-      --maroon-velvet: #5a0d1d;
+      --maroon-deep: #1a0206;
+      --maroon-rich: #32060e;
+      --maroon-velvet: #4d0a17;
       --gold-antique: #d4af37;
       --gold-light: #f7e7a9;
-      --gold-dark: #917226;
+      --gold-dark: #8c6b1d;
       --gold-gradient: linear-gradient(135deg, #d4af37 0%, #fff2b2 45%, #aa7c11 80%, #ffd700 100%);
       --ivory: #faf5ea;
       --ivory-soft: #f1e7d0;
@@ -50,8 +50,8 @@
     body {
       background-color: var(--maroon-deep);
       background-image: 
-        radial-gradient(circle at 50% 10%, rgba(90, 13, 29, 0.45) 0%, transparent 60%),
-        radial-gradient(circle at 50% 80%, rgba(90, 13, 29, 0.35) 0%, transparent 70%);
+        radial-gradient(circle at 50% 10%, rgba(77, 10, 23, 0.4) 0%, transparent 60%),
+        radial-gradient(circle at 50% 80%, rgba(77, 10, 23, 0.3) 0%, transparent 70%);
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
@@ -151,7 +151,8 @@
     }
 
     /* ========================================================
-       SCENE 1: ROYAL DOORS (3D Perspective Entrance)
+       SCENE 1: CINEMATIC ROYAL PALACE ENTRANCE (REDESIGNED)
+       One unified palace portal - NO SIDE BOXES OR DASHBOARDS
        ======================================================== */
     #doorScene {
       position: fixed;
@@ -160,11 +161,11 @@
       width: 100vw;
       height: 100vh;
       z-index: 1000;
-      perspective: 1200px;
+      perspective: 1400px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: var(--maroon-deep);
+      background: radial-gradient(circle at 50% 50%, #200308 0%, #0c0103 100%);
       overflow: hidden;
       transition: opacity 1.6s cubic-bezier(0.7, 0, 0.3, 1), visibility 1.6s;
     }
@@ -175,206 +176,302 @@
       visibility: hidden;
     }
 
-    /* 3D Depth Portal Backlight */
-    .portal-backlight {
+    /* Grand Palace Architectural Arch Surround */
+    .palace-facade {
       position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(ellipse at center, rgba(254, 233, 170, 0.85) 0%, rgba(170, 124, 17, 0.4) 40%, rgba(34, 3, 8, 0.95) 85%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 30%, rgba(68, 8, 18, 0.55) 0%, rgba(10, 1, 3, 0.95) 75%);
+      box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.95);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Side Stone Carved Pillars */
+    .palace-pillar {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: clamp(24px, 5vw, 60px);
+      background: linear-gradient(90deg, #120204 0%, #29050b 50%, #100103 100%);
+      border-right: 1px solid rgba(212, 175, 55, 0.3);
+      border-left: 1px solid rgba(212, 175, 55, 0.3);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+      z-index: 3;
+    }
+
+    .pillar-left { left: 0; }
+    .pillar-right { right: 0; }
+
+    /* Palace Top Arch Header */
+    .palace-arch-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: clamp(50px, 8vh, 85px);
+      background: linear-gradient(180deg, #100103 0%, #26040a 70%, transparent 100%);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+      z-index: 4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .arch-jharokha-motif {
+      width: 120px;
+      height: 18px;
+      fill: var(--gold-antique);
+      opacity: 0.6;
+    }
+
+    /* Brilliant Warm Golden Interior Backlight */
+    .portal-backlight {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, #fff2be 0%, #ffcf40 30%, #c68a15 60%, #30050d 90%);
       z-index: 1;
       opacity: 0;
-      transition: opacity 1.8s ease;
+      filter: blur(8px);
+      transform: scale(0.9);
+      transition: opacity 2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 2.8s ease-out;
     }
 
     #doorScene.opening .portal-backlight {
       opacity: 1;
+      transform: scale(1.15);
     }
 
-    .doors-container {
-      position: absolute;
-      width: 100%;
-      height: 100%;
+    /* Central 3D Doors Wrapper */
+    .grand-doors-frame {
+      position: relative;
+      width: min(92vw, 560px);
+      height: min(88vh, 780px);
       display: flex;
-      z-index: 2;
       transform-style: preserve-3d;
-      box-shadow: inset 0 0 100px #000;
+      perspective: 1200px;
+      border: 3px solid var(--gold-antique);
+      border-radius: 180px 180px 0 0;
+      box-shadow: 0 0 45px rgba(0, 0, 0, 0.95), 0 0 25px rgba(212, 175, 55, 0.25);
+      overflow: hidden;
+      z-index: 5;
     }
 
-    .door-leaf {
+    /* Realistic Light Leak at Door Junction */
+    .door-center-light-seam {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: calc(50% - 1.5px);
+      width: 3px;
+      background: linear-gradient(180deg, transparent 5%, #fff2b2 35%, #ffd700 65%, transparent 95%);
+      box-shadow: 0 0 18px #ffcf40, 0 0 35px rgba(255, 215, 0, 0.7);
+      z-index: 8;
+      pointer-events: none;
+      animation: lightPulse 3s infinite alternate ease-in-out;
+    }
+
+    @keyframes lightPulse {
+      0% { opacity: 0.55; filter: blur(0.5px); }
+      100% { opacity: 0.95; filter: blur(1.5px); }
+    }
+
+    /* The Left & Right Carved Doors */
+    .palace-door {
       width: 50%;
       height: 100%;
       position: relative;
-      background: linear-gradient(135deg, #1f0408 0%, #30060e 50%, #150205 100%);
-      box-shadow: inset 0 0 45px rgba(0,0,0,0.9);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 2.8s cubic-bezier(0.7, 0, 0.2, 1);
+      background: 
+        radial-gradient(ellipse at 50% 50%, #30060e 0%, #1c0206 100%);
+      background-size: 100% 100%;
+      box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.92);
       transform-style: preserve-3d;
-      border-top: 5px solid var(--gold-dark);
-      border-bottom: 5px solid var(--gold-dark);
-    }
-
-    .door-left {
-      transform-origin: left center;
-      border-right: 2px solid var(--gold-antique);
-    }
-
-    .door-right {
-      transform-origin: right center;
-      border-left: 2px solid var(--gold-antique);
-    }
-
-    #doorScene.opening .door-left {
-      transform: rotateY(-105deg);
-    }
-
-    #doorScene.opening .door-right {
-      transform: rotateY(105deg);
-    }
-
-    .door-panel-decor {
-      position: absolute;
-      width: 80%;
-      height: 85%;
-      border: 2px solid var(--gold-antique);
-      box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.2), 0 0 15px rgba(0,0,0,0.8);
+      transition: transform 2.6s cubic-bezier(0.7, 0, 0.2, 1);
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
       align-items: center;
-      padding: 15px 0;
+      justify-content: center;
     }
 
-    .arch-carving {
-      width: 75%;
-      height: 28%;
-      border: 1px solid var(--gold-dark);
-      border-radius: 50% 50% 0 0 / 40% 40% 0 0;
+    .palace-door-left {
+      transform-origin: left center;
+      border-right: 1px solid rgba(255, 225, 140, 0.4);
+    }
+
+    .palace-door-right {
+      transform-origin: right center;
+      border-left: 1px solid rgba(255, 225, 140, 0.4);
+    }
+
+    /* Physical 3D Door Swing on Open */
+    #doorScene.opening .palace-door-left {
+      transform: rotateY(-112deg);
+    }
+
+    #doorScene.opening .palace-door-right {
+      transform: rotateY(112deg);
+    }
+
+    /* Traditional Indian Wood Carving Patterns */
+    .door-carved-inlay {
+      width: 82%;
+      height: 88%;
+      border: 1.5px solid rgba(212, 175, 55, 0.5);
+      border-radius: 120px 120px 4px 4px;
       position: relative;
-      background: radial-gradient(circle, rgba(212,175,55,0.06), transparent);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      padding: 20px 0;
+      background: radial-gradient(circle at center, rgba(212, 175, 55, 0.04) 0%, transparent 80%);
     }
 
-    .arch-carving::after {
+    .door-carved-inlay::before {
       content: "";
       position: absolute;
-      inset: 8px;
-      border: 1px dashed rgba(212, 175, 55, 0.4);
-      border-radius: 50% 50% 0 0 / 40% 40% 0 0;
+      inset: 6px;
+      border: 1px dashed rgba(212, 175, 55, 0.35);
+      border-radius: 115px 115px 2px 2px;
+      pointer-events: none;
     }
 
-    .door-handle {
+    /* Antique Brass Ring Knocker & Plate */
+    .brass-knocker {
       position: absolute;
-      top: 50%;
-      width: 22px;
-      height: 90px;
-      background: var(--gold-gradient);
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.8), 0 0 8px rgba(212, 175, 55, 0.4);
-      z-index: 10;
+      top: 52%;
+      width: 32px;
+      height: 32px;
+      border: 3px solid var(--gold-antique);
+      border-radius: 50%;
+      background: radial-gradient(circle, #5e0d1d 0%, #200307 100%);
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.8), 0 0 8px rgba(212, 175, 55, 0.4);
+      z-index: 7;
       transform: translateY(-50%);
     }
 
-    .door-left .door-handle { right: 18px; }
-    .door-right .door-handle { left: 18px; }
+    .knocker-ring {
+      position: absolute;
+      top: 14px;
+      left: 5px;
+      width: 22px;
+      height: 34px;
+      border: 3px solid var(--gold-antique);
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    }
 
-    .door-content-overlay {
+    .palace-door-left .brass-knocker { right: 18px; }
+    .palace-door-right .brass-knocker { left: 18px; }
+
+    /* Center Overlay: The Royal Invitation Text & Action */
+    .entrance-center-content {
       position: absolute;
       z-index: 10;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 20px;
-      max-width: 480px;
+      padding: 20px 15px;
+      max-width: 440px;
       pointer-events: auto;
       transition: opacity 0.8s ease, transform 1.2s ease;
     }
 
-    #doorScene.opening .door-content-overlay {
+    #doorScene.opening .entrance-center-content {
       opacity: 0;
-      transform: scale(1.15) translateZ(100px);
+      transform: scale(1.1) translateZ(80px);
+      pointer-events: none;
     }
 
-    .door-pretitle {
+    .entrance-eyebrow {
       font-family: var(--font-display);
-      font-size: 13px;
+      font-size: clamp(11px, 2.8vw, 13px);
       letter-spacing: 5px;
       color: var(--gold-light);
       margin-bottom: 6px;
       text-transform: uppercase;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.9);
     }
 
-    .door-subtitle {
+    .entrance-subtitle {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: 16px;
+      font-size: clamp(14px, 3.5vw, 16px);
       letter-spacing: 2px;
       color: var(--ivory-soft);
-      margin-bottom: 24px;
+      margin-bottom: 22px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.9);
     }
 
-    .door-names {
+    .entrance-names {
       font-family: var(--font-display);
-      font-size: clamp(24px, 6vw, 34px);
+      font-size: clamp(26px, 6.5vw, 36px);
       letter-spacing: 4px;
-      color: var(--gold-light);
-      margin-bottom: 34px;
-      line-height: 1.4;
-      text-shadow: 0 2px 15px rgba(0,0,0,0.9);
+      color: #fff2b2;
+      margin-bottom: 30px;
+      line-height: 1.35;
+      text-shadow: 0 3px 20px rgba(0, 0, 0, 0.95), 0 0 15px rgba(212, 175, 55, 0.4);
     }
 
-    .door-btn {
+    .entrance-btn {
       background: radial-gradient(circle at center, #ffe793 0%, #caa030 65%, #856110 100%);
       color: var(--maroon-deep);
       border: 1px solid #fff3b8;
       border-radius: 40px;
       padding: 16px 36px;
       font-family: var(--font-display);
-      font-size: 13px;
+      font-size: clamp(11.5px, 2.8vw, 13px);
       font-weight: 700;
       letter-spacing: 2.5px;
       cursor: pointer;
-      box-shadow: 0 4px 25px rgba(212, 175, 55, 0.4), inset 0 1px 2px #fff;
+      box-shadow: 0 4px 28px rgba(212, 175, 55, 0.45), inset 0 1px 2px #fff;
       transition: all 0.3s ease;
       outline: none;
     }
 
-    .door-btn:active {
+    .entrance-btn:active {
       transform: scale(0.97);
-      box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+      box-shadow: 0 2px 12px rgba(212, 175, 55, 0.3);
     }
 
-    .door-instruction {
+    .entrance-hint {
       font-size: 12px;
       letter-spacing: 2px;
       color: var(--ivory-soft);
       margin-top: 14px;
       font-family: var(--font-serif);
       font-style: italic;
-      opacity: 0.8;
+      opacity: 0.85;
       animation: pulseSubtle 2s infinite ease-in-out;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.9);
     }
 
     @keyframes pulseSubtle {
-      0%, 100% { opacity: 0.5; }
+      0%, 100% { opacity: 0.55; }
       50% { opacity: 1; }
     }
 
-    .door-diya-flank {
+    /* Diyas Standing at the Palace Portal Steps */
+    .palace-entrance-diyas {
       position: absolute;
-      bottom: 28px;
-      width: 88%;
+      bottom: 25px;
+      width: clamp(280px, 82vw, 540px);
       display: flex;
       justify-content: space-between;
       pointer-events: none;
-      z-index: 11;
+      z-index: 9;
     }
 
     .diya-unit {
       display: flex;
       flex-direction: column;
       align-items: center;
+      filter: drop-shadow(0 0 10px rgba(255, 170, 0, 0.6));
     }
 
     .diya-flame {
@@ -709,7 +806,7 @@
     }
 
     /* ========================================================
-       REFINED WEDDING EVENTS: "THE CELEBRATIONS"
+       WEDDING EVENTS: "THE CELEBRATIONS"
        PREMIUM RECTANGULAR/SQUARE ROYAL INVITATION CARDS
        ======================================================== */
     .celebrations-wrap {
@@ -733,7 +830,6 @@
       margin-bottom: 40px;
     }
 
-    /* 2x2 Grid for Tablet/Desktop, Stacked for Mobile while keeping rectangular/square proportion */
     .events-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -747,7 +843,6 @@
       }
     }
 
-    /* Luxury Invitation Page Panel (Rectangular Card) */
     .royal-event-box {
       position: relative;
       background: radial-gradient(ellipse at 50% 15%, #460915 0%, #260309 80%, #170104 100%);
@@ -771,7 +866,6 @@
       border-color: #fff1b8;
     }
 
-    /* Inner Gold Filigree Frame */
     .event-card-inner-frame {
       position: absolute;
       inset: 8px;
@@ -785,7 +879,6 @@
       border-color: rgba(255, 242, 178, 0.7);
     }
 
-    /* Event Mini Corner Filigrees */
     .event-corner {
       position: absolute;
       width: 14px;
@@ -798,7 +891,6 @@
     .event-corner-bl { bottom: 12px; left: 12px; border-right: none; border-top: none; }
     .event-corner-br { bottom: 12px; right: 12px; border-left: none; border-top: none; }
 
-    /* Event Motif Wrapper */
     .event-icon-badge {
       width: 62px;
       height: 62px;
@@ -825,13 +917,8 @@
       fill: none;
     }
 
-    /* Specific Thematic Highlights */
-    .box-mehendi {
-      border-color: rgba(212, 175, 55, 0.85);
-    }
-    .box-sangeet {
-      border-color: rgba(212, 175, 55, 0.85);
-    }
+    .box-mehendi { border-color: rgba(212, 175, 55, 0.85); }
+    .box-sangeet { border-color: rgba(212, 175, 55, 0.85); }
     .box-haldi {
       border-color: #d8a018;
       background: radial-gradient(ellipse at 50% 15%, #4e141a 0%, #28040a 80%, #180205 100%);
@@ -882,7 +969,6 @@
       opacity: 0.9;
     }
 
-    /* Small decorative florish divider inside event cards */
     .card-mini-divider {
       width: 40px;
       height: 1px;
@@ -1055,41 +1141,52 @@
   <div id="musicToggleBtn" class="music-widget" aria-label="Toggle Wedding Music">♫</div>
 
   <!-- ========================================================
-       SCENE 1: ROYAL DOORS (Entrance Gate)
+       SCENE 1: ROYAL DOORS (GRAND PALACE ENTRANCE)
+       Single continuous palace gateway - NO DASHBOARD BOXES
        ======================================================== -->
   <div id="doorScene">
-    <!-- Warm golden glow behind doors -->
-    <div class="portal-backlight"></div>
-
-    <!-- The Two 3D Palace Doors -->
-    <div class="doors-container">
-      <!-- Left Door -->
-      <div class="door-leaf door-left">
-        <div class="door-panel-decor">
-          <div class="arch-carving"></div>
-          <div class="arch-carving"></div>
-          <div class="arch-carving"></div>
-        </div>
-        <div class="door-handle"></div>
-      </div>
-
-      <!-- Right Door -->
-      <div class="door-leaf door-right">
-        <div class="door-panel-decor">
-          <div class="arch-carving"></div>
-          <div class="arch-carving"></div>
-          <div class="arch-carving"></div>
-        </div>
-        <div class="door-handle"></div>
+    <!-- Palace Architectural Surrounding Columns & Top Arch -->
+    <div class="palace-facade">
+      <div class="palace-pillar pillar-left"></div>
+      <div class="palace-pillar pillar-right"></div>
+      <div class="palace-arch-header">
+        <svg class="arch-jharokha-motif" viewBox="0 0 100 15">
+          <path d="M0 15 Q25 0 50 15 Q75 0 100 15" stroke="#d4af37" stroke-width="1.5" fill="none" />
+        </svg>
       </div>
     </div>
 
-    <!-- Door Front Invitation Typography & Open Button -->
-    <div class="door-content-overlay">
-      <div class="door-pretitle">A Royal Celebration</div>
-      <div class="door-subtitle">of love & togetherness</div>
+    <!-- Warm Glowing Royal Palace Interior Backlight -->
+    <div class="portal-backlight"></div>
 
-      <div class="ornament-divider">
+    <!-- Central Grand Arched Palace Doors Frame -->
+    <div class="grand-doors-frame">
+      <!-- Golden Light Seam Leaking Between Doors -->
+      <div class="door-center-light-seam"></div>
+
+      <!-- LEFT CARVED DOOR -->
+      <div class="palace-door palace-door-left">
+        <div class="door-carved-inlay"></div>
+        <div class="brass-knocker">
+          <div class="knocker-ring"></div>
+        </div>
+      </div>
+
+      <!-- RIGHT CARVED DOOR -->
+      <div class="palace-door palace-door-right">
+        <div class="door-carved-inlay"></div>
+        <div class="brass-knocker">
+          <div class="knocker-ring"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Centered Invitation Text (Naturally floating in front of central doors) -->
+    <div class="entrance-center-content">
+      <div class="entrance-eyebrow">A Royal Celebration</div>
+      <div class="entrance-subtitle">of love & togetherness</div>
+
+      <div class="ornament-divider" style="margin: 12px 0 18px;">
         <div class="ornament-line"></div>
         <svg class="ornament-mandala" viewBox="0 0 24 24">
           <path d="M12 2L14 8L20 6L16 12L22 14L16 16L18 22L12 18L6 22L8 16L2 14L8 12L4 6L10 8Z" />
@@ -1097,19 +1194,19 @@
         <div class="ornament-line"></div>
       </div>
 
-      <div class="door-names">
+      <div class="entrance-names">
         ASHISH &nbsp;&amp;&nbsp; AARTI
       </div>
 
-      <button id="openDoorBtn" class="door-btn">
+      <button id="openDoorBtn" class="entrance-btn">
         ✦ OPEN THE INVITATION ✦
       </button>
 
-      <div class="door-instruction">Tap to enter the celebration</div>
+      <div class="entrance-hint">Tap to enter</div>
     </div>
 
-    <!-- Flanking Diyas at the Door Entrance -->
-    <div class="door-diya-flank">
+    <!-- Flanking Diyas at the Royal Entrance Portal -->
+    <div class="palace-entrance-diyas">
       <div class="diya-unit">
         <div class="diya-flame"></div>
         <div class="diya-base"></div>
@@ -1122,7 +1219,7 @@
   </div>
 
   <!-- ========================================================
-       MAIN SCROLL EXPERIENCE: ROYAL INTERIOR
+       MAIN SCROLL EXPERIENCE: ROYAL PALACE INTERIOR
        ======================================================== -->
   <div class="palace-container">
 
@@ -1211,28 +1308,20 @@
         Cordially request the honour of your auspicious presence and blessings as we celebrate the sacred union of our hearts, vows, and destinies in marriage.
       </p>
 
-      <!-- ========================================================
-           SCRATCH-TO-REVEAL DATE
-           Small luxury gold foil canvas scratch area
-           ======================================================== -->
+      <!-- Scratch-to-reveal Date -->
       <div class="scratch-wrapper">
         <div class="scratch-lead-text">✦ Scratch Gold Foil To Reveal Date ✦</div>
         <div class="scratch-stage" id="scratchStage">
-          <!-- Hidden underneath -->
           <div class="scratch-underlay">
             <div class="revealed-date">26 NOVEMBER 2026</div>
             <div class="revealed-venue">VADANGE, KOLHAPUR</div>
             <div class="revealed-time">12:00 PM IST</div>
           </div>
-          <!-- Canvas Top Foil -->
           <canvas id="scratchCanvas"></canvas>
         </div>
       </div>
 
-      <!-- ========================================================
-           LIVE COUNTDOWN: 4 ELEGANT HEART SHAPES
-           Inside the same main invitation card
-           ======================================================== -->
+      <!-- Live Heart Countdown -->
       <div class="countdown-section">
         <div class="countdown-title">The Auspicious Muhurat Approaches</div>
 
@@ -1291,7 +1380,6 @@
 
     <!-- ========================================================
          WEDDING EVENTS: "THE CELEBRATIONS"
-         PREMIUM RECTANGULAR/SQUARE ROYAL INVITATION CARDS
          ======================================================== -->
     <section class="celebrations-wrap">
       <h2 class="section-headline gold-text reveal">The Celebrations</h2>
@@ -1307,7 +1395,6 @@
           <span class="event-corner event-corner-bl"></span>
           <span class="event-corner event-corner-br"></span>
 
-          <!-- Mehendi Floral Mandala Badge -->
           <div class="event-icon-badge">
             <svg class="event-card-svg" viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="3" stroke-width="1.5" />
@@ -1332,7 +1419,6 @@
           <span class="event-corner event-corner-bl"></span>
           <span class="event-corner event-corner-br"></span>
 
-          <!-- Sangeet Musical Dholak / Melodic Note Badge -->
           <div class="event-icon-badge">
             <svg class="event-card-svg" viewBox="0 0 24 24">
               <path d="M9 18V5l12-2v13" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1357,7 +1443,6 @@
           <span class="event-corner event-corner-bl"></span>
           <span class="event-corner event-corner-br"></span>
 
-          <!-- Haldi Golden Kalash & Lotus Motif Badge -->
           <div class="event-icon-badge">
             <svg class="event-card-svg" viewBox="0 0 24 24" style="stroke: #ffe066;">
               <path d="M7 10C7 8 9 7 12 7C15 7 17 8 17 10L18 17C18 20 15 21 12 21C9 21 6 20 6 17L7 10Z" stroke-width="1.5" />
@@ -1374,7 +1459,7 @@
           <div class="event-card-place">At Groom's Home</div>
         </div>
 
-        <!-- CARD 4: THE WEDDING (Grand Royal Card) -->
+        <!-- CARD 4: THE WEDDING -->
         <div class="royal-event-box box-wedding reveal">
           <div class="event-card-inner-frame"></div>
           <span class="event-corner event-corner-tl"></span>
@@ -1382,7 +1467,6 @@
           <span class="event-corner event-corner-bl"></span>
           <span class="event-corner event-corner-br"></span>
 
-          <!-- Sacred Mandap Vows & Royal Knot Badge -->
           <div class="event-icon-badge" style="border-color: #ffd700; background: radial-gradient(circle, #5b0e1e, #2b040a);">
             <svg class="event-card-svg" viewBox="0 0 24 24" style="stroke: #ffd700;">
               <path d="M4 20h16M5 20V9l7-5 7 5v11" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1403,8 +1487,6 @@
 
     <!-- ========================================================
          OUR STORY / PHOTOS
-         Placeholder high-res royalty-free royal couple photos
-         Replace URLs directly in src below with Ashish & Aarti photos
          ======================================================== -->
     <section class="story-section">
       <h2 class="section-headline gold-text reveal">Our Story</h2>
@@ -1446,7 +1528,6 @@
         <div class="venue-place-name gold-text">Vadange</div>
         <div class="venue-city">Kolhapur, Maharashtra</div>
 
-        <!-- Google Maps Link -->
         <a class="venue-btn" 
            href="https://maps.google.com/?q=Vadange,+Kolhapur" 
            target="_blank" 
