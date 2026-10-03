@@ -144,6 +144,28 @@
       user-select: none;
     }
 
+    /* Final Happy Message (Appears after accepting chocolate) */
+    .final-happy-text {
+      display: none;
+      font-family: 'Fredoka', cursive;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: #ff758f;
+      text-shadow: 0 0 20px rgba(255, 117, 143, 0.7);
+      animation: fadeInText 0.6s ease forwards;
+    }
+
+    .final-subtext {
+      font-size: 1rem;
+      color: #ffe5ec;
+      letter-spacing: 1px;
+      margin-top: 8px;
+    }
+
+    @keyframes fadeInText {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     /* Chocolate Pop-up Modal */
     .choco-modal {
       display: none;
@@ -249,15 +271,12 @@
           <circle cx="150" cy="50" r="22" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
           <ellipse cx="100" cy="110" rx="65" ry="55" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
           <ellipse cx="100" cy="85" rx="58" ry="50" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
-          <!-- Angry tilted eyebrows & eyes -->
           <line x1="65" y1="70" x2="85" y2="80" stroke="#3d2314" stroke-width="5" stroke-linecap="round"/>
           <line x1="135" y1="70" x2="115" y2="80" stroke="#3d2314" stroke-width="5" stroke-linecap="round"/>
           <circle cx="75" cy="85" r="5" fill="#3d2314"/>
           <circle cx="125" cy="85" r="5" fill="#3d2314"/>
-          <!-- Red angry cheeks -->
           <circle cx="65" cy="100" r="8" fill="#ff4d6d" opacity="0.8"/>
           <circle cx="135" cy="100" r="8" fill="#ff4d6d" opacity="0.8"/>
-          <!-- Pout mouth -->
           <ellipse cx="100" cy="98" rx="14" ry="10" fill="#fef08a"/>
           <ellipse cx="100" cy="95" rx="4" ry="3" fill="#3d2314"/>
           <path d="M 94 105 Q 100 98 106 105" stroke="#3d2314" stroke-width="4" fill="none" stroke-linecap="round"/>
@@ -269,13 +288,10 @@
           <circle cx="150" cy="50" r="22" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
           <ellipse cx="100" cy="110" rx="65" ry="55" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
           <ellipse cx="100" cy="85" rx="58" ry="50" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
-          <!-- Happy smiling curved eyes -->
           <path d="M 68 80 Q 76 70 84 80" stroke="#3d2314" stroke-width="5" fill="none" stroke-linecap="round"/>
           <path d="M 116 80 Q 124 70 132 80" stroke="#3d2314" stroke-width="5" fill="none" stroke-linecap="round"/>
-          <!-- Pink blush -->
           <circle cx="65" cy="95" r="9" fill="#ff758f"/>
           <circle cx="135" cy="95" r="9" fill="#ff758f"/>
-          <!-- Big happy smile -->
           <ellipse cx="100" cy="95" rx="14" ry="10" fill="#fef08a"/>
           <ellipse cx="100" cy="92" rx="4" ry="3" fill="#3d2314"/>
           <path d="M 92 98 Q 100 114 108 98 Z" fill="#ff4d6d" stroke="#3d2314" stroke-width="3"/>
@@ -284,11 +300,20 @@
       </div>
     </div>
 
-    <h1 class="question-title">Are you mad at me? 🥺👉👈</h1>
+    <!-- Question + Buttons Section -->
+    <div id="questionArea">
+      <h1 class="question-title">Are you mad at me? 🥺👉👈</h1>
 
-    <div class="button-arena">
-      <button class="btn-no" onclick="calmTheMood()">No! 🥰</button>
-      <button id="yesBtn" class="btn-yes" onmouseover="dodgeYes()" onclick="dodgeYes()">Yes 😤</button>
+      <div class="button-arena">
+        <button class="btn-no" onclick="calmTheMood()">No! 🥰</button>
+        <button id="yesBtn" class="btn-yes" onmouseover="dodgeYes()" onclick="dodgeYes()">Yes 😤</button>
+      </div>
+    </div>
+
+    <!-- Final Happy Section (Shows after Chocolate accepted) -->
+    <div id="finalHappyArea" class="final-happy-text">
+      Yay! All Happy Now! 🥰🍫
+      <div class="final-subtext">You are my favourite person ever! ❤️✨</div>
     </div>
 
   </div>
@@ -299,7 +324,7 @@
       <div class="choco-big-icon">🍫✨</div>
       <h2>Yayy! I Knew It! 🥰</h2>
       <p>Here is your sweet virtual chocolate & unlimited kisses to make your day 100x happier! 💖</p>
-      <button class="btn-eat" onclick="closeChocoModal()">ACCEPT CHOCOLATE 😋</button>
+      <button class="btn-eat" onclick="acceptChocolateAndFinish()">ACCEPT CHOCOLATE 😋</button>
     </div>
   </div>
 
@@ -313,28 +338,27 @@
       const x = (Math.random() - 0.5) * maxRange;
       const y = (Math.random() - 0.5) * (maxRange * 0.8);
       
-      // Scale down slightly each time they try to click Yes
       yesScale = Math.max(0.45, yesScale - 0.1);
-
       btn.style.transform = `translate(${x}px, ${y}px) scale(${yesScale})`;
     }
 
     function calmTheMood() {
-      // Switch SVG character to happy
       document.getElementById('angrySvg').style.display = 'none';
       document.getElementById('happySvg').style.display = 'block';
 
-      // Drop virtual chocolates
       rainChocolates();
 
-      // Open Modal after slight bounce
       setTimeout(() => {
         document.getElementById('chocoModal').style.display = 'flex';
       }, 500);
     }
 
-    function closeChocoModal() {
+    // Modal band kelyavar question gayab hoto ani happy text yeto
+    function acceptChocolateAndFinish() {
       document.getElementById('chocoModal').style.display = 'none';
+      document.getElementById('questionArea').style.display = 'none';
+      document.getElementById('finalHappyArea').style.display = 'block';
+      rainChocolates();
     }
 
     function rainChocolates() {
