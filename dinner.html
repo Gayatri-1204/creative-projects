@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Where Are We Eating Tonight? 🍕</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Montserrat:wght@500;700;800&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #2e0914 0%, #150005 70%, #060002 100%);
+      min-height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      color: #fff;
+      position: relative;
+    }
+
+    .ambient-glow {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255, 77, 109, 0.25), transparent 70%);
+      filter: blur(85px);
+      pointer-events: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .main-title {
+      font-family: 'Fredoka', cursive;
+      font-size: clamp(2rem, 3.5vw, 2.7rem);
+      color: #ffe5ec;
+      text-shadow: 0 4px 20px rgba(255, 77, 109, 0.6);
+      margin-bottom: 6px;
+    }
+
+    .sub-title {
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ff8fa3;
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
+
+    /* Wheel Container */
+    .wheel-stage {
+      position: relative;
+      width: clamp(280px, 40vw, 360px);
+      height: clamp(280px, 40vw, 360px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    /* The Center Pointer / Arrow */
+    .wheel-pointer {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      border-top: 32px solid #ff4d6d;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
+      z-index: 20;
+    }
+
+    /* Spinning Canvas */
+    #wheelCanvas {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 77, 109, 0.4);
+      border: 6px solid #ff4d6d;
+      transition: transform 4s cubic-bezier(0.15, 0.9, 0.25, 1);
+    }
+
+    /* Center Badge */
+    .wheel-center-badge {
+      position: absolute;
+      width: 58px;
+      height: 58px;
+      background: radial-gradient(circle, #ff4d6d, #c9184a);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.6rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+      border: 3px solid #fff;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    /* Spin Button */
+    .btn-spin {
+      background: linear-gradient(135deg, #ff4d6d, #c9184a);
+      color: white;
+      border: none;
+      padding: 14px 40px;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(255, 77, 109, 0.55);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    .btn-spin:hover:not(:disabled) {
+      transform: scale(1.08);
+      box-shadow: 0 12px 35px rgba(255, 77, 109, 0.8);
+    }
+
+    .btn-spin:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* Result Receipt Modal */
+    .receipt-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(14px);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      padding: 20px;
+    }
+
+    .receipt-card {
+      background: #fffdfa;
+      color: #2b040e;
+      border-radius: 20px;
+      padding: 30px 24px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85), 0 0 40px rgba(255, 77, 109, 0.45);
+      border: 2px dashed #ff758f;
+      animation: popReceipt 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+    }
+
+    @keyframes popReceipt {
+      from { transform: scale(0.8) translateY(20px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+
+    .receipt-header {
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      color: #a4133c;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .receipt-card h2 {
+      font-family: 'Fredoka', cursive;
+      font-size: 2.3rem;
+      color: #c9184a;
+      margin-bottom: 6px;
+    }
+
+    .selected-food-badge {
+      display: inline-block;
+      background: #fff0f3;
+      border: 2px solid #ff4d6d;
+      color: #a4133c;
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin: 15px 0;
+      box-shadow: 0 4px 12px rgba(255, 77, 109, 0.2);
+    }
+
+    .receipt-card p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: #4a0e21;
+      margin-bottom: 25px;
+    }
+
+    .btn-claim {
+      background: linear-gradient(135deg, #ff4d6d, #c9184a);
+      color: white;
+      border: none;
+      padding: 12px 34px;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4);
+      transition: transform 0.2s;
+    }
+
+    .btn-claim:hover {
+      transform: scale(1.05);
+    }
+
+    /* Falling Confetti / Hearts */
+    .confetti-piece {
+      position: absolute;
+      pointer-events: none;
+      animation: fallDown 2.4s linear forwards;
+      z-index: 1000;
+      user-select: none;
+    }
+
+    @keyframes fallDown {
+      0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-glow"></div>
+
+  <div class="container">
+    <h1 class="main-title">Where Are We Eating? 😋</h1>
+    <div class="sub-title">✦ Let the wheel decide our dinner date ✦</div>
+
+    <div class="wheel-stage">
+      <div class="wheel-pointer"></div>
+      <canvas id="wheelCanvas" width="600" height="600"></canvas>
+      <div class="wheel-center-badge">🍽️</div>
+    </div>
+
+    <button id="spinBtn" class="btn-spin" onclick="spinWheel()">Spin To Decide! 🎡</button>
+  </div>
+
+  <!-- Official Receipt Modal -->
+  <div id="receiptModal" class="receipt-modal">
+    <div class="receipt-card">
+      <div class="receipt-header">✦ Official Date Night Voucher ✦</div>
+      <h2>Order Finalized! 🎉</h2>
+      
+      <div id="foodResult" class="selected-food-badge">🍕 Cheesy Pizza</div>
+      
+      <p>"No takebacks, no excuses! You are officially treating me to this delicious dinner tonight! 😋💖"</p>
+      
+      <button class="btn-claim" onclick="closeReceipt()">I PROMISE TO TREAT YOU ❤️</button>
+    </div>
+  </div>
+
+  <script>
+    const foods = [
+      { name: "Pizza 🍕", color: "#ff4d6d" },
+      { name: "Biryani 🍚", color: "#800f2f" },
+      { name: "Momos 🥟", color: "#c9184a" },
+      { name: "Burgers 🍔", color: "#590d22" },
+      { name: "Pasta 🍝", color: "#ff758f" },
+      { name: "Dessert 🍨", color: "#a4133c" }
+    ];
+
+    const canvas = document.getElementById('wheelCanvas');
+    const ctx = canvas.getContext('2d');
+    const numSlices = foods.length;
+    const sliceAngle = (2 * Math.PI) / numSlices;
+    let currentRotation = 0;
+    let isSpinning = false;
+
+    // Draw Wheel Canvas
+    function drawWheel() {
+      const radius = canvas.width / 2;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < numSlices; i++) {
+        const startAngle = i * sliceAngle;
+        const endAngle = startAngle + sliceAngle;
+
+        // Draw Slice
+        ctx.beginPath();
+        ctx.moveTo(radius, radius);
+        ctx.arc(radius, radius, radius, startAngle, endAngle);
+        ctx.fillStyle = foods[i].color;
+        ctx.fill();
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = "#ffffff";
+        ctx.stroke();
+
+        // Draw Text inside Slice
+        ctx.save();
+        ctx.translate(radius, radius);
+        ctx.rotate(startAngle + sliceAngle / 2);
+        ctx.textAlign = "right";
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 32px 'Fredoka', sans-serif";
+        ctx.shadowColor = "rgba(0,0,0,0.5)";
+        ctx.shadowBlur = 6;
+        ctx.fillText(foods[i].name, radius - 45, 12);
+        ctx.restore();
+      }
+    }
+
+    drawWheel();
+
+    function spinWheel() {
+      if (isSpinning) return;
+      isSpinning = true;
+
+      const spinBtn = document.getElementById('spinBtn');
+      spinBtn.disabled = true;
+
+      // Random winner slice index (0 to 5)
+      const winningIndex = Math.floor(Math.random() * numSlices);
+
+      // Calculations for target angle so pointer at top (3*PI/2) points exactly at winning slice
+      const fullRotations = (Math.floor(Math.random() * 4) + 6) * 360; // 6 to 9 full spins
+      const sliceDeg = 360 / numSlices;
+      
+      // Top pointer corresponds to 270 degrees in canvas coordinates
+      const targetDeg = (360 - (winningIndex * sliceDeg + sliceDeg / 2) + 270) % 360;
+      currentRotation += fullRotations + targetDeg;
+
+      canvas.style.transform = `rotate(${currentRotation}deg)`;
+
+      // Result trigger after spin completes (4 seconds)
+      setTimeout(() => {
+        isSpinning = false;
+        spinBtn.disabled = false;
+        showReceipt(foods[winningIndex].name);
+        burstConfetti();
+      }, 4000);
+    }
+
+    function showReceipt(foodName) {
+      document.getElementById('foodResult').innerText = foodName;
+      document.getElementById('receiptModal').style.display = 'flex';
+    }
+
+    function closeReceipt() {
+      document.getElementById('receiptModal').style.display = 'none';
+    }
+
+    function burstConfetti() {
+      const emojis = ['🎉', '✨', '🍕', '💖', '🍟', '😋', '🌸', '🍔'];
+      for (let i = 0; i < 45; i++) {
+        setTimeout(() => {
+          const item = document.createElement('div');
+          item.className = 'confetti-piece';
+          item.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+          item.style.left = Math.random() * 100 + 'vw';
+          item.style.fontSize = (Math.random() * 18 + 22) + 'px';
+          document.body.appendChild(item);
+
+          setTimeout(() => item.remove(), 2400);
+        }, i * 45);
+      }
+    }
+  </script>
+</body>
+</html>
