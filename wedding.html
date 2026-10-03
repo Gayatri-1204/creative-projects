@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Ashish & Aarti — Royal Wedding Invitation</title>
 
-    <!-- Google Fonts: Luxury Display, Sanskrit Serif & Royal Calligraphy -->
+    <!-- Google Fonts: Luxury Display, Sanskrit Serif, Royal Calligraphy & Script -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700;800;900&family=Great+Vibes&family=Marcellus&family=Yatra+One&family=Alex+Brush&display=swap" rel="stylesheet">
@@ -21,6 +21,7 @@
             --color-maroon-rich: #350610;
             --color-burgundy: #4a0817;
             --color-wine: #680d22;
+            --color-wine-glow: rgba(104, 13, 34, 0.45);
 
             /* Luxury Gold Palette */
             --gold-bright: #fce8a9;
@@ -30,13 +31,7 @@
             --gold-antique: #5f420c;
             --gold-glow: rgba(220, 175, 55, 0.45);
 
-            /* Physical Card Palette */
-            --paper-cream: #faf5ea;
-            --paper-warm: #f3ecda;
-            --paper-border: #e2d2b5;
-            --ink-maroon: #380611;
-            --ink-burgundy: #560a1c;
-            --ink-gold: #966f1e;
+            /* Physical Card & Typography Palette */
             --ivory-warm: #fcf9f2;
             --ivory-muted: #e5dac4;
             --candle-core: #fff5df;
@@ -82,7 +77,7 @@
             user-select: none;
             -webkit-user-select: none;
             overflow-x: hidden;
-            overflow-y: hidden; /* Scroll unlocks once doors swing open */
+            overflow-y: hidden; /* Scroll unlocks once doors open */
             position: relative;
         }
 
@@ -644,7 +639,7 @@
         }
 
         /* ========================================================
-           SCENE 3 & 4: SANCTUM INTERIOR & LORD GANESHA REVELATION
+           SCENE 2: SANCTUM INTERIOR & LORD GANESHA REVELATION
            ======================================================== */
         .sanctum-stage {
             position: absolute;
@@ -873,25 +868,25 @@
 
         /* ========================================================
            NEW UNIFIED CINEMATIC SCENE: 
-           THE ROYAL SCRATCH INVITATION & LIVE COUNTDOWN
+           ROYAL MAROON COUNTDOWN & SCRATCH-TO-REVEAL INVITATION
            ======================================================== */
         .invitation-experience-view {
             position: relative;
             z-index: 25;
             width: 100%;
             min-height: 100vh;
-            padding: clamp(40px, 6vh, 70px) 16px clamp(60px, 8vh, 90px);
+            padding: clamp(50px, 8vh, 85px) clamp(16px, 4vw, 32px) clamp(65px, 9vh, 100px);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             background: 
-                radial-gradient(circle at 50% 20%, rgba(104, 13, 34, 0.65) 0%, transparent 55%),
-                radial-gradient(circle at 50% 85%, rgba(53, 6, 16, 0.85) 0%, transparent 60%),
-                radial-gradient(circle at 10% 50%, rgba(74, 8, 23, 0.4) 0%, transparent 50%),
-                radial-gradient(circle at 90% 50%, rgba(74, 8, 23, 0.4) 0%, transparent 50%),
-                linear-gradient(180deg, var(--color-maroon-dark) 0%, var(--color-maroon-base) 20%, #20040b 50%, var(--color-maroon-base) 85%, var(--color-maroon-dark) 100%);
-            box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.92);
+                radial-gradient(circle at 50% 18%, rgba(104, 13, 34, 0.72) 0%, transparent 60%),
+                radial-gradient(circle at 50% 85%, rgba(53, 6, 16, 0.92) 0%, transparent 65%),
+                radial-gradient(circle at 10% 45%, rgba(74, 8, 23, 0.5) 0%, transparent 50%),
+                radial-gradient(circle at 90% 45%, rgba(74, 8, 23, 0.5) 0%, transparent 50%),
+                linear-gradient(180deg, var(--color-maroon-dark) 0%, var(--color-maroon-base) 18%, #22040c 50%, var(--color-maroon-base) 82%, var(--color-maroon-dark) 100%);
+            box-shadow: inset 0 0 140px rgba(0, 0, 0, 0.95);
             opacity: 0;
             transition: opacity 1.8s var(--ease-cinematic);
             perspective: 1200px;
@@ -901,132 +896,213 @@
             opacity: 1;
         }
 
-        /* Ambient Indian Damask/Floral Arch Background Motif */
+        /* Ambient Indian Damask/Floral Arch Background Outline */
         .invitation-experience-view::before {
             content: '';
             position: absolute;
             top: 2%;
             left: 50%;
             transform: translateX(-50%);
-            width: min(94vw, 680px);
-            height: 94%;
-            border: 1px solid rgba(212, 175, 55, 0.16);
-            border-radius: 340px 340px 24px 24px;
+            width: min(94vw, 700px);
+            height: 96%;
+            border: 1px solid rgba(212, 175, 55, 0.18);
+            border-radius: 340px 340px 28px 28px;
             pointer-events: none;
             background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
-            box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 60px rgba(0, 0, 0, 0.85);
         }
 
-        /* Scratch Instructions Header */
-        .scratch-header-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 8px 24px;
-            border-radius: 50px;
-            background: rgba(35, 4, 10, 0.7);
-            border: 1px solid var(--gold-antique);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.15);
-            margin-bottom: clamp(16px, 3vh, 26px);
+        /* Composition Header */
+        .countdown-page-header {
+            text-align: center;
+            margin-bottom: clamp(20px, 3.5vh, 32px);
             z-index: 10;
         }
 
-        .scratch-header-pill span {
+        .countdown-intro-tag {
             font-family: var(--font-cinzel);
-            font-size: clamp(0.72rem, 1.8vw, 0.88rem);
-            letter-spacing: 0.22em;
+            font-size: clamp(0.72rem, 1.9vw, 0.88rem);
+            letter-spacing: 0.32em;
             color: var(--gold-bright);
             text-transform: uppercase;
+            margin-bottom: 6px;
+            text-shadow: 0 0 10px var(--gold-glow);
         }
 
-        /* Real Physical Wedding Invitation / Envelope Assembly */
-        .physical-invitation-container {
+        .countdown-calligraphy-title {
+            font-family: var(--font-calligraphy);
+            font-size: clamp(2.3rem, 7vw, 4rem);
+            color: var(--gold-bright);
+            line-height: 1.05;
+            text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9), 0 0 20px rgba(212, 175, 55, 0.4);
+            margin-bottom: 6px;
+        }
+
+        .countdown-header-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: min(70vw, 240px);
+            margin: 0 auto;
+            opacity: 0.75;
+        }
+
+        .countdown-header-divider::before,
+        .countdown-header-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-base), transparent);
+        }
+
+        .countdown-header-divider span {
+            color: var(--gold-bright);
+            font-size: 0.75rem;
+        }
+
+        /* ========================================================
+           ROYAL INVITATION COMPOSITION FRAME (DEEP WINE / GOLD)
+           ======================================================== */
+        .invitation-composition-frame {
             position: relative;
-            width: min(92vw, 440px);
-            border-radius: 18px;
-            transform-style: preserve-3d;
+            width: min(92vw, 460px);
+            border-radius: 24px;
+            background: linear-gradient(155deg, #2b040e 0%, #150207 45%, #23040c 100%);
+            border: 2px solid var(--gold-base);
             box-shadow: 
-                0 30px 80px rgba(0, 0, 0, 0.95),
-                0 10px 35px rgba(53, 6, 16, 0.6),
-                0 0 50px rgba(212, 175, 55, 0.18);
-            margin-bottom: 24px;
-            transition: box-shadow 1s ease, transform 0.6s ease;
-        }
-
-        .physical-invitation-container.unlocked-glow {
-            box-shadow: 
-                0 30px 90px rgba(0, 0, 0, 0.98),
-                0 0 55px rgba(212, 175, 55, 0.55),
-                0 0 85px rgba(245, 215, 127, 0.3);
-            transform: translateY(-4px);
-        }
-
-        /* Gold Outer Bezel Border Framing the Card */
-        .invitation-outer-bezel {
-            position: relative;
-            width: 100%;
-            border-radius: 18px;
-            padding: 9px;
-            background: linear-gradient(145deg, #cba245 0%, #7e5a14 30%, #ffd978 50%, #68480d 75%, #d4af37 100%);
-            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4), inset 0 -2px 6px rgba(0, 0, 0, 0.7);
-        }
-
-        /* High-End Heavy Cotton/Linen Textured Paper Sheet */
-        .invitation-card-paper {
-            position: relative;
-            width: 100%;
-            border-radius: 12px;
-            background: 
-                radial-gradient(circle at 50% 25%, #fffdf8 0%, var(--paper-cream) 60%, var(--paper-warm) 100%);
-            color: var(--ink-maroon);
-            padding: clamp(26px, 4.5vh, 38px) clamp(16px, 4vw, 28px) clamp(22px, 3.8vh, 32px);
+                0 25px 70px rgba(0, 0, 0, 0.96),
+                0 0 45px rgba(104, 13, 34, 0.5),
+                0 0 30px rgba(212, 175, 55, 0.22),
+                inset 0 0 25px rgba(0, 0, 0, 0.85);
+            padding: clamp(24px, 4vh, 34px) clamp(16px, 3.8vw, 26px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
+            z-index: 10;
             overflow: hidden;
-            box-shadow: 
-                inset 0 0 35px rgba(180, 150, 100, 0.28),
-                inset 0 0 10px rgba(0, 0, 0, 0.08);
-            border: 1px solid var(--paper-border);
+            transition: box-shadow 0.8s ease, transform 0.6s ease;
         }
 
-        /* Intricate Antique Gold Filigree Inner Border */
-        .card-inner-filigree {
+        .invitation-composition-frame.unlocked-glow {
+            box-shadow: 
+                0 30px 85px rgba(0, 0, 0, 0.98),
+                0 0 65px rgba(212, 175, 55, 0.55),
+                0 0 95px rgba(245, 215, 127, 0.35);
+            transform: translateY(-3px);
+        }
+
+        /* Intricate Corner Gold Ornaments */
+        .frame-corner-motif {
             position: absolute;
-            inset: 7px;
+            width: 26px;
+            height: 26px;
             border: 1.5px solid var(--gold-base);
-            border-radius: 8px;
             pointer-events: none;
             opacity: 0.85;
         }
+        .frame-corner-motif.f-tl { top: 9px; left: 9px; border-right: none; border-bottom: none; }
+        .frame-corner-motif.f-tr { top: 9px; right: 9px; border-left: none; border-bottom: none; }
+        .frame-corner-motif.f-bl { bottom: 9px; left: 9px; border-right: none; border-top: none; }
+        .frame-corner-motif.f-br { bottom: 9px; right: 9px; border-left: none; border-top: none; }
 
-        .card-inner-filigree::after {
-            content: '';
+        .frame-inner-border {
             position: absolute;
-            inset: 3px;
-            border: 1px dashed rgba(179, 136, 34, 0.55);
-            border-radius: 6px;
-        }
-
-        /* Ornate Corner Accents */
-        .card-corner {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--gold-base);
+            inset: 7px;
+            border: 1px dashed rgba(212, 175, 55, 0.45);
+            border-radius: 18px;
             pointer-events: none;
-            z-index: 4;
         }
-        .card-corner.c-tl { top: 9px; left: 9px; border-right: none; border-bottom: none; }
-        .card-corner.c-tr { top: 9px; right: 9px; border-left: none; border-bottom: none; }
-        .card-corner.c-bl { bottom: 9px; left: 9px; border-right: none; border-top: none; }
-        .card-corner.c-br { bottom: 9px; right: 9px; border-left: none; border-top: none; }
 
-        /* Scratch Foil Canvas Overlay */
+        /* ========================================================
+           THE INTERACTIVE GOLD FOIL SCRATCH CARD LAYER
+           ======================================================== */
+        .scratch-card-box {
+            position: relative;
+            width: 100%;
+            height: clamp(230px, 34vh, 290px);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1.5px solid var(--gold-base);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), inset 0 0 20px rgba(0, 0, 0, 0.7);
+            margin-bottom: clamp(20px, 3.2vh, 28px);
+            background: radial-gradient(circle at center, #2e0510 0%, #170207 100%);
+        }
+
+        /* Revealed Content Container Under Scratch Canvas */
+        .scratch-revealed-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            text-align: center;
+            background: 
+                radial-gradient(circle at 50% 30%, rgba(104, 13, 34, 0.6) 0%, transparent 70%),
+                linear-gradient(180deg, #22030a 0%, #130105 100%);
+        }
+
+        .revealed-names-block {
+            margin-bottom: 10px;
+        }
+
+        .revealed-groom-bride-name {
+            font-family: var(--font-cinzel);
+            font-size: clamp(1.8rem, 5.8vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: 0.22em;
+            color: var(--gold-bright);
+            text-transform: uppercase;
+            line-height: 1.1;
+            text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9), 0 0 20px rgba(212, 175, 55, 0.45);
+        }
+
+        .revealed-ampersand-row {
+            font-family: var(--font-calligraphy);
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
+            color: var(--gold-base);
+            margin: -2px 0;
+            line-height: 1;
+            filter: drop-shadow(0 0 8px var(--gold-glow));
+        }
+
+        .revealed-date-badge {
+            font-family: var(--font-cinzel);
+            font-size: clamp(1.05rem, 3.2vw, 1.35rem);
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            color: var(--ivory-warm);
+            margin-bottom: 4px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+        }
+
+        .revealed-venue-text {
+            font-family: var(--font-marcellus);
+            font-size: clamp(0.85rem, 2.3vw, 1.05rem);
+            letter-spacing: 0.16em;
+            color: var(--gold-bright);
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .revealed-time-text {
+            font-family: var(--font-cinzel);
+            font-size: clamp(0.82rem, 2.1vw, 0.98rem);
+            letter-spacing: 0.2em;
+            color: var(--ivory-muted);
+            margin-top: 2px;
+        }
+
+        /* Gold Foil HTML Canvas on Top */
         #scratch-canvas {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
-            border-radius: 12px;
+            border-radius: 14px;
             z-index: 20;
             cursor: grab;
             touch-action: none;
@@ -1037,203 +1113,115 @@
         }
 
         /* ========================================================
-           INTERIOR INVITATION TYPOGRAPHY (UNDER GOLD FOIL)
+           HEART-SHAPED ROYAL COUNTDOWN COMPONENT
            ======================================================== */
-        .card-auspicious-symbol {
-            display: inline-block;
-            margin-bottom: 4px;
-        }
-        .card-auspicious-symbol svg {
-            width: 28px;
-            height: 28px;
-            fill: var(--ink-burgundy);
-            filter: drop-shadow(0 1px 2px rgba(212, 175, 55, 0.4));
-        }
-
-        .card-header-families {
-            font-family: var(--font-cinzel);
-            font-size: clamp(0.72rem, 2vw, 0.88rem);
-            font-weight: 700;
-            letter-spacing: 0.26em;
-            color: var(--ink-burgundy);
-            text-transform: uppercase;
-            margin-bottom: clamp(14px, 2.5vh, 22px);
-            opacity: 0.9;
-        }
-
-        /* Central Couple Typography Hierarchy */
-        .card-couple-block {
-            margin: clamp(4px, 1vh, 12px) 0 clamp(16px, 2.8vh, 24px);
-        }
-
-        .couple-name-hero {
-            font-family: var(--font-cinzel);
-            font-size: clamp(2.1rem, 6.8vw, 3.2rem);
-            font-weight: 800;
-            letter-spacing: 0.18em;
-            color: var(--ink-maroon);
-            text-transform: uppercase;
-            line-height: 1.05;
-            text-shadow: 0 1px 3px rgba(212, 175, 55, 0.35);
-        }
-
-        .couple-connector-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin: 4px 0;
-        }
-
-        .couple-connector-row::before,
-        .couple-connector-row::after {
-            content: '';
-            width: clamp(24px, 8vw, 60px);
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold-base));
-        }
-        .couple-connector-row::after {
-            background: linear-gradient(90deg, var(--gold-base), transparent);
-        }
-
-        .couple-connector-text {
-            font-family: var(--font-calligraphy);
-            font-size: clamp(1.6rem, 5vw, 2.3rem);
-            color: var(--ink-gold);
-            line-height: 0.9;
-        }
-
-        /* Save The Date Ribbon/Emboss */
-        .card-save-date-ribbon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 6px;
-        }
-
-        .ribbon-ornament {
-            color: var(--gold-base);
-            font-size: 0.75rem;
-        }
-
-        .card-save-date-text {
-            font-family: var(--font-cinzel);
-            font-size: clamp(0.95rem, 2.6vw, 1.25rem);
-            font-weight: 800;
-            letter-spacing: 0.3em;
-            color: var(--ink-burgundy);
-            text-transform: uppercase;
-        }
-
-        /* Date, Venue & Muhurat */
-        .card-wedding-date-highlight {
-            font-family: var(--font-cinzel);
-            font-size: clamp(1.4rem, 4.4vw, 2rem);
-            font-weight: 800;
-            letter-spacing: 0.15em;
-            color: var(--ink-maroon);
-            margin-bottom: 8px;
-            text-shadow: 0 1px 2px rgba(212, 175, 55, 0.3);
-        }
-
-        .card-venue-time-row {
+        .hearts-countdown-container {
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: clamp(18px, 3vh, 26px);
         }
 
-        .card-venue-text {
-            font-family: var(--font-marcellus);
-            font-size: clamp(0.9rem, 2.3vw, 1.15rem);
-            letter-spacing: 0.16em;
-            color: var(--ink-maroon);
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .card-time-text {
-            font-family: var(--font-cinzel);
-            font-size: clamp(0.9rem, 2.2vw, 1.1rem);
-            letter-spacing: 0.2em;
-            color: var(--ink-gold);
-            font-weight: 700;
-            margin-top: 3px;
-        }
-
-        /* ========================================================
-           CARD COUNTDOWN COMPONENT (INSIDE THE INVITATION)
-           ======================================================== */
-        .card-countdown-assembly {
-            position: relative;
-            width: 100%;
-            padding-top: 14px;
-            border-top: 1px solid rgba(212, 175, 55, 0.45);
-        }
-
-        .countdown-pre-label {
-            font-family: var(--font-cinzel);
-            font-size: clamp(0.68rem, 1.8vw, 0.82rem);
-            font-weight: 700;
-            letter-spacing: 0.24em;
-            color: var(--ink-burgundy);
-            text-transform: uppercase;
-            margin-bottom: 12px;
-            opacity: 0.9;
-        }
-
-        .countdown-boxes-grid {
+        .hearts-grid-row {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: clamp(6px, 1.8vw, 10px);
+            gap: clamp(6px, 2vw, 14px);
             width: 100%;
-            max-width: 380px;
+            max-width: 410px;
             margin: 0 auto;
         }
 
-        .countdown-number-cell {
-            background: linear-gradient(180deg, #ffffff 0%, var(--paper-warm) 100%);
-            border: 1px solid rgba(179, 136, 34, 0.4);
-            border-radius: 8px;
-            padding: clamp(8px, 1.5vh, 12px) 4px clamp(6px, 1.2vh, 8px);
+        .heart-countdown-card {
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 
-                0 3px 6px rgba(0, 0, 0, 0.08),
-                inset 0 1px 2px rgba(255, 255, 255, 0.8);
             position: relative;
         }
 
-        .countdown-number-cell::before {
-            content: '';
+        /* SVG Heart Shape with Inner Maroon Gradient & Gold Border */
+        .heart-svg-wrapper {
+            position: relative;
+            width: clamp(68px, 19.5vw, 88px);
+            height: clamp(62px, 18vw, 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 10px rgba(212, 175, 55, 0.28));
+            transition: transform 0.3s ease;
+        }
+
+        .heart-svg-graphic {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .heart-svg-path {
+            fill: url(#heartWineGradient);
+            stroke: url(#heartGoldStroke);
+            stroke-width: 1.5;
+            transition: filter 0.3s ease;
+        }
+
+        /* Digit overlay inside the heart's upper-center mass */
+        .heart-digit-value {
             position: absolute;
-            top: 2px;
-            left: 2px;
-            right: 2px;
-            bottom: 2px;
-            border: 0.5px dashed rgba(212, 175, 55, 0.35);
-            border-radius: 6px;
-            pointer-events: none;
-        }
-
-        .digit-display {
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             font-family: var(--font-cinzel);
-            font-size: clamp(1.2rem, 3.8vw, 1.7rem);
+            font-size: clamp(1.15rem, 3.6vw, 1.55rem);
             font-weight: 800;
-            color: var(--ink-maroon);
+            color: var(--ivory-warm);
             line-height: 1;
-            margin-bottom: 4px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9), 0 0 10px rgba(252, 232, 169, 0.4);
+            pointer-events: none;
+            transition: transform 0.25s ease, opacity 0.25s ease;
         }
 
-        .unit-label {
+        .heart-digit-value.digit-pop {
+            transform: translate(-50%, -50%) scale(1.12);
+        }
+
+        .heart-unit-label {
             font-family: var(--font-cinzel);
-            font-size: clamp(0.55rem, 1.4vw, 0.68rem);
+            font-size: clamp(0.58rem, 1.6vw, 0.72rem);
             font-weight: 700;
             letter-spacing: 0.16em;
-            color: var(--ink-gold);
+            color: var(--gold-bright);
             text-transform: uppercase;
+            margin-top: 6px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Celebration state when countdown completes */
+        .countdown-celebration-banner {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 14px 20px;
+            border-radius: 12px;
+            background: rgba(104, 13, 34, 0.6);
+            border: 1px solid var(--gold-base);
+            box-shadow: 0 0 25px var(--gold-glow);
+            margin-top: 10px;
+        }
+        .countdown-celebration-banner.active {
+            display: flex;
+        }
+
+        .banner-line-1 {
+            font-family: var(--font-cinzel);
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            font-weight: 800;
+            letter-spacing: 0.22em;
+            color: var(--gold-bright);
+        }
+        .banner-line-2 {
+            font-family: var(--font-marcellus);
+            font-size: clamp(0.9rem, 2.4vw, 1.1rem);
+            color: var(--ivory-warm);
+            margin-top: 4px;
         }
 
         /* Post-Scratch Discovery Indicator */
@@ -1241,9 +1229,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 18px;
+            margin-top: 26px;
             opacity: 0;
-            transform: translateY(12px);
+            transform: translateY(14px);
             transition: opacity 1.2s var(--ease-cinematic), transform 1.2s var(--ease-cinematic);
             pointer-events: none;
             cursor: pointer;
@@ -1538,16 +1526,38 @@
             }
             .portal-diya.left { left: 4px; }
             .portal-diya.right { right: 4px; }
-            .physical-invitation-container {
+            .invitation-composition-frame {
                 width: 95vw;
+                padding: 22px 12px;
             }
-            .countdown-boxes-grid {
-                gap: 5px;
+            .hearts-grid-row {
+                gap: 4px;
+            }
+            .heart-svg-wrapper {
+                width: 72px;
+                height: 64px;
             }
         }
     </style>
 </head>
 <body>
+
+    <!-- SVG GRADIENT REPOSITORY FOR VECTOR GRAPHICS -->
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <linearGradient id="heartWineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#5a0a1c" />
+                <stop offset="45%" stop-color="#34050f" />
+                <stop offset="100%" stop-color="#190207" />
+            </linearGradient>
+            <linearGradient id="heartGoldStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fce8a9" />
+                <stop offset="40%" stop-color="#d4af37" />
+                <stop offset="80%" stop-color="#aa7c11" />
+                <stop offset="100%" stop-color="#644309" />
+            </linearGradient>
+        </defs>
+    </svg>
 
     <!-- AUDIO ELEMENT (Subtle Royal Shehnai / Ambient Flute Audio) -->
     <audio id="wedding-audio" loop preload="auto">
@@ -1622,7 +1632,7 @@
                                         <span class="stud bl"></span><span class="stud br"></span>
                                         <svg class="indian-motif-svg" viewBox="0 0 100 100" fill="none" stroke="var(--gold-bright)" stroke-width="2">
                                             <path d="M50 20 L80 50 L50 80 L20 50 Z" />
-                                            <circle cx="50" cy="50" r="8"/>
+                                            <circle cx="50" cy="8"/>
                                         </svg>
                                     </div>
                                 </div>
@@ -1648,7 +1658,7 @@
                                         <span class="stud bl"></span><span class="stud br"></span>
                                         <svg class="indian-motif-svg" viewBox="0 0 100 100" fill="none" stroke="var(--gold-bright)" stroke-width="2.2">
                                             <rect x="25" y="25" width="50" height="50" rx="8" transform="rotate(45 50 50)" stroke-dasharray="3 3"/>
-                                            <circle cx="50" cy="50" r="14"/>
+                                            <circle cx="50" cy="14"/>
                                         </svg>
                                     </div>
                                     <div class="carved-cell bottom-panel">
@@ -1656,7 +1666,7 @@
                                         <span class="stud bl"></span><span class="stud br"></span>
                                         <svg class="indian-motif-svg" viewBox="0 0 100 100" fill="none" stroke="var(--gold-bright)" stroke-width="2">
                                             <path d="M50 20 L80 50 L50 80 L20 50 Z" />
-                                            <circle cx="50" cy="50" r="8"/>
+                                            <circle cx="50" cy="8"/>
                                         </svg>
                                     </div>
                                 </div>
@@ -1767,91 +1777,103 @@
     </div>
 
     <!-- ========================================================
-         MAIN UNIFIED INVITATION COMPOSITION: 
-         PHYSICAL ENVELOPE / CARD + GOLD FOIL SCRATCH REVEAL + INTEGRATED COUNTDOWN
+         NEW UNIFIED CINEMATIC SCENE: 
+         ROYAL MAROON COUNTDOWN + SCRATCH-TO-REVEAL INVITATION
          ======================================================== -->
     <section class="invitation-experience-view" id="invitation-experience">
         
-        <!-- Header Instruction Pill -->
-        <div class="scratch-header-pill" id="scratch-prompt-pill">
-            <span>✦ SCRATCH TO REVEAL ✦</span>
-        </div>
+        <!-- Header Typographic Hierarchy -->
+        <header class="countdown-page-header">
+            <div class="countdown-intro-tag">THE COUNTDOWN BEGINS</div>
+            <h1 class="countdown-calligraphy-title">Counting the Moments</h1>
+            <div class="countdown-header-divider">
+                <span>✦</span>
+            </div>
+        </header>
 
-        <!-- The Physical Royal Wedding Invitation Card -->
-        <div class="physical-invitation-container" id="physical-card">
+        <!-- Main Luxurious Royal Maroon Invitation Frame -->
+        <div class="invitation-composition-frame" id="invitation-frame">
             
-            <div class="invitation-outer-bezel">
-                <div class="invitation-card-paper" id="invitation-card-node">
+            <!-- Ornate Corner Filigrees & Inner Dashed Border -->
+            <div class="frame-corner-motif f-tl"></div>
+            <div class="frame-corner-motif f-tr"></div>
+            <div class="frame-corner-motif f-bl"></div>
+            <div class="frame-corner-motif f-br"></div>
+            <div class="frame-inner-border"></div>
+
+            <!-- The Real Interactive Scratch-To-Reveal Box -->
+            <div class="scratch-card-box" id="scratch-box">
+                
+                <!-- Under-Foil Content -->
+                <div class="scratch-revealed-content">
+                    <div class="revealed-names-block">
+                        <div class="revealed-groom-bride-name">ASHISH</div>
+                        <div class="revealed-ampersand-row">&amp;</div>
+                        <div class="revealed-groom-bride-name">AARTI</div>
+                    </div>
+                    <div class="revealed-date-badge">26 NOVEMBER 2026</div>
+                    <div class="revealed-venue-text">VADANGE, KOLHAPUR</div>
+                    <div class="revealed-time-text">12:00 PM IST</div>
+                </div>
+
+                <!-- Gold Foil Scratch Canvas -->
+                <canvas id="scratch-canvas"></canvas>
+            </div>
+
+            <!-- Heart-Shaped Royal Live Countdown -->
+            <div class="hearts-countdown-container">
+                <div class="hearts-grid-row" id="hearts-grid">
                     
-                    <!-- Decorative Ornate Corners & Borders -->
-                    <div class="card-inner-filigree"></div>
-                    <div class="card-corner c-tl"></div>
-                    <div class="card-corner c-tr"></div>
-                    <div class="card-corner c-bl"></div>
-                    <div class="card-corner c-br"></div>
-
-                    <!-- Under-Foil Revealed Royal Wedding Content -->
-                    <div class="card-auspicious-symbol">
-                        <svg viewBox="0 0 24 24"><path d="M12 2L15 8L21 9L17 14L18 20L12 17L6 20L7 14L3 9L9 8L12 2Z"/></svg>
-                    </div>
-
-                    <div class="card-header-families">
-                        TOGETHER WITH THEIR FAMILIES
-                    </div>
-
-                    <!-- The Main Couple's Names -->
-                    <div class="card-couple-block">
-                        <div class="couple-name-hero">ASHISH</div>
-                        <div class="couple-connector-row">
-                            <span class="couple-connector-text">with</span>
+                    <!-- DAYS HEART -->
+                    <div class="heart-countdown-card">
+                        <div class="heart-svg-wrapper">
+                            <svg class="heart-svg-graphic" viewBox="0 0 100 90">
+                                <path class="heart-svg-path" d="M50 82 C50 82, 12 55, 12 30 C12 14, 24 6, 36 6 C43 6, 48 10, 50 14 C52 10, 57 6, 64 6 C76 6, 88 14, 88 30 C88 55, 50 82, 50 82 Z"/>
+                            </svg>
+                            <span class="heart-digit-value" id="heart-val-days">00</span>
                         </div>
-                        <div class="couple-name-hero">AARTI</div>
+                        <span class="heart-unit-label">DAYS</span>
                     </div>
 
-                    <!-- Save The Date & Sacred Venue Info -->
-                    <div class="card-save-date-ribbon">
-                        <span class="ribbon-ornament">✦</span>
-                        <span class="card-save-date-text">SAVE THE DATE</span>
-                        <span class="ribbon-ornament">✦</span>
-                    </div>
-
-                    <div class="card-wedding-date-highlight">
-                        26 NOVEMBER 2026
-                    </div>
-
-                    <div class="card-venue-time-row">
-                        <div class="card-venue-text">VADANGE, KOLHAPUR</div>
-                        <div class="card-time-text">12:00 PM IST</div>
-                    </div>
-
-                    <!-- Countdown Component: INTEGRATED INSIDE THE INVITATION -->
-                    <div class="card-countdown-assembly">
-                        <div class="countdown-pre-label">
-                            UNTIL FOREVER BEGINS
+                    <!-- HOURS HEART -->
+                    <div class="heart-countdown-card">
+                        <div class="heart-svg-wrapper">
+                            <svg class="heart-svg-graphic" viewBox="0 0 100 90">
+                                <path class="heart-svg-path" d="M50 82 C50 82, 12 55, 12 30 C12 14, 24 6, 36 6 C43 6, 48 10, 50 14 C52 10, 57 6, 64 6 C76 6, 88 14, 88 30 C88 55, 50 82, 50 82 Z"/>
+                            </svg>
+                            <span class="heart-digit-value" id="heart-val-hours">00</span>
                         </div>
-                        <div class="countdown-boxes-grid">
-                            <div class="countdown-number-cell">
-                                <span class="digit-display" id="count-days">00</span>
-                                <span class="unit-label">DAYS</span>
-                            </div>
-                            <div class="countdown-number-cell">
-                                <span class="digit-display" id="count-hours">00</span>
-                                <span class="unit-label">HRS</span>
-                            </div>
-                            <div class="countdown-number-cell">
-                                <span class="digit-display" id="count-mins">00</span>
-                                <span class="unit-label">MIN</span>
-                            </div>
-                            <div class="countdown-number-cell">
-                                <span class="digit-display" id="count-secs">00</span>
-                                <span class="unit-label">SEC</span>
-                            </div>
-                        </div>
+                        <span class="heart-unit-label">HOURS</span>
                     </div>
 
-                    <!-- Canvas Scratch Layer (Gold Foil Texture + Metallic Reflection) -->
-                    <canvas id="scratch-canvas"></canvas>
+                    <!-- MINUTES HEART -->
+                    <div class="heart-countdown-card">
+                        <div class="heart-svg-wrapper">
+                            <svg class="heart-svg-graphic" viewBox="0 0 100 90">
+                                <path class="heart-svg-path" d="M50 82 C50 82, 12 55, 12 30 C12 14, 24 6, 36 6 C43 6, 48 10, 50 14 C52 10, 57 6, 64 6 C76 6, 88 14, 88 30 C88 55, 50 82, 50 82 Z"/>
+                            </svg>
+                            <span class="heart-digit-value" id="heart-val-mins">00</span>
+                        </div>
+                        <span class="heart-unit-label">MINUTES</span>
+                    </div>
 
+                    <!-- SECONDS HEART -->
+                    <div class="heart-countdown-card">
+                        <div class="heart-svg-wrapper">
+                            <svg class="heart-svg-graphic" viewBox="0 0 100 90">
+                                <path class="heart-svg-path" d="M50 82 C50 82, 12 55, 12 30 C12 14, 24 6, 36 6 C43 6, 48 10, 50 14 C52 10, 57 6, 64 6 C76 6, 88 14, 88 30 C88 55, 50 82, 50 82 Z"/>
+                            </svg>
+                            <span class="heart-digit-value" id="heart-val-secs">00</span>
+                        </div>
+                        <span class="heart-unit-label">SECONDS</span>
+                    </div>
+
+                </div>
+
+                <!-- Reached Zero Celebration Banner -->
+                <div class="countdown-celebration-banner" id="celebration-banner">
+                    <span class="banner-line-1">THE WAIT IS OVER</span>
+                    <span class="banner-line-2">THE WEDDING DAY IS HERE ❤️️</span>
                 </div>
             </div>
 
@@ -1960,7 +1982,7 @@
     </main>
 
     <!-- ========================================================
-         VANILLA JAVASCRIPT: PARTICLES, SCRATCH ENGINE & COUNTDOWN
+         VANILLA JAVASCRIPT: PARTICLES, SCRATCH ENGINE & LIVE COUNTDOWN
          ======================================================== -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -2175,17 +2197,15 @@
                ---------------------------------------------------- */
             const scratchCanvas = document.getElementById('scratch-canvas');
             const scratchCtx = scratchCanvas.getContext('2d');
-            const cardNode = document.getElementById('invitation-card-node');
-            const physicalCard = document.getElementById('physical-card');
+            const scratchBox = document.getElementById('scratch-box');
+            const invitationFrame = document.getElementById('invitation-frame');
             const postScratchIndicator = document.getElementById('post-scratch-indicator');
-            const scratchPromptPill = document.getElementById('scratch-prompt-pill');
 
             let isScratching = false;
             let isRevealed = false;
-            let totalPixels = 0;
 
             function initScratchCard() {
-                const rect = cardNode.getBoundingClientRect();
+                const rect = scratchBox.getBoundingClientRect();
                 const dpr = window.devicePixelRatio || 1;
                 scratchCanvas.width = rect.width * dpr;
                 scratchCanvas.height = rect.height * dpr;
@@ -2194,61 +2214,59 @@
                 const w = rect.width;
                 const h = rect.height;
 
-                // 1. Draw Gold Foil Base Gradient
+                // 1. Luxury Gold Foil Gradient
                 const goldGrad = scratchCtx.createLinearGradient(0, 0, w, h);
-                goldGrad.addColorStop(0, '#f9e79f');
+                goldGrad.addColorStop(0, '#faeaae');
                 goldGrad.addColorStop(0.2, '#d4af37');
-                goldGrad.addColorStop(0.4, '#aa7c11');
-                goldGrad.addColorStop(0.6, '#ffd700');
-                goldGrad.addColorStop(0.8, '#c59b27');
-                goldGrad.addColorStop(1, '#855b0a');
+                goldGrad.addColorStop(0.45, '#996f12');
+                goldGrad.addColorStop(0.65, '#ffd978');
+                goldGrad.addColorStop(0.85, '#bd942b');
+                goldGrad.addColorStop(1, '#785009');
                 scratchCtx.fillStyle = goldGrad;
                 scratchCtx.fillRect(0, 0, w, h);
 
-                // 2. Add Metallic Speckle Texture
+                // 2. Gold Leaf Speckle Flecks
                 for (let i = 0; i < 350; i++) {
-                    scratchCtx.fillStyle = Math.random() > 0.5 ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.15)';
+                    scratchCtx.fillStyle = Math.random() > 0.5 ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.12)';
                     scratchCtx.fillRect(Math.random() * w, Math.random() * h, Math.random() * 3 + 1, Math.random() * 3 + 1);
                 }
 
                 // 3. Ornate Double Gold Border on Foil
-                scratchCtx.strokeStyle = 'rgba(255, 245, 215, 0.7)';
-                scratchCtx.lineWidth = 2;
-                scratchCtx.strokeRect(10, 10, w - 20, h - 20);
+                scratchCtx.strokeStyle = 'rgba(255, 245, 215, 0.75)';
+                scratchCtx.lineWidth = 1.5;
+                scratchCtx.strokeRect(8, 8, w - 16, h - 16);
 
-                scratchCtx.strokeStyle = 'rgba(100, 70, 10, 0.4)';
+                scratchCtx.strokeStyle = 'rgba(100, 70, 10, 0.45)';
                 scratchCtx.lineWidth = 1;
-                scratchCtx.strokeRect(14, 14, w - 28, h - 28);
+                scratchCtx.strokeRect(12, 12, w - 24, h - 24);
 
-                // 4. Elegant Text On Top Of Gold Foil
+                // 4. Centered Callout Text on Foil
                 scratchCtx.save();
                 scratchCtx.textAlign = 'center';
                 scratchCtx.textBaseline = 'middle';
 
                 // Sacred top symbol on foil
-                scratchCtx.font = '22px serif';
+                scratchCtx.font = '20px serif';
                 scratchCtx.fillStyle = '#4a0817';
-                scratchCtx.fillText('卐', w / 2, h * 0.34);
+                scratchCtx.fillText('卐', w / 2, h * 0.35);
 
                 // Central Gold Foil Badge
                 scratchCtx.font = 'bold 15px "Cinzel", serif';
-                scratchCtx.fillStyle = '#380611';
-                scratchCtx.shadowColor = 'rgba(255, 230, 160, 0.8)';
+                scratchCtx.fillStyle = '#2c040d';
+                scratchCtx.shadowColor = 'rgba(255, 230, 160, 0.85)';
                 scratchCtx.shadowBlur = 6;
-                scratchCtx.fillText('✦ SCRATCH TO REVEAL ✦', w / 2, h * 0.44);
+                scratchCtx.fillText('✦ SCRATCH TO REVEAL ✦', w / 2, h * 0.50);
 
                 scratchCtx.font = 'italic 16px "Great Vibes", cursive';
-                scratchCtx.fillStyle = '#560a1c';
+                scratchCtx.fillStyle = '#4a0817';
                 scratchCtx.shadowBlur = 0;
-                scratchCtx.fillText('Ashish & Aarti\'s Invitation', w / 2, h * 0.52);
+                scratchCtx.fillText('Ashish & Aarti\'s Invitation', w / 2, h * 0.62);
 
-                scratchCtx.font = '10px "Cinzel", serif';
+                scratchCtx.font = '9px "Cinzel", serif';
                 scratchCtx.fillStyle = '#6e4c0d';
-                scratchCtx.fillText('SWIPE WITH FINGER TO OPEN', w / 2, h * 0.60);
+                scratchCtx.fillText('SWIPE WITH FINGER TO UNVEIL', w / 2, h * 0.72);
 
                 scratchCtx.restore();
-
-                totalPixels = (scratchCanvas.width * scratchCanvas.height) / 16; // sample step
             }
 
             function scratch(x, y) {
@@ -2259,7 +2277,6 @@
                 scratchCtx.arc(x, y, 28, 0, Math.PI * 2);
                 scratchCtx.fill();
 
-                // Sparkle particles effect during scratch
                 const canvasRect = scratchCanvas.getBoundingClientRect();
                 spawnScratchSparks(canvasRect.left + x, canvasRect.top + y);
 
@@ -2277,7 +2294,6 @@
             }
 
             function checkRevealProgress() {
-                // Throttle pixel sampling for silky 60fps performance
                 if (Math.random() > 0.3) return;
 
                 const dpr = window.devicePixelRatio || 1;
@@ -2302,7 +2318,7 @@
 
                 const ratio = transparentCount / sampledCount;
 
-                // Threshold: When 45% scratched, smoothly dissolve remainder
+                // Threshold: When ~45% scratched, smoothly dissolve remainder
                 if (ratio >= 0.45 && !isRevealed) {
                     completeScratchReveal();
                 }
@@ -2317,25 +2333,19 @@
                     scratchCanvas.style.display = 'none';
                 }, 900);
 
-                // Add golden glow & illuminate card
-                physicalCard.classList.add('unlocked-glow');
-                scratchPromptPill.style.opacity = '0';
-                setTimeout(() => scratchPromptPill.style.display = 'none', 600);
-
-                // Reveal discovery arrow and unlock bottom sections
+                invitationFrame.classList.add('unlocked-glow');
                 postScratchIndicator.classList.add('visible');
+                
                 const scrollBody = document.getElementById('invitation-scroll-body');
                 scrollBody.classList.add('active');
                 initScrollObserver();
 
-                // Golden celebration sparkle burst around card
-                const r = physicalCard.getBoundingClientRect();
-                for (let i = 0; i < 28; i++) {
+                const r = invitationFrame.getBoundingClientRect();
+                for (let i = 0; i < 30; i++) {
                     spawnScratchSparks(r.left + Math.random() * r.width, r.top + Math.random() * r.height);
                 }
             }
 
-            // Mouse Event Listeners
             scratchCanvas.addEventListener('mousedown', (e) => {
                 isScratching = true;
                 const pos = getTouchPos(e);
@@ -2348,7 +2358,6 @@
             });
             window.addEventListener('mouseup', () => { isScratching = false; });
 
-            // Touch Event Listeners (Mobile First)
             scratchCanvas.addEventListener('touchstart', (e) => {
                 isScratching = true;
                 const pos = getTouchPos(e);
@@ -2363,7 +2372,6 @@
 
             scratchCanvas.addEventListener('touchend', () => { isScratching = false; });
 
-            // Down Arrow Tap smoothly scrolls to subsequent sections
             postScratchIndicator.addEventListener('click', () => {
                 const target = document.getElementById('family-blessings');
                 if (target) {
@@ -2372,25 +2380,37 @@
             });
 
             /* ----------------------------------------------------
-               5. REAL LIVE JAVASCRIPT COUNTDOWN ENGINE
+               5. REAL LIVE JAVASCRIPT HEART-SHAPED COUNTDOWN ENGINE
                   Target: 26 November 2026, 12:00 PM IST (GMT+05:30)
                ---------------------------------------------------- */
             const targetWeddingTimestamp = new Date('2026-11-26T12:00:00+05:30').getTime();
 
-            const daysEl = document.getElementById('count-days');
-            const hoursEl = document.getElementById('count-hours');
-            const minsEl = document.getElementById('count-mins');
-            const secsEl = document.getElementById('count-secs');
+            const daysEl = document.getElementById('heart-val-days');
+            const hoursEl = document.getElementById('heart-val-hours');
+            const minsEl = document.getElementById('heart-val-mins');
+            const secsEl = document.getElementById('heart-val-secs');
+            const heartsGrid = document.getElementById('hearts-grid');
+            const celebrationBanner = document.getElementById('celebration-banner');
+
+            let lastSecondsVal = null;
+
+            function updateHeartNumber(element, newVal) {
+                if (element.textContent !== newVal) {
+                    element.textContent = newVal;
+                    element.classList.add('digit-pop');
+                    setTimeout(() => {
+                        element.classList.remove('digit-pop');
+                    }, 260);
+                }
+            }
 
             function updateWeddingCountdown() {
                 const now = new Date().getTime();
                 const difference = targetWeddingTimestamp - now;
 
                 if (difference <= 0) {
-                    daysEl.textContent = '00';
-                    hoursEl.textContent = '00';
-                    minsEl.textContent = '00';
-                    secsEl.textContent = '00';
+                    if (heartsGrid) heartsGrid.style.display = 'none';
+                    if (celebrationBanner) celebrationBanner.classList.add('active');
                     return;
                 }
 
@@ -2399,10 +2419,15 @@
                 const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-                daysEl.textContent = days < 10 ? '0' + days : days;
-                hoursEl.textContent = hours < 10 ? '0' + hours : hours;
-                minsEl.textContent = minutes < 10 ? '0' + minutes : minutes;
-                secsEl.textContent = seconds < 10 ? '0' + seconds : seconds;
+                const dStr = days < 10 ? '0' + days : String(days);
+                const hStr = hours < 10 ? '0' + hours : String(hours);
+                const mStr = minutes < 10 ? '0' + minutes : String(minutes);
+                const sStr = seconds < 10 ? '0' + seconds : String(seconds);
+
+                updateHeartNumber(daysEl, dStr);
+                updateHeartNumber(hoursEl, hStr);
+                updateHeartNumber(minsEl, mStr);
+                updateHeartNumber(secsEl, sStr);
             }
 
             updateWeddingCountdown();
