@@ -27,16 +27,16 @@
 
     .glow-aura {
       position: absolute;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(236, 72, 153, 0.2), transparent 70%);
-      filter: blur(95px);
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.22), transparent 70%);
+      filter: blur(100px);
       pointer-events: none;
     }
 
     .main-box {
       width: 100%;
-      max-width: 480px;
+      max-width: 500px;
       padding: 24px 20px;
       display: flex;
       flex-direction: column;
@@ -45,101 +45,57 @@
       z-index: 10;
     }
 
-    /* Cartoon Stage Card */
+    /* 3D Realistic Character Frame */
     .character-card {
-      width: clamp(280px, 38vw, 340px);
-      background: rgba(255, 255, 255, 0.05);
-      border: 2px solid rgba(236, 72, 153, 0.35);
+      width: clamp(290px, 42vw, 420px);
+      background: rgba(255, 255, 255, 0.06);
+      border: 2px solid rgba(236, 72, 153, 0.4);
       border-radius: 28px;
-      padding: 20px;
-      backdrop-filter: blur(15px);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(236, 72, 153, 0.25);
+      padding: 14px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85), 0 0 35px rgba(236, 72, 153, 0.3);
       margin-bottom: 25px;
       transition: all 0.3s ease;
     }
 
     .character-stage {
       width: 100%;
-      height: 220px;
-      background: #fff0f5;
+      height: clamp(210px, 30vw, 270px);
       border-radius: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
       overflow: hidden;
-      box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.08);
+      position: relative;
+      background: #0d0610;
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
     }
 
-    /* Scene 1: Girl Asking Cutey */
+    .realistic-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.5s ease, transform 0.6s ease;
+    }
+
+    /* Scene 1: Girl Asking */
     #pleadScene {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       width: 100%;
       height: 100%;
-      justify-content: center;
+      display: block;
     }
 
-    .cartoon-img {
-      width: 150px;
-      height: 150px;
-      object-fit: contain;
-      animation: floatCute 2.2s ease-in-out infinite alternate;
-      filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.15));
-    }
-
-    @keyframes floatCute {
-      0% { transform: translateY(0) scale(0.98); }
-      100% { transform: translateY(-8px) scale(1.02); }
-    }
-
-    .avatar-label {
-      font-family: 'Fredoka', cursive;
-      font-size: 0.95rem;
-      color: #9d174d;
-      margin-top: 6px;
-      font-weight: 700;
-    }
-
-    /* Scene 2: Girl Studying + Boy Smirking */
+    /* Scene 2: Study Together */
     #studyScene {
-      display: none;
-      align-items: center;
-      justify-content: space-around;
       width: 100%;
       height: 100%;
-      padding: 0 10px;
-      animation: popReaction 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      display: none;
+      animation: fadeInPic 0.6s ease forwards;
     }
 
-    @keyframes popReaction {
-      0% { transform: scale(0.85); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+    @keyframes fadeInPic {
+      from { opacity: 0; transform: scale(1.05); }
+      to { opacity: 1; transform: scale(1); }
     }
 
-    .duo-box {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .duo-img {
-      width: 110px;
-      height: 110px;
-      object-fit: contain;
-      filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.15));
-    }
-
-    .sub-role {
-      font-family: 'Fredoka', cursive;
-      font-size: 0.8rem;
-      color: #831843;
-      margin-top: 4px;
-      font-weight: 700;
-    }
-
-    /* Question & Dialog Area */
     .dialog-title {
       font-family: 'Fredoka', cursive;
       font-size: clamp(1.6rem, 3.2vw, 2.3rem);
@@ -149,7 +105,7 @@
       line-height: 1.3;
     }
 
-    /* Buttons Arena */
+    /* Button Arena */
     .button-arena {
       display: flex;
       gap: 20px;
@@ -164,7 +120,7 @@
       background: linear-gradient(135deg, #ec4899, #be185d);
       color: white;
       border: none;
-      padding: 14px 28px;
+      padding: 14px 30px;
       font-size: 1.05rem;
       font-weight: 700;
       border-radius: 40px;
@@ -195,13 +151,13 @@
       user-select: none;
     }
 
-    /* Final Study Motivation Box */
+    /* Reward Box */
     .reward-box {
       display: none;
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(236, 72, 153, 0.4);
       border-radius: 20px;
-      padding: 20px 18px;
+      padding: 22px 20px;
       margin-top: 15px;
       animation: fadeInText 0.5s ease forwards;
     }
@@ -213,14 +169,14 @@
 
     .reward-box h3 {
       font-family: 'Fredoka', cursive;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       color: #f472b6;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .reward-box p {
       font-family: 'Playfair Display', serif;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       line-height: 1.6;
       color: #fce7f3;
       font-style: italic;
@@ -249,29 +205,20 @@
     <div class="character-card">
       <div class="character-stage">
         
-        <!-- Scene 1: Cute Pleading Girl Cartoon -->
+        <!-- Scene 1: Girl Asking Cutey -->
         <div id="pleadScene">
-          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHIybXNveXdycW9yZzVhcWw4dnpzNjU2dzEwcjltMzQ5ZzNqc2p0OCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/OPU6wzx8JrHna/giphy.gif" alt="Pleading Cartoon" class="cartoon-img">
-          <div class="avatar-label">"Please aapan baher jauya na? 🥺🎒"</div>
+          <img src="girl_asking.png" alt="Asking Girl" class="realistic-img">
         </div>
 
-        <!-- Scene 2: Studying Girl + Proud Boy Cartoon -->
+        <!-- Scene 2: Studying Together -->
         <div id="studyScene">
-          <div class="duo-box">
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDVqN2l5aTVjZG44bTNodnphNXo1bjY0bDFucnp5dnJkbmQ3Mmg4ciZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3oriO0OEd9QIDdllqo/giphy.gif" alt="Studying Cartoon" class="duo-img">
-            <div class="sub-role">Rusun Abhyas 📖🥺</div>
-          </div>
-          <div style="font-size: 1.8rem; color: #ec4899;">⚡</div>
-          <div class="duo-box">
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3ZpcjlsNGw0aG5xM2Vsa2FzZnh4amN5bXpyNmJ0eW12dTZ2OXFrayZlcD12MV9naWZzX3NlYXJjaCZjdD1n/MDJ9IbxxvDUQM/giphy.gif" alt="Smug Cat Boy" class="duo-img">
-            <div class="sub-role">Proud Boyfriend 😏☕</div>
-          </div>
+          <img src="study_together.png" alt="Studying Together" class="realistic-img">
         </div>
 
       </div>
     </div>
 
-    <!-- Interactive Dialogue Section -->
+    <!-- Question Area -->
     <div id="questionArea">
       <h1 class="dialog-title">"Can we please skip study & go on a cute date today? 🎒🍦"</h1>
 
@@ -281,7 +228,7 @@
       </div>
     </div>
 
-    <!-- Final Cute Message after clicking Study -->
+    <!-- Message after clicking Study -->
     <div id="rewardBox" class="reward-box">
       <h3>Good Girl! Aata Focus! 💻📖</h3>
       <p>"Chala, 1 tas shant pane study purna kara... nantar me swata tumhala tumchi favourite ice-cream khayla gheun jaen! Promissseee ❤️"</p>
@@ -305,8 +252,7 @@
 
     function forceStudy() {
       document.getElementById('pleadScene').style.display = 'none';
-      const studyStage = document.getElementById('studyScene');
-      studyStage.style.display = 'flex';
+      document.getElementById('studyScene').style.display = 'block';
 
       document.getElementById('questionArea').style.display = 'none';
       document.getElementById('rewardBox').style.display = 'block';
