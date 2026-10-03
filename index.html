@@ -18,7 +18,7 @@
       width: 100vw;
       color: #fff;
       font-family: 'Montserrat', sans-serif;
-      overflow: hidden;
+      overflow-x: hidden;
       position: relative;
     }
 
@@ -47,8 +47,8 @@
     .screen-page {
       display: none;
       width: 100vw;
-      height: 100vh;
-      padding: clamp(15px, 2.5vh, 30px) clamp(20px, 3vw, 50px);
+      min-height: 100vh;
+      padding: clamp(20px, 3vh, 35px) clamp(16px, 3vw, 50px);
       position: relative;
       flex-direction: column;
       justify-content: space-between;
@@ -68,14 +68,14 @@
 
     .back-btn {
       position: absolute;
-      top: clamp(15px, 2.5vh, 30px);
-      left: clamp(20px, 3vw, 45px);
+      top: 18px;
+      left: 18px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 117, 143, 0.3);
       color: #ffccd5;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       cursor: pointer;
-      padding: 8px 20px;
+      padding: 8px 18px;
       border-radius: 40px;
       backdrop-filter: blur(15px);
       transition: all 0.3s ease;
@@ -83,7 +83,7 @@
       letter-spacing: 1px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     .back-btn:hover {
@@ -93,25 +93,25 @@
     }
 
     /* =========================================
-       PAGE 0: HOME SCREEN WITH LOVE METER
+       PAGE 0: HOME SCREEN
     ========================================= */
     .home-header {
-      margin-top: 1vh;
+      margin-top: 1.5vh;
       text-align: center;
     }
 
     .home-cursive {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(2.4rem, 3.5vw, 3.5rem);
+      font-size: clamp(2.2rem, 3.8vw, 3.5rem);
       color: #ff758f;
       text-shadow: 0 0 25px rgba(255, 117, 143, 0.6);
     }
 
     .home-main-title {
       font-family: 'Cinzel', serif;
-      font-size: clamp(2.2rem, 3.8vw, 3.8rem);
+      font-size: clamp(2rem, 3.8vw, 3.6rem);
       font-weight: 900;
-      letter-spacing: clamp(3px, 0.5vw, 6px);
+      letter-spacing: clamp(2px, 0.5vw, 5px);
       text-transform: uppercase;
       background: linear-gradient(180deg, #ffffff 0%, #ff8fa3 100%);
       -webkit-background-clip: text;
@@ -120,23 +120,22 @@
       text-shadow: 0 5px 30px rgba(255, 45, 85, 0.4);
     }
 
-    /* Interactive Love Meter Box */
     .love-meter-card {
-      width: clamp(280px, 30vw, 420px);
+      width: clamp(290px, 32vw, 420px);
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 117, 143, 0.35);
       backdrop-filter: blur(14px);
       border-radius: 24px;
-      padding: clamp(16px, 2.5vh, 25px) clamp(20px, 2.5vw, 30px);
+      padding: 16px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
       box-shadow: 0 15px 40px rgba(0,0,0,0.6), inset 0 0 20px rgba(255, 77, 109, 0.15);
-      margin: 8px 0;
+      margin: 15px 0;
     }
 
     .love-meter-title {
-      font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+      font-size: 0.95rem;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: #ffccd5;
@@ -166,13 +165,14 @@
 
     .meter-reading-text {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.2rem, 1.6vw, 1.7rem);
+      font-size: clamp(1.1rem, 1.4vw, 1.5rem);
       color: #ffe5ec;
       font-weight: 700;
       min-height: 35px;
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
     }
 
     .measure-love-btn {
@@ -192,36 +192,35 @@
 
     .measure-love-btn:hover {
       transform: scale(1.08);
-      box-shadow: 0 8px 25px rgba(255, 77, 109, 0.8);
     }
 
     .bouquet-grid-wrapper {
       width: 100%;
-      max-width: 1100px;
+      max-width: 1050px;
       margin-bottom: 2vh;
       text-align: center;
     }
 
     .bouquet-tagline {
-      font-size: clamp(0.8rem, 1vw, 0.95rem);
+      font-size: 0.85rem;
       letter-spacing: 3px;
       color: #c9184a;
       text-transform: uppercase;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       font-weight: 700;
     }
 
     .bouquet-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: clamp(15px, 2vw, 30px);
+      gap: clamp(12px, 2vw, 25px);
     }
 
     .bouquet-item {
       background: rgba(25, 2, 7, 0.75);
       border: 1px solid rgba(255, 77, 109, 0.3);
       border-radius: 20px;
-      padding: clamp(18px, 2.5vh, 30px) 15px;
+      padding: clamp(16px, 2vh, 25px) 12px;
       cursor: pointer;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(255, 77, 109, 0.1);
@@ -232,33 +231,32 @@
     .bouquet-item:hover {
       transform: translateY(-8px) scale(1.02);
       border-color: #ff4d6d;
-      box-shadow: 0 20px 45px rgba(255, 77, 109, 0.35), inset 0 0 25px rgba(255, 77, 109, 0.2);
+      box-shadow: 0 20px 45px rgba(255, 77, 109, 0.35);
     }
 
     .bouquet-flower {
-      font-size: clamp(2.8rem, 3.8vw, 4rem);
+      font-size: clamp(2.4rem, 3.5vw, 3.6rem);
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       filter: drop-shadow(0 5px 15px rgba(255, 77, 109, 0.4));
     }
 
     .bouquet-item h3 {
       font-family: 'Cinzel', serif;
-      font-size: clamp(0.95rem, 1.2vw, 1.15rem);
-      letter-spacing: 2px;
+      font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+      letter-spacing: 1.5px;
       color: #ffccd5;
       text-transform: uppercase;
     }
 
     .bouquet-item p {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: #ff8fa3;
-      margin-top: 5px;
-      letter-spacing: 1px;
+      margin-top: 4px;
     }
 
     /* =========================================
-       PAGE 1: SIDE PHOTO & AUTO-SCROLLING LETTER
+       PAGE 1: SIDE PHOTO & LETTER
     ========================================= */
     .page1-layout {
       width: 100%;
@@ -266,10 +264,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: clamp(30px, 4vw, 60px);
-      max-width: 1280px;
+      gap: clamp(25px, 4vw, 50px);
+      max-width: 1240px;
       margin: auto;
-      padding-top: 25px;
+      padding-top: 40px;
     }
 
     .side-photo-pane {
@@ -281,12 +279,12 @@
 
     .polaroid-grand {
       background: #ffffff;
-      padding: 16px 16px 45px 16px;
+      padding: 14px 14px 40px 14px;
       border-radius: 12px;
       box-shadow: 0 30px 60px rgba(0,0,0,0.7), 0 0 30px rgba(255, 75, 110, 0.25);
       transform: rotate(-3deg);
       transition: all 0.4s ease;
-      width: clamp(280px, 26vw, 370px);
+      width: clamp(270px, 25vw, 360px);
     }
 
     .polaroid-grand:hover {
@@ -295,39 +293,40 @@
 
     .polaroid-grand img {
       width: 100%;
-      height: clamp(280px, 30vw, 400px);
+      height: clamp(270px, 28vw, 380px);
       object-fit: cover;
       border-radius: 6px;
+      display: block;
     }
 
     .polaroid-grand-caption {
       color: #222;
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(1.8rem, 2.2vw, 2.3rem);
+      font-size: clamp(1.8rem, 2.2vw, 2.2rem);
       text-align: center;
-      margin-top: 12px;
+      margin-top: 10px;
     }
 
     .side-text-pane {
-      flex: 1.3;
-      height: clamp(380px, 55vh, 520px);
+      flex: 1.2;
+      height: clamp(380px, 55vh, 500px);
       position: relative;
       overflow: hidden;
       border-radius: 20px;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 117, 143, 0.2);
       backdrop-filter: blur(12px);
-      padding: 20px clamp(20px, 3vw, 40px);
+      padding: 20px clamp(20px, 3vw, 35px);
       mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
       -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
     }
 
     .scrolling-letter {
       position: absolute;
-      width: calc(100% - clamp(40px, 6vw, 80px));
+      width: calc(100% - clamp(30px, 5vw, 60px));
       display: flex;
       flex-direction: column;
-      gap: 28px;
+      gap: 25px;
       animation: verticalScrollText 24s linear infinite;
     }
 
@@ -342,10 +341,9 @@
 
     .scroll-para {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.1rem, 1.4vw, 1.35rem);
+      font-size: clamp(1.05rem, 1.3vw, 1.3rem);
       line-height: 1.8;
       color: #ffe5ec;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
 
     .scroll-para span {
@@ -354,7 +352,7 @@
     }
 
     /* =========================================
-       PAGE 2: CAN I HUG YOU? INTERACTIVE
+       PAGE 2: CAN I HUG YOU?
     ========================================= */
     .page2-layout {
       width: 100%;
@@ -364,20 +362,20 @@
       justify-content: center;
       align-items: center;
       position: relative;
+      padding-top: 40px;
     }
 
     .hug-question-box {
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: all 0.5s ease;
       z-index: 10;
     }
 
     .standing-sticker-card {
-      width: clamp(240px, 25vw, 340px);
+      width: clamp(240px, 24vw, 320px);
       background: rgba(255, 255, 255, 0.95);
-      padding: 14px 14px 24px 14px;
+      padding: 12px 12px 20px 12px;
       border-radius: 16px;
       box-shadow: 0 20px 45px rgba(0,0,0,0.7), 0 0 30px rgba(255, 75, 110, 0.35);
       border: 2px solid rgba(255, 77, 109, 0.4);
@@ -392,7 +390,7 @@
 
     .standing-sticker-card svg {
       width: 100%;
-      height: clamp(180px, 20vw, 250px);
+      height: clamp(180px, 18vw, 240px);
       display: block;
       background: #fff5f7;
       border-radius: 10px;
@@ -400,11 +398,12 @@
 
     .hug-question-text {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 2.5vw, 2.6rem);
+      font-size: clamp(1.6rem, 2.3vw, 2.4rem);
       color: #ffe5ec;
       text-shadow: 0 4px 15px rgba(255, 77, 109, 0.6);
       margin-bottom: 25px;
       font-weight: 700;
+      text-align: center;
     }
 
     .hug-btns-row {
@@ -421,8 +420,8 @@
       background: linear-gradient(135deg, #ff4d6d, #c9184a);
       color: white;
       border: none;
-      padding: 12px 36px;
-      font-size: 1.2rem;
+      padding: 12px 34px;
+      font-size: 1.15rem;
       font-weight: 700;
       border-radius: 40px;
       cursor: pointer;
@@ -432,16 +431,15 @@
     }
 
     .hug-btn-yes:hover {
-      transform: scale(1.15);
-      box-shadow: 0 12px 30px rgba(255, 77, 109, 0.8);
+      transform: scale(1.1);
     }
 
     .hug-btn-no {
       background: rgba(255, 255, 255, 0.15);
       color: #ffccd5;
       border: 1px solid rgba(255, 255, 255, 0.3);
-      padding: 12px 32px;
-      font-size: 1.1rem;
+      padding: 12px 30px;
+      font-size: 1.05rem;
       font-weight: 600;
       border-radius: 40px;
       cursor: pointer;
@@ -463,12 +461,7 @@
       align-items: center;
       flex-direction: column;
       z-index: 999;
-      animation: modalFadeIn 0.4s ease forwards;
-    }
-
-    @keyframes modalFadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { transform: scale(1); }
+      padding: 15px;
     }
 
     .hug-celebration-title {
@@ -476,22 +469,21 @@
       color: white;
       font-family: 'Cinzel', serif;
       font-weight: 800;
-      font-size: clamp(1.8rem, 2.5vw, 2.8rem);
-      padding: clamp(12px, 1.8vh, 18px) clamp(30px, 3.5vw, 55px);
+      font-size: clamp(1.4rem, 2.2vw, 2.5rem);
+      padding: clamp(10px, 1.5vh, 16px) clamp(20px, 3vw, 45px);
       border-radius: 50px;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       box-shadow: 0 15px 45px rgba(255, 77, 109, 0.7);
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       text-align: center;
     }
 
     .hug-popup-content {
-      width: clamp(320px, 45vw, 520px);
-      height: clamp(320px, 45vw, 520px);
+      width: clamp(280px, 40vw, 480px);
+      height: clamp(280px, 40vw, 480px);
       display: flex;
       justify-content: center;
       align-items: center;
-      position: relative;
     }
 
     .hug-popup-content img {
@@ -502,40 +494,19 @@
     }
 
     .close-hug-popup-btn {
-      margin-top: 25px;
+      margin-top: 20px;
       background: rgba(255, 255, 255, 0.12);
       border: 1px solid rgba(255, 117, 143, 0.4);
       color: #ffccd5;
-      padding: 10px 28px;
+      padding: 10px 26px;
       border-radius: 30px;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .close-hug-popup-btn:hover {
-      background: #ff4d6d;
-      color: white;
-      transform: scale(1.05);
-    }
-
-    .hug-heart-burst {
-      position: absolute;
-      font-size: 2.5rem;
-      pointer-events: none;
-      opacity: 0;
-      animation: heartFly 1.5s ease-out forwards;
-      z-index: 15;
-    }
-
-    @keyframes heartFly {
-      0% { opacity: 1; transform: scale(0.5) translate(0, 0); }
-      100% { opacity: 0; transform: scale(1.8) translate(var(--dx), var(--dy)); }
     }
 
     /* =========================================
-       PAGE 3: AESTHETIC FAIRY LIGHTS & CLOTHESLINE
+       PAGE 3: FAIRY LIGHTS & "OPEN WHEN" ENVELOPES
     ========================================= */
     .page3-layout {
       width: 100%;
@@ -545,36 +516,36 @@
       align-items: center;
       justify-content: flex-start;
       position: relative;
-      padding-top: 20px;
+      padding-top: 35px;
+      gap: 15px;
     }
 
     .lights-title {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(2.2rem, 3.2vw, 3.4rem);
+      font-size: clamp(2rem, 3vw, 3.2rem);
       color: #ff758f;
       text-shadow: 0 0 20px rgba(255, 117, 143, 0.7);
-      margin-bottom: 2px;
+      text-align: center;
     }
 
     .lights-hint {
       color: #ffccd5;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       letter-spacing: 2px;
       text-transform: uppercase;
       font-weight: 700;
-      margin-bottom: 30px;
       text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
+      text-align: center;
     }
 
     .clothesline-container {
       position: relative;
       width: 100%;
-      max-width: 1200px;
-      height: 60vh;
+      max-width: 1100px;
       display: flex;
       justify-content: space-around;
       align-items: flex-start;
-      padding-top: 35px;
+      padding-top: 25px;
     }
 
     .wire-svg {
@@ -582,18 +553,18 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 100px;
+      height: 80px;
       pointer-events: none;
       z-index: 1;
     }
 
     .hanging-polaroid {
       position: relative;
-      width: clamp(170px, 17vw, 230px);
+      width: clamp(140px, 16vw, 210px);
       background: #ffffff;
-      padding: 10px 10px 30px 10px;
+      padding: 8px 8px 24px 8px;
       border-radius: 8px;
-      box-shadow: 0 20px 45px rgba(0,0,0,0.8), 0 0 25px rgba(255, 75, 110, 0.25);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.8), 0 0 20px rgba(255, 75, 110, 0.25);
       cursor: pointer;
       z-index: 10;
       transform-origin: top center;
@@ -601,9 +572,9 @@
     }
 
     .hanging-polaroid:nth-child(2) { animation: swingOne 4.5s ease-in-out infinite alternate; }
-    .hanging-polaroid:nth-child(3) { animation: swingTwo 5.2s ease-in-out infinite alternate; margin-top: 15px; }
-    .hanging-polaroid:nth-child(4) { animation: swingOne 4.8s ease-in-out infinite alternate; margin-top: 25px; }
-    .hanging-polaroid:nth-child(5) { animation: swingTwo 5.5s ease-in-out infinite alternate; margin-top: 10px; }
+    .hanging-polaroid:nth-child(3) { animation: swingTwo 5.2s ease-in-out infinite alternate; margin-top: 12px; }
+    .hanging-polaroid:nth-child(4) { animation: swingOne 4.8s ease-in-out infinite alternate; margin-top: 18px; }
+    .hanging-polaroid:nth-child(5) { animation: swingTwo 5.5s ease-in-out infinite alternate; margin-top: 8px; }
 
     @keyframes swingOne {
       0% { transform: rotate(-3.5deg); }
@@ -616,18 +587,18 @@
 
     .hanging-polaroid:hover {
       animation-play-state: paused;
-      transform: scale(1.12) rotate(0deg) !important;
+      transform: scale(1.1) rotate(0deg) !important;
       z-index: 50;
       box-shadow: 0 25px 60px rgba(255, 77, 109, 0.6);
     }
 
     .wooden-clip {
       position: absolute;
-      top: -16px;
+      top: -14px;
       left: 50%;
       transform: translateX(-50%);
-      width: 14px;
-      height: 32px;
+      width: 12px;
+      height: 28px;
       background: linear-gradient(to right, #b08968, #7f5539);
       border-radius: 4px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.6);
@@ -637,7 +608,7 @@
     .wooden-clip::after {
       content: '';
       position: absolute;
-      top: 12px;
+      top: 10px;
       left: 0;
       width: 100%;
       height: 3px;
@@ -646,7 +617,7 @@
 
     .hanging-polaroid img {
       width: 100%;
-      height: clamp(170px, 18vw, 240px);
+      height: clamp(140px, 16vw, 210px);
       object-fit: cover;
       border-radius: 4px;
       display: block;
@@ -655,13 +626,72 @@
     .hanging-polaroid .card-text {
       color: #2b040e;
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(1.4rem, 1.6vw, 1.9rem);
+      font-size: clamp(1.2rem, 1.4vw, 1.6rem);
       text-align: center;
-      margin-top: 10px;
+      margin-top: 6px;
       line-height: 1;
     }
 
-    /* 3D FLIP MODAL */
+    /* 3 "OPEN WHEN" ENVELOPES ROW */
+    .open-when-section {
+      width: 100%;
+      max-width: 950px;
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .open-when-heading {
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      color: #ffccd5;
+      text-transform: uppercase;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .envelopes-row {
+      display: flex;
+      justify-content: center;
+      gap: clamp(14px, 2vw, 30px);
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .mini-env-card {
+      background: rgba(43, 4, 14, 0.7);
+      border: 1px solid rgba(255, 77, 109, 0.4);
+      backdrop-filter: blur(10px);
+      border-radius: 18px;
+      padding: 12px 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .mini-env-card:hover {
+      transform: translateY(-5px) scale(1.05);
+      border-color: #ff4d6d;
+      background: rgba(89, 13, 34, 0.8);
+      box-shadow: 0 14px 35px rgba(255, 77, 109, 0.35);
+    }
+
+    .mini-env-card span.icon {
+      font-size: 1.8rem;
+    }
+
+    .mini-env-card span.text {
+      font-size: clamp(0.8rem, 1vw, 0.95rem);
+      font-weight: 600;
+      color: #ffe5ec;
+    }
+
+    /* 3D FLIP MEMORY MODAL */
     .flip-modal-overlay {
       display: none;
       position: fixed;
@@ -671,19 +701,14 @@
       justify-content: center;
       align-items: center;
       z-index: 999;
+      padding: 15px;
     }
 
     .flip-card-wrapper {
-      width: 90%;
-      max-width: 440px;
-      height: 520px;
+      width: 100%;
+      max-width: 400px;
+      height: clamp(440px, 60vh, 500px);
       perspective: 1000px;
-      animation: modalPopUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    @keyframes modalPopUp {
-      from { transform: scale(0.7) translateY(40px); opacity: 0; }
-      to { transform: scale(1) translateY(0); opacity: 1; }
     }
 
     .flip-card-inner {
@@ -707,7 +732,7 @@
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
       border-radius: 16px;
-      padding: 20px 20px 30px 20px;
+      padding: 16px 16px 24px 16px;
       box-shadow: 0 30px 70px rgba(0,0,0,0.8), 0 0 35px rgba(255, 77, 109, 0.5);
     }
 
@@ -716,22 +741,22 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: space-between;
     }
 
     .flip-card-front img {
       width: 100%;
-      height: 380px;
+      height: 82%;
       object-fit: cover;
       border-radius: 8px;
     }
 
     .flip-card-front .flip-hint-tag {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       letter-spacing: 2px;
       color: #ff4d6d;
       text-transform: uppercase;
       font-weight: 700;
-      margin-top: 18px;
     }
 
     .flip-card-back {
@@ -743,21 +768,21 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 40px 30px;
+      padding: 30px 20px;
     }
 
     .flip-card-back h2 {
       font-family: 'Great Vibes', cursive;
-      font-size: 3rem;
+      font-size: 2.6rem;
       color: #ff758f;
       margin-bottom: 15px;
     }
 
     .flip-card-back p {
       font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       line-height: 1.7;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       color: #ffe5ec;
     }
 
@@ -765,13 +790,116 @@
       background: linear-gradient(135deg, #ff4d6d, #c9184a);
       color: white;
       border: none;
-      padding: 10px 32px;
+      padding: 9px 28px;
       border-radius: 30px;
       font-weight: 700;
-      font-size: 0.9rem;
-      letter-spacing: 2px;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
       cursor: pointer;
-      box-shadow: 0 6px 18px rgba(255, 77, 109, 0.4);
+    }
+
+    /* Heart Blasts */
+    .hug-heart-burst {
+      position: absolute;
+      font-size: 2.2rem;
+      pointer-events: none;
+      opacity: 0;
+      animation: heartFly 1.5s ease-out forwards;
+      z-index: 15;
+    }
+
+    @keyframes heartFly {
+      0% { opacity: 1; transform: scale(0.5) translate(0, 0); }
+      100% { opacity: 0; transform: scale(1.8) translate(var(--dx), var(--dy)); }
+    }
+
+    /* =========================================
+       RESPONSIVE DESIGN (FOR MOBILE & TABLETS)
+    ========================================= */
+    @media (max-width: 768px) {
+      body {
+        overflow-y: auto; /* Allow smooth vertical scrolling on mobile */
+      }
+
+      .screen-page {
+        padding: 60px 14px 25px 14px;
+        min-height: 100vh;
+        height: auto;
+      }
+
+      /* Home Page Mobile */
+      .bouquet-row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .bouquet-item {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        gap: 16px;
+        padding: 14px 18px;
+      }
+
+      .bouquet-flower {
+        font-size: 2.5rem;
+        margin-bottom: 0;
+      }
+
+      /* Page 1 Mobile: Vertical Stack */
+      .page1-layout {
+        flex-direction: column;
+        gap: 25px;
+        padding-top: 10px;
+      }
+
+      .polaroid-grand {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .side-text-pane {
+        width: 100%;
+        height: 340px;
+      }
+
+      /* Page 2 Mobile */
+      .hug-btns-row {
+        width: 260px;
+      }
+
+      /* Page 3 Mobile: Grid Clothesline */
+      .clothesline-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        height: auto;
+        padding-top: 10px;
+      }
+
+      .wire-svg {
+        display: none; /* Hide top string on mobile for neat grid alignment */
+      }
+
+      .hanging-polaroid {
+        width: 100%;
+        margin-top: 0 !important;
+        animation: none !important; /* Stop swing on mobile to prevent overflow */
+      }
+
+      .hanging-polaroid img {
+        height: 150px;
+      }
+
+      .envelopes-row {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
+      }
+
+      .mini-env-card {
+        justify-content: center;
+      }
     }
   </style>
 </head>
@@ -788,7 +916,7 @@
       <h1 class="home-main-title">Happy Boyfriend Day</h1>
     </div>
 
-    <!-- Interactive Love Meter (Photo Pop-up aivaji God Love Calculator) -->
+    <!-- Interactive Love Meter -->
     <div class="love-meter-card">
       <div class="love-meter-title">✨ My Love For You Meter ✨</div>
       <div class="meter-progress-track">
@@ -805,20 +933,26 @@
         
         <div class="bouquet-item" onclick="switchPage('page-photo')">
           <span class="bouquet-flower">🥀</span>
-          <h3>Love Letter</h3>
-          <p>Our unforgettable story</p>
+          <div>
+            <h3>Love Letter</h3>
+            <p>Our unforgettable story</p>
+          </div>
         </div>
 
         <div class="bouquet-item" onclick="switchPage('page-hug')">
           <span class="bouquet-flower">💐</span>
-          <h3>Warm Hug</h3>
-          <p>A tight embrace for you</p>
+          <div>
+            <h3>Warm Hug</h3>
+            <p>A tight embrace for you</p>
+          </div>
         </div>
 
         <div class="bouquet-item" onclick="switchPage('page-rain')">
           <span class="bouquet-flower">🌹</span>
-          <h3>Fairy Lights</h3>
-          <p>Hanging sweet memories</p>
+          <div>
+            <h3>Fairy Lights</h3>
+            <p>Memories & Open-When notes</p>
+          </div>
         </div>
 
       </div>
@@ -827,7 +961,7 @@
 
   <!-- PAGE 1: SIDE PHOTO & AUTO-FLOWING MESSAGE -->
   <div id="page-photo" class="screen-page">
-    <button class="back-btn" onclick="switchPage('page-home')">← Back to Bouquets</button>
+    <button class="back-btn" onclick="switchPage('page-home')">← Back</button>
     
     <div class="page1-layout">
       <div class="side-photo-pane">
@@ -852,7 +986,7 @@
 
   <!-- PAGE 2: INTERACTIVE CAN I HUG YOU? -->
   <div id="page-hug" class="screen-page">
-    <button class="back-btn" onclick="switchPage('page-home')">← Back to Bouquets</button>
+    <button class="back-btn" onclick="switchPage('page-home')">← Back</button>
 
     <div class="page2-layout">
       <div id="hugQuestionBox" class="hug-question-box">
@@ -908,24 +1042,27 @@
     <button class="close-hug-popup-btn" onclick="closeHugPopup()">HUG YOU FOREVER 💕</button>
   </div>
 
-  <!-- PAGE 3: AESTHETIC FAIRY LIGHTS & CLOTHESLINE -->
+  <!-- PAGE 3: FAIRY LIGHTS & "OPEN WHEN" ENVELOPES -->
   <div id="page-rain" class="screen-page">
-    <button class="back-btn" onclick="switchPage('page-home')">← Back to Bouquets</button>
+    <button class="back-btn" onclick="switchPage('page-home')">← Back</button>
 
     <div class="page3-layout">
-      <h2 class="lights-title">Our Sweet Little Moments ✨</h2>
-      <div class="lights-hint">✦ Tap any polaroid to flip and read a love secret ✦</div>
+      <div>
+        <h2 class="lights-title">Our Sweet Little Moments ✨</h2>
+        <div class="lights-hint">✦ Tap any polaroid to flip and read a love secret ✦</div>
+      </div>
 
+      <!-- Hanging Clothesline -->
       <div class="clothesline-container">
-        <svg class="wire-svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
-          <path d="M 0,20 Q 300,75 600,45 Q 900,80 1200,25" fill="none" stroke="rgba(255, 182, 193, 0.45)" stroke-width="2.5"/>
-          <circle cx="150" cy="48" r="5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
-          <circle cx="300" cy="65" r="5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
-          <circle cx="450" cy="55" r="5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
-          <circle cx="600" cy="45" r="5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
-          <circle cx="750" cy="65" r="5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
-          <circle cx="900" cy="72" r="5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
-          <circle cx="1050" cy="48" r="5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
+        <svg class="wire-svg" viewBox="0 0 1100 80" preserveAspectRatio="none">
+          <path d="M 0,15 Q 275,65 550,38 Q 825,70 1100,18" fill="none" stroke="rgba(255, 182, 193, 0.45)" stroke-width="2.5"/>
+          <circle cx="140" cy="42" r="4.5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
+          <circle cx="280" cy="56" r="4.5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
+          <circle cx="420" cy="48" r="4.5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
+          <circle cx="550" cy="38" r="4.5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
+          <circle cx="690" cy="56" r="4.5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
+          <circle cx="830" cy="62" r="4.5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
+          <circle cx="970" cy="42" r="4.5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
         </svg>
 
         <div class="hanging-polaroid" onclick="openFlipCard('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600', 'I love you more than any words could ever explain. You are my greatest blessing! 🥰')">
@@ -951,8 +1088,31 @@
           <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400" alt="Memory 4">
           <div class="card-text">Forever Mine 💋</div>
         </div>
-
       </div>
+
+      <!-- 3 "OPEN WHEN" MINI ENVELOPES (Balanced Bottom Section) -->
+      <div class="open-when-section">
+        <div class="open-when-heading">✦ Special Notes Just For You ✦</div>
+        <div class="envelopes-row">
+          
+          <div class="mini-env-card" onclick="openLetterModal('When You Miss Me 💌', 'Close your eyes and remember: no matter the distance, you are always the first and last thought in my heart. I miss you too, always! ❤️')">
+            <span class="icon">💌</span>
+            <span class="text">Open when you miss me</span>
+          </div>
+
+          <div class="mini-env-card" onclick="openLetterModal('When You Have a Bad Day 🫂', 'Take a deep breath, my love. Bad days don\'t last, but my love for you always will. I am always in your corner, cheering for you! ✨')">
+            <span class="icon">🥺</span>
+            <span class="text">Open when you\'re having a bad day</span>
+          </div>
+
+          <div class="mini-env-card" onclick="openLetterModal('When You Need a Smile 😊', 'Did you know you have the most handsome smile in the entire universe? Every time you smile, my whole day becomes brighter! 💖')">
+            <span class="icon">🌸</span>
+            <span class="text">Open when you need a smile</span>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -973,13 +1133,26 @@
     </div>
   </div>
 
+  <!-- "OPEN WHEN" LETTER MODAL -->
+  <div id="letterModal" class="flip-modal-overlay">
+    <div class="flip-card-wrapper" style="height: auto; max-width: 380px;">
+      <div class="flip-card-back" style="transform: none; border-radius: 20px; box-shadow: 0 25px 60px rgba(0,0,0,0.8);">
+        <h2 id="letterTitle" style="font-size: 2.2rem; margin-bottom: 12px;">Love Note</h2>
+        <p id="letterContent" style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 22px;">Here is your message...</p>
+        <button class="flip-close-btn" onclick="closeLetterModal()">HOLD CLOSE TO HEART ❤️</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     function switchPage(targetId) {
       document.querySelectorAll('.screen-page').forEach(p => p.classList.remove('active'));
-      document.getElementById(targetId).classList.add('active');
+      const target = document.getElementById(targetId);
+      target.classList.add('active');
+      window.scrollTo(0, 0); // Reset scroll on mobile navigation
     }
 
-    // HOME PAGE: LOVE METER LOGIC
+    // HOME: LOVE METER LOGIC
     function measureLove() {
       const fill = document.getElementById('loveFill');
       const text = document.getElementById('meterText');
@@ -992,7 +1165,7 @@
       }, 100);
 
       setTimeout(() => {
-        text.innerText = '∞ Infinity % (Cannot Be Measured! ❤️)';
+        text.innerText = '∞ Infinity % (Cannot Be Measured! ❤️️)';
         blastFloatingHearts();
       }, 2000);
     }
@@ -1003,8 +1176,8 @@
         const h = document.createElement('div');
         h.className = 'hug-heart-burst';
         h.innerText = ['❤️', '💖', '✨', '🥰'][Math.floor(Math.random() * 4)];
-        const dx = (Math.random() - 0.5) * 400 + 'px';
-        const dy = (Math.random() - 0.5) * 300 - 50 + 'px';
+        const dx = (Math.random() - 0.5) * 350 + 'px';
+        const dy = (Math.random() - 0.5) * 260 - 40 + 'px';
         h.style.setProperty('--dx', dx);
         h.style.setProperty('--dy', dy);
         h.style.left = '50%';
@@ -1017,8 +1190,9 @@
     // PAGE 2: INTERACTIVE CAN I HUG YOU?
     function dodgeNoButton() {
       const btn = document.getElementById('noBtn');
-      const randomX = (Math.random() - 0.5) * (window.innerWidth * 0.6);
-      const randomY = (Math.random() - 0.5) * (window.innerHeight * 0.5);
+      const maxDistance = window.innerWidth <= 768 ? 100 : 250;
+      const randomX = (Math.random() - 0.5) * maxDistance;
+      const randomY = (Math.random() - 0.5) * (maxDistance * 0.8);
       btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
     }
 
@@ -1035,12 +1209,12 @@
 
     function blastHearts() {
       const modal = document.getElementById('hugPopupModal');
-      for (let i = 0; i < 35; i++) {
+      for (let i = 0; i < 30; i++) {
         const h = document.createElement('div');
         h.className = 'hug-heart-burst';
         h.innerText = ['❤️', '💖', '✨', '🌹', '🥰'][Math.floor(Math.random() * 5)];
-        const dx = (Math.random() - 0.5) * 750 + 'px';
-        const dy = (Math.random() - 0.5) * 550 + 'px';
+        const dx = (Math.random() - 0.5) * 600 + 'px';
+        const dy = (Math.random() - 0.5) * 450 + 'px';
         h.style.setProperty('--dx', dx);
         h.style.setProperty('--dy', dy);
         h.style.left = '50%';
@@ -1065,6 +1239,17 @@
 
     function closeFlipModal() {
       document.getElementById('flipModal').style.display = 'none';
+    }
+
+    // PAGE 3: "OPEN WHEN" LETTER MODAL
+    function openLetterModal(title, message) {
+      document.getElementById('letterTitle').innerText = title;
+      document.getElementById('letterContent').innerText = message;
+      document.getElementById('letterModal').style.display = 'flex';
+    }
+
+    function closeLetterModal() {
+      document.getElementById('letterModal').style.display = 'none';
     }
   </script>
 </body>
