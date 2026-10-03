@@ -48,7 +48,7 @@
       display: none;
       width: 100vw;
       height: 100vh;
-      padding: 40px 60px;
+      padding: 30px 50px;
       position: relative;
       flex-direction: column;
       justify-content: space-between;
@@ -68,14 +68,14 @@
 
     .back-btn {
       position: absolute;
-      top: 35px;
+      top: 30px;
       left: 45px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 117, 143, 0.3);
       color: #ffccd5;
-      font-size: 1rem;
+      font-size: 0.95rem;
       cursor: pointer;
-      padding: 10px 22px;
+      padding: 9px 20px;
       border-radius: 40px;
       backdrop-filter: blur(15px);
       transition: all 0.3s ease;
@@ -274,9 +274,7 @@
       font-weight: 600;
     }
 
-    /* =========================================
-       PAGE 2: PURE SVG BUBU & DUDU REAL JUMP HUG
-    ========================================= */
+    /* PAGE 2: BUBU & DUDU JUMP HUG */
     .page2-layout {
       width: 100%;
       height: 100%;
@@ -319,7 +317,6 @@
       align-items: center;
     }
 
-    /* Running Characters Wrapper */
     .runner {
       position: absolute;
       bottom: 40px;
@@ -343,7 +340,6 @@
       100% { transform: translateY(-16px) rotate(3deg); }
     }
 
-    /* Move to Center */
     .hug-stage-full.running .runner-left {
       left: calc(50% - 190px);
     }
@@ -352,7 +348,6 @@
       right: calc(50% - 190px);
     }
 
-    /* Final Hug Scene Container */
     .hug-final-scene {
       display: none;
       position: absolute;
@@ -381,92 +376,237 @@
       100% { opacity: 0; transform: scale(1.8) translate(var(--dx), var(--dy)); }
     }
 
-    /* PAGE 3: BIG MAGIC CHEST & UNPACKING PHOTOS */
+    /* =========================================
+       PAGE 3: AESTHETIC ENVELOPE & FILM REEL SCROLL
+    ========================================= */
     .page3-layout {
       width: 100%;
       height: 100%;
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
       position: relative;
-      padding-top: 25px;
+      padding: 10px 0;
     }
 
-    .chest-box-container {
-      margin-top: 5px;
+    /* Vintage Camera Film Strips on Both Sides */
+    .film-column {
+      width: 160px;
+      height: 82vh;
+      overflow: hidden;
+      position: relative;
+      border-radius: 12px;
+      background: #110105;
+      border: 3px solid #3d0514;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+    }
+
+    .film-reel-track {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 15px 0;
+      animation: filmScroll 20s linear infinite;
+    }
+
+    .film-column-right .film-reel-track {
+      animation-duration: 25s; /* Subtly different speed for elegance */
+    }
+
+    .film-reel-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes filmScroll {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+
+    .film-frame {
+      width: 140px;
+      background: #1c0209;
+      border: 2px solid #52071d;
+      border-radius: 8px;
+      margin: 0 auto;
+      padding: 8px 8px 12px 8px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.5);
       cursor: pointer;
-      text-align: center;
-      z-index: 10;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 77, 109, 0.3);
-      padding: 15px 40px;
-      border-radius: 30px;
-      backdrop-filter: blur(10px);
+      position: relative;
       transition: all 0.3s ease;
     }
 
-    .chest-box-container:hover {
-      background: rgba(255, 77, 109, 0.15);
-      transform: translateY(-5px);
+    .film-frame:hover {
+      transform: scale(1.08);
+      border-color: #ff4d6d;
+      box-shadow: 0 8px 25px rgba(255, 77, 109, 0.4);
     }
 
-    .magic-chest {
-      font-size: 7rem;
-      filter: drop-shadow(0 15px 35px rgba(255, 77, 109, 0.6));
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      display: inline-block;
+    /* Camera Sprocket Holes */
+    .film-frame::before, .film-frame::after {
+      content: '••••••••';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 8px;
+      letter-spacing: 10px;
+      color: rgba(255, 255, 255, 0.3);
       line-height: 1;
     }
+    .film-frame::before { top: 2px; }
+    .film-frame::after { bottom: 2px; }
 
-    .magic-chest:hover {
-      transform: scale(1.2) rotate(5deg);
-    }
-
-    .chest-hint {
-      color: #ffccd5;
-      font-size: 1rem;
-      letter-spacing: 2px;
-      margin-top: 10px;
-      text-transform: uppercase;
-      font-weight: 700;
-      text-shadow: 0 0 10px rgba(255, 77, 109, 0.4);
-    }
-
-    .photo-stage-grid {
+    .film-frame img {
       width: 100%;
-      max-width: 1100px;
-      height: 480px;
-      position: relative;
-      margin-top: 20px;
-    }
-
-    .flying-card {
-      width: 200px;
-      height: 250px;
-      background: white;
-      padding: 10px 10px 35px 10px;
-      border-radius: 8px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-      cursor: pointer;
-      position: absolute;
-      top: -100px;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.1);
-      opacity: 0;
-      transition: all 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .flying-card img {
-      width: 100%;
-      height: 100%;
+      height: 130px;
       object-fit: cover;
       border-radius: 4px;
+      display: block;
+      margin: 4px 0;
     }
 
-    .flying-card:hover {
-      transform: scale(1.1) !important;
-      box-shadow: 0 20px 45px rgba(255, 77, 109, 0.5);
-      z-index: 50;
+    /* Center Stage with Interactive Envelope */
+    .center-envelope-stage {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      position: relative;
+      padding: 0 20px;
+    }
+
+    .envelope-hint {
+      color: #ffccd5;
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 25px;
+      text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
+      transition: opacity 0.4s;
+    }
+
+    /* 3D Romantic Envelope */
+    .envelope-wrapper {
+      position: relative;
+      width: 320px;
+      height: 220px;
+      background: #800f2f;
+      border-radius: 12px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 35px rgba(255, 77, 109, 0.3);
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.4s ease;
+    }
+
+    .envelope-wrapper:hover {
+      transform: translateY(-5px) scale(1.02);
+    }
+
+    /* Flap & Wax Seal */
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 160px solid transparent;
+      border-right: 160px solid transparent;
+      border-top: 120px solid #a4133c;
+      transform-origin: top;
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 5;
+    }
+
+    .envelope-pocket {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 160px solid #590d22;
+      border-right: 160px solid #590d22;
+      border-bottom: 125px solid #800f2f;
+      border-top: 95px solid transparent;
+      border-radius: 0 0 12px 12px;
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .wax-seal {
+      position: absolute;
+      top: 90px;
+      left: calc(50% - 24px);
+      width: 48px;
+      height: 48px;
+      background: radial-gradient(circle, #ff4d6d, #c9184a);
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 0 8px rgba(255,255,255,0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      z-index: 6;
+      transition: all 0.5s ease;
+    }
+
+    /* Stable Center Card emerging from Envelope */
+    .stable-center-card {
+      position: absolute;
+      width: 320px;
+      background: #ffffff;
+      padding: 14px 14px 28px 14px;
+      border-radius: 12px;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.7), 0 0 25px rgba(255, 75, 110, 0.3);
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(40px) scale(0.6);
+      transition: all 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 3;
+    }
+
+    .stable-center-card img {
+      width: 100%;
+      height: 290px;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .stable-center-card .card-caption {
+      color: #333;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* Envelope Opened State */
+    .center-envelope-stage.opened .envelope-flap {
+      transform: rotateX(180deg);
+      z-index: 1;
+    }
+
+    .center-envelope-stage.opened .wax-seal {
+      opacity: 0;
+      transform: scale(0.2);
+    }
+
+    .center-envelope-stage.opened .envelope-wrapper {
+      transform: translateY(110px) scale(0.85);
+      opacity: 0.6;
+    }
+
+    .center-envelope-stage.opened .stable-center-card {
+      opacity: 1;
+      transform: translateY(-30px) scale(1);
+      z-index: 10;
     }
 
     /* POP-UP MODAL WITH PIC & CUTE MSG */
@@ -485,7 +625,7 @@
       background: linear-gradient(145deg, #2b040e, #140105);
       border: 1px solid #ff4d6d;
       box-shadow: 0 25px 60px rgba(255, 75, 110, 0.4);
-      padding: 25px 25px 30px 25px;
+      padding: 24px 24px 28px 24px;
       border-radius: 28px;
       width: 90%;
       max-width: 440px;
@@ -506,7 +646,7 @@
       height: 250px;
       border-radius: 18px;
       overflow: hidden;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.5);
       border: 2px solid rgba(255, 117, 143, 0.4);
     }
@@ -519,9 +659,9 @@
 
     .modal-card h2 {
       font-family: 'Great Vibes', cursive;
-      font-size: 2.6rem;
+      font-size: 2.5rem;
       color: #ff758f;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .modal-card p {
@@ -581,8 +721,8 @@
 
         <div class="bouquet-item" onclick="switchPage('page-rain')">
           <span class="bouquet-flower">🌹</span>
-          <h3>Memory Chest</h3>
-          <p>Unfold special moments</p>
+          <h3>Love Envelope</h3>
+          <p>Vintage reel & memories</p>
         </div>
 
       </div>
@@ -614,9 +754,7 @@
     </div>
   </div>
 
-  <!-- =========================================
-       PAGE 2: 100% INBUILT BUBU & DUDU JUMP HUG
-  ========================================= -->
+  <!-- PAGE 2: BUBU & DUDU JUMP HUG -->
   <div id="page-hug" class="screen-page">
     <button class="back-btn" onclick="switchPage('page-home')">← Back to Bouquets</button>
 
@@ -624,122 +762,116 @@
       <div id="hugBigTitle" class="hug-celebration-title">HAPPY BOYFRIEND DAY, MY LOVE! 🤗❤️</div>
 
       <div id="hugFullStage" class="hug-stage-full">
-        
-        <!-- Bubu (Brown Bear) Running from Left -->
+        <!-- Bubu (Brown Bear) -->
         <div id="bubuRunner" class="runner runner-left">
           <svg viewBox="0 0 200 200" width="100%" height="100%">
-            <!-- Body -->
             <ellipse cx="100" cy="120" rx="60" ry="55" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
-            <!-- Left Ear -->
             <circle cx="55" cy="65" r="22" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
             <circle cx="55" cy="65" r="12" fill="#e8c9b0"/>
-            <!-- Right Ear -->
             <circle cx="145" cy="65" r="22" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
             <circle cx="145" cy="65" r="12" fill="#e8c9b0"/>
-            <!-- Head -->
             <ellipse cx="100" cy="90" rx="55" ry="48" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
-            <!-- Cute Blush -->
             <circle cx="65" cy="100" r="10" fill="#fca5a5" opacity="0.8"/>
             <circle cx="135" cy="100" r="10" fill="#fca5a5" opacity="0.8"/>
-            <!-- Happy Eyes -->
             <path d="M 75 88 Q 82 80 89 88" stroke="#3d2314" stroke-width="5" fill="none" stroke-linecap="round"/>
             <path d="M 111 88 Q 118 80 125 88" stroke="#3d2314" stroke-width="5" fill="none" stroke-linecap="round"/>
-            <!-- Snout & Mouth -->
             <ellipse cx="100" cy="98" rx="14" ry="10" fill="#fef08a"/>
             <ellipse cx="100" cy="95" rx="5" ry="3.5" fill="#3d2314"/>
             <path d="M 100 98 Q 100 106 104 105" stroke="#3d2314" stroke-width="3" fill="none"/>
-            <!-- Arms Open to Hug -->
             <path d="M 145 105 Q 175 90 165 125" stroke="#3d2314" stroke-width="6" fill="#c49a75" stroke-linecap="round"/>
             <path d="M 55 105 Q 35 125 60 135" stroke="#3d2314" stroke-width="6" fill="#c49a75" stroke-linecap="round"/>
           </svg>
         </div>
 
-        <!-- Dudu (White Panda) Running from Right -->
+        <!-- Dudu (White Panda) -->
         <div id="duduRunner" class="runner runner-right">
           <svg viewBox="0 0 200 200" width="100%" height="100%">
-            <!-- Body -->
             <ellipse cx="100" cy="120" rx="58" ry="52" fill="#ffffff" stroke="#222" stroke-width="6"/>
-            <!-- Black Ears -->
             <circle cx="55" cy="65" r="20" fill="#2b2d42" stroke="#222" stroke-width="6"/>
             <circle cx="145" cy="65" r="20" fill="#2b2d42" stroke="#222" stroke-width="6"/>
-            <!-- Head -->
             <ellipse cx="100" cy="90" rx="54" ry="46" fill="#ffffff" stroke="#222" stroke-width="6"/>
-            <!-- Cute Pink Blush -->
             <circle cx="65" cy="100" r="10" fill="#ff758f" opacity="0.8"/>
             <circle cx="135" cy="100" r="10" fill="#ff758f" opacity="0.8"/>
-            <!-- Happy Eyes -->
             <path d="M 75 88 Q 82 80 89 88" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round"/>
             <path d="M 111 88 Q 118 80 125 88" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round"/>
-            <!-- Nose & Open Happy Mouth -->
             <ellipse cx="100" cy="95" rx="5" ry="3.5" fill="#222"/>
             <path d="M 94 98 Q 100 112 106 98 Z" fill="#ff4d6d" stroke="#222" stroke-width="2"/>
-            <!-- Arms Open Running -->
             <path d="M 55 105 Q 25 90 35 125" stroke="#222" stroke-width="6" fill="#ffffff" stroke-linecap="round"/>
             <path d="M 145 105 Q 165 125 140 135" stroke="#222" stroke-width="6" fill="#ffffff" stroke-linecap="round"/>
           </svg>
         </div>
 
-        <!-- The Exact Jump & Tight Embrace Scene -->
+        <!-- Final Real Tight Hug Scene -->
         <div id="hugFinalScene" class="hug-final-scene">
           <svg viewBox="0 0 350 350" width="100%" height="100%">
-            <!-- Floating Little Hearts -->
             <path d="M 175 40 Q 185 20 195 35 Q 205 50 175 75 Q 145 50 155 35 Q 165 20 175 40 Z" fill="#ff4d6d"/>
             <path d="M 70 120 Q 80 100 90 115 Q 100 130 70 155 Q 40 130 50 115 Q 60 100 70 120 Z" fill="#ff758f"/>
             <path d="M 280 110 Q 290 90 300 105 Q 310 120 280 145 Q 250 120 260 105 Q 270 90 280 110 Z" fill="#ff758f"/>
             <path d="M 50 240 Q 60 220 70 235 Q 80 250 50 275 Q 20 250 30 235 Q 40 220 50 240 Z" fill="#ff4d6d"/>
             <path d="M 300 230 Q 310 210 320 225 Q 330 240 300 265 Q 270 240 280 225 Q 290 210 300 230 Z" fill="#ff4d6d"/>
 
-            <!-- Bubu Bear (Tilted Back in Hug) -->
             <g transform="translate(45, 40) rotate(-15 150 150)">
-              <!-- Ears -->
               <circle cx="80" cy="85" r="22" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
               <circle cx="80" cy="85" r="12" fill="#e8c9b0"/>
-              <!-- Body & Head -->
               <ellipse cx="140" cy="170" rx="65" ry="60" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
               <ellipse cx="130" cy="115" rx="55" ry="50" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
               <circle cx="95" cy="120" r="10" fill="#fca5a5"/>
-              <!-- Loving Eyes -->
               <path d="M 95 105 Q 105 115 115 105" stroke="#3d2314" stroke-width="5" fill="none" stroke-linecap="round"/>
-              <!-- Cheerful Tongue -->
               <path d="M 125 118 Q 130 132 135 118 Z" fill="#ff4d6d" stroke="#3d2314" stroke-width="2"/>
             </g>
 
-            <!-- Dudu Panda (Jumping On Top & Wrapping Arms Around) -->
             <g transform="translate(10, -5) rotate(18 180 180)">
-              <!-- Ears -->
               <circle cx="160" cy="80" r="22" fill="#2b2d42" stroke="#222" stroke-width="6"/>
               <circle cx="250" cy="100" r="22" fill="#2b2d42" stroke="#222" stroke-width="6"/>
-              <!-- Body and Head -->
               <ellipse cx="205" cy="175" rx="58" ry="52" fill="#ffffff" stroke="#222" stroke-width="6"/>
               <ellipse cx="205" cy="120" rx="56" ry="48" fill="#ffffff" stroke="#222" stroke-width="6"/>
-              <!-- Pink Cheek -->
               <circle cx="235" cy="135" r="12" fill="#ff758f"/>
-              <!-- Squeezing Eyes with Joy -->
               <path d="M 180 110 L 195 118 L 180 126" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M 230 120 L 215 128 L 230 136" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-              <!-- Tight Arm Wrapped Around Bear -->
               <path d="M 160 145 Q 115 145 125 180 Q 150 185 170 170 Z" fill="#ffffff" stroke="#222" stroke-width="6"/>
-              <!-- Tail -->
               <circle cx="265" cy="190" r="12" fill="#ffffff" stroke="#222" stroke-width="5"/>
             </g>
           </svg>
         </div>
-
       </div>
     </div>
   </div>
 
-  <!-- PAGE 3: BIG MAGIC CHEST & UNPACKING PHOTOS -->
+  <!-- =========================================
+       PAGE 3: AESTHETIC ENVELOPE & FILM REEL SCROLL
+  ========================================= -->
   <div id="page-rain" class="screen-page">
-    <button class="back-btn" onclick="resetAndBack()">← Back to Bouquets</button>
+    <button class="back-btn" onclick="resetEnvelopePage(); switchPage('page-home');">← Back to Bouquets</button>
 
     <div class="page3-layout">
-      <div class="chest-box-container" onclick="openMagicChest()">
-        <div id="chestIcon" class="magic-chest">🎁</div>
-        <div id="chestPrompt" class="chest-hint">Click the magic chest to unlock our moments ✨</div>
+      
+      <!-- Left Camera Film Reel -->
+      <div class="film-column film-column-left">
+        <div id="filmLeftTrack" class="film-reel-track"></div>
       </div>
 
-      <div id="gridStage" class="photo-stage-grid"></div>
+      <!-- Center Interactive Romantic Envelope -->
+      <div id="envelopeStage" class="center-envelope-stage">
+        <div class="envelope-hint">✦ Click the envelope to open our love memory ✦</div>
+
+        <div class="envelope-wrapper" onclick="toggleEnvelope()">
+          <div class="envelope-flap"></div>
+          <div class="wax-seal">💌</div>
+          <div class="envelope-pocket"></div>
+        </div>
+
+        <!-- Stable Main Couple Memory Card -->
+        <div id="mainStableCard" class="stable-center-card" onclick="openSecretModal('https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700', 'Whenever I am with you, I feel completely safe, loved, and at home ❤️')">
+          <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700" alt="Main Couple Photo">
+          <div class="card-caption">Our Safest Place ❤️</div>
+        </div>
+      </div>
+
+      <!-- Right Camera Film Reel -->
+      <div class="film-column film-column-right">
+        <div id="filmRightTrack" class="film-reel-track"></div>
+      </div>
+
     </div>
   </div>
 
@@ -762,19 +894,13 @@
 
       if (targetId === 'page-hug') {
         executeFullHug();
+      } else if (targetId === 'page-rain') {
+        initFilmReels();
       }
     }
 
-    function resetAndBack() {
-      switchPage('page-home');
-      const stage = document.getElementById('gridStage');
-      stage.innerHTML = '';
-      document.getElementById('chestIcon').innerText = '🎁';
-      document.getElementById('chestPrompt').innerText = 'Click the magic chest to unlock our moments ✨';
-    }
-
     // =========================================
-    // PAGE 2: 100% INBUILT ANIMATION LOGIC
+    // PAGE 2: BUBU & DUDU REAL HUG LOGIC
     // =========================================
     function executeFullHug() {
       const stage = document.getElementById('hugFullStage');
@@ -783,19 +909,16 @@
       const dudu = document.getElementById('duduRunner');
       const finalScene = document.getElementById('hugFinalScene');
 
-      // Reset
       stage.classList.remove('running');
       title.classList.remove('show');
       finalScene.style.display = 'none';
       bubu.style.display = 'block';
       dudu.style.display = 'block';
 
-      // Start running towards center
       setTimeout(() => {
         stage.classList.add('running');
       }, 150);
 
-      // Jump and real tight embrace in center
       setTimeout(() => {
         bubu.style.display = 'none';
         dudu.style.display = 'none';
@@ -822,77 +945,79 @@
       }
     }
 
-    // PAGE 3: MEMORIES & MESSAGES
-    const coupleMoments = [
+    // =========================================
+    // PAGE 3: ENVELOPE & CAMERA FILM STRIPS
+    // =========================================
+    const aestheticCoupleMoments = [
       {
-        pic: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600',
-        msg: "Whenever I am with you, I feel completely safe and at home ❤️"
-      },
-      {
-        pic: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600',
+        pic: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=500',
         msg: "I love you more than any words could ever explain 🥰"
       },
       {
-        pic: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600',
+        pic: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=500',
+        msg: "Whenever I am with you, I feel completely safe and at peace ❤️️"
+      },
+      {
+        pic: 'https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=500',
         msg: "Holding your hand is my absolute favorite feeling in this world ✨"
       },
       {
-        pic: 'https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=600',
-        msg: "Thank you for always being my safe space and biggest strength 🫂"
+        pic: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=500',
+        msg: "Thank you for always being my biggest strength and safe space 🫂"
       },
       {
-        pic: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600',
-        msg: "You are the cutest boy in the universe, and I am so lucky you are mine! 💋"
+        pic: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500',
+        msg: "You are the sweetest boy in the universe, and I am so lucky you're mine! 💋"
       },
       {
-        pic: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600',
-        msg: "Every small moment with you becomes my sweetest memory 🌸"
+        pic: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500',
+        msg: "Every small moment with you becomes my prettiest memory 🌸"
       },
       {
-        pic: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600',
-        msg: "My smile is always widest whenever I look at you 💫"
+        pic: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=500',
+        msg: "My smile is always widest whenever I look into your eyes 💫"
       },
       {
-        pic: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600',
-        msg: "I love you endlessly, today, tomorrow, and forever! 🌹"
+        pic: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=500',
+        msg: "I love you endlessly, today, tomorrow, and forever and ever! 🌹"
       }
     ];
 
-    function openMagicChest() {
-      const chest = document.getElementById('chestIcon');
-      chest.innerText = '✨📦✨';
-      document.getElementById('chestPrompt').innerText = 'Click any photo to see our sweet memory 💌';
+    let reelsBuilt = false;
+    function initFilmReels() {
+      if (reelsBuilt) return;
+      const leftTrack = document.getElementById('filmLeftTrack');
+      const rightTrack = document.getElementById('filmRightTrack');
 
-      const stage = document.getElementById('gridStage');
-      stage.innerHTML = '';
-
-      coupleMoments.forEach((item, idx) => {
-        setTimeout(() => {
-          const card = document.createElement('div');
-          card.className = 'flying-card';
+      // Populate left and right reels with seamless loop (duplicated list)
+      const populate = (track, list) => {
+        const doubleList = [...list, ...list];
+        doubleList.forEach(item => {
+          const frame = document.createElement('div');
+          frame.className = 'film-frame';
           
           const img = document.createElement('img');
           img.src = item.pic;
-          card.appendChild(img);
+          frame.appendChild(img);
 
-          card.onclick = () => {
-            openSecretModal(item.pic, item.msg);
-          };
+          frame.onclick = () => openSecretModal(item.pic, item.msg);
+          track.appendChild(frame);
+        });
+      };
 
-          stage.appendChild(card);
+      populate(leftTrack, aestheticCoupleMoments.slice(0, 4));
+      populate(rightTrack, aestheticCoupleMoments.slice(4));
+      reelsBuilt = true;
+    }
 
-          setTimeout(() => {
-            const rot = (Math.random() - 0.5) * 8;
-            const leftPerc = 12.5 + (idx % 4) * 25;
-            const topPerc = idx < 4 ? 25 : 75;
+    function toggleEnvelope() {
+      const stage = document.getElementById('envelopeStage');
+      stage.classList.toggle('opened');
+    }
 
-            card.style.opacity = '1';
-            card.style.top = topPerc + '%';
-            card.style.left = leftPerc + '%';
-            card.style.transform = `translate(-50%, -50%) scale(1) rotate(${rot}deg)`;
-          }, 50);
-        }, idx * 280);
-      });
+    function resetEnvelopePage() {
+      const stage = document.getElementById('envelopeStage');
+      if (stage) stage.classList.remove('opened');
     }
 
     function openSecretModal(picUrl, text) {
