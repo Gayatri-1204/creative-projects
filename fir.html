@@ -2,324 +2,1534 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Relationship Police FIR 🚨👮‍♂️</title>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Cinzel:wght@700;900&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Our Love Story — Forever & Always</title>
+
+  <!-- Google Fonts: Editorial Serif & Clean Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    /* ==========================================================================
+       EASY CUSTOMIZATION (THEME & PALETTE)
+       Customize your primary romantic color palette and typography below.
+       ========================================================================== */
+    :root {
+      --bg-dark: #0a0104;
+      --bg-burgundy: #180208;
+      --bg-surface: rgba(255, 255, 255, 0.04);
+      --bg-card: rgba(30, 4, 13, 0.65);
+      
+      --rose-glow: #ff4d6d;
+      --rose-light: #ff758f;
+      --rose-blush: #ffe5ec;
+      --rose-deep: #a4133c;
+      
+      --cream: #fff9f0;
+      --gold: #dfb15b;
+      --gold-soft: rgba(223, 177, 91, 0.35);
+      --border-soft: rgba(255, 182, 193, 0.18);
+
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-script: 'Great Vibes', cursive;
+      --font-sans: 'Montserrat', -apple-system, sans-serif;
+
+      --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      user-select: none;
       -webkit-tap-highlight-color: transparent;
     }
 
-    body {
-      background: radial-gradient(circle at center, #1a0f14 0%, #080305 100%);
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 25px 16px;
-      overflow-x: hidden;
-      position: relative;
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-dark);
+      color: var(--rose-blush);
+      font-family: var(--font-sans);
     }
 
-    /* Police Beacon Siren Lights */
-    .siren-lights {
+    body {
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+      background: radial-gradient(ellipse at 50% 20%, #2a030e 0%, #100106 50%, var(--bg-dark) 100%);
+      line-height: 1.6;
+    }
+
+    /* Cinematic Ambient Glow Orbs */
+    .ambient-glow {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(140px);
+      z-index: 0;
+      opacity: 0.6;
+    }
+    .glow-1 { top: -100px; left: 10%; width: 450px; height: 450px; background: rgba(255, 77, 109, 0.22); }
+    .glow-2 { bottom: -120px; right: 5%; width: 550px; height: 550px; background: rgba(164, 19, 60, 0.28); }
+
+    /* Particles & Hearts Background Canvas */
+    #fxCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Fixed UI Header (Chapter Tracker & Ambient Sound Controller) */
+    .top-tracker {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      height: 8px;
-      display: flex;
-      z-index: 100;
-    }
-
-    .siren-red {
-      flex: 1;
-      background: #e63946;
-      animation: flashRed 0.6s infinite alternate;
-    }
-
-    .siren-blue {
-      flex: 1;
-      background: #1d3557;
-      animation: flashBlue 0.6s infinite alternate;
-    }
-
-    @keyframes flashRed {
-      0% { opacity: 0.2; box-shadow: 0 0 10px #e63946; }
-      100% { opacity: 1; box-shadow: 0 0 35px #e63946; }
-    }
-
-    @keyframes flashBlue {
-      0% { opacity: 1; box-shadow: 0 0 35px #457b9d; }
-      100% { opacity: 0.2; box-shadow: 0 0 10px #457b9d; }
-    }
-
-    /* FIR Parchment Dossier */
-    .fir-dossier {
-      background: #fffdf7;
-      color: #1a1a1a;
-      border-radius: 12px;
-      padding: 30px 24px;
-      max-width: 440px;
-      width: 100%;
-      box-shadow: 0 30px 70px rgba(0,0,0,0.9), 0 0 40px rgba(230, 57, 70, 0.25);
-      border: 2px solid #e9d8a6;
-      font-family: 'Courier Prime', monospace;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .fir-header {
-      border-bottom: 2px solid #222;
-      padding-bottom: 12px;
-      margin-bottom: 18px;
-      text-align: center;
-    }
-
-    .fir-dept {
-      font-size: 0.75rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: #e63946;
-    }
-
-    .fir-title {
-      font-family: 'Cinzel', serif;
-      font-size: 1.5rem;
-      font-weight: 900;
-      letter-spacing: 1px;
-      margin-top: 4px;
-    }
-
-    .case-meta {
+      height: 60px;
       display: flex;
       justify-content: space-between;
-      font-size: 0.8rem;
-      border-bottom: 1px dashed #666;
-      padding-bottom: 8px;
-      margin-bottom: 15px;
-      color: #444;
-    }
-
-    /* Accused Profile */
-    .accused-info {
-      background: rgba(0,0,0,0.04);
-      padding: 10px;
-      border-radius: 6px;
-      margin-bottom: 15px;
-      font-size: 0.85rem;
-      line-height: 1.5;
-    }
-
-    .accused-info strong {
-      color: #000;
-    }
-
-    /* Crimes Checklist */
-    .crimes-list {
-      margin-bottom: 20px;
-    }
-
-    .crime-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      background: #fff;
-      border: 1px solid #ddd;
-      padding: 10px 12px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .crime-item input {
-      margin-top: 4px;
-      accent-color: #e63946;
-      transform: scale(1.2);
-    }
-
-    .crime-item.checked {
-      background: #ffe3e3;
-      border-color: #e63946;
-    }
-
-    .crime-details h4 {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #9b111e;
-    }
-
-    .crime-details p {
-      font-size: 0.75rem;
-      color: #555;
-      margin-top: 2px;
-    }
-
-    /* Sentence / Punishment Box */
-    .punishment-box {
-      border: 2px dashed #e63946;
-      padding: 12px;
-      border-radius: 8px;
-      text-align: center;
-      background: rgba(230, 57, 70, 0.05);
-      margin-bottom: 20px;
-    }
-
-    .punishment-title {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: #e63946;
-      letter-spacing: 1px;
-    }
-
-    .punishment-desc {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-top: 4px;
-      color: #1a1a1a;
-    }
-
-    /* Large Rubber Stamp */
-    .bail-stamp {
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(-18deg) scale(2.5);
-      border: 5px solid #d90429;
-      color: #d90429;
-      font-size: 1.8rem;
-      font-weight: 900;
-      padding: 10px 24px;
-      border-radius: 12px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
+      align-items: center;
+      padding: 0 clamp(16px, 4vw, 36px);
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(10, 1, 4, 0.6);
+      border-bottom: 1px solid var(--border-soft);
       opacity: 0;
-      pointer-events: none;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      background: rgba(255, 255, 255, 0.85);
-      box-shadow: 0 0 25px rgba(217, 4, 41, 0.5);
-      z-index: 50;
+      transform: translateY(-20px);
+      transition: opacity 0.6s var(--ease-cinematic), transform 0.6s var(--ease-cinematic);
+    }
+    .top-tracker.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .bail-stamp.stamped {
-      opacity: 0.95;
-      transform: translate(-50%, -50%) rotate(-15deg) scale(1);
+    .tracker-label {
+      font-size: 0.75rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--gold);
     }
 
-    /* Verdict Button */
-    .verdict-btn {
-      width: 100%;
-      background: #e63946;
-      color: #fff;
-      border: none;
-      padding: 14px;
-      border-radius: 8px;
+    .music-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--gold-soft);
+      color: var(--cream);
+      font-size: 0.8rem;
       font-family: inherit;
+      padding: 6px 14px;
+      border-radius: 30px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s;
+    }
+    .music-btn:hover {
+      background: var(--gold-soft);
+      color: #fff;
+    }
+
+    /* Progress Indicator Bar */
+    .progress-bar-container {
+      position: fixed;
+      top: 59px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.05);
+      z-index: 101;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--rose-glow), var(--gold));
+      transition: width 0.15s ease-out;
+    }
+
+    /* ==========================================================================
+       SECTION / CHAPTER CONTAINER LAYOUT
+       ========================================================================== */
+    .stage {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    section {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: clamp(70px, 10vh, 120px) clamp(20px, 4vw, 30px);
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Scroll Reveal Classes */
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 1s var(--ease-cinematic), transform 1s var(--ease-cinematic);
+      will-change: opacity, transform;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Chapter Title Elements */
+    .chapter-tag {
+      font-size: 0.8rem;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--gold);
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .chapter-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 1px;
+      line-height: 1.25;
+      margin-bottom: 24px;
+    }
+
+    .script-accent {
+      font-family: var(--font-script);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      color: var(--rose-light);
+      display: block;
+      margin-bottom: -10px;
+      text-shadow: 0 0 20px rgba(255, 117, 143, 0.4);
+    }
+
+    .chapter-desc {
+      font-size: clamp(1rem, 1.3vw, 1.2rem);
+      color: var(--rose-blush);
+      max-width: 620px;
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    /* Gold / Rose Cinematic Divider */
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin: 15px 0 35px 0;
+    }
+    .divider .line {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+    }
+    .divider .gem {
+      color: var(--gold);
+      font-size: 0.75rem;
+    }
+
+    /* ==========================================================================
+       LANDING SCREEN
+       ========================================================================== */
+    #landing {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    .landing-ornament {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 24px;
+      animation: floatSlow 4s ease-in-out infinite alternate;
+    }
+    .landing-ornament svg {
+      width: 100%;
+      height: 100%;
+      fill: none;
+      stroke: var(--gold);
+      stroke-width: 1.5;
+    }
+
+    @keyframes floatSlow {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-12px) rotate(3deg); }
+    }
+
+    .landing-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      font-weight: 700;
+      letter-spacing: clamp(3px, 1vw, 8px);
+      text-transform: uppercase;
+      background: linear-gradient(180deg, #ffffff 0%, var(--rose-blush) 70%, var(--rose-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+      text-shadow: 0 10px 40px rgba(255, 77, 109, 0.3);
+    }
+
+    .landing-sub {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      color: var(--cream);
+      max-width: 580px;
+      margin-bottom: 45px;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+
+    /* Glowing Romantic CTA Button */
+    .btn-glow {
+      position: relative;
+      background: linear-gradient(135deg, var(--rose-glow), var(--rose-deep));
+      color: #fff;
+      font-family: var(--font-sans);
       font-size: 0.95rem;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 16px 38px;
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
       cursor: pointer;
-      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
-      transition: all 0.2s;
+      box-shadow: 0 10px 35px rgba(255, 77, 109, 0.5), inset 0 0 12px rgba(255, 255, 255, 0.3);
+      transition: all 0.4s var(--ease-cinematic);
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-glow:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 18px 45px rgba(255, 77, 109, 0.7);
+    }
+    .btn-glow:active {
+      transform: translateY(-1px) scale(0.98);
+    }
+    .btn-glow::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+      transform: rotate(25deg);
+      transition: all 0.8s;
+    }
+    .btn-glow:hover::after {
+      left: 130%;
     }
 
-    .verdict-btn:hover {
-      background: #c9184a;
+    /* ==========================================================================
+       CHAPTER 1: THE BEGINNING (Storybook Parchment)
+       ========================================================================== */
+    .parchment-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      backdrop-filter: blur(18px);
+      border-radius: 20px;
+      padding: clamp(24px, 4vw, 45px);
+      width: 100%;
+      max-width: 680px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(255, 77, 109, 0.05);
+      position: relative;
+    }
+
+    .date-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(223, 177, 91, 0.12);
+      border: 1px solid var(--gold-soft);
+      color: var(--gold);
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    /* Photo Frame Placeholder */
+    .photo-placeholder {
+      width: 100%;
+      height: 280px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 77, 109, 0.1));
+      border: 2px dashed rgba(255, 182, 193, 0.35);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      margin: 20px 0;
+      transition: all 0.3s;
+    }
+    .photo-placeholder:hover {
+      border-color: var(--rose-glow);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 77, 109, 0.16));
+    }
+    .photo-placeholder img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+    .photo-placeholder.has-image img {
+      display: block;
+    }
+    .photo-placeholder.has-image .photo-hint {
+      display: none;
+    }
+    .photo-hint {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--rose-blush);
+      opacity: 0.8;
+      text-align: center;
+    }
+    .photo-hint span {
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+    }
+    .photo-hint svg {
+      width: 32px;
+      height: 32px;
+      fill: none;
+      stroke: var(--rose-light);
+      stroke-width: 1.5;
+    }
+
+    /* ==========================================================================
+       CHAPTER 2: THE FIRST CONVERSATION (Messenger Interface)
+       ========================================================================== */
+    .chat-simulator {
+      width: 100%;
+      max-width: 520px;
+      background: rgba(18, 2, 7, 0.8);
+      border: 1px solid var(--border-soft);
+      border-radius: 24px;
+      padding: 24px 20px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .chat-bubble {
+      max-width: 82%;
+      padding: 12px 18px;
+      border-radius: 18px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      position: relative;
+    }
+    .chat-bubble.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .chat-left {
+      align-self: flex-start;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--cream);
+      border-bottom-left-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .chat-right {
+      align-self: flex-end;
+      background: linear-gradient(135deg, var(--rose-glow), var(--rose-deep));
+      color: #fff;
+      border-bottom-right-radius: 4px;
+      box-shadow: 0 6px 20px rgba(255, 77, 109, 0.3);
+    }
+
+    .chat-timestamp {
+      display: block;
+      font-size: 0.7rem;
+      opacity: 0.7;
+      margin-top: 4px;
+      text-align: right;
+    }
+
+    /* Typing indicator */
+    .typing-box {
+      align-self: flex-start;
+      background: rgba(255, 255, 255, 0.07);
+      padding: 10px 16px;
+      border-radius: 18px;
+      display: none;
+      align-items: center;
+      gap: 4px;
+    }
+    .typing-box.active {
+      display: flex;
+    }
+    .dot-pulse {
+      width: 6px;
+      height: 6px;
+      background: var(--rose-light);
+      border-radius: 50%;
+      animation: pulseDot 1.4s infinite alternate;
+    }
+    .dot-pulse:nth-child(2) { animation-delay: 0.2s; }
+    .dot-pulse:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes pulseDot {
+      0% { opacity: 0.3; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* ==========================================================================
+       CHAPTER 3: THE MOMENT
+       ========================================================================== */
+    .moment-card {
+      width: 100%;
+      max-width: 720px;
+      background: linear-gradient(145deg, rgba(42, 3, 14, 0.8), rgba(20, 2, 7, 0.9));
+      border: 1px solid var(--rose-glow);
+      border-radius: 24px;
+      padding: clamp(30px, 5vw, 55px);
+      box-shadow: 0 30px 80px rgba(255, 77, 109, 0.25);
+      position: relative;
+    }
+
+    .moment-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+      line-height: 1.5;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+
+    /* ==========================================================================
+       CHAPTER 4: OUR FAVORITE MEMORIES (4-Card Responsive Grid)
+       ========================================================================== */
+    .memories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .memory-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: 18px;
+      padding: 16px;
+      backdrop-filter: blur(14px);
+      text-align: left;
+      transition: transform 0.4s var(--ease-cinematic), box-shadow 0.4s ease, border-color 0.4s ease;
+      cursor: pointer;
+    }
+    .memory-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--rose-light);
+      box-shadow: 0 15px 35px rgba(255, 77, 109, 0.25);
+    }
+
+    .memory-thumb {
+      width: 100%;
+      height: 180px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 182, 193, 0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 14px;
+    }
+    .memory-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+    .memory-thumb.has-image img {
+      display: block;
+    }
+    .memory-thumb.has-image .thumb-hint {
+      display: none;
+    }
+    .thumb-hint {
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      color: var(--rose-blush);
+      opacity: 0.7;
+    }
+
+    .memory-date {
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .memory-title {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      color: var(--cream);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .memory-text {
+      font-size: 0.9rem;
+      color: var(--rose-blush);
+      line-height: 1.6;
+      opacity: 0.85;
+    }
+
+    /* ==========================================================================
+       CHAPTER 5: THE LITTLE THINGS (Interactive Badges)
+       ========================================================================== */
+    .little-things-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      width: 100%;
+      max-width: 780px;
+    }
+
+    .little-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-soft);
+      border-radius: 16px;
+      padding: 22px 18px;
+      text-align: center;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: all 0.35s var(--ease-cinematic);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .little-card:hover, .little-card:active {
+      transform: translateY(-6px) scale(1.03);
+      background: rgba(255, 77, 109, 0.15);
+      border-color: var(--rose-glow);
+      box-shadow: 0 10px 25px rgba(255, 77, 109, 0.3);
+    }
+    .little-icon {
+      font-size: 2rem;
+      filter: drop-shadow(0 0 10px rgba(255, 77, 109, 0.6));
+    }
+    .little-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      color: var(--cream);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       CHAPTER 6: THROUGH EVERYTHING (Grand Cinema Quote)
+       ========================================================================== */
+    #through-everything {
+      min-height: 85vh;
+      background: radial-gradient(circle at center, rgba(164, 19, 60, 0.25) 0%, transparent 75%);
+    }
+
+    .cinema-quote-container {
+      max-width: 760px;
+      position: relative;
+    }
+    .cinema-quote-mark {
+      font-family: var(--font-serif);
+      font-size: 6rem;
+      color: var(--gold);
+      opacity: 0.3;
+      line-height: 0;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    .cinema-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3.8vw, 3rem);
+      line-height: 1.5;
+      color: #fff;
+      font-style: italic;
+      font-weight: 600;
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+      margin-bottom: 24px;
+    }
+    .cinema-author {
+      font-family: var(--font-script);
+      font-size: 2.4rem;
+      color: var(--rose-light);
+    }
+
+    /* ==========================================================================
+       CHAPTER 7: TODAY
+       ========================================================================== */
+    .giant-heart-wrapper {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 30px 0;
+    }
+    .giant-heart {
+      font-size: 5.5rem;
+      animation: heartbeat 1.4s ease-in-out infinite;
+      filter: drop-shadow(0 0 25px rgba(255, 77, 109, 0.8));
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      14% { transform: scale(1.18); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.12); }
+      70% { transform: scale(1); }
+    }
+
+    /* ==========================================================================
+       CHAPTER 8: FOREVER? (Finale & Interactive Climax)
+       ========================================================================== */
+    .finale-box {
+      width: 100%;
+      max-width: 650px;
+      background: var(--bg-card);
+      border: 1px solid var(--gold-soft);
+      border-radius: 28px;
+      padding: clamp(35px, 6vw, 65px) 24px;
+      backdrop-filter: blur(25px);
+      box-shadow: 0 35px 90px rgba(0, 0, 0, 0.85);
+      position: relative;
+    }
+
+    .btn-choices {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .btn-choice {
+      background: linear-gradient(135deg, var(--rose-glow), var(--rose-deep));
+      color: #fff;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 15px 36px;
+      border-radius: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255, 77, 109, 0.4);
+      transition: all 0.3s var(--ease-cinematic);
+    }
+    .btn-choice:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(255, 77, 109, 0.6);
+    }
+
+    /* Celebration Card revealed on click */
+    .celebration-screen {
+      display: none;
+      animation: fadeInCelebration 1s var(--ease-cinematic) forwards;
+    }
+    @keyframes fadeInCelebration {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .celebration-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+
+    .celebration-subtitle {
+      font-family: var(--font-script);
+      font-size: 2.8rem;
+      color: var(--rose-light);
+      margin-bottom: 24px;
+    }
+
+    .btn-restart {
+      margin-top: 25px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--border-soft);
+      color: var(--rose-blush);
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 12px 28px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-restart:hover {
+      background: var(--rose-glow);
+      color: #fff;
+    }
+
+    /* Hidden File Input for Instant Photo Replacement */
+    .hidden-file-input {
+      display: none;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE ADJUSTMENTS
+       ========================================================================== */
+    @media (max-width: 600px) {
+      section {
+        padding: 60px 16px;
+      }
+      .chapter-title {
+        font-size: 2rem;
+      }
+      .btn-glow {
+        width: 100%;
+        justify-content: center;
+        padding: 15px 24px;
+      }
+      .btn-choice {
+        width: 100%;
+        text-align: center;
+      }
+      .memories-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Siren Effect -->
-  <div class="siren-lights">
-    <div class="siren-red"></div>
-    <div class="siren-blue"></div>
+  <!-- Ambient Cinematic Orbs -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <!-- Background Animated Particle Canvas -->
+  <canvas id="fxCanvas"></canvas>
+
+  <!-- Persistent Chapter Navigation & Sound Toggle -->
+  <nav class="top-tracker" id="topTracker">
+    <div class="tracker-label" id="trackerLabel">OUR LOVE STORY</div>
+    <button type="button" class="music-btn" id="audioToggle" aria-label="Toggle Romance Melody">
+      <span id="audioIcon">🎵</span>
+      <span id="audioText">Play Music</span>
+    </button>
+  </nav>
+
+  <!-- Top Progress Indicator -->
+  <div class="progress-bar-container">
+    <div class="progress-fill" id="progressFill"></div>
   </div>
 
-  <div class="fir-dossier">
-    
-    <!-- Big Bail Stamp Triggered by JS -->
-    <div class="bail-stamp" id="bailStamp">BAIL GRANTED</div>
+  <main class="stage">
 
-    <div class="fir-header">
-      <div class="fir-dept">DEPARTMENT OF GIRLFRIEND SECURITY 🚨</div>
-      <h1 class="fir-title">FIRST INFORMATION REPORT</h1>
-    </div>
-
-    <div class="case-meta">
-      <span>CASE NO: #BF-IPC-302</span>
-      <span id="firDate">OCT 03, 2026</span>
-    </div>
-
-    <div class="accused-info">
-      <div><strong>ACCUSED:</strong> Boyfriend (Handsome Suspect)</div>
-      <div><strong>CRIME STATUS:</strong> Unbailable Cuteness</div>
-    </div>
-
-    <!-- Charges -->
-    <div class="crimes-list">
-      <div class="crime-item checked" onclick="toggleCrime(this)">
-        <input type="checkbox" checked>
-        <div class="crime-details">
-          <h4>Section 302 of Love</h4>
-          <p>Not sending selfies when looking unnecessarily handsome.</p>
-        </div>
+    <!-- ========================================================================
+         LANDING SCREEN
+         ======================================================================== -->
+    <section id="landing">
+      <div class="landing-ornament">
+        <svg viewBox="0 0 100 100">
+          <path d="M 50,15 C 35,0 0,15 0,50 C 0,75 50,100 50,100 C 50,100 100,75 100,50 C 100,15 65,0 50,15 Z"/>
+        </svg>
       </div>
 
-      <div class="crime-item checked" onclick="toggleCrime(this)">
-        <input type="checkbox" checked>
-        <div class="crime-details">
-          <h4>Section 420: Sleepy Felony</h4>
-          <p>Falling asleep on call without official 'Goodnight + Kisses'.</p>
-        </div>
+      <span class="chapter-tag">A LIFETIME KEPT IN MEMORY</span>
+      <h1 class="landing-title">OUR LOVE STORY</h1>
+      
+      <p class="landing-sub">
+        “Every love story is beautiful, but ours is my favorite.”
+      </p>
+
+      <button type="button" class="btn-glow" id="startBtn">
+        <span>START OUR STORY</span>
+        <span>❤️</span>
+      </button>
+    </section>
+
+    <!-- ========================================================================
+         CHAPTER 1: THE BEGINNING
+         ======================================================================== -->
+    <section id="chapter-1" class="reveal">
+      <span class="chapter-tag">CHAPTER I</span>
+      <h2 class="chapter-title">
+        <span class="script-accent">Where It All Began</span>
+        THE BEGINNING
+      </h2>
+
+      <div class="divider">
+        <span class="line"></span>
+        <span class="gem">✦</span>
+        <span class="line"></span>
       </div>
 
-      <div class="crime-item checked" onclick="toggleCrime(this)">
-        <input type="checkbox" checked>
-        <div class="crime-details">
-          <h4>Section 144: Food Theft</h4>
-          <p>Stealing crispy french fries from my plate without clearance.</p>
+      <p class="chapter-desc">
+        Once upon a time... two people met, and something beautiful began.
+      </p>
+
+      <div class="parchment-card">
+        <!-- CUSTOMIZATION: Change meeting date below -->
+        <div class="date-badge">
+          <span>📅</span>
+          <span>Our First Meeting: October 14, 2023</span>
+        </div>
+
+        <!-- PHOTO PLACEHOLDER 1: Replace via clicking or edit the 'src' in code -->
+        <div class="photo-placeholder" onclick="triggerPhotoUpload('photo-input-1', 'photo-img-1', this)">
+          <img id="photo-img-1" alt="Our First Meeting" src="" />
+          <div class="photo-hint">
+            <svg viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <strong>Click to add a photo of your first meeting</strong>
+            <span>(or paste image URL directly in HTML)</span>
+          </div>
+        </div>
+        <input type="file" id="photo-input-1" class="hidden-file-input" accept="image/*" onchange="previewSelectedPhoto(this, 'photo-img-1')" />
+
+        <!-- CUSTOMIZATION: Replace the story paragraph below -->
+        <p class="chapter-desc" style="margin-bottom: 0;">
+          “We started as two strangers unaware that a simple glance would completely rewrite our tomorrows. Looking back, that quiet afternoon was the beginning of everything I cherish today.”
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CHAPTER 2: THE FIRST CONVERSATION
+         ======================================================================== -->
+    <section id="chapter-2" class="reveal">
+      <span class="chapter-tag">CHAPTER II</span>
+      <h2 class="chapter-title">
+        <span class="script-accent">Late Night Words</span>
+        THE FIRST CONVERSATION
+      </h2>
+
+      <div class="divider">
+        <span class="line"></span>
+        <span class="gem">✦</span>
+        <span class="line"></span>
+      </div>
+
+      <p class="chapter-desc">
+        Small talks that turned into deep 3:00 AM conversations.
+      </p>
+
+      <!-- Interactive Simulated Chatbox -->
+      <div class="chat-simulator" id="chatSimulator">
+        
+        <div class="chat-bubble chat-left" data-delay="600">
+          “Hey... do you believe in serendipity, or did you just get lucky meeting me? 😉”
+          <span class="chat-timestamp">11:42 PM</span>
+        </div>
+
+        <div class="chat-bubble chat-right" data-delay="2000">
+          “Haha, definitely pure luck. But honestly, I haven't smiled this much in a long time.”
+          <span class="chat-timestamp">11:43 PM</span>
+        </div>
+
+        <div class="chat-bubble chat-left" data-delay="3800">
+          “Then promise me you'll stick around. I have a feeling this story is just getting started... ❤️”
+          <span class="chat-timestamp">11:45 PM</span>
+        </div>
+
+        <div class="typing-box" id="typingBox">
+          <div class="dot-pulse"></div>
+          <div class="dot-pulse"></div>
+          <div class="dot-pulse"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CHAPTER 3: THE MOMENT
+         ======================================================================== -->
+    <section id="chapter-3" class="reveal">
+      <span class="chapter-tag">CHAPTER III</span>
+      <h2 class="chapter-title">
+        <span class="script-accent">When I Knew</span>
+        THE MOMENT
+      </h2>
+
+      <div class="divider">
+        <span class="line"></span>
+        <span class="gem">✦</span>
+        <span class="line"></span>
+      </div>
+
+      <div class="moment-card">
+        <p class="moment-quote">
+          “And then... everything started feeling different.”
+        </p>
+
+        <!-- PHOTO PLACEHOLDER 2: Replace via click or code -->
+        <div class="photo-placeholder" onclick="triggerPhotoUpload('photo-input-2', 'photo-img-2', this)">
+          <img id="photo-img-2" alt="The Special Moment" src="" />
+          <div class="photo-hint">
+            <svg viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <strong>Click to add a photo of your golden memory</strong>
+            <span>(That trip, that laugh, that sunset)</span>
+          </div>
+        </div>
+        <input type="file" id="photo-input-2" class="hidden-file-input" accept="image/*" onchange="previewSelectedPhoto(this, 'photo-img-2')" />
+
+        <p class="chapter-desc" style="margin-bottom: 0;">
+          It wasn't a sudden storm; it was the quiet realization that my safest home in this entire world was wherever you were standing.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CHAPTER 4: OUR FAVORITE MEMORIES
+         ======================================================================== -->
+    <section id="chapter-4" class="reveal">
+      <span class="chapter-tag">CHAPTER IV</span>
+      <h2 class="chapter-title">
+        <span class="script-accent">Keepsakes of Us</span>
+        OUR FAVORITE MEMORIES
+      </h2>
+
+      <div class="divider">
+        <span class="line"></span>
+        <span class="gem">✦</span>
+        <span class="line"></span>
+      </div>
+
+      <div class="memories-grid">
+        
+        <!-- Memory Card 1 -->
+        <article class="memory-card">
+          <div class="memory-thumb" onclick="triggerPhotoUpload('photo-mem-1', 'img-mem-1', this)">
+            <img id="img-mem-1" alt="First Roadtrip" src="" />
+            <div class="thumb-hint">Tap to add photo</div>
+          </div>
+          <input type="file" id="photo-mem-1" class="hidden-file-input" accept="image/*" onchange="previewSelectedPhoto(this, 'img-mem-1')" />
+          <div class="memory-date">December 24</div>
+          <h3 class="memory-title">Our First Roadtrip</h3>
+          <p class="memory-text">Singing off-key to 2000s love songs with the windows rolled down and cold winter wind in our hair.</p>
+        </article>
+
+        <!-- Memory Card 2 -->
+        <article class="memory-card">
+          <div class="memory-thumb" onclick="triggerPhotoUpload('photo-mem-2', 'img-mem-2', this)">
+            <img id="img-mem-2" alt="The Rainy Cafe" src="" />
+            <div class="thumb-hint">Tap to add photo</div>
+          </div>
+          <input type="file" id="photo-mem-2" class="hidden-file-input" accept="image/*" onchange="previewSelectedPhoto(this, 'img-mem-2')" />
+          <div class="memory-date">February 14</div>
+          <h3 class="memory-title">The Rainy Café Date</h3>
+          <p class="memory-text">Sharing one warm cup of hot chocolate, laughing so hard that the whole café turned around to look.</p>
+        </article>
+
+        <!-- Memory Card 3 -->
+        <article class="memory-card">
+          <div class="memory-thumb" onclick="triggerPhotoUpload('photo-mem-3', 'img-mem-3', this)">
+            <img id="img-mem-3" alt="Midnight Walks" src="" />
+            <div class="thumb-hint">Tap to add photo</div>
+          </div>
+          <input type="file" id="photo-mem-3" class="hidden-file-input" accept="image/*" onchange="previewSelectedPhoto(this, 'img-mem-3')" />
+          <div class="memory-date">May 03</div>
+          <h3 class="memory-title">Stargazing on Rooftops</h3>
+          <p class="memory-text">No phones, no noise—just blankets, quiet whispers about our dreams, and your hand in mine.</p>
+        </article>
+
+        <!-- Memory Card 4 -->
+        <article class="memory-card">
+          <div class="memory-thumb" onclick="triggerPhotoUpload('photo-mem-4', 'img-mem-4', this)">
+            <img id="img-mem-4" alt="Quiet Sunday Morning" src="" />
+            <div class="thumb-hint">Tap to add photo</div>
+          </div>
+          <input type="file" id="photo-mem-4" class="hidden-file-input" accept="image/*" onchange="previewSelectedPhoto(this, 'img-mem-4')" />
+          <div class="memory-date">August 19</div>
+          <h3 class="memory-title">Lazy Sunday Mornings</h3>
+          <p class="memory-text">Messy hair, sweet tea, gentle hugs, and doing absolutely nothing yet feeling completely content.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CHAPTER 5: THE LITTLE THINGS
+         ======================================================================== -->
+    <section id="chapter-5" class="reveal">
+      <span class="chapter-tag">CHAPTER V</span>
+      <h2 class="chapter-title">
+        <span class="script-accent">Why I Love You</span>
+        THE LITTLE THINGS
+      </h2>
+
+      <div class="divider">
+        <span class="line"></span>
+        <span class="gem">✦</span>
+        <span class="line"></span>
+      </div>
+
+      <div class="little-things-grid">
+        <div class="little-card" onclick="createBurst(event, '✨')">
+          <span class="little-icon">✨</span>
+          <h3 class="little-title">Your Smile</h3>
+          <p style="font-size: 0.85rem; opacity: 0.8;">The way your eyes crinkle when you genuinely laugh.</p>
+        </div>
+
+        <div class="little-card" onclick="createBurst(event, '🎶')">
+          <span class="little-icon">🎶</span>
+          <h3 class="little-title">Your Voice</h3>
+          <p style="font-size: 0.85rem; opacity: 0.8;">The calmest sound that heals my longest, hardest days.</p>
+        </div>
+
+        <div class="little-card" onclick="createBurst(event, '🫂')">
+          <span class="little-icon">🫂</span>
+          <h3 class="little-title">The Way You Care</h3>
+          <p style="font-size: 0.85rem; opacity: 0.8;">Noticing little details when no one else is looking.</p>
+        </div>
+
+        <div class="little-card" onclick="createBurst(event, '🌙')">
+          <span class="little-icon">🌙</span>
+          <h3 class="little-title">Our Silly Talks</h3>
+          <p style="font-size: 0.85rem; opacity: 0.8;">Debating senseless theories until 4 AM without getting bored.</p>
+        </div>
+
+        <div class="little-card" onclick="createBurst(event, '🌸')">
+          <span class="little-icon">🌸</span>
+          <h3 class="little-title">The Little Moments</h3>
+          <p style="font-size: 0.85rem; opacity: 0.8;">Unexpected forehead kisses and gentle finger grazes.</p>
+        </div>
+
+        <div class="little-card" onclick="createBurst(event, '💌')">
+          <span class="little-icon">💌</span>
+          <h3 class="little-title">Our Inside Jokes</h3>
+          <p style="font-size: 0.85rem; opacity: 0.8;">A single look across a crowded room that only we understand.</p>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Punishment Verdict -->
-    <div class="punishment-box">
-      <div class="punishment-title">✦ Mandatory Punishment ✦</div>
-      <div class="punishment-desc">"Sentenced to 500 Forehead Kisses &amp; 1:00 AM Ice-Cream Run!"</div>
-    </div>
+    <!-- ========================================================================
+         CHAPTER 6: THROUGH EVERYTHING
+         ======================================================================== -->
+    <section id="through-everything" class="reveal">
+      <span class="chapter-tag">CHAPTER VI</span>
+      <div class="cinema-quote-container">
+        <span class="cinema-quote-mark">“</span>
+        <blockquote class="cinema-quote">
+          Through every good day, bad day, laugh, fight, and every little moment...<br>
+          I would still choose you.
+        </blockquote>
+        <div class="cinema-author">Forever &amp; Always</div>
+      </div>
+    </section>
 
-    <button class="verdict-btn" onclick="grantBail()">Issue Arrest &amp; Grant Bail 🚨</button>
+    <!-- ========================================================================
+         CHAPTER 7: TODAY
+         ======================================================================== -->
+    <section id="chapter-7" class="reveal">
+      <span class="chapter-tag">CHAPTER VII</span>
+      <h2 class="chapter-title">
+        <span class="script-accent">Here &amp; Now</span>
+        AND HERE WE ARE...
+      </h2>
 
-  </div>
+      <div class="giant-heart-wrapper">
+        <div class="giant-heart">❤️️</div>
+      </div>
 
+      <p class="chapter-desc" style="font-size: 1.3rem; font-family: var(--font-serif); color: var(--cream);">
+        Our story isn't just a memory.<br>
+        <span style="color: var(--rose-light); font-weight: 600;">It's still being written.</span>
+      </p>
+    </section>
+
+    <!-- ========================================================================
+         CHAPTER 8: FOREVER?
+         ======================================================================== -->
+    <section id="chapter-8" class="reveal">
+      <span class="chapter-tag">FINALE</span>
+      
+      <div class="finale-box">
+        <div id="decisionBlock">
+          <h2 class="chapter-title" style="margin-bottom: 12px;">FOREVER?</h2>
+          <div class="divider">
+            <span class="line"></span>
+            <span class="gem">✦</span>
+            <span class="line"></span>
+          </div>
+          <p class="chapter-desc" style="margin: 0 auto;">
+            So... shall we keep writing this beautiful story together?
+          </p>
+
+          <div class="btn-choices">
+            <button type="button" class="btn-choice" onclick="celebrateForever()">YES, ALWAYS ❤️</button>
+            <button type="button" class="btn-choice" onclick="celebrateForever()">OF COURSE 💕</button>
+          </div>
+        </div>
+
+        <!-- Climax Screen Revealed On Choice -->
+        <div class="celebration-screen" id="celebrationScreen">
+          <div style="font-size: 3.5rem; margin-bottom: 15px;">💍✨❤️</div>
+          <h3 class="celebration-title">Then this isn't the end...</h3>
+          <div class="celebration-subtitle">It's only the beginning. ❤️</div>
+          <p class="chapter-desc" style="margin-bottom: 10px;">
+            Here’s to another chapter of our laughter, our dreams, and our infinite love story.
+          </p>
+          <button type="button" class="btn-restart" onclick="restartStory()">READ OUR STORY AGAIN ↺</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       VANILLA JAVASCRIPT ENGINE
+       - Background Floating Hearts/Sparkles Canvas
+       - Web Audio Procedural Romantic Melody Generator (No audio files needed)
+       - Scroll-Triggered Typing Simulator
+       - Dynamic Scroll Progress & Chapter Tracker
+       - Confetti & Floating Heart Burst Animation
+       ========================================================================== -->
   <script>
-    function toggleCrime(elem) {
-      elem.classList.toggle('checked');
-      const box = elem.querySelector('input');
-      box.checked = elem.classList.contains('checked');
+    /* ==========================================================================
+       1. CANVAS BACKGROUND ENGINE (Soft Floating Hearts & Starlight)
+       ========================================================================== */
+    const canvas = document.getElementById('fxCanvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = height + Math.random() * 80;
+        this.size = Math.random() * 2.8 + 1.2;
+        this.speedY = Math.random() * 0.7 + 0.3;
+        this.speedX = (Math.random() - 0.5) * 0.4;
+        this.opacity = Math.random() * 0.6 + 0.2;
+        this.isHeart = Math.random() > 0.45;
+        this.angle = Math.random() * Math.PI * 2;
+        this.spin = (Math.random() - 0.5) * 0.02;
+      }
+      update() {
+        this.y -= this.speedY;
+        this.x += this.speedX;
+        this.angle += this.spin;
+        if (this.y < -30) this.reset();
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        ctx.fillStyle = `rgba(255, 117, 143, ${this.opacity})`;
+        
+        if (this.isHeart) {
+          const s = this.size * 2.2;
+          ctx.beginPath();
+          ctx.moveTo(0, s / 4);
+          ctx.quadraticCurveTo(0, 0, s / 4, 0);
+          ctx.quadraticCurveTo(s / 2, 0, s / 2, s / 4);
+          ctx.quadraticCurveTo(s / 2, 0, (3 * s) / 4, 0);
+          ctx.quadraticCurveTo(s, 0, s, s / 4);
+          ctx.quadraticCurveTo(s, s / 2, (3 * s) / 4, (3 * s) / 4);
+          ctx.lineTo(s / 2, s);
+          ctx.lineTo(s / 4, (3 * s) / 4);
+          ctx.quadraticCurveTo(0, s / 2, 0, s / 4);
+          ctx.fill();
+        } else {
+          ctx.beginPath();
+          ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(223, 177, 91, ${this.opacity * 0.8})`;
+          ctx.fill();
+        }
+        ctx.restore();
+      }
     }
 
-    function grantBail() {
-      const stamp = document.getElementById('bailStamp');
-      stamp.classList.add('stamped');
+    const particleCount = window.innerWidth < 768 ? 35 : 65;
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
 
-      // Play little pop sound / vibration if supported
-      if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
 
-      setTimeout(() => {
-        alert("🚨 VERDICT ANNOUNCED:\nAccused must serve 500 forehead kisses immediately! Bail granted under strict girlfriend custody. ❤️👮‍♂️");
-      }, 700);
+    /* ==========================================================================
+       2. PROCEDURAL ROMANTIC CHORD MELODY SYNTHESIZER (No MP3 dependencies)
+       ========================================================================== */
+    let audioCtx = null;
+    let isPlaying = false;
+    let synthInterval = null;
+
+    // Harmonic romantic progression in C Major / A Minor Pentatonic
+    const notes = [261.63, 329.63, 392.00, 523.25, 440.00, 392.00, 329.63];
+
+    function playSoftTone(freq) {
+      if (!audioCtx) return;
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        
+        gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.04, audioCtx.currentTime + 0.4);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 2.5);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 2.6);
+      } catch (e) {
+        console.warn("Audio exception:", e);
+      }
+    }
+
+    const audioToggle = document.getElementById('audioToggle');
+    const audioText = document.getElementById('audioText');
+    const audioIcon = document.getElementById('audioIcon');
+
+    audioToggle.addEventListener('click', () => {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      isPlaying = !isPlaying;
+      if (isPlaying) {
+        audioText.textContent = "Music Playing";
+        audioIcon.textContent = "🔊";
+        let step = 0;
+        synthInterval = setInterval(() => {
+          playSoftTone(notes[step % notes.length]);
+          if (step % 2 === 0) playSoftTone(notes[(step + 2) % notes.length] / 2);
+          step++;
+        }, 1200);
+      } else {
+        audioText.textContent = "Play Music";
+        audioIcon.textContent = "🎵";
+        clearInterval(synthInterval);
+      }
+    });
+
+    /* ==========================================================================
+       3. NAVIGATION PROGRESS & SCROLL REVEALS
+       ========================================================================== */
+    const startBtn = document.getElementById('startBtn');
+    const topTracker = document.getElementById('topTracker');
+    const trackerLabel = document.getElementById('trackerLabel');
+    const progressFill = document.getElementById('progressFill');
+    const reveals = document.querySelectorAll('.reveal');
+
+    startBtn.addEventListener('click', () => {
+      document.getElementById('chapter-1').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    function handleScrollProgress() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      progressFill.style.width = `${progress}%`;
+
+      if (scrollTop > 200) {
+        topTracker.classList.add('visible');
+      } else {
+        topTracker.classList.remove('visible');
+      }
+
+      // Update current section label
+      const sections = document.querySelectorAll('section');
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 150;
+        const height = sec.offsetHeight;
+        if (scrollTop >= top && scrollTop < top + height) {
+          const tag = sec.querySelector('.chapter-tag');
+          if (tag) trackerLabel.textContent = tag.textContent;
+        }
+      });
+
+      // Reveal elements in viewport
+      reveals.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= window.innerHeight * 0.82) {
+          el.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', handleScrollProgress, { passive: true });
+    handleScrollProgress();
+
+    /* ==========================================================================
+       4. CHAPTER 2: TYPING SIMULATOR TRIGGER
+       ========================================================================== */
+    let chatTriggered = false;
+    const chatObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !chatTriggered) {
+          chatTriggered = true;
+          runChatSequence();
+        }
+      });
+    }, { threshold: 0.4 });
+
+    chatObserver.observe(document.getElementById('chapter-2'));
+
+    function runChatSequence() {
+      const bubbles = document.querySelectorAll('.chat-bubble');
+      const typing = document.getElementById('typingBox');
+
+      bubbles.forEach(b => {
+        const delay = parseInt(b.getAttribute('data-delay')) || 500;
+        setTimeout(() => {
+          typing.classList.add('active');
+        }, delay - 400);
+
+        setTimeout(() => {
+          typing.classList.remove('active');
+          b.classList.add('visible');
+        }, delay);
+      });
+    }
+
+    /* ==========================================================================
+       5. TAP HEART EXPLOSIONS & LITTLE THINGS INTERACTION
+       ========================================================================== */
+    function createBurst(e, emoji = '❤️') {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+
+      for (let i = 0; i < 14; i++) {
+        const el = document.createElement('div');
+        el.innerText = emoji;
+        el.style.position = 'fixed';
+        el.style.left = `${x}px`;
+        el.style.top = `${y}px`;
+        el.style.fontSize = `${Math.random() * 1.4 + 1.2}rem`;
+        el.style.pointerEvents = 'none';
+        el.style.zIndex = '999';
+        el.style.transition = 'all 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
+        document.body.appendChild(el);
+
+        const angle = Math.random() * Math.PI * 2;
+        const dist = Math.random() * 120 + 40;
+        const targetX = Math.cos(angle) * dist;
+        const targetY = Math.sin(angle) * dist - 30;
+
+        requestAnimationFrame(() => {
+          el.style.transform = `translate(${targetX}px, ${targetY}px) scale(0)`;
+          el.style.opacity = '0';
+        });
+
+        setTimeout(() => el.remove(), 1300);
+      }
+    }
+
+    /* ==========================================================================
+       6. CHAPTER 8: FINALE CELEBRATION (Hearts & Confetti Fireworks)
+       ========================================================================== */
+    function celebrateForever() {
+      document.getElementById('decisionBlock').style.display = 'none';
+      document.getElementById('celebrationScreen').style.display = 'block';
+
+      // Confetti Hearts Celebration Rain
+      for (let i = 0; i < 60; i++) {
+        setTimeout(() => {
+          const el = document.createElement('div');
+          el.innerText = ['❤️', '💖', '💍', '✨', '🌹', '🥰'][Math.floor(Math.random() * 6)];
+          el.style.position = 'fixed';
+          el.style.left = `${Math.random() * 100}vw`;
+          el.style.top = `-20px`;
+          el.style.fontSize = `${Math.random() * 1.5 + 1.2}rem`;
+          el.style.pointerEvents = 'none';
+          el.style.zIndex = '999';
+          el.style.transition = `all ${Math.random() * 2 + 2}s cubic-bezier(0.25, 1, 0.5, 1)`;
+          document.body.appendChild(el);
+
+          requestAnimationFrame(() => {
+            el.style.transform = `translate(${(Math.random() - 0.5) * 160}px, ${window.innerHeight + 50}px) rotate(${Math.random() * 360}deg)`;
+            el.style.opacity = '0.9';
+          });
+
+          setTimeout(() => el.remove(), 4000);
+        }, i * 60);
+      }
+    }
+
+    function restartStory() {
+      document.getElementById('celebrationScreen').style.display = 'none';
+      document.getElementById('decisionBlock').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ==========================================================================
+       7. IMAGE REPLACEMENT HELPER
+       ========================================================================== */
+    function triggerPhotoUpload(inputId, imgId, container) {
+      const input = document.getElementById(inputId);
+      if (input) input.click();
+    }
+
+    function previewSelectedPhoto(input, imgId) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = document.getElementById(imgId);
+          img.src = e.target.result;
+          img.parentElement.classList.add('has-image');
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
     }
   </script>
 </body>
