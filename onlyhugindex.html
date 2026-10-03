@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Can I Hug You? 🥺</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;1,500&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(ellipse at bottom, #2b040e 0%, #150005 50%, #050002 100%);
+      min-height: 100vh;
+      width: 100vw;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ambient-glow {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255, 45, 85, 0.25), transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      text-align: center;
+    }
+
+    /* Step 1: Asking Box */
+    .card-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .sticker-frame {
+      width: clamp(230px, 30vw, 300px);
+      background: #ffffff;
+      padding: 12px 12px 20px 12px;
+      border-radius: 16px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 75, 110, 0.35);
+      border: 2px solid rgba(255, 77, 109, 0.4);
+      margin-bottom: 25px;
+      animation: floatMotion 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatMotion {
+      0% { transform: translateY(0px) rotate(-1deg); }
+      100% { transform: translateY(-8px) rotate(1deg); }
+    }
+
+    .sticker-frame svg {
+      width: 100%;
+      height: clamp(170px, 22vw, 220px);
+      background: #fff5f7;
+      border-radius: 10px;
+      display: block;
+    }
+
+    .question-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      color: #ffe5ec;
+      text-shadow: 0 4px 15px rgba(255, 77, 109, 0.6);
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+
+    .btn-stage {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      justify-content: center;
+      width: 320px;
+      height: 70px;
+      position: relative;
+    }
+
+    .btn-yes {
+      background: linear-gradient(135deg, #ff4d6d, #c9184a);
+      color: white;
+      border: none;
+      padding: 12px 36px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255, 77, 109, 0.5);
+      transition: transform 0.2s ease;
+      z-index: 2;
+    }
+
+    .btn-yes:hover {
+      transform: scale(1.1);
+    }
+
+    .btn-no {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffccd5;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 12px 30px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      border-radius: 40px;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: absolute;
+      right: 15px;
+      z-index: 100;
+      user-select: none;
+    }
+
+    /* Step 2: Hug Pop-up Celebration */
+    .hug-popup {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(14px);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 999;
+      padding: 20px;
+    }
+
+    .popup-banner {
+      background: linear-gradient(135deg, #ff4d6d, #c9184a);
+      color: white;
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+      padding: 12px 32px;
+      border-radius: 50px;
+      letter-spacing: 1.5px;
+      box-shadow: 0 15px 45px rgba(255, 77, 109, 0.7);
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .hug-art {
+      width: clamp(280px, 45vw, 420px);
+      height: clamp(280px, 45vw, 420px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hug-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 50px rgba(255, 77, 109, 0.7));
+    }
+
+    .btn-finish {
+      margin-top: 25px;
+      background: linear-gradient(135deg, #ff4d6d, #c9184a);
+      border: none;
+      color: #fff;
+      padding: 12px 34px;
+      border-radius: 35px;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255, 77, 109, 0.5);
+      transition: transform 0.2s ease;
+    }
+
+    .btn-finish:hover {
+      transform: scale(1.06);
+    }
+
+    /* Step 3: End Screen */
+    .thanks-card {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 77, 109, 0.4);
+      backdrop-filter: blur(16px);
+      border-radius: 28px;
+      padding: 35px 25px;
+      max-width: 420px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.7), 0 0 35px rgba(255, 75, 110, 0.3);
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .thanks-card h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.4rem, 4vw, 3rem);
+      color: #ff758f;
+      margin-bottom: 12px;
+    }
+
+    .thanks-card p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: #ffe5ec;
+      margin-bottom: 25px;
+    }
+
+    .btn-replay {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 117, 143, 0.4);
+      color: #ffccd5;
+      padding: 10px 28px;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-replay:hover {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    /* Heart Burst Animation */
+    .floating-heart {
+      position: absolute;
+      font-size: 2.2rem;
+      pointer-events: none;
+      opacity: 0;
+      animation: flyOut 1.5s ease-out forwards;
+      z-index: 1000;
+    }
+
+    @keyframes flyOut {
+      0% { opacity: 1; transform: scale(0.5) translate(0, 0); }
+      100% { opacity: 0; transform: scale(1.8) translate(var(--dx), var(--dy)); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-glow"></div>
+
+  <div class="container">
+    
+    <!-- 1. Question Screen -->
+    <div id="askScreen" class="card-box">
+      <div class="sticker-frame">
+        <svg viewBox="0 0 350 350" width="100%" height="100%">
+          <path d="M 175 35 Q 185 15 195 30 Q 205 45 175 70 Q 145 45 155 30 Q 165 15 175 35 Z" fill="#ff4d6d"/>
+          <path d="M 65 115 Q 75 95 85 110 Q 95 125 65 150 Q 35 125 45 110 Q 55 95 65 115 Z" fill="#ff758f"/>
+          <path d="M 285 105 Q 295 85 305 100 Q 315 115 285 140 Q 255 115 265 100 Q 275 85 285 105 Z" fill="#ff758f"/>
+          <!-- Bear Waiting -->
+          <g transform="translate(45, 40) rotate(-10 150 150)">
+            <circle cx="80" cy="85" r="22" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
+            <circle cx="80" cy="85" r="12" fill="#e8c9b0"/>
+            <ellipse cx="140" cy="170" rx="65" ry="60" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
+            <ellipse cx="130" cy="115" rx="55" ry="50" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
+            <circle cx="95" cy="120" r="10" fill="#fca5a5"/>
+            <path d="M 95 105 Q 105 115 115 105" stroke="#3d2314" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <path d="M 125 118 Q 130 132 135 118 Z" fill="#ff4d6d" stroke="#3d2314" stroke-width="2"/>
+          </g>
+          <!-- Panda Waiting -->
+          <g transform="translate(10, -5) rotate(15 180 180)">
+            <circle cx="160" cy="80" r="22" fill="#2b2d42" stroke="#222" stroke-width="6"/>
+            <circle cx="250" cy="100" r="22" fill="#2b2d42" stroke="#222" stroke-width="6"/>
+            <ellipse cx="205" cy="175" rx="58" ry="52" fill="#ffffff" stroke="#222" stroke-width="6"/>
+            <ellipse cx="205" cy="120" rx="56" ry="48" fill="#ffffff" stroke="#222" stroke-width="6"/>
+            <circle cx="235" cy="135" r="12" fill="#ff758f"/>
+            <path d="M 180 110 L 195 118 L 180 126" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <path d="M 230 120 L 215 128 L 230 136" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <path d="M 160 145 Q 115 145 125 180 Q 150 185 170 170 Z" fill="#ffffff" stroke="#222" stroke-width="6"/>
+          </g>
+        </svg>
+      </div>
+
+      <h1 class="question-title">Can I hug you? 🥺👉👈</h1>
+
+      <div class="btn-stage">
+        <button class="btn-yes" onclick="showHugCelebration()">Yes! 🥰</button>
+        <button id="noButton" class="btn-no" onmouseover="dodgeButton()" onclick="dodgeButton()">No 🙈</button>
+      </div>
+    </div>
+
+    <!-- 3. Thanks Ending Screen -->
+    <div id="thanksScreen" class="thanks-card">
+      <h2>Aww, Thank You! 🥰</h2>
+      <p>"That was the warmest, tightest, and best hug ever! You are my favourite safe space in the whole wide world. ❤️✨"</p>
+      <button class="btn-replay" onclick="resetPage()">Hug Again? 🫂</button>
+    </div>
+
+  </div>
+
+  <!-- 2. Fullscreen Hug Popup -->
+  <div id="hugModal" class="hug-popup">
+    <div class="popup-banner">WARMEST TIGHT HUG! 🤗❤️</div>
+    
+    <div class="hug-art">
+      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWVpOGpuejB0ZzR3dHFpNW5xdm4wbWppMm8xZWVxc205bzJ3cTU5OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/lrr9rHuoJOE0w/giphy.gif" alt="Cute Tight Hug">
+    </div>
+
+    <button class="btn-finish" onclick="finishHug()">HUG YOU FOREVER 💕</button>
+  </div>
+
+  <script>
+    function dodgeButton() {
+      const btn = document.getElementById('noButton');
+      const maxRange = window.innerWidth <= 768 ? 120 : 260;
+      const x = (Math.random() - 0.5) * maxRange;
+      const y = (Math.random() - 0.5) * (maxRange * 0.8);
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    function showHugCelebration() {
+      document.getElementById('hugModal').style.display = 'flex';
+      blastHearts();
+    }
+
+    function finishHug() {
+      document.getElementById('hugModal').style.display = 'none';
+      document.getElementById('askScreen').style.display = 'none';
+      document.getElementById('thanksScreen').style.display = 'flex';
+    }
+
+    function resetPage() {
+      document.getElementById('thanksScreen').style.display = 'none';
+      document.getElementById('askScreen').style.display = 'flex';
+      const btn = document.getElementById('noButton');
+      if (btn) btn.style.transform = 'translate(0px, 0px)';
+    }
+
+    function blastHearts() {
+      const modal = document.getElementById('hugModal');
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.innerText = ['❤️', '💖', '✨', '🌹', '🥰'][Math.floor(Math.random() * 5)];
+        const dx = (Math.random() - 0.5) * 600 + 'px';
+        const dy = (Math.random() - 0.5) * 450 + 'px';
+        heart.style.setProperty('--dx', dx);
+        heart.style.setProperty('--dy', dy);
+        heart.style.left = '50%';
+        heart.style.top = '50%';
+        modal.appendChild(heart);
+        setTimeout(() => heart.remove(), 1500);
+      }
+    }
+  </script>
+</body>
+</html>
