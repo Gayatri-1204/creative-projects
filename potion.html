@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Am Sorry Magic Potion 🧪✨</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Fredoka:wght@600;700&family=Montserrat:wght@500;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #1b0d2e 0%, #0d0617 65%, #05020a 100%);
+      min-height: 100vh;
+      width: 100vw;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .glow-magic-1 {
+      position: absolute;
+      top: -15%;
+      left: 15%;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.22), transparent 70%);
+      filter: blur(100px);
+      pointer-events: none;
+    }
+
+    .glow-magic-2 {
+      position: absolute;
+      bottom: -15%;
+      right: 15%;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.2), transparent 70%);
+      filter: blur(100px);
+      pointer-events: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .magic-tag {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c084fc;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .main-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 3.8vw, 2.5rem);
+      font-weight: 800;
+      background: linear-gradient(180deg, #ffffff 0%, #f3e8ff 60%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 22px;
+    }
+
+    /* Magic Potion Bottle Container */
+    .potion-card {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(192, 132, 252, 0.35);
+      border-radius: 28px;
+      padding: 26px 20px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    /* CSS Flask / Glass Bottle */
+    .bottle-wrapper {
+      position: relative;
+      width: 130px;
+      height: 190px;
+      margin: 10px 0 20px 0;
+    }
+
+    .bottle-neck {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 35px;
+      border: 4px solid rgba(255, 255, 255, 0.7);
+      border-bottom: none;
+      border-radius: 6px 6px 0 0;
+      background: rgba(255, 255, 255, 0.08);
+      z-index: 2;
+    }
+
+    .cork {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 32px;
+      height: 14px;
+      background: #b45309;
+      border-radius: 4px 4px 0 0;
+      box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    }
+
+    .bottle-body {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 160px;
+      border: 4px solid rgba(255, 255, 255, 0.7);
+      border-radius: 24px 24px 45px 45px;
+      background: rgba(255, 255, 255, 0.04);
+      overflow: hidden;
+      box-shadow: inset 0 0 20px rgba(192, 132, 252, 0.3), 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Liquid inside Bottle */
+    .potion-liquid {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 10%;
+      background: linear-gradient(180deg, #ec4899 0%, #9333ea 100%);
+      transition: height 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 0 20px rgba(236, 72, 153, 0.7);
+    }
+
+    .liquid-bubbles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .progress-text {
+      font-family: 'Fredoka', cursive;
+      font-size: 1.15rem;
+      color: #f3e8ff;
+      margin-bottom: 16px;
+    }
+
+    /* Ingredient Buttons Grid */
+    .ingredients-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .btn-ingredient {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(192, 132, 252, 0.4);
+      color: #fce7f3;
+      padding: 12px 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+    }
+
+    .btn-ingredient:hover {
+      background: rgba(192, 132, 252, 0.25);
+      border-color: #c084fc;
+      transform: translateY(-3px);
+    }
+
+    .btn-ingredient.used {
+      opacity: 0.4;
+      pointer-events: none;
+      text-decoration: line-through;
+    }
+
+    /* Final Forgiveness Banner */
+    .forgive-box {
+      display: none;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 2px solid #a855f7;
+      border-radius: 20px;
+      padding: 20px 18px;
+      animation: popForgive 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      box-shadow: 0 0 35px rgba(168, 85, 247, 0.4);
+    }
+
+    @keyframes popForgive {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .forgive-box h3 {
+      font-family: 'Fredoka', cursive;
+      font-size: 1.5rem;
+      color: #f472b6;
+      margin-bottom: 6px;
+    }
+
+    .forgive-box p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      font-style: italic;
+      color: #fce7f3;
+    }
+
+    /* Floating Spell Particles */
+    .potion-particle {
+      position: absolute;
+      pointer-events: none;
+      animation: flyPotionParticle 1.4s ease-out forwards;
+      z-index: 1000;
+    }
+
+    @keyframes flyPotionParticle {
+      0% { opacity: 1; transform: scale(0.6) translate(0, 0); }
+      100% { opacity: 0; transform: scale(1.5) translate(var(--dx), var(--dy)); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-magic-1"></div>
+  <div class="glow-magic-2"></div>
+
+  <div class="container">
+    <div class="magic-tag">✦ The Romance Alchemist ✦</div>
+    <h1 class="main-title">I Am Sorry Potion 🧪✨</h1>
+
+    <div class="potion-card">
+      <div class="bottle-wrapper">
+        <div class="cork"></div>
+        <div class="bottle-neck"></div>
+        <div class="bottle-body">
+          <div id="liquid" class="potion-liquid"></div>
+        </div>
+      </div>
+
+      <div id="progressStatus" class="progress-text">Add ingredients to brew forgiveness 🍯</div>
+
+      <div class="ingredients-grid">
+        <button id="ing1" class="btn-ingredient" onclick="addIngredient('ing1', 25, '🍫 Silk Chocolate', event)">
+          🍫 Add Chocolate
+        </button>
+        <button id="ing2" class="btn-ingredient" onclick="addIngredient('ing2', 25, '🫂 Warmest Hug', event)">
+          🫂 Add Warm Hug
+        </button>
+        <button id="ing3" class="btn-ingredient" onclick="addIngredient('ing3', 25, '💋 Gentle Kiss', event)">
+          💋 Add Sweet Kiss
+        </button>
+        <button id="ing4" class="btn-ingredient" onclick="addIngredient('ing4', 25, '🥺 Puppy Eyes', event)">
+          🥺 Add Puppy Eyes
+        </button>
+      </div>
+    </div>
+
+    <!-- Final Magic Message -->
+    <div id="forgiveBox" class="forgive-box">
+      <h3>✨ Potion Fully Brewed! ✨</h3>
+      <p>"All anger has evaporated into pure love. You are officially forgiven! Now come here and give me that hug! ❤️"</p>
+    </div>
+  </div>
+
+  <script>
+    let potionLevel = 10;
+    let ingredientsAdded = 0;
+
+    function addIngredient(btnId, boost, name, e) {
+      const btn = document.getElementById(btnId);
+      btn.classList.add('used');
+
+      potionLevel += boost;
+      ingredientsAdded += 1;
+
+      const liquid = document.getElementById('liquid');
+      liquid.style.height = potionLevel + '%';
+
+      document.getElementById('progressStatus').innerText = "Added: " + name + " ✨";
+
+      spawnPotionFX(e.clientX, e.clientY);
+
+      if (ingredientsAdded >= 4) {
+        setTimeout(() => {
+          document.getElementById('progressStatus').innerText = "100% Love Potion Ready! 💖";
+          document.getElementById('forgiveBox').style.display = 'block';
+          burstFinalSparks();
+        }, 600);
+      }
+    }
+
+    function spawnPotionFX(x, y) {
+      const icons = ['✨', '💖', '🧪', '🌸', '🪄'];
+      for (let i = 0; i < 15; i++) {
+        const p = document.createElement('div');
+        p.className = 'potion-particle';
+        p.innerText = icons[Math.floor(Math.random() * icons.length)];
+        p.style.left = (x || window.innerWidth / 2) + 'px';
+        p.style.top = (y || window.innerHeight / 2) + 'px';
+        p.style.fontSize = (Math.random() * 14 + 18) + 'px';
+
+        const dx = (Math.random() - 0.5) * 240 + 'px';
+        const dy = (Math.random() - 0.5) * 220 + 'px';
+        p.style.setProperty('--dx', dx);
+        p.style.setProperty('--dy', dy);
+
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 1400);
+      }
+    }
+
+    function burstFinalSparks() {
+      const icons = ['🎆', '💖', '👑', '✨', '🥰', '🍫'];
+      for (let i = 0; i < 25; i++) {
+        const p = document.createElement('div');
+        p.className = 'potion-particle';
+        p.innerText = icons[Math.floor(Math.random() * icons.length)];
+        p.style.left = (Math.random() * 80 + 10) + 'vw';
+        p.style.top = '40vh';
+        p.style.fontSize = (Math.random() * 16 + 22) + 'px';
+        p.style.setProperty('--dx', (Math.random() - 0.5) * 250 + 'px');
+        p.style.setProperty('--dy', (Math.random() - 0.5) * 250 + 'px');
+
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 1400);
+      }
+    }
+  </script>
+</body>
+</html>
