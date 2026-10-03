@@ -22,7 +22,6 @@
       position: relative;
     }
 
-    /* Ambient Lighting */
     .bg-light-1 {
       position: absolute;
       top: -10%;
@@ -45,7 +44,6 @@
       pointer-events: none;
     }
 
-    /* Fullscreen Pages */
     .screen-page {
       display: none;
       width: 100vw;
@@ -68,7 +66,6 @@
       to { opacity: 1; transform: scale(1); }
     }
 
-    /* Back Button */
     .back-btn {
       position: absolute;
       top: 35px;
@@ -95,9 +92,7 @@
       transform: translateX(-5px);
     }
 
-    /* =========================================
-       PAGE 0: HOME SCREEN (BOUQUET PICKER)
-    ========================================= */
+    /* HOME SCREEN */
     .home-header {
       margin-top: 5vh;
       text-align: center;
@@ -185,9 +180,7 @@
       letter-spacing: 1px;
     }
 
-    /* =========================================
-       PAGE 1: SIDE PHOTO & AUTO-FLOWING MESSAGE
-    ========================================= */
+    /* PAGE 1: SIDE PHOTO & AUTO-FLOWING LETTER */
     .page1-layout {
       width: 100%;
       height: 100%;
@@ -281,9 +274,7 @@
       font-weight: 600;
     }
 
-    /* =========================================
-       PAGE 2: FULL BODY CARTOON REAL HUG
-    ========================================= */
+    /* PAGE 2: BUBU DUDU REAL JUMP HUG */
     .page2-layout {
       width: 100%;
       height: 100%;
@@ -328,8 +319,8 @@
     .char-figure {
       position: absolute;
       bottom: 20px;
-      width: 260px;
-      height: 260px;
+      width: 250px;
+      height: 250px;
       object-fit: contain;
       transition: all 2.2s cubic-bezier(0.25, 1, 0.5, 1);
       filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6));
@@ -345,12 +336,12 @@
     }
 
     .hug-stage-full.hugging .char-left-guy {
-      left: calc(50% - 210px);
+      left: calc(50% - 200px);
       transform: scale(1.05);
     }
 
     .hug-stage-full.hugging .char-right-girl {
-      right: calc(50% - 210px);
+      right: calc(50% - 200px);
       transform: scaleX(-1) scale(1.05);
     }
 
@@ -367,9 +358,7 @@
       100% { opacity: 0; transform: scale(1.8) translate(var(--dx), var(--dy)); }
     }
 
-    /* =========================================
-       PAGE 3: MYSTERY BOX & EMERGING PHOTO GRID
-    ========================================= */
+    /* PAGE 3: BIG MAGIC CHEST & UNPACKING PHOTOS */
     .page3-layout {
       width: 100%;
       height: 100%;
@@ -377,34 +366,47 @@
       flex-direction: column;
       align-items: center;
       position: relative;
-      padding-top: 30px;
+      padding-top: 25px;
     }
 
     .chest-box-container {
-      margin-top: 10px;
+      margin-top: 5px;
       cursor: pointer;
       text-align: center;
       z-index: 10;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 77, 109, 0.3);
+      padding: 15px 40px;
+      border-radius: 30px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .chest-box-container:hover {
+      background: rgba(255, 77, 109, 0.15);
+      transform: translateY(-5px);
     }
 
     .magic-chest {
-      font-size: 5rem;
-      filter: drop-shadow(0 10px 25px rgba(255, 77, 109, 0.5));
-      transition: transform 0.3s;
+      font-size: 7rem;
+      filter: drop-shadow(0 15px 35px rgba(255, 77, 109, 0.6));
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       display: inline-block;
+      line-height: 1;
     }
 
     .magic-chest:hover {
-      transform: scale(1.15) rotate(4deg);
+      transform: scale(1.2) rotate(5deg);
     }
 
     .chest-hint {
-      color: #ff8fa3;
-      font-size: 0.95rem;
+      color: #ffccd5;
+      font-size: 1rem;
       letter-spacing: 2px;
-      margin-top: 8px;
+      margin-top: 10px;
       text-transform: uppercase;
-      font-weight: 600;
+      font-weight: 700;
+      text-shadow: 0 0 10px rgba(255, 77, 109, 0.4);
     }
 
     .photo-stage-grid {
@@ -412,7 +414,7 @@
       max-width: 1100px;
       height: 480px;
       position: relative;
-      margin-top: 25px;
+      margin-top: 20px;
     }
 
     .flying-card {
@@ -444,13 +446,13 @@
       z-index: 50;
     }
 
-    /* Modal Styling */
+    /* POP-UP MODAL WITH PIC & CUTE MSG */
     .modal-overlay {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.8);
-      backdrop-filter: blur(12px);
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(14px);
       justify-content: center;
       align-items: center;
       z-index: 999;
@@ -460,12 +462,15 @@
       background: linear-gradient(145deg, #2b040e, #140105);
       border: 1px solid #ff4d6d;
       box-shadow: 0 25px 60px rgba(255, 75, 110, 0.4);
-      padding: 40px 35px;
+      padding: 25px 25px 30px 25px;
       border-radius: 28px;
       width: 90%;
       max-width: 440px;
       text-align: center;
       animation: modalPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     @keyframes modalPop {
@@ -473,31 +478,53 @@
       to { transform: scale(1); opacity: 1; }
     }
 
+    .modal-img-frame {
+      width: 100%;
+      height: 250px;
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      border: 2px solid rgba(255, 117, 143, 0.4);
+    }
+
+    .modal-img-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .modal-card h2 {
       font-family: 'Great Vibes', cursive;
-      font-size: 2.8rem;
+      font-size: 2.6rem;
       color: #ff758f;
-      margin-bottom: 15px;
+      margin-bottom: 8px;
     }
 
     .modal-card p {
       font-size: 1.15rem;
-      line-height: 1.7;
+      line-height: 1.6;
       color: #ffe5ec;
-      margin-bottom: 30px;
+      margin-bottom: 22px;
+      font-weight: 500;
     }
 
     .modal-btn {
       background: linear-gradient(135deg, #ff4d6d, #c9184a);
       color: white;
       border: none;
-      padding: 12px 32px;
+      padding: 10px 28px;
       border-radius: 30px;
       font-weight: 700;
-      font-size: 0.95rem;
-      letter-spacing: 2px;
+      font-size: 0.9rem;
+      letter-spacing: 1.5px;
       cursor: pointer;
       box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4);
+      transition: transform 0.2s;
+    }
+
+    .modal-btn:hover {
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -506,9 +533,7 @@
   <div class="bg-light-1"></div>
   <div class="bg-light-2"></div>
 
-  <!-- =========================================
-       PAGE 0: HOME SCREEN
-  ========================================= -->
+  <!-- PAGE 0: HOME SCREEN -->
   <div id="page-home" class="screen-page active">
     <div class="home-header">
       <div class="home-cursive">For the love of my life</div>
@@ -541,14 +566,11 @@
     </div>
   </div>
 
-  <!-- =========================================
-       PAGE 1: SIDE PHOTO & AUTO-FLOWING MESSAGE
-  ========================================= -->
+  <!-- PAGE 1: SIDE PHOTO & AUTO-FLOWING MESSAGE -->
   <div id="page-photo" class="screen-page">
     <button class="back-btn" onclick="switchPage('page-home')">← Back to Bouquets</button>
     
     <div class="page1-layout">
-      <!-- Left: Big Polaroid -->
       <div class="side-photo-pane">
         <div class="polaroid-grand">
           <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800" alt="Us Together">
@@ -556,7 +578,6 @@
         </div>
       </div>
 
-      <!-- Right: Continuous Flowing Romantic Note -->
       <div class="side-text-pane">
         <div class="scrolling-letter">
           <p class="scroll-para">To the most special boy in this universe,</p>
@@ -570,9 +591,7 @@
     </div>
   </div>
 
-  <!-- =========================================
-       PAGE 2: FULL-BODY CARTOON REAL HUG
-  ========================================= -->
+  <!-- PAGE 2: BUBU DUDU REAL JUMP HUG -->
   <div id="page-hug" class="screen-page">
     <button class="back-btn" onclick="switchPage('page-home')">← Back to Bouquets</button>
 
@@ -580,48 +599,46 @@
       <div id="hugBigTitle" class="hug-celebration-title">HAPPY BOYFRIEND DAY, MY LOVE! 🤗❤️</div>
 
       <div id="hugFullStage" class="hug-stage-full">
-        <!-- Running Bear Left -->
         <img id="charLeft" class="char-figure char-left-guy" 
-             src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Zyd2V5OXQ3NDN4eW1uNXUzaG8xNGM0amFwZ2c5Nm85aWdrMTN5ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif" 
-             alt="Running Bear">
+             src="https://media.tenor.com/2s-Z3Yp81q0AAAAi/milk-and-mocha-running.gif" 
+             alt="Running Bubu">
 
-        <!-- Running Bunny Right -->
         <img id="charRight" class="char-figure char-right-girl" 
-             src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmtlbGtzY2lmb21xN3djdDVqZXRrdjV1b3prbzNtd3Q0bWZ2Y2g1MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/vFKqnCdLPNOKc/giphy.gif" 
-             alt="Running Bunny">
+             src="https://media.tenor.com/Fw57t0pW9Q0AAAAi/mocha-running.gif" 
+             alt="Running Dudu">
 
-        <!-- Real Full-Body Hug GIF (Appears when they meet) -->
+        <!-- Photo chya pramane jump marun real tight hug karnara GIF[cite: 1] -->
         <img id="finalHugGif" class="char-figure" 
-             style="display: none; width: 330px; height: 330px; position: absolute; bottom: 15px;" 
-             src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWVpOGpuejB0ZzR3dHFpNW5xdm4wbWppMm8xZWVxc205bzJ3cTU5OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/lrr9rHuoJOE0w/giphy.gif" 
-             alt="Real Tight Hug">
+             style="display: none; width: 360px; height: 360px; position: absolute; bottom: 20px;" 
+             src="https://media.tenor.com/39l2B-4q6W4AAAAi/bubu-dudu-hug.gif" 
+             alt="Real Bubu Dudu Hug">
       </div>
     </div>
   </div>
 
-  <!-- =========================================
-       PAGE 3: MYSTERY BOX & SPREADING PHOTOS
-  ========================================= -->
+  <!-- PAGE 3: BIG MAGIC CHEST & UNPACKING PHOTOS -->
   <div id="page-rain" class="screen-page">
     <button class="back-btn" onclick="resetAndBack()">← Back to Bouquets</button>
 
     <div class="page3-layout">
       <div class="chest-box-container" onclick="openMagicChest()">
         <div id="chestIcon" class="magic-chest">🎁</div>
-        <div id="chestPrompt" class="chest-hint">Click the gift box to reveal memories ✨</div>
+        <div id="chestPrompt" class="chest-hint">Click the magic chest to unlock our moments ✨</div>
       </div>
 
-      <!-- Arranged Photo Grid Container -->
       <div id="gridStage" class="photo-stage-grid"></div>
     </div>
   </div>
 
-  <!-- POP-UP SECRET LOVE NOTE -->
+  <!-- POP-UP COUPLE PHOTO + CUTE NOTE MODAL -->
   <div id="secretModal" class="modal-overlay">
     <div class="modal-card">
-      <h2>Secret Note 💌</h2>
-      <p id="secretMsg">"You are my favourite person in the entire world!"</p>
-      <button class="modal-btn" onclick="closeSecretModal()">KEEP CLOSE TO HEART ❤️</button>
+      <div class="modal-img-frame">
+        <img id="modalCouplePic" src="" alt="Couple Memory">
+      </div>
+      <h2>My Heart Whispers...</h2>
+      <p id="secretMsg">"Whenever I am with you, I feel completely safe ❤️"</p>
+      <button class="modal-btn" onclick="closeSecretModal()">KEEP CLOSE TO HEART ❤</button>
     </div>
   </div>
 
@@ -640,12 +657,10 @@
       const stage = document.getElementById('gridStage');
       stage.innerHTML = '';
       document.getElementById('chestIcon').innerText = '🎁';
-      document.getElementById('chestPrompt').innerText = 'Click the gift box to reveal memories ✨';
+      document.getElementById('chestPrompt').innerText = 'Click the magic chest to unlock our moments ✨';
     }
 
-    // =========================================
-    // PAGE 2: REAL FULL BODY HUG LOGIC
-    // =========================================
+    // PAGE 2: BUBU DUDU REAL HUG LOGIC
     function executeFullHug() {
       const stage = document.getElementById('hugFullStage');
       const title = document.getElementById('hugBigTitle');
@@ -659,12 +674,10 @@
       leftChar.style.display = "block";
       rightChar.style.display = "block";
 
-      // धावत मधोमध येणे
       setTimeout(() => {
         stage.classList.add('hugging');
       }, 200);
 
-      // मधोमध एकत्र आल्यावर रिअल हग GIF सुरू होणे व स्फोट होणे
       setTimeout(() => {
         leftChar.style.display = "none";
         rightChar.style.display = "none";
@@ -691,55 +704,65 @@
       }
     }
 
-    // =========================================
-    // PAGE 3: MAGIC CHEST & UNPACKING PHOTOS
-    // =========================================
-    const memoryPhotos = [
-      'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400',
-      'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400',
-      'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400',
-      'https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=400',
-      'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400',
-      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400',
-      'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400',
-      'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400'
-    ];
-
-    const secretLoveNotes = [
-      "You are the most handsome and caring person I've ever known! 💋",
-      "My favourite place in the world is right inside your arms. 🫂",
-      "I smile every single time your name pops up on my phone. ✨",
-      "Thank you for loving me even on my hardest days. ❤️",
-      "Every love song makes total sense ever since I met you. 🎶",
-      "You make my heart skip a beat even after all this time! 💓",
-      "You're not just my boyfriend; you're my best friend and home. 🏡",
-      "I love you more than words, actions, or anything could ever show! 🌹"
+    // PAGE 3: COUPLE MEMORIES & CUTE MESSAGES
+    const coupleMoments = [
+      {
+        pic: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600',
+        msg: "Whenever I am with you, I feel completely safe and at home ❤️"
+      },
+      {
+        pic: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600',
+        msg: "I love you more than any words could ever explain 🥰"
+      },
+      {
+        pic: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600',
+        msg: "Holding your hand is my absolute favorite feeling in this world ✨"
+      },
+      {
+        pic: 'https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=600',
+        msg: "Thank you for always being my safe space and biggest strength 🫂"
+      },
+      {
+        pic: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600',
+        msg: "You are the cutest boy in the universe, and I am so lucky you are mine! 💋"
+      },
+      {
+        pic: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600',
+        msg: "Every small moment with you becomes my sweetest memory 🌸"
+      },
+      {
+        pic: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600',
+        msg: "My smile is always widest whenever I look at you 💫"
+      },
+      {
+        pic: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600',
+        msg: "I love you endlessly, today, tomorrow, and forever! 🌹"
+      }
     ];
 
     function openMagicChest() {
       const chest = document.getElementById('chestIcon');
       chest.innerText = '✨📦✨';
-      document.getElementById('chestPrompt').innerText = 'Tap any photo to read a secret note 💌';
+      document.getElementById('chestPrompt').innerText = 'Click any photo to see our sweet memory 💌';
 
       const stage = document.getElementById('gridStage');
       stage.innerHTML = '';
 
-      memoryPhotos.forEach((src, idx) => {
+      coupleMoments.forEach((item, idx) => {
         setTimeout(() => {
           const card = document.createElement('div');
           card.className = 'flying-card';
           
           const img = document.createElement('img');
-          img.src = src;
+          img.src = item.pic;
           card.appendChild(img);
 
           card.onclick = () => {
-            openSecretModal(secretLoveNotes[idx % secretLoveNotes.length]);
+            openSecretModal(item.pic, item.msg);
           };
 
           stage.appendChild(card);
 
-          // बॉक्शमधून बाहेर पडून 4x2 च्या ग्रिडमध्ये सेट होणे
           setTimeout(() => {
             const rot = (Math.random() - 0.5) * 8;
             const leftPerc = 12.5 + (idx % 4) * 25;
@@ -754,7 +777,8 @@
       });
     }
 
-    function openSecretModal(text) {
+    function openSecretModal(picUrl, text) {
+      document.getElementById('modalCouplePic').src = picUrl;
       document.getElementById('secretMsg').innerText = text;
       document.getElementById('secretModal').style.display = 'flex';
     }
