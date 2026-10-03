@@ -48,7 +48,7 @@
       display: none;
       width: 100vw;
       height: 100vh;
-      padding: 25px 45px;
+      padding: clamp(15px, 2.5vh, 30px) clamp(20px, 3vw, 50px);
       position: relative;
       flex-direction: column;
       justify-content: space-between;
@@ -68,14 +68,14 @@
 
     .back-btn {
       position: absolute;
-      top: 25px;
-      left: 40px;
+      top: clamp(15px, 2.5vh, 30px);
+      left: clamp(20px, 3vw, 45px);
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 117, 143, 0.3);
       color: #ffccd5;
       font-size: 0.95rem;
       cursor: pointer;
-      padding: 8px 18px;
+      padding: 8px 20px;
       border-radius: 40px;
       backdrop-filter: blur(15px);
       transition: all 0.3s ease;
@@ -96,40 +96,40 @@
        PAGE 0: HOME SCREEN WITH PEEKING PHOTO ENVELOPE
     ========================================= */
     .home-header {
-      margin-top: 1.5vh;
+      margin-top: 1vh;
       text-align: center;
     }
 
     .home-cursive {
       font-family: 'Great Vibes', cursive;
-      font-size: 3rem;
+      font-size: clamp(2.4rem, 3.5vw, 3.5rem);
       color: #ff758f;
       text-shadow: 0 0 25px rgba(255, 117, 143, 0.6);
     }
 
     .home-main-title {
       font-family: 'Cinzel', serif;
-      font-size: 3.4rem;
+      font-size: clamp(2.2rem, 3.8vw, 3.8rem);
       font-weight: 900;
-      letter-spacing: 5px;
+      letter-spacing: clamp(3px, 0.5vw, 6px);
       text-transform: uppercase;
       background: linear-gradient(180deg, #ffffff 0%, #ff8fa3 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-top: -8px;
+      margin-top: -6px;
       text-shadow: 0 5px 30px rgba(255, 45, 85, 0.4);
     }
 
     /* Middle Envelope with Peeking Photo */
     .home-mid-envelope-wrapper {
       position: relative;
-      width: 250px;
-      height: 155px;
-      margin: 10px 0;
+      width: clamp(220px, 20vw, 300px);
+      height: clamp(140px, 14vw, 190px);
+      margin: 8px 0;
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6));
+      filter: drop-shadow(0 15px 30px rgba(0,0,0,0.7));
       animation: floatMidEnvelope 3.5s ease-in-out infinite alternate;
     }
 
@@ -141,10 +141,10 @@
     .peeking-photo-card {
       position: absolute;
       bottom: 25px;
-      width: 175px;
+      width: 70%;
       background: #ffffff;
       padding: 7px 7px 20px 7px;
-      border-radius: 6px;
+      border-radius: 8px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.5);
       transform: translateY(-40px) rotate(-4deg);
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -153,22 +153,22 @@
     }
 
     .peeking-photo-card:hover {
-      transform: translateY(-60px) rotate(0deg) scale(1.08);
+      transform: translateY(-65px) rotate(0deg) scale(1.08);
       z-index: 10;
     }
 
     .peeking-photo-card img {
       width: 100%;
-      height: 120px;
+      height: clamp(100px, 10vw, 140px);
       object-fit: cover;
-      border-radius: 4px;
+      border-radius: 5px;
       display: block;
     }
 
     .peeking-photo-card .peeking-caption {
       font-family: 'Great Vibes', cursive;
       color: #333;
-      font-size: 1.1rem;
+      font-size: clamp(1rem, 1.3vw, 1.3rem);
       text-align: center;
       margin-top: 4px;
       line-height: 1;
@@ -177,9 +177,9 @@
     .mini-envelope-body {
       position: relative;
       width: 100%;
-      height: 125px;
+      height: 80%;
       background: #7a0c2b;
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
       z-index: 3;
       border: 1px solid rgba(255, 77, 109, 0.3);
@@ -190,59 +190,58 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 0;
-      height: 0;
-      border-left: 125px solid #54081e;
-      border-right: 125px solid #54081e;
-      border-bottom: 95px solid #8f0e33;
-      border-top: 60px solid transparent;
+      width: 100%;
+      height: 100%;
+      background: #54081e;
+      clip-path: polygon(0 100%, 100% 100%, 100% 35%, 50% 70%, 0 35%);
       z-index: 4;
       pointer-events: none;
     }
 
     .mini-wax-seal {
       position: absolute;
-      top: 55px;
-      left: calc(50% - 16px);
-      width: 32px;
-      height: 32px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: clamp(32px, 3vw, 42px);
+      height: clamp(32px, 3vw, 42px);
       background: radial-gradient(circle, #ff4d6d, #c9184a);
       border-radius: 50%;
       box-shadow: 0 4px 10px rgba(0,0,0,0.5);
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 14px;
+      font-size: clamp(14px, 1.4vw, 18px);
       z-index: 5;
     }
 
     .bouquet-grid-wrapper {
       width: 100%;
-      max-width: 1050px;
-      margin-bottom: 2.5vh;
+      max-width: 1100px;
+      margin-bottom: 2vh;
       text-align: center;
     }
 
     .bouquet-tagline {
-      font-size: 0.9rem;
+      font-size: clamp(0.8rem, 1vw, 0.95rem);
       letter-spacing: 3px;
       color: #c9184a;
       text-transform: uppercase;
-      margin-bottom: 15px;
+      margin-bottom: 14px;
       font-weight: 700;
     }
 
     .bouquet-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
+      gap: clamp(15px, 2vw, 30px);
     }
 
     .bouquet-item {
       background: rgba(25, 2, 7, 0.75);
       border: 1px solid rgba(255, 77, 109, 0.3);
       border-radius: 20px;
-      padding: 24px 15px;
+      padding: clamp(18px, 2.5vh, 30px) 15px;
       cursor: pointer;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(255, 77, 109, 0.1);
@@ -257,15 +256,15 @@
     }
 
     .bouquet-flower {
-      font-size: 3.2rem;
+      font-size: clamp(2.8rem, 3.8vw, 4rem);
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       filter: drop-shadow(0 5px 15px rgba(255, 77, 109, 0.4));
     }
 
     .bouquet-item h3 {
       font-family: 'Cinzel', serif;
-      font-size: 1.1rem;
+      font-size: clamp(0.95rem, 1.2vw, 1.15rem);
       letter-spacing: 2px;
       color: #ffccd5;
       text-transform: uppercase;
@@ -287,10 +286,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 60px;
+      gap: clamp(30px, 4vw, 60px);
       max-width: 1280px;
       margin: auto;
-      padding-top: 30px;
+      padding-top: 25px;
     }
 
     .side-photo-pane {
@@ -307,7 +306,7 @@
       box-shadow: 0 30px 60px rgba(0,0,0,0.7), 0 0 30px rgba(255, 75, 110, 0.25);
       transform: rotate(-3deg);
       transition: all 0.4s ease;
-      width: 350px;
+      width: clamp(280px, 26vw, 370px);
     }
 
     .polaroid-grand:hover {
@@ -316,7 +315,7 @@
 
     .polaroid-grand img {
       width: 100%;
-      height: 380px;
+      height: clamp(280px, 30vw, 400px);
       object-fit: cover;
       border-radius: 6px;
     }
@@ -324,31 +323,31 @@
     .polaroid-grand-caption {
       color: #222;
       font-family: 'Great Vibes', cursive;
-      font-size: 2.2rem;
+      font-size: clamp(1.8rem, 2.2vw, 2.3rem);
       text-align: center;
       margin-top: 12px;
     }
 
     .side-text-pane {
       flex: 1.3;
-      height: 480px;
+      height: clamp(380px, 55vh, 520px);
       position: relative;
       overflow: hidden;
       border-radius: 20px;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 117, 143, 0.2);
       backdrop-filter: blur(12px);
-      padding: 20px 35px;
+      padding: 20px clamp(20px, 3vw, 40px);
       mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
       -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
     }
 
     .scrolling-letter {
       position: absolute;
-      width: calc(100% - 70px);
+      width: calc(100% - clamp(40px, 6vw, 80px));
       display: flex;
       flex-direction: column;
-      gap: 30px;
+      gap: 28px;
       animation: verticalScrollText 24s linear infinite;
     }
 
@@ -363,7 +362,7 @@
 
     .scroll-para {
       font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
+      font-size: clamp(1.1rem, 1.4vw, 1.35rem);
       line-height: 1.8;
       color: #ffe5ec;
       text-shadow: 0 2px 10px rgba(0,0,0,0.5);
@@ -375,7 +374,7 @@
     }
 
     /* =========================================
-       PAGE 2: EXACT PHOTO REAL HUG (LARGE SCALE)
+       PAGE 2: ORIGINAL ANIMATED HUG GIF (BIG & CENTERED)
     ========================================= */
     .page2-layout {
       width: 100%;
@@ -394,14 +393,15 @@
       color: white;
       font-family: 'Cinzel', serif;
       font-weight: 800;
-      font-size: 2.2rem;
-      padding: 14px 42px;
+      font-size: clamp(1.6rem, 2.4vw, 2.5rem);
+      padding: clamp(12px, 1.8vh, 18px) clamp(30px, 3.5vw, 50px);
       border-radius: 50px;
       letter-spacing: 2px;
       box-shadow: 0 15px 40px rgba(255, 77, 109, 0.6);
       transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       z-index: 20;
+      text-align: center;
     }
 
     .hug-celebration-title.show {
@@ -412,35 +412,38 @@
     .hug-center-stage {
       position: relative;
       width: 100%;
-      max-width: 550px;
-      height: 480px;
+      max-width: 600px;
+      height: clamp(340px, 45vh, 480px);
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-
-    .hug-big-illustration {
-      width: 440px;
-      height: 440px;
-      filter: drop-shadow(0 20px 45px rgba(255, 77, 109, 0.55));
-      animation: gentleHugPulse 2.8s ease-in-out infinite alternate;
-      transform-origin: center;
       cursor: pointer;
     }
 
-    @keyframes gentleHugPulse {
+    /* Original Hug GIF from early turn, grand scale */
+    .hug-gif-image {
+      width: clamp(280px, 32vw, 440px);
+      height: clamp(280px, 32vw, 440px);
+      object-fit: contain;
+      filter: drop-shadow(0 20px 45px rgba(255, 77, 109, 0.55));
+      animation: hugGentlePulse 3s ease-in-out infinite alternate;
+      border-radius: 20px;
+    }
+
+    @keyframes hugGentlePulse {
       0% { transform: scale(1) rotate(-1deg); }
       100% { transform: scale(1.06) rotate(1.5deg); }
     }
 
     .hug-subtext {
       color: #ffccd5;
-      font-size: 1.1rem;
+      font-size: clamp(0.95rem, 1.2vw, 1.15rem);
       letter-spacing: 2px;
-      margin-top: 10px;
+      margin-top: 20px;
       text-transform: uppercase;
       font-weight: 600;
       text-shadow: 0 0 10px rgba(255, 77, 109, 0.4);
+      text-align: center;
     }
 
     .hug-heart-burst {
@@ -458,7 +461,7 @@
     }
 
     /* =========================================
-       PAGE 3: AESTHETIC ENVELOPE & FILM REEL SCROLL
+       PAGE 3: RESPONSIVE ENVELOPE & FILM REEL
     ========================================= */
     .page3-layout {
       width: 100%;
@@ -467,32 +470,34 @@
       justify-content: space-between;
       align-items: center;
       position: relative;
-      padding: 10px 0;
+      padding: 10px clamp(10px, 2vw, 30px);
+      gap: clamp(15px, 2vw, 35px);
     }
 
     .film-column {
-      width: 160px;
-      height: 82vh;
+      width: clamp(160px, 14vw, 220px);
+      height: 85vh;
       overflow: hidden;
       position: relative;
-      border-radius: 12px;
+      border-radius: 14px;
       background: #110105;
       border: 3px solid #3d0514;
       box-shadow: 0 10px 30px rgba(0,0,0,0.8);
       mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
       -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+      flex-shrink: 0;
     }
 
     .film-reel-track {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 22px;
       padding: 15px 0;
-      animation: filmScroll 20s linear infinite;
+      animation: filmScroll 22s linear infinite;
     }
 
     .film-column-right .film-reel-track {
-      animation-duration: 25s;
+      animation-duration: 26s;
     }
 
     .film-reel-track:hover {
@@ -505,13 +510,13 @@
     }
 
     .film-frame {
-      width: 140px;
+      width: 88%;
       background: #1c0209;
       border: 2px solid #52071d;
-      border-radius: 8px;
+      border-radius: 10px;
       margin: 0 auto;
-      padding: 8px 8px 12px 8px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+      padding: 8px 8px 14px 8px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
       cursor: pointer;
       position: relative;
       transition: all 0.3s ease;
@@ -520,30 +525,30 @@
     .film-frame:hover {
       transform: scale(1.08);
       border-color: #ff4d6d;
-      box-shadow: 0 8px 25px rgba(255, 77, 109, 0.4);
+      box-shadow: 0 10px 25px rgba(255, 77, 109, 0.4);
     }
 
     .film-frame::before, .film-frame::after {
-      content: '••••••••';
+      content: '••••••••••';
       position: absolute;
       left: 0;
       width: 100%;
       text-align: center;
-      font-size: 8px;
-      letter-spacing: 10px;
-      color: rgba(255, 255, 255, 0.3);
+      font-size: 9px;
+      letter-spacing: 8px;
+      color: rgba(255, 255, 255, 0.35);
       line-height: 1;
     }
-    .film-frame::before { top: 2px; }
-    .film-frame::after { bottom: 2px; }
+    .film-frame::before { top: 3px; }
+    .film-frame::after { bottom: 3px; }
 
     .film-frame img {
       width: 100%;
-      height: 130px;
+      height: clamp(130px, 15vh, 180px);
       object-fit: cover;
-      border-radius: 4px;
+      border-radius: 6px;
       display: block;
-      margin: 4px 0;
+      margin: 5px 0;
     }
 
     .center-envelope-stage {
@@ -554,47 +559,46 @@
       justify-content: center;
       height: 100%;
       position: relative;
-      padding: 0 20px;
+      padding: 0 15px;
     }
 
     .envelope-hint {
       color: #ffccd5;
-      font-size: 0.95rem;
+      font-size: clamp(0.95rem, 1.2vw, 1.3rem);
       letter-spacing: 2px;
       text-transform: uppercase;
       font-weight: 700;
-      margin-bottom: 25px;
-      text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
-      transition: opacity 0.4s;
+      margin-bottom: 30px;
+      text-shadow: 0 0 12px rgba(255, 77, 109, 0.6);
+      text-align: center;
     }
 
     .envelope-wrapper {
       position: relative;
-      width: 320px;
-      height: 220px;
+      width: clamp(340px, 32vw, 480px);
+      height: clamp(230px, 22vw, 320px);
       background: #800f2f;
-      border-radius: 12px;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 35px rgba(255, 77, 109, 0.3);
+      border-radius: 16px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 40px rgba(255, 77, 109, 0.3);
       cursor: pointer;
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: transform 0.4s ease;
+      transition: all 0.5s ease;
     }
 
     .envelope-wrapper:hover {
-      transform: translateY(-5px) scale(1.02);
+      transform: translateY(-8px) scale(1.03);
     }
 
     .envelope-flap {
       position: absolute;
       top: 0;
       left: 0;
-      width: 0;
-      height: 0;
-      border-left: 160px solid transparent;
-      border-right: 160px solid transparent;
-      border-top: 120px solid #a4133c;
+      width: 100%;
+      height: 60%;
+      background: #a4133c;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
       transform-origin: top;
       transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 5;
@@ -604,41 +608,40 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 0;
-      height: 0;
-      border-left: 160px solid #590d22;
-      border-right: 160px solid #590d22;
-      border-bottom: 125px solid #800f2f;
-      border-top: 95px solid transparent;
-      border-radius: 0 0 12px 12px;
+      width: 100%;
+      height: 100%;
+      background: #590d22;
+      clip-path: polygon(0 100%, 100% 100%, 100% 35%, 50% 70%, 0 35%);
+      border-radius: 0 0 16px 16px;
       z-index: 4;
       pointer-events: none;
     }
 
     .wax-seal {
       position: absolute;
-      top: 90px;
-      left: calc(50% - 24px);
-      width: 48px;
-      height: 48px;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: clamp(48px, 4.5vw, 64px);
+      height: clamp(48px, 4.5vw, 64px);
       background: radial-gradient(circle, #ff4d6d, #c9184a);
       border-radius: 50%;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 0 8px rgba(255,255,255,0.4);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6), inset 0 0 10px rgba(255,255,255,0.4);
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 20px;
+      font-size: clamp(20px, 2vw, 28px);
       z-index: 6;
       transition: all 0.5s ease;
     }
 
     .stable-center-card {
       position: absolute;
-      width: 320px;
+      width: clamp(330px, 30vw, 440px);
       background: #ffffff;
-      padding: 14px 14px 28px 14px;
-      border-radius: 12px;
-      box-shadow: 0 20px 45px rgba(0,0,0,0.7), 0 0 25px rgba(255, 75, 110, 0.3);
+      padding: 16px 16px 32px 16px;
+      border-radius: 14px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.7), 0 0 30px rgba(255, 75, 110, 0.35);
       cursor: pointer;
       opacity: 0;
       transform: translateY(40px) scale(0.6);
@@ -648,7 +651,7 @@
 
     .stable-center-card img {
       width: 100%;
-      height: 290px;
+      height: clamp(280px, 28vw, 380px);
       object-fit: cover;
       border-radius: 8px;
       display: block;
@@ -657,9 +660,9 @@
     .stable-center-card .card-caption {
       color: #333;
       font-family: 'Great Vibes', cursive;
-      font-size: 2rem;
+      font-size: clamp(2rem, 2.2vw, 2.6rem);
       text-align: center;
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
     .center-envelope-stage.opened .envelope-flap {
@@ -669,12 +672,12 @@
 
     .center-envelope-stage.opened .wax-seal {
       opacity: 0;
-      transform: scale(0.2);
+      transform: translate(-50%, -50%) scale(0.2);
     }
 
     .center-envelope-stage.opened .envelope-wrapper {
-      transform: translateY(110px) scale(0.85);
-      opacity: 0.6;
+      transform: translateY(120px) scale(0.85);
+      opacity: 0.5;
     }
 
     .center-envelope-stage.opened .stable-center-card {
@@ -847,7 +850,7 @@
   </div>
 
   <!-- =========================================
-       PAGE 2: EXACT PHOTO REAL HUG (LARGE SCALE)
+       PAGE 2: ORIGINAL ANIMATED HUG GIF (BIG & CENTERED)
   ========================================= -->
   <div id="page-hug" class="screen-page">
     <button class="back-btn" onclick="switchPage('page-home')">← Back to Bouquets</button>
@@ -856,40 +859,10 @@
       <div id="hugBigTitle" class="hug-celebration-title">HAPPY BOYFRIEND DAY, MY LOVE! 🤗❤️</div>
 
       <div class="hug-center-stage" onclick="blastHearts()">
-        <div class="hug-big-illustration">
-          <svg viewBox="0 0 350 350" width="100%" height="100%">
-            <!-- Floating Glowing Hearts Around -->
-            <path d="M 175 35 Q 185 15 195 30 Q 205 45 175 70 Q 145 45 155 30 Q 165 15 175 35 Z" fill="#ff4d6d"/>
-            <path d="M 65 115 Q 75 95 85 110 Q 95 125 65 150 Q 35 125 45 110 Q 55 95 65 115 Z" fill="#ff758f"/>
-            <path d="M 285 105 Q 295 85 305 100 Q 315 115 285 140 Q 255 115 265 100 Q 275 85 285 105 Z" fill="#ff758f"/>
-            <path d="M 45 235 Q 55 215 65 230 Q 75 245 45 270 Q 15 245 25 230 Q 35 215 45 235 Z" fill="#ff4d6d"/>
-            <path d="M 305 225 Q 315 205 325 220 Q 335 235 305 260 Q 275 235 285 220 Q 295 205 305 225 Z" fill="#ff4d6d"/>
-
-            <!-- Bubu Bear (Tilted Back in Hug) -->
-            <g transform="translate(45, 40) rotate(-15 150 150)">
-              <circle cx="80" cy="85" r="22" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
-              <circle cx="80" cy="85" r="12" fill="#e8c9b0"/>
-              <ellipse cx="140" cy="170" rx="65" ry="60" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
-              <ellipse cx="130" cy="115" rx="55" ry="50" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
-              <circle cx="95" cy="120" r="10" fill="#fca5a5"/>
-              <path d="M 95 105 Q 105 115 115 105" stroke="#3d2314" stroke-width="5" fill="none" stroke-linecap="round"/>
-              <path d="M 125 118 Q 130 132 135 118 Z" fill="#ff4d6d" stroke="#3d2314" stroke-width="2"/>
-            </g>
-
-            <!-- Dudu Panda (Jumping On Top & Wrapping Arms Around) -->
-            <g transform="translate(10, -5) rotate(18 180 180)">
-              <circle cx="160" cy="80" r="22" fill="#2b2d42" stroke="#222" stroke-width="6"/>
-              <circle cx="250" cy="100" r="22" fill="#2b2d42" stroke="#222" stroke-width="6"/>
-              <ellipse cx="205" cy="175" rx="58" ry="52" fill="#ffffff" stroke="#222" stroke-width="6"/>
-              <ellipse cx="205" cy="120" rx="56" ry="48" fill="#ffffff" stroke="#222" stroke-width="6"/>
-              <circle cx="235" cy="135" r="12" fill="#ff758f"/>
-              <path d="M 180 110 L 195 118 L 180 126" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M 230 120 L 215 128 L 230 136" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M 160 145 Q 115 145 125 180 Q 150 185 170 170 Z" fill="#ffffff" stroke="#222" stroke-width="6"/>
-              <circle cx="265" cy="190" r="12" fill="#ffffff" stroke="#222" stroke-width="5"/>
-            </g>
-          </svg>
-        </div>
+        <!-- Original Bear Hug Animated GIF, prominent & grand -->
+        <img class="hug-gif-image" 
+             src="https://media.tenor.com/9n9s1-ZtJ84AAAAi/bear-hug.gif" 
+             alt="Warm Tight Hug">
       </div>
 
       <p class="hug-subtext">A tight warm hug to remind you how much you mean to me ❤️</p>
@@ -941,7 +914,7 @@
         <img id="modalCouplePic" src="" alt="Couple Memory">
       </div>
       <h2>My Heart Whispers...</h2>
-      <p id="secretMsg">"Whenever I am with you, I feel completely safe ❤️"</p>
+      <p id="secretMsg">"Whenever I am with you, I feel completely safe ❤️️"</p>
       <button class="modal-btn" onclick="closeSecretModal()">KEEP CLOSE TO HEART ❤</button>
     </div>
   </div>
