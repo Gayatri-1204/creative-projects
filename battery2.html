@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Boyfriend Recharge Station 🪫⚡</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@500;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: radial-gradient(ellipse at bottom, #1f020a 0%, #0d0105 60%, #000 100%);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 16px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .ambient-glow {
+      position: fixed;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 77, 109, 0.2), transparent 70%);
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .station-wrap {
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .status-badge {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #ff4d6d;
+      border: 1px solid rgba(255, 77, 109, 0.4);
+      padding: 6px 16px;
+      border-radius: 30px;
+      background: rgba(255, 77, 109, 0.1);
+      margin-bottom: 12px;
+    }
+
+    .main-heading {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      letter-spacing: 1px;
+      color: #fff;
+      margin-bottom: 25px;
+    }
+
+    /* Giant Interactive Battery UI */
+    .battery-housing {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .battery-body {
+      width: 220px;
+      height: 100px;
+      border: 4px solid #fff;
+      border-radius: 20px;
+      padding: 6px;
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8), inset 0 0 15px rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .battery-terminal {
+      width: 12px;
+      height: 40px;
+      background: #fff;
+      border-radius: 0 6px 6px 0;
+      margin-left: 2px;
+    }
+
+    .battery-liquid {
+      width: 1%;
+      height: 100%;
+      background: linear-gradient(90deg, #ff0055, #ff4d6d);
+      border-radius: 12px;
+      transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1), background 0.6s ease, box-shadow 0.6s ease;
+      box-shadow: 0 0 20px rgba(255, 0, 85, 0.8);
+      position: relative;
+    }
+
+    .battery-liquid.charging {
+      animation: pulseCharge 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseCharge {
+      0% { filter: brightness(1); }
+      100% { filter: brightness(1.3); }
+    }
+
+    .percentage-display {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin: 8px 0;
+      color: #ff4d6d;
+      transition: color 0.4s;
+    }
+
+    .vibe-status {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: #ffccd5;
+      min-height: 48px;
+      line-height: 1.5;
+      margin-bottom: 25px;
+      padding: 0 10px;
+    }
+
+    /* Recharge Option Buttons */
+    .packs-title {
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ff758f;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .packs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      width: 100%;
+    }
+
+    .pack-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 117, 143, 0.3);
+      backdrop-filter: blur(10px);
+      padding: 14px 10px;
+      border-radius: 16px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .pack-btn:active {
+      transform: scale(0.95);
+    }
+
+    .pack-btn.used {
+      opacity: 0.4;
+      pointer-events: none;
+      border-color: rgba(255,255,255,0.1);
+      background: rgba(0,0,0,0.3);
+    }
+
+    .pack-icon {
+      font-size: 1.8rem;
+    }
+
+    .pack-boost {
+      font-size: 0.7rem;
+      color: #2ecc71;
+      font-weight: 700;
+    }
+
+    /* Charged Celebration Modal */
+    .charge-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 0, 3, 0.92);
+      backdrop-filter: blur(20px);
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 1000;
+      padding: 20px;
+      animation: popModal 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes popModal {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .charge-modal h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: #2ecc71;
+      text-shadow: 0 0 25px rgba(46, 204, 113, 0.6);
+      margin-bottom: 12px;
+    }
+
+    .charge-modal p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: #ffe5ec;
+      max-width: 360px;
+      margin-bottom: 25px;
+    }
+
+    .reset-btn {
+      background: linear-gradient(135deg, #2ecc71, #27ae60);
+      color: #fff;
+      border: none;
+      padding: 12px 34px;
+      border-radius: 40px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(46, 204, 113, 0.5);
+    }
+
+    /* Floating sparks */
+    .spark {
+      position: absolute;
+      font-size: 1.6rem;
+      pointer-events: none;
+      opacity: 0;
+      animation: flySpark 1.5s ease-out forwards;
+      z-index: 100;
+    }
+
+    @keyframes flySpark {
+      0% { opacity: 1; transform: scale(0.5) translate(0, 0); }
+      100% { opacity: 0; transform: scale(1.6) translate(var(--dx), var(--dy)); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-glow"></div>
+
+  <div class="station-wrap">
+    <div class="status-badge" id="alertBadge">⚠️ Critical Alert: Low Power</div>
+    <h1 class="main-heading">Boyfriend Battery Station</h1>
+
+    <!-- Battery -->
+    <div class="battery-housing">
+      <div class="battery-body">
+        <div class="battery-liquid charging" id="batteryLevel"></div>
+      </div>
+      <div class="battery-terminal"></div>
+    </div>
+
+    <div class="percentage-display" id="percText">1%</div>
+    <div class="vibe-status" id="statusMessage">
+      "Extremely exhausted, out of social energy, cranky &amp; needs immediate care... 🪫🥺"
+    </div>
+
+    <div class="packs-title">✦ Tap to apply recharge packs ✦</div>
+
+    <!-- Recharge Packs Grid -->
+    <div class="packs-grid">
+      <button class="pack-btn" onclick="applyCharge(this, 25, 'Garam Chai &amp; Biscuits ☕', 'Warm chai ingested! Brain fog clearing up... (+25%)')">
+        <span class="pack-icon">☕</span>
+        <span>Adrak Wali Chai</span>
+        <span class="pack-boost">+25% Energy</span>
+      </button>
+
+      <button class="pack-btn" onclick="applyCharge(this, 25, 'Gentle Head Massage 💆‍♂️', 'Tension released! Shoulders officially dropped... (+25%)')">
+        <span class="pack-icon">💆‍♂️</span>
+        <span>Head Massage</span>
+        <span class="pack-boost">+25% Relaxation</span>
+      </button>
+
+      <button class="pack-btn" onclick="applyCharge(this, 25, 'Silent Movie Night 🍿', 'Peaceful movie vibes running! Social pressure zero... (+25%)')">
+        <span class="pack-icon">🍿</span>
+        <span>Silent Movie Watch</span>
+        <span class="pack-boost">+25% Peace</span>
+      </button>
+
+      <button class="pack-btn" onclick="applyCharge(this, 24, 'Tightest Safe Hug 🫂', 'Serotonin overload! Heart rate stabilized... (+24%)')">
+        <span class="pack-icon">🫂</span>
+        <span>Unlimited Hugs</span>
+        <span class="pack-boost">+24% Love</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Full Charge Pop-up -->
+  <div class="charge-modal" id="chargedModal">
+    <div style="font-size: 4rem; margin-bottom: 10px;">⚡🔋✨</div>
+    <h2>100% Fully Charged!</h2>
+    <p>"Boyfriend successfully revitalized with chai, cuddles &amp; infinite love. Ready to love you forever!"</p>
+    <button class="reset-btn" onclick="resetStation()">Drain Battery Again 😜</button>
+  </div>
+
+  <script>
+    let currentPower = 1;
+
+    function applyCharge(btn, boost, title, feedback) {
+      btn.classList.add('used');
+      currentPower += boost;
+      if (currentPower > 100) currentPower = 100;
+
+      const level = document.getElementById('batteryLevel');
+      const percText = document.getElementById('percText');
+      const statusMessage = document.getElementById('statusMessage');
+      const alertBadge = document.getElementById('alertBadge');
+
+      level.style.width = currentPower + '%';
+      percText.innerText = currentPower + '%';
+      statusMessage.innerText = feedback;
+
+      // Color Shift Logic
+      if (currentPower > 30 && currentPower <= 75) {
+        level.style.background = 'linear-gradient(90deg, #ff9f1c, #ffe66d)';
+        level.style.boxShadow = '0 0 20px rgba(255, 159, 28, 0.8)';
+        percText.style.color = '#ff9f1c';
+        alertBadge.innerText = '⚡ Charging In Progress...';
+        alertBadge.style.color = '#ff9f1c';
+        alertBadge.style.borderColor = '#ff9f1c';
+      } else if (currentPower > 75) {
+        level.style.background = 'linear-gradient(90deg, #2ecc71, #a8ff78)';
+        level.style.boxShadow = '0 0 25px rgba(46, 204, 113, 0.9)';
+        percText.style.color = '#2ecc71';
+        alertBadge.innerText = '🔋 High Capacity Reached!';
+        alertBadge.style.color = '#2ecc71';
+        alertBadge.style.borderColor = '#2ecc71';
+      }
+
+      burstSparks();
+
+      // Trigger 100% Final Modal
+      if (currentPower >= 100) {
+        setTimeout(() => {
+          document.getElementById('chargedModal').style.display = 'flex';
+        }, 800);
+      }
+    }
+
+    function burstSparks() {
+      for (let i = 0; i < 20; i++) {
+        const s = document.createElement('div');
+        s.className = 'spark';
+        s.innerText = ['⚡', '💖', '✨', '🔋'][Math.floor(Math.random() * 4)];
+        const dx = (Math.random() - 0.5) * 450 + 'px';
+        const dy = (Math.random() - 0.5) * 350 + 'px';
+        s.style.setProperty('--dx', dx);
+        s.style.setProperty('--dy', dy);
+        s.style.left = '50%';
+        s.style.top = '40%';
+        document.body.appendChild(s);
+        setTimeout(() => s.remove(), 1500);
+      }
+    }
+
+    function resetStation() {
+      currentPower = 1;
+      const level = document.getElementById('batteryLevel');
+      const percText = document.getElementById('percText');
+      const alertBadge = document.getElementById('alertBadge');
+
+      level.style.width = '1%';
+      level.style.background = 'linear-gradient(90deg, #ff0055, #ff4d6d)';
+      level.style.boxShadow = '0 0 20px rgba(255, 0, 85, 0.8)';
+      percText.style.color = '#ff4d6d';
+      percText.innerText = '1%';
+      alertBadge.innerText = '⚠️ Critical Alert: Low Power';
+      alertBadge.style.color = '#ff4d6d';
+      alertBadge.style.borderColor = '#ff4d6d';
+      document.getElementById('statusMessage').innerText = '"Extremely exhausted, out of social energy, cranky & needs immediate care... 🪫🥺"';
+      document.querySelectorAll('.pack-btn').forEach(b => b.classList.remove('used'));
+      document.getElementById('chargedModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
