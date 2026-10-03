@@ -1,315 +1,2244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Royal Invitation 💌💍</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Great+Vibes&family=Montserrat:wght@400;600&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Ashish & Aarti — Royal Wedding Invitation</title>
+  
+  <!-- Premium Fonts: Cinzel Decorative, Playfair Display, Great Vibes & Yatra One for Sanskrit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Great+Vibes&family=Marcellus&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Yatra+One&display=swap" rel="stylesheet">
+
   <style>
+    /* ========================================================
+       THEME VARIABLES
+       ======================================================== */
+    :root {
+      --maroon-deep: #140205;
+      --maroon-rich: #2c050c;
+      --maroon-velvet: #450814;
+      --gold-antique: #d4af37;
+      --gold-light: #f7e7a9;
+      --gold-dark: #866418;
+      --gold-gradient: linear-gradient(135deg, #d4af37 0%, #fff2b2 45%, #aa7c11 80%, #ffd700 100%);
+      --wood-dark: #120404;
+      --wood-base: #24070a;
+      --wood-mid: #380a11;
+      --wood-highlight: #4d0e19;
+      --ivory: #faf5ea;
+      --ivory-soft: #f1e7d0;
+      --font-display: 'Cinzel Decorative', serif;
+      --font-serif: 'Playfair Display', serif;
+      --font-body: 'Marcellus', serif;
+      --font-script: 'Great Vibes', cursive;
+      --font-devanagari: 'Yatra One', cursive;
+    }
+
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--maroon-deep);
+      color: var(--ivory);
+      font-family: var(--font-body);
+      overflow-x: hidden;
     }
 
     body {
-      background: radial-gradient(circle at center, #260a12 0%, #15050a 65%, #050103 100%);
+      background-color: var(--maroon-deep);
+      background-image: 
+        radial-gradient(circle at 50% 15%, rgba(69, 8, 20, 0.5) 0%, transparent 65%),
+        radial-gradient(circle at 50% 85%, rgba(69, 8, 20, 0.4) 0%, transparent 70%);
       min-height: 100vh;
-      width: 100vw;
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
       overflow-x: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       position: relative;
     }
 
-    .ambient-gold {
+    /* Ambient particles canvas */
+    #ambientCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .gold-text {
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      text-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .ornament-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 26px 0;
+      opacity: 0.9;
+    }
+
+    .ornament-line {
+      height: 1px;
+      width: 65px;
+      background: linear-gradient(90deg, transparent, var(--gold-antique), transparent);
+    }
+
+    .ornament-mandala {
+      width: 22px;
+      height: 22px;
+      fill: var(--gold-antique);
+    }
+
+    /* ========================================================
+       MUSIC FLOATING BUTTON
+       ======================================================== */
+    .music-widget {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--maroon-rich), var(--maroon-deep));
+      border: 1px solid var(--gold-antique);
+      box-shadow: 0 0 16px rgba(212, 175, 55, 0.4);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-light);
+      font-size: 19px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.8s ease, transform 0.3s ease;
+    }
+
+    .music-widget.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .music-widget.spinning {
+      animation: spinMusic 5s linear infinite;
+    }
+
+    @keyframes spinMusic {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* ========================================================
+       1. GRAND ROYAL PALACE DOUBLE-DOOR ENTRANCE
+       ======================================================== */
+    #doorScene {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1000;
+      perspective: 2000px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #080102 radial-gradient(circle at 50% 40%, #1e0307 0%, #050001 80%);
+      overflow: hidden;
+      transition: opacity 2s cubic-bezier(0.7, 0, 0.3, 1), visibility 2s;
+    }
+
+    #doorScene.opened {
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .palace-fog-layer {
       position: absolute;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(212, 175, 55, 0.18), transparent 70%);
-      filter: blur(110px);
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse at 50% 100%, rgba(212, 175, 55, 0.08) 0%, rgba(25, 3, 7, 0.45) 50%, transparent 80%);
+      z-index: 2;
+    }
+
+    .portal-camera-rig {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-style: preserve-3d;
+      transition: transform 3.2s cubic-bezier(0.2, 0.85, 0.35, 1);
+    }
+
+    #doorScene.opening .portal-camera-rig {
+      transform: translateZ(420px);
+    }
+
+    .sanctum-backlight {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center 48%, #fffbed 0%, #ffe388 20%, #d89617 42%, #59101b 75%, #180205 95%);
+      opacity: 0;
+      z-index: 1;
+      filter: blur(12px);
+      transition: opacity 2.4s cubic-bezier(0.3, 0.9, 0.2, 1);
+    }
+
+    #doorScene.opening .sanctum-backlight {
+      opacity: 1;
+    }
+
+    /* Substantial Palace Gateway */
+    .palace-gateway-structure {
+      position: relative;
+      width: clamp(360px, 92vw, 1150px);
+      height: clamp(580px, 90vh, 920px);
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      z-index: 4;
+    }
+
+    /* Pillars */
+    .palace-col {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: clamp(30px, 6vw, 76px);
+      background: linear-gradient(90deg, #0d0103 0%, #36060f 35%, #4f0c1a 55%, #140104 100%);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      box-shadow: 0 0 35px rgba(0,0,0,0.9), inset 0 0 15px rgba(0,0,0,0.8);
+      z-index: 9;
+    }
+
+    .col-left { left: 0; border-radius: 6px 0 0 6px; }
+    .col-right { right: 0; border-radius: 0 6px 6px 0; }
+
+    .col-capital {
+      position: absolute;
+      top: 0;
+      width: 130%;
+      left: -15%;
+      height: 24px;
+      background: var(--gold-gradient);
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+    }
+
+    /* Architectural Arch */
+    .palace-cusped-arch {
+      position: absolute;
+      top: 0;
+      left: clamp(28px, 5.5vw, 72px);
+      right: clamp(28px, 5.5vw, 72px);
+      height: clamp(80px, 16vh, 150px);
+      background: linear-gradient(180deg, #180205 0%, #29040c 80%, transparent 100%);
+      border-top: 3px solid var(--gold-antique);
+      border-left: 2px solid var(--gold-antique);
+      border-right: 2px solid var(--gold-antique);
+      border-radius: 200px 200px 0 0;
+      z-index: 8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.95);
       pointer-events: none;
     }
 
-    .wrapper {
+    .arch-jharokha-svg {
       width: 100%;
-      max-width: 520px;
-      padding: 25px 20px;
+      height: 100%;
+      max-height: 100px;
+      padding: 10px 30px 0;
+    }
+
+    /* Outer Carved Wood Frame */
+    .grand-door-outer-casing {
+      position: relative;
+      width: calc(100% - clamp(56px, 11vw, 144px));
+      height: 100%;
+      padding: clamp(10px, 1.8vw, 20px);
+      background: 
+        linear-gradient(180deg, #2b060d 0%, #150204 100%),
+        repeating-linear-gradient(45deg, rgba(0,0,0,0.2) 0px, rgba(0,0,0,0.2) 3px, transparent 3px, transparent 10px);
+      border: 3px solid var(--gold-antique);
+      border-radius: 190px 190px 0 0;
+      box-shadow: 
+        inset 0 0 40px rgba(0,0,0,0.95), 
+        0 15px 50px rgba(0,0,0,0.95),
+        0 0 20px rgba(212, 175, 55, 0.25);
+      z-index: 5;
+      display: flex;
+    }
+
+    /* Carved Door Assembly */
+    .doors-assembly {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      transform-style: preserve-3d;
+      perspective: 1800px;
+      border-radius: 175px 175px 0 0;
+      overflow: hidden;
+      background: #090102;
+      box-shadow: inset 0 0 35px #000;
+    }
+
+    /* Center golden warm light chink */
+    .door-light-chink {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: calc(50% - 1.5px);
+      width: 3px;
+      background: linear-gradient(180deg, transparent 5%, #fff5c0 30%, #ffd700 70%, transparent 95%);
+      box-shadow: 0 0 14px #ffcf40, 0 0 24px rgba(255, 215, 0, 0.7);
+      z-index: 12;
+      pointer-events: none;
+      animation: seamBreath 3s infinite alternate ease-in-out;
+    }
+
+    @keyframes seamBreath {
+      0% { opacity: 0.5; filter: blur(0.5px); }
+      100% { opacity: 0.95; filter: blur(1.5px); }
+    }
+
+    /* REAL CARVED WOOD DOOR LEAF */
+    .grand-door-leaf {
+      width: 50%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 3s cubic-bezier(0.65, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      /* Realistic deep teak/sheesham layered wood texture */
+      background-color: var(--wood-base);
+      background-image: 
+        radial-gradient(ellipse at 50% 30%, rgba(85, 14, 25, 0.45) 0%, rgba(14, 2, 4, 0.95) 100%),
+        repeating-linear-gradient(0deg, rgba(255, 215, 0, 0.015) 0px, rgba(255, 215, 0, 0.015) 1px, transparent 1px, transparent 5px),
+        repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.35) 0px, rgba(0, 0, 0, 0.35) 2px, transparent 2px, transparent 8px);
+      box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.92);
+      padding: clamp(75px, 14vh, 130px) clamp(10px, 1.8vw, 24px) 25px clamp(10px, 1.8vw, 24px);
+    }
+
+    .leaf-left {
+      transform-origin: left center;
+      border-right: 2px solid #080102;
+    }
+
+    .leaf-right {
+      transform-origin: right center;
+      border-left: 2px solid #080102;
+    }
+
+    #doorScene.opening .leaf-left { 
+      transform: rotateY(-112deg); 
+    }
+    #doorScene.opening .leaf-right { 
+      transform: rotateY(112deg); 
+    }
+
+    /* Carved Wooden Door Stile / Perimeter Moldings */
+    .door-carved-core {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Recessed Carved Panels (Deep 3D Wood Carving) */
+    .teak-panel {
+      position: relative;
+      flex: 1;
+      background: 
+        radial-gradient(circle at 50% 45%, #2d060c 0%, #150204 80%),
+        repeating-linear-gradient(45deg, rgba(212,175,55,0.02) 0px, rgba(212,175,55,0.02) 2px, transparent 2px, transparent 6px);
+      border: 2px solid #5a121e;
+      border-radius: 4px;
+      box-shadow: 
+        inset 0 6px 14px rgba(0, 0, 0, 0.95), 
+        inset 0 -4px 10px rgba(0, 0, 0, 0.8),
+        0 0 0 1.5px rgba(212, 175, 55, 0.35),
+        0 2px 4px rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+    }
+
+    .teak-panel-arch {
+      border-radius: 120px 120px 4px 4px;
+      flex: 1.25;
+    }
+
+    .teak-panel::before {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: inherit;
+      pointer-events: none;
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.7);
+    }
+
+    .teak-carving-svg {
+      width: 82%;
+      height: 82%;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.9));
+    }
+
+    /* Hand-forged brass studs (Doma) */
+    .brass-stud-cluster {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #fff2b2 0%, #c6962f 60%, #4a2800 100%);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.95), 0 0 5px rgba(212, 175, 55, 0.4);
+    }
+    .stud-tl { top: 8px; left: 8px; }
+    .stud-tr { top: 8px; right: 8px; }
+    .stud-bl { bottom: 8px; left: 8px; }
+    .stud-br { bottom: 8px; right: 8px; }
+
+    /* Central Astragal Molding Strip (Patti) on the left leaf */
+    .central-meeting-stile {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: -8px;
+      width: 16px;
+      background: linear-gradient(90deg, #1a0306 0%, #440c15 45%, #9b6f17 52%, #440c15 60%, #150204 100%);
+      border-left: 1px solid rgba(212, 175, 55, 0.4);
+      border-right: 1px solid rgba(0, 0, 0, 0.9);
+      box-shadow: 2px 0 10px rgba(0,0,0,0.9);
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    /* Authentic Antique Palace Lion Door Knocker Handles */
+    .palace-knocker {
+      position: absolute;
+      top: 55%;
+      width: clamp(48px, 6vw, 68px);
+      height: clamp(65px, 8vw, 92px);
+      z-index: 11;
+      transform: translateY(-50%);
+      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.95));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .leaf-left .palace-knocker { right: 14px; }
+    .leaf-right .palace-knocker { left: 14px; }
+
+    .knocker-backplate {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Action Button (Kept crisp and clean) */
+    .door-action-pod {
+      position: absolute;
+      bottom: clamp(75px, 12vh, 120px);
+      z-index: 20;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      z-index: 10;
+      pointer-events: auto;
+      transition: opacity 0.6s ease, transform 0.8s ease;
     }
 
-    .invitation-badge {
-      font-size: 0.75rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #d4af37;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .page-heading {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(1.8rem, 3.6vw, 2.5rem);
-      letter-spacing: 2px;
-      background: linear-gradient(180deg, #ffffff 0%, #fef08a 60%, #d4af37 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 25px;
-    }
-
-    /* 3D Envelope Container */
-    .envelope-box {
-      width: 100%;
-      max-width: 380px;
-      height: 250px;
-      background: linear-gradient(145deg, #3d101a, #23080e);
-      border: 2px solid rgba(212, 175, 55, 0.4);
-      border-radius: 18px;
-      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.9), inset 0 0 25px rgba(212, 175, 55, 0.15);
-      position: relative;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .envelope-box:hover {
-      transform: scale(1.03);
-    }
-
-    /* Envelope Flap Lines */
-    .envelope-flap {
-      position: absolute;
-      inset: 0;
-      border: 1px dashed rgba(212, 175, 55, 0.3);
-      border-radius: 16px;
+    #doorScene.opening .door-action-pod {
+      opacity: 0;
+      transform: scale(0.9) translateZ(40px);
       pointer-events: none;
     }
 
-    /* Wax Seal Stamp */
-    .wax-seal {
-      width: 82px;
-      height: 82px;
-      background: radial-gradient(circle at 35% 35%, #e11d48, #881337);
-      border-radius: 50%;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8), inset 0 2px 4px rgba(255, 255, 255, 0.4);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 30px;
-      border: 3px solid #d4af37;
-      transition: all 0.3s ease;
-      animation: pulseSeal 2.5s infinite alternate;
-    }
-
-    @keyframes pulseSeal {
-      0% { transform: scale(0.96); box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
-      100% { transform: scale(1.04); box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); }
-    }
-
-    .seal-hint {
-      margin-top: 18px;
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #cbd5e1;
-    }
-
-    /* Revealed Royal Wedding / Love Letter Modal */
-    .card-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(5, 1, 3, 0.94);
-      backdrop-filter: blur(18px);
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-      padding: 20px;
-    }
-
-    .scroll-card {
-      background: #fbf7ee;
-      color: #2b1117;
-      border: 4px double #d4af37;
-      border-radius: 20px;
-      padding: clamp(26px, 5vh, 40px) 26px;
-      max-width: 440px;
-      width: 100%;
-      box-shadow: 0 30px 85px rgba(0, 0, 0, 0.95), 0 0 45px rgba(212, 175, 55, 0.3);
-      position: relative;
-      animation: openScroll 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      text-align: center;
-    }
-
-    @keyframes openScroll {
-      from { transform: scale(0.8) translateY(40px); opacity: 0; }
-      to { transform: scale(1) translateY(0); opacity: 1; }
-    }
-
-    .gold-crest {
-      font-size: 2.8rem;
-      margin-bottom: 6px;
-    }
-
-    .card-sub {
-      font-family: 'Cinzel', serif;
-      font-size: 0.8rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #9f7d23;
-      margin-bottom: 10px;
-    }
-
-    .card-names {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3rem;
-      color: #881337;
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
-
-    .card-divider {
-      width: 60%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #d4af37, transparent);
-      margin: 0 auto 16px auto;
-    }
-
-    .card-message {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.05rem;
-      line-height: 1.7;
-      color: #4a212b;
-      margin-bottom: 24px;
-      font-style: italic;
-    }
-
-    .vow-badge {
-      display: inline-block;
-      border: 1px solid #d4af37;
-      background: rgba(212, 175, 55, 0.1);
-      padding: 6px 18px;
-      border-radius: 30px;
-      font-size: 0.8rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #881337;
+    .door-enter-btn {
+      background: radial-gradient(circle at center, #fff0a8 0%, #caa030 65%, #7e5c0e 100%);
+      color: #1a0206;
+      border: 1px solid #fff6ce;
+      border-radius: 50px;
+      padding: 16px 42px;
+      font-family: var(--font-display);
+      font-size: clamp(12px, 2.6vw, 14px);
       font-weight: 700;
+      letter-spacing: 3px;
+      cursor: pointer;
+      box-shadow: 0 6px 30px rgba(212, 175, 55, 0.5), inset 0 1px 3px #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      outline: none;
+    }
+
+    .door-enter-btn:hover {
+      box-shadow: 0 8px 36px rgba(255, 215, 0, 0.7), inset 0 1px 4px #fff;
+      transform: translateY(-2px);
+    }
+
+    .door-enter-btn:active {
+      transform: scale(0.97);
+    }
+
+    .door-tap-subtext {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: var(--gold-light);
+      margin-top: 14px;
+      opacity: 0.9;
+      animation: pulseSubtle 2.2s infinite ease-in-out;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+    }
+
+    @keyframes pulseSubtle {
+      0%, 100% { opacity: 0.55; }
+      50% { opacity: 1; }
+    }
+
+    /* Diyas Flanking Entrance */
+    .portal-base-diyas {
+      position: absolute;
+      bottom: 24px;
+      width: clamp(260px, 75vw, 680px);
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 15;
+    }
+
+    .diya-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      filter: drop-shadow(0 0 14px rgba(255, 170, 0, 0.7));
+    }
+
+    .diya-flame {
+      width: 14px;
+      height: 22px;
+      background: radial-gradient(ellipse at bottom, #fff 0%, #ffcf40 45%, #ff4500 85%, transparent 100%);
+      border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+      animation: flameWobble 2.5s infinite ease-in-out alternate;
+      box-shadow: 0 0 20px #ffaa00, 0 0 40px rgba(255, 120, 0, 0.5);
+    }
+
+    .diya-base {
+      width: 46px;
+      height: 18px;
+      background: var(--gold-gradient);
+      border-radius: 0 0 25px 25px;
+      margin-top: -3px;
+      border-top: 2px solid #5a0d1d;
+    }
+
+    @keyframes flameWobble {
+      0% { transform: scale(1) rotate(-1deg); }
+      50% { transform: scale(1.08, 0.94) rotate(1deg); }
+      100% { transform: scale(0.96, 1.04) rotate(-2deg); }
+    }
+
+    /* ========================================================
+       MAIN PALACE INTERIOR CONTAINER
+       ======================================================== */
+    .palace-container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 40px 18px 80px 18px;
+    }
+
+    /* ========================================================
+       3. GANPATI SCENE
+       ======================================================== */
+    .ganpati-section {
+      text-align: center;
+      padding: 60px 10px 30px;
+    }
+
+    .ganpati-frame {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
       margin-bottom: 22px;
     }
 
-    .btn-accept {
-      background: linear-gradient(135deg, #881337, #4c0519);
-      color: #fef08a;
-      border: 1px solid #d4af37;
-      padding: 12px 34px;
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      font-weight: 700;
+    .ganpati-glow {
+      position: absolute;
+      width: 135px;
+      height: 135px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      filter: blur(12px);
+      z-index: -1;
+    }
+
+    .ganpati-icon {
+      width: 95px;
+      height: 95px;
+      filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.65));
+    }
+
+    .shri-ganeshaya {
+      font-family: var(--font-devanagari);
+      font-size: clamp(22px, 5vw, 30px);
+      color: var(--gold-light);
       letter-spacing: 2px;
-      border-radius: 30px;
-      cursor: pointer;
-      box-shadow: 0 8px 25px rgba(136, 19, 55, 0.4);
-      transition: all 0.25s ease;
+      margin-bottom: 16px;
+      text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    }
+
+    .vakratunda-shloka {
+      font-family: var(--font-serif);
+      font-size: clamp(15px, 3.8vw, 19px);
+      line-height: 1.85;
+      color: var(--ivory);
+      font-style: italic;
+      max-width: 520px;
+      margin: 0 auto;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    }
+
+    /* ========================================================
+       4. MAIN ROYAL WEDDING CARD (ONLY ONE CARD)
+       ======================================================== */
+    .royal-card {
+      background: radial-gradient(ellipse at 50% 30%, #460915 0%, #28040a 70%, #170104 100%);
+      border: 2px solid var(--gold-antique);
+      border-radius: 12px;
+      padding: clamp(34px, 6vw, 60px) clamp(18px, 4vw, 40px);
+      position: relative;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.7), 0 0 30px rgba(212, 175, 55, 0.15);
+      margin-bottom: 45px;
+    }
+
+    .corner-motif {
+      position: absolute;
+      width: 42px;
+      height: 42px;
+      fill: none;
+      stroke: var(--gold-antique);
+      stroke-width: 1.5;
+    }
+
+    .corner-tl { top: 10px; left: 10px; }
+    .corner-tr { top: 10px; right: 10px; transform: scaleX(-1); }
+    .corner-bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
+    .corner-br { bottom: 10px; right: 10px; transform: scale(-1); }
+
+    .invitation-header-text {
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 4px;
+      color: var(--gold-light);
+      margin-bottom: 24px;
       text-transform: uppercase;
     }
 
-    .btn-accept:hover {
-      transform: scale(1.06);
-      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
+    .couple-names-wrap {
+      text-align: center;
+      margin: 20px 0 25px;
     }
 
-    /* Rose Petal Particles */
-    .petal {
+    .couple-name {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 7.5vw, 44px);
+      letter-spacing: 3px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .parentage {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 14.5px;
+      color: var(--ivory-soft);
+      letter-spacing: 1px;
+      margin-top: 6px;
+      opacity: 0.9;
+    }
+
+    .ampersand {
+      font-family: var(--font-script);
+      font-size: clamp(38px, 9vw, 54px);
+      color: var(--gold-light);
+      margin: 10px 0;
+      display: block;
+      line-height: 1;
+    }
+
+    .invitation-prose {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: clamp(15px, 3.5vw, 17px);
+      line-height: 1.85;
+      color: var(--ivory);
+      max-width: 540px;
+      margin: 20px auto 0;
+    }
+
+    /* ========================================================
+       5. SCRATCH DATE — BELOW THE MAIN CARD
+       ======================================================== */
+    .scratch-standalone-section {
+      margin: 0 auto 50px;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .scratch-card-box {
+      border: 1px solid var(--gold-antique);
+      border-radius: 12px;
+      background: radial-gradient(ellipse at center, #380710 0%, #1e0207 100%);
+      padding: 24px 18px;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.65), 0 0 20px rgba(212, 175, 55, 0.15);
+      position: relative;
+    }
+
+    .scratch-lead-text {
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: var(--gold-light);
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .scratch-stage {
+      position: relative;
+      width: 100%;
+      height: 135px;
+      border: 1px solid var(--gold-antique);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: none;
+      margin: 0 auto;
+    }
+
+    .scratch-underlay {
       position: absolute;
-      pointer-events: none;
-      animation: floatPetal 2.2s ease-out forwards;
-      z-index: 1000;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, #30050d, #160104);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      padding: 10px;
     }
 
-    @keyframes floatPetal {
-      0% { opacity: 1; transform: translate(0, 0) scale(0.6) rotate(0deg); }
-      100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(180deg); }
+    .revealed-date {
+      font-family: var(--font-display);
+      font-size: clamp(17px, 4.5vw, 22px);
+      font-weight: 700;
+      color: #fff2ba;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+
+    .revealed-venue {
+      font-family: var(--font-serif);
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      color: var(--ivory);
+    }
+
+    .revealed-time {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      color: var(--gold-antique);
+      letter-spacing: 2px;
+      margin-top: 2px;
+    }
+
+    #scratchCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      cursor: crosshair;
+      transition: opacity 0.6s ease;
+    }
+
+    /* ========================================================
+       6. LIVE COUNTDOWN — 4 HEARTS BELOW MAIN CARD
+       ======================================================== */
+    .countdown-standalone-section {
+      margin: 0 auto 75px;
+      max-width: 520px;
+      text-align: center;
+    }
+
+    .countdown-title {
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: var(--gold-antique);
+      margin-bottom: 22px;
+      text-transform: uppercase;
+    }
+
+    .hearts-row {
+      display: flex;
+      justify-content: center;
+      gap: clamp(8px, 2.5vw, 18px);
+      flex-wrap: nowrap;
+    }
+
+    .heart-unit {
+      position: relative;
+      width: clamp(70px, 20vw, 94px);
+      height: clamp(70px, 20vw, 94px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.28));
+    }
+
+    .heart-unit svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      fill: #34060e;
+      stroke: var(--gold-antique);
+      stroke-width: 1.6;
+      stroke-linecap: round;
+    }
+
+    .heart-data {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 4px;
+    }
+
+    .heart-number {
+      font-family: var(--font-display);
+      font-size: clamp(16px, 4.5vw, 22px);
+      font-weight: 700;
+      color: #fff4bf;
+      line-height: 1;
+    }
+
+    .heart-label {
+      font-family: var(--font-serif);
+      font-size: clamp(8.5px, 2.3vw, 10px);
+      letter-spacing: 1.5px;
+      color: var(--ivory-soft);
+      margin-top: 3px;
+      text-transform: uppercase;
+    }
+
+    #countdownZeroMsg {
+      display: none;
+      font-family: var(--font-display);
+      font-size: 18px;
+      letter-spacing: 2px;
+      color: var(--gold-light);
+      text-align: center;
+      padding: 15px;
+    }
+
+    /* ========================================================
+       7. CELEBRATIONS / EVENTS
+       ======================================================== */
+    .celebrations-wrap {
+      margin: 80px 0;
+    }
+
+    .section-headline {
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: clamp(22px, 5.5vw, 32px);
+      letter-spacing: 4px;
+      margin-bottom: 8px;
+    }
+
+    .section-subtext {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--ivory-soft);
+      font-size: 15px;
+      margin-bottom: 40px;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 620px) {
+      .events-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+      }
+    }
+
+    .royal-event-box {
+      position: relative;
+      background: radial-gradient(ellipse at 50% 15%, #460915 0%, #260309 80%, #170104 100%);
+      border: 1px solid var(--gold-antique);
+      border-radius: 8px;
+      padding: 28px 20px 24px;
+      text-align: center;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.65), inset 0 0 25px rgba(0,0,0,0.5);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .royal-event-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 45px rgba(0,0,0,0.8), 0 0 25px rgba(212, 175, 55, 0.28);
+      border-color: #fff1b8;
+    }
+
+    .event-card-inner-frame {
+      position: absolute;
+      inset: 7px;
+      border: 1px dashed rgba(212, 175, 55, 0.4);
+      border-radius: 5px;
+      pointer-events: none;
+    }
+
+    .event-corner {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border: 1.5px solid var(--gold-antique);
+      pointer-events: none;
+    }
+    .event-corner-tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+    .event-corner-tr { top: 12px; right: 12px; border-left: none; border-bottom: none; }
+    .event-corner-bl { bottom: 12px; left: 12px; border-right: none; border-top: none; }
+    .event-corner-br { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+
+    .event-icon-badge {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(90, 13, 29, 0.75) 0%, rgba(34, 3, 8, 0.9) 100%);
+      border: 1px solid var(--gold-antique);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      box-shadow: 0 0 16px rgba(212, 175, 55, 0.2);
+    }
+
+    .event-card-svg {
+      width: 30px;
+      height: 30px;
+      stroke: var(--gold-light);
+      fill: none;
+    }
+
+    .box-mehendi { border-color: rgba(212, 175, 55, 0.85); }
+    .box-sangeet { border-color: rgba(212, 175, 55, 0.85); }
+    .box-haldi {
+      border-color: #d8a018;
+      background: radial-gradient(ellipse at 50% 15%, #4e141a 0%, #28040a 80%, #180205 100%);
+    }
+    .box-wedding {
+      border: 1.5px solid #ffd700;
+      background: radial-gradient(ellipse at 50% 10%, #580d1e 0%, #2e050d 75%, #1c0207 100%);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.8), 0 0 20px rgba(212, 175, 55, 0.25);
+    }
+
+    .event-card-title {
+      font-family: var(--font-display);
+      font-size: clamp(19px, 4.5vw, 23px);
+      letter-spacing: 3px;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+
+    .event-card-date {
+      font-family: var(--font-serif);
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .event-card-time {
+      font-family: var(--font-serif);
+      font-size: 13.5px;
+      color: var(--gold-antique);
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .event-card-place {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      color: var(--ivory-soft);
+      letter-spacing: 0.5px;
+      opacity: 0.9;
+    }
+
+    .card-mini-divider {
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-antique), transparent);
+      margin: 8px auto;
+    }
+
+    /* ========================================================
+       8. OUR STORY — MOBILE-STYLE PHOTO SLIDER
+       ======================================================== */
+    .story-section {
+      margin: 80px 0;
+    }
+
+    .slider-stage-wrapper {
+      position: relative;
+      max-width: 440px;
+      margin: 30px auto 0;
+    }
+
+    .slider-viewport {
+      position: relative;
+      width: 100%;
+      height: clamp(380px, 60vh, 480px);
+      border-radius: 12px;
+      border: 2px solid var(--gold-antique);
+      background: #190206;
+      box-shadow: 0 14px 45px rgba(0,0,0,0.7), 0 0 25px rgba(212, 175, 55, 0.2);
+      overflow: hidden;
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-select: none;
+      cursor: grab;
+    }
+
+    .slider-viewport:active {
+      cursor: grabbing;
+    }
+
+    .slider-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1);
+    }
+
+    .slider-slide {
+      min-width: 100%;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .slide-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(10%) contrast(105%);
+      pointer-events: none;
+    }
+
+    .slide-gradient-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 65%, rgba(18, 2, 5, 0.92) 100%);
+      pointer-events: none;
+    }
+
+    .slide-caption-bar {
+      position: absolute;
+      bottom: 16px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: 15px;
+      letter-spacing: 1.5px;
+      color: var(--gold-light);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.95);
+      pointer-events: none;
+    }
+
+    .slider-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(30, 4, 8, 0.85);
+      border: 1px solid var(--gold-antique);
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .slider-nav-btn:active {
+      transform: translateY(-50%) scale(0.92);
+    }
+
+    .btn-prev { left: -14px; }
+    .btn-next { right: -14px; }
+
+    .slider-footer-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 16px;
+    }
+
+    .slider-counter {
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: var(--gold-light);
+    }
+
+    .slider-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .slider-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .slider-dot.active {
+      background: var(--gold-light);
+      width: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px var(--gold-antique);
+    }
+
+    /* ========================================================
+       9. VENUE
+       ======================================================== */
+    .venue-section {
+      margin: 80px 0;
+      text-align: center;
+    }
+
+    .venue-box {
+      border: 1px solid var(--gold-antique);
+      border-radius: 12px;
+      background: radial-gradient(circle at center, #380710 0%, #1c0207 100%);
+      padding: 34px 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.65);
+      position: relative;
+    }
+
+    .venue-place-name {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 5vw, 28px);
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+
+    .venue-city {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      color: var(--ivory);
+      margin-bottom: 24px;
+    }
+
+    .venue-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      border: 1px solid var(--gold-antique);
+      color: var(--gold-light);
+      padding: 12px 28px;
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: 2.5px;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+    }
+
+    .venue-btn:hover, .venue-btn:active {
+      background: var(--gold-gradient);
+      color: var(--maroon-deep);
+      border-color: #fff;
+    }
+
+    /* ========================================================
+       10. FINAL MESSAGE
+       ======================================================== */
+    .final-section {
+      text-align: center;
+      padding: 50px 10px 40px;
+      margin-top: 40px;
+    }
+
+    .final-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(18px, 4.5vw, 23px);
+      line-height: 1.8;
+      color: var(--ivory);
+      max-width: 500px;
+      margin: 0 auto 30px;
+    }
+
+    .final-couple-names {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 6vw, 32px);
+      letter-spacing: 4px;
+      margin-bottom: 12px;
+    }
+
+    .final-footer-text {
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: 4px;
+      color: var(--gold-antique);
+      text-transform: uppercase;
     }
   </style>
 </head>
 <body>
 
-  <div class="ambient-gold"></div>
+  <!-- Ambient Gold Sparkle & Petal Simulation -->
+  <canvas id="ambientCanvas"></canvas>
 
-  <div class="wrapper">
-    <div class="invitation-badge">✦ Official Lifetime Decree ✦</div>
-    <h1 class="page-heading">A Royal Invitation</h1>
+  <!-- ========================================================
+       MUSIC
+       ======================================================== -->
+  <audio id="weddingMusic" loop preload="auto">
+    <source src="assets/varad-varad.mp3" type="audio/mpeg" />
+  </audio>
 
-    <!-- Interactive Envelope with Wax Seal -->
-    <div class="envelope-box" onclick="breakSeal(event)">
-      <div class="envelope-flap"></div>
-      <div class="wax-seal">👑</div>
+  <!-- Floating Music Toggle Button -->
+  <div id="musicToggleBtn" class="music-widget" aria-label="Toggle Music">♫</div>
+
+  <!-- ========================================================
+       1. OPENING: GRAND ROYAL INDIAN PALACE DOUBLE DOORS
+       ======================================================== -->
+  <div id="doorScene">
+    <div class="palace-fog-layer"></div>
+
+    <div class="portal-camera-rig">
+      <div class="sanctum-backlight"></div>
+
+      <div class="palace-gateway-structure">
+        <!-- Flanking Columns -->
+        <div class="palace-col col-left"><div class="col-capital"></div></div>
+        <div class="palace-col col-right"><div class="col-capital"></div></div>
+
+        <!-- Palace Cusped Gateway Arch -->
+        <div class="palace-cusped-arch">
+          <svg class="arch-jharokha-svg" viewBox="0 0 600 90" preserveAspectRatio="none">
+            <path d="M0 90 C 80 80, 160 30, 240 50 C 270 58, 290 20, 300 10 C 310 20, 330 58, 360 50 C 440 30, 520 80, 600 90" 
+                  stroke="url(#goldStrokeDoor)" stroke-width="3" fill="none" />
+            <path d="M40 90 C 120 75, 200 45, 260 55 C 285 60, 295 35, 300 25 C 305 35, 315 60, 340 55 C 400 45, 480 75, 560 90" 
+                  stroke="rgba(212,175,55,0.4)" stroke-width="1.5" stroke-dasharray="4,4" fill="none" />
+            <defs>
+              <linearGradient id="goldStrokeDoor" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#836214"/>
+                <stop offset="50%" stop-color="#fff2b2"/>
+                <stop offset="100%" stop-color="#836214"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <!-- Outer Substantial Carved Teak Frame -->
+        <div class="grand-door-outer-casing">
+          <!-- The Double-Door Assembly -->
+          <div class="doors-assembly">
+            <div class="door-light-chink"></div>
+
+            <!-- Left Door Leaf -->
+            <div class="grand-door-leaf leaf-left">
+              <div class="door-carved-core">
+                <!-- Top Arched Carved Lotus Panel -->
+                <div class="teak-panel teak-panel-arch">
+                  <div class="brass-stud-cluster stud-tl"></div>
+                  <div class="brass-stud-cluster stud-tr"></div>
+                  <svg class="teak-carving-svg" viewBox="0 0 100 110">
+                    <path d="M50 15 C45 35 30 50 20 60 C35 60 45 52 50 38 C55 52 65 60 80 60 C70 50 55 35 50 15 Z" fill="none" stroke="#d4af37" stroke-width="1.8" opacity="0.85"/>
+                    <path d="M50 35 C38 48 32 68 50 95 C68 68 62 48 50 35 Z" fill="none" stroke="#d4af37" stroke-width="1.5" opacity="0.6"/>
+                    <circle cx="50" cy="55" r="5" fill="#caa030" opacity="0.8"/>
+                    <circle cx="50" cy="95" r="2.5" fill="#ffd700"/>
+                  </svg>
+                </div>
+
+                <!-- Middle Carved Floral Mandala Panel -->
+                <div class="teak-panel">
+                  <div class="brass-stud-cluster stud-tl"></div>
+                  <div class="brass-stud-cluster stud-tr"></div>
+                  <div class="brass-stud-cluster stud-bl"></div>
+                  <div class="brass-stud-cluster stud-br"></div>
+                  <svg class="teak-carving-svg" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="28" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.7"/>
+                    <path d="M50 18 Q50 50 18 50 Q50 50 50 82 Q50 50 82 50 Q50 50 50 18 Z" fill="none" stroke="#e8c257" stroke-width="1.8"/>
+                    <circle cx="50" cy="50" r="7" fill="#8b6508" stroke="#ffd700" stroke-width="1"/>
+                  </svg>
+                </div>
+
+                <!-- Lower Heavy Carved Panel -->
+                <div class="teak-panel">
+                  <div class="brass-stud-cluster stud-tl"></div>
+                  <div class="brass-stud-cluster stud-tr"></div>
+                  <div class="brass-stud-cluster stud-bl"></div>
+                  <div class="brass-stud-cluster stud-br"></div>
+                  <svg class="teak-carving-svg" viewBox="0 0 100 100">
+                    <polygon points="50,15 80,50 50,85 20,50" fill="none" stroke="#d4af37" stroke-width="1.5" opacity="0.75"/>
+                    <polygon points="50,26 70,50 50,74 30,50" fill="none" stroke="#8b6508" stroke-width="1.2"/>
+                    <circle cx="50" cy="50" r="4" fill="#ffd700"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Overlapping Central Astragal Molding Strip (Patti) -->
+              <div class="central-meeting-stile"></div>
+
+              <!-- Antique Brass Lion Door Knocker Handle -->
+              <div class="palace-knocker">
+                <svg class="knocker-backplate" viewBox="0 0 70 95">
+                  <circle cx="35" cy="32" r="22" fill="url(#brassGrad)" stroke="#ffea9f" stroke-width="1.5"/>
+                  <!-- Lion Head Motif -->
+                  <path d="M26 24 C26 20 30 18 35 18 C40 18 44 20 44 24 C46 25 47 28 47 31 C47 36 41 39 35 40 C29 39 23 36 23 31 C23 28 24 25 26 24 Z" fill="#4d2f02" stroke="#d4af37" stroke-width="0.8"/>
+                  <!-- Heavy Hanging Ring -->
+                  <ellipse cx="35" cy="58" rx="17" ry="24" fill="none" stroke="url(#brassGrad)" stroke-width="5.5"/>
+                  <ellipse cx="35" cy="58" rx="17" ry="24" fill="none" stroke="#221200" stroke-width="1" opacity="0.7"/>
+                  <defs>
+                    <linearGradient id="brassGrad" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#fff5c0"/>
+                      <stop offset="45%" stop-color="#caa030"/>
+                      <stop offset="85%" stop-color="#734f0c"/>
+                      <stop offset="100%" stop-color="#3d2600"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Right Door Leaf -->
+            <div class="grand-door-leaf leaf-right">
+              <div class="door-carved-core">
+                <!-- Top Arched Carved Lotus Panel -->
+                <div class="teak-panel teak-panel-arch">
+                  <div class="brass-stud-cluster stud-tl"></div>
+                  <div class="brass-stud-cluster stud-tr"></div>
+                  <svg class="teak-carving-svg" viewBox="0 0 100 110">
+                    <path d="M50 15 C45 35 30 50 20 60 C35 60 45 52 50 38 C55 52 65 60 80 60 C70 50 55 35 50 15 Z" fill="none" stroke="#d4af37" stroke-width="1.8" opacity="0.85"/>
+                    <path d="M50 35 C38 48 32 68 50 95 C68 68 62 48 50 35 Z" fill="none" stroke="#d4af37" stroke-width="1.5" opacity="0.6"/>
+                    <circle cx="50" cy="55" r="5" fill="#caa030" opacity="0.8"/>
+                    <circle cx="50" cy="95" r="2.5" fill="#ffd700"/>
+                  </svg>
+                </div>
+
+                <!-- Middle Carved Floral Mandala Panel -->
+                <div class="teak-panel">
+                  <div class="brass-stud-cluster stud-tl"></div>
+                  <div class="brass-stud-cluster stud-tr"></div>
+                  <div class="brass-stud-cluster stud-bl"></div>
+                  <div class="brass-stud-cluster stud-br"></div>
+                  <svg class="teak-carving-svg" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="28" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.7"/>
+                    <path d="M50 18 Q50 50 18 50 Q50 50 50 82 Q50 50 82 50 Q50 50 50 18 Z" fill="none" stroke="#e8c257" stroke-width="1.8"/>
+                    <circle cx="50" cy="50" r="7" fill="#8b6508" stroke="#ffd700" stroke-width="1"/>
+                  </svg>
+                </div>
+
+                <!-- Lower Heavy Carved Panel -->
+                <div class="teak-panel">
+                  <div class="brass-stud-cluster stud-tl"></div>
+                  <div class="brass-stud-cluster stud-tr"></div>
+                  <div class="brass-stud-cluster stud-bl"></div>
+                  <div class="brass-stud-cluster stud-br"></div>
+                  <svg class="teak-carving-svg" viewBox="0 0 100 100">
+                    <polygon points="50,15 80,50 50,85 20,50" fill="none" stroke="#d4af37" stroke-width="1.5" opacity="0.75"/>
+                    <polygon points="50,26 70,50 50,74 30,50" fill="none" stroke="#8b6508" stroke-width="1.2"/>
+                    <circle cx="50" cy="50" r="4" fill="#ffd700"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Antique Brass Lion Door Knocker Handle -->
+              <div class="palace-knocker">
+                <svg class="knocker-backplate" viewBox="0 0 70 95">
+                  <circle cx="35" cy="32" r="22" fill="url(#brassGradRight)" stroke="#ffea9f" stroke-width="1.5"/>
+                  <path d="M26 24 C26 20 30 18 35 18 C40 18 44 20 44 24 C46 25 47 28 47 31 C47 36 41 39 35 40 C29 39 23 36 23 31 C23 28 24 25 26 24 Z" fill="#4d2f02" stroke="#d4af37" stroke-width="0.8"/>
+                  <ellipse cx="35" cy="58" rx="17" ry="24" fill="none" stroke="url(#brassGradRight)" stroke-width="5.5"/>
+                  <ellipse cx="35" cy="58" rx="17" ry="24" fill="none" stroke="#221200" stroke-width="1" opacity="0.7"/>
+                  <defs>
+                    <linearGradient id="brassGradRight" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#fff5c0"/>
+                      <stop offset="45%" stop-color="#caa030"/>
+                      <stop offset="85%" stop-color="#734f0c"/>
+                      <stop offset="100%" stop-color="#3d2600"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Button (Kept as designated) -->
+      <div class="door-action-pod">
+        <button id="openDoorBtn" class="door-enter-btn">
+          ✦ OPEN THE INVITATION ✦
+        </button>
+        <div class="door-tap-subtext">Tap to enter</div>
+      </div>
+
+      <!-- Diyas Flanking Entrance -->
+      <div class="portal-base-diyas">
+        <div class="diya-unit">
+          <div class="diya-flame"></div>
+          <div class="diya-base"></div>
+        </div>
+        <div class="diya-unit">
+          <div class="diya-flame"></div>
+          <div class="diya-base"></div>
+        </div>
+      </div>
     </div>
-
-    <div class="seal-hint">✦ Tap the golden wax seal to unseal ✦</div>
   </div>
 
-  <!-- Revealed Scroll Card -->
-  <div id="cardModal" class="card-modal">
-    <div class="scroll-card">
-      <div class="gold-crest">💍✨</div>
-      <div class="card-sub">The Cordial Invitation of a Lifetime</div>
+  <!-- ========================================================
+       PALACE SCROLL JOURNEY
+       ======================================================== -->
+  <div class="palace-container">
 
-      <div class="card-names">You & Me</div>
+    <!-- ========================================================
+         3. LORD GANESHA & SHLOKA
+         ======================================================== -->
+    <section class="ganpati-section reveal">
+      <div class="ganpati-frame">
+        <div class="ganpati-glow"></div>
+        <svg class="ganpati-icon" viewBox="0 0 100 100" fill="none">
+          <path d="M50 15 C45 15, 38 18, 38 28 C38 36, 46 39, 46 44 C46 51, 37 54, 34 60 C31 66, 34 76, 42 81 C48 85, 56 83, 59 78 C62 73, 60 67, 57 65 C53 62, 48 64, 48 59 C48 56, 52 53, 56 48 C61 42, 63 35, 61 27 C59 20, 55 15, 50 15 Z" fill="url(#goldGrad)" />
+          <path d="M49 20 Q54 28 49 36" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round" />
+          <circle cx="50" cy="22" r="2.5" fill="#f7e7a9" />
+          <path d="M41 33 C33 33, 27 38, 27 46 C27 52, 32 57, 39 57" stroke="url(#goldGrad)" stroke-width="2" stroke-linecap="round" fill="none" />
+          <path d="M58 33 C66 33, 72 38, 72 46 C72 52, 67 57, 60 57" stroke="url(#goldGrad)" stroke-width="2" stroke-linecap="round" fill="none" />
+          <defs>
+            <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#fff2b2"/>
+              <stop offset="50%" stop-color="#d4af37"/>
+              <stop offset="100%" stop-color="#8b6508"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
 
-      <div class="card-divider"></div>
+      <div class="shri-ganeshaya">॥ श्री गणेशाय नमः ॥</div>
 
-      <p class="card-message">
-        "You are formally and irrevocably invited to be my favourite person, my safe place, my best friend, and my partner for all the years to come."
+      <p class="vakratunda-shloka">
+        वक्रतुण्ड महाकाय सूर्यकोटि समप्रभः ।<br />
+        निर्विघ्नं कुरु मे देव शुभकार्येषु सर्वदा ॥
       </p>
 
-      <div class="vow-badge">✦ Vow: Always & Forever ✦</div><br>
+      <div class="ornament-divider">
+        <div class="ornament-line"></div>
+        <svg class="ornament-mandala" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="5" fill="#d4af37"/>
+          <path d="M12 2L14 7H10L12 2ZM12 22L10 17H14L12 22ZM2 12L7 10V14L2 12ZM22 12L17 14V10L22 12Z" fill="#d4af37"/>
+        </svg>
+        <div class="ornament-line"></div>
+      </div>
+    </section>
 
-      <button class="btn-accept" onclick="closeCard()">RSVP: Accepted Forever ❤️</button>
-    </div>
+    <!-- ========================================================
+         4. MAIN WEDDING CARD (ONLY ONE INVITATION CARD)
+         ======================================================== -->
+    <section class="royal-card reveal">
+      <svg class="corner-motif corner-tl" viewBox="0 0 40 40">
+        <path d="M2,38 L2,10 Q2,2 10,2 L38,2" />
+        <path d="M8,30 L8,12 Q8,8 12,8 L30,8" />
+        <circle cx="16" cy="16" r="3" fill="#d4af37" />
+      </svg>
+      <svg class="corner-motif corner-tr" viewBox="0 0 40 40">
+        <path d="M2,38 L2,10 Q2,2 10,2 L38,2" />
+        <path d="M8,30 L8,12 Q8,8 12,8 L30,8" />
+        <circle cx="16" cy="16" r="3" fill="#d4af37" />
+      </svg>
+      <svg class="corner-motif corner-bl" viewBox="0 0 40 40">
+        <path d="M2,38 L2,10 Q2,2 10,2 L38,2" />
+        <path d="M8,30 L8,12 Q8,8 12,8 L30,8" />
+        <circle cx="16" cy="16" r="3" fill="#d4af37" />
+      </svg>
+      <svg class="corner-motif corner-br" viewBox="0 0 40 40">
+        <path d="M2,38 L2,10 Q2,2 10,2 L38,2" />
+        <path d="M8,30 L8,12 Q8,8 12,8 L30,8" />
+        <circle cx="16" cy="16" r="3" fill="#d4af37" />
+      </svg>
+
+      <div class="invitation-header-text">Together With Their Families</div>
+
+      <div class="couple-names-wrap">
+        <div class="couple-name gold-text">ASHISH</div>
+        <div class="parentage">Son of Arun Jadhav</div>
+
+        <span class="ampersand">&amp;</span>
+
+        <div class="couple-name gold-text">AARTI</div>
+        <div class="parentage">Daughter of Chougule Family</div>
+      </div>
+
+      <p class="invitation-prose">
+        Cordially request the honour of your auspicious presence and blessings as we celebrate the sacred union of our hearts, vows, and destinies in marriage.
+      </p>
+    </section>
+
+    <!-- ========================================================
+         5. SCRATCH DATE — BELOW THE MAIN CARD
+         ======================================================== -->
+    <section class="scratch-standalone-section reveal">
+      <div class="scratch-card-box">
+        <div class="scratch-lead-text">✦ Scratch To Reveal Date ✦</div>
+        <div class="scratch-stage" id="scratchStage">
+          <div class="scratch-underlay">
+            <div class="revealed-date">26 NOVEMBER 2026</div>
+            <div class="revealed-venue">VADANGE, KOLHAPUR</div>
+            <div class="revealed-time">12:00 PM IST</div>
+          </div>
+          <canvas id="scratchCanvas"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         6. LIVE COUNTDOWN — 4 HEARTS BELOW MAIN CARD
+         ======================================================== -->
+    <section class="countdown-standalone-section reveal">
+      <div class="countdown-title">The Auspicious Muhurat Approaches</div>
+
+      <div class="hearts-row" id="countdownHearts">
+        <div class="heart-unit">
+          <svg viewBox="0 0 100 90">
+            <path d="M50 82 C50 82 12 55 12 28 C12 12 25 6 36 6 C44 6 48 10 50 14 C52 10 56 6 64 6 C75 6 88 12 88 28 C88 55 50 82 50 82 Z" />
+          </svg>
+          <div class="heart-data">
+            <span class="heart-number" id="cDays">00</span>
+            <span class="heart-label">Days</span>
+          </div>
+        </div>
+
+        <div class="heart-unit">
+          <svg viewBox="0 0 100 90">
+            <path d="M50 82 C50 82 12 55 12 28 C12 12 25 6 36 6 C44 6 48 10 50 14 C52 10 56 6 64 6 C75 6 88 12 88 28 C88 55 50 82 50 82 Z" />
+          </svg>
+          <div class="heart-data">
+            <span class="heart-number" id="cHours">00</span>
+            <span class="heart-label">Hours</span>
+          </div>
+        </div>
+
+        <div class="heart-unit">
+          <svg viewBox="0 0 100 90">
+            <path d="M50 82 C50 82 12 55 12 28 C12 12 25 6 36 6 C44 6 48 10 50 14 C52 10 56 6 64 6 C75 6 88 12 88 28 C88 55 50 82 50 82 Z" />
+          </svg>
+          <div class="heart-data">
+            <span class="heart-number" id="cMins">00</span>
+            <span class="heart-label">Mins</span>
+          </div>
+        </div>
+
+        <div class="heart-unit">
+          <svg viewBox="0 0 100 90">
+            <path d="M50 82 C50 82 12 55 12 28 C12 12 25 6 36 6 C44 6 48 10 50 14 C52 10 56 6 64 6 C75 6 88 12 88 28 C88 55 50 82 50 82 Z" />
+          </svg>
+          <div class="heart-data">
+            <span class="heart-number" id="cSecs">00</span>
+            <span class="heart-label">Secs</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="countdownZeroMsg">
+        THE WAIT IS OVER<br />
+        <span style="font-size: 15px; color: var(--ivory);">THE WEDDING DAY IS HERE ❤️</span>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         7. CELEBRATIONS / EVENTS
+         ======================================================== -->
+    <section class="celebrations-wrap">
+      <h2 class="section-headline gold-text reveal">The Celebrations</h2>
+      <div class="section-subtext reveal">Join us in each step of our sacred journey</div>
+
+      <div class="events-grid">
+        <!-- Mehendi -->
+        <div class="royal-event-box box-mehendi reveal">
+          <div class="event-card-inner-frame"></div>
+          <span class="event-corner event-corner-tl"></span>
+          <span class="event-corner event-corner-tr"></span>
+          <span class="event-corner event-corner-bl"></span>
+          <span class="event-corner event-corner-br"></span>
+
+          <div class="event-icon-badge">
+            <svg class="event-card-svg" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="3" stroke-width="1.5" />
+              <path d="M12 2C13 5 15 7 18 7C15 8 13 10 12 13C11 10 9 8 6 7C9 7 11 5 12 2Z" stroke-width="1.5" />
+              <path d="M12 22C13 19 15 17 18 17C15 16 13 14 12 11C11 14 9 16 6 17C9 17 11 19 12 22Z" stroke-width="1.5" />
+              <circle cx="12" cy="12" r="8" stroke-dasharray="2,2" stroke-width="1" />
+            </svg>
+          </div>
+
+          <h3 class="event-card-title">MEHENDI</h3>
+          <div class="event-card-date">24 November 2026</div>
+          <div class="event-card-time">4:00 PM</div>
+          <div class="card-mini-divider"></div>
+          <div class="event-card-place">At Groom's Home</div>
+        </div>
+
+        <!-- Sangeet -->
+        <div class="royal-event-box box-sangeet reveal">
+          <div class="event-card-inner-frame"></div>
+          <span class="event-corner event-corner-tl"></span>
+          <span class="event-corner event-corner-tr"></span>
+          <span class="event-corner event-corner-bl"></span>
+          <span class="event-corner event-corner-br"></span>
+
+          <div class="event-icon-badge">
+            <svg class="event-card-svg" viewBox="0 0 24 24">
+              <path d="M9 18V5l12-2v13" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="6" cy="18" r="3" stroke-width="1.5" />
+              <circle cx="18" cy="16" r="3" stroke-width="1.5" />
+              <path d="M9 9l12-2" stroke-width="1.5"/>
+            </svg>
+          </div>
+
+          <h3 class="event-card-title">SANGEET</h3>
+          <div class="event-card-date">24 November 2026</div>
+          <div class="event-card-time">7:00 PM</div>
+          <div class="card-mini-divider"></div>
+          <div class="event-card-place">At Groom's Home</div>
+        </div>
+
+        <!-- Haldi -->
+        <div class="royal-event-box box-haldi reveal">
+          <div class="event-card-inner-frame"></div>
+          <span class="event-corner event-corner-tl"></span>
+          <span class="event-corner event-corner-tr"></span>
+          <span class="event-corner event-corner-bl"></span>
+          <span class="event-corner event-corner-br"></span>
+
+          <div class="event-icon-badge">
+            <svg class="event-card-svg" viewBox="0 0 24 24" style="stroke: #ffe066;">
+              <path d="M7 10C7 8 9 7 12 7C15 7 17 8 17 10L18 17C18 20 15 21 12 21C9 21 6 20 6 17L7 10Z" stroke-width="1.5" />
+              <path d="M9 7C9 4 12 3 12 3C12 3 15 4 15 7" stroke-width="1.5" />
+              <path d="M8 12C10 13 14 13 16 12" stroke-width="1.2" />
+              <circle cx="12" cy="16" r="1.5" fill="#ffe066" />
+            </svg>
+          </div>
+
+          <h3 class="event-card-title" style="color: #ffe685;">HALDI</h3>
+          <div class="event-card-date">25 November 2026</div>
+          <div class="event-card-time" style="color: #ffd24d;">7:00 PM</div>
+          <div class="card-mini-divider"></div>
+          <div class="event-card-place">At Groom's Home</div>
+        </div>
+
+        <!-- The Wedding -->
+        <div class="royal-event-box box-wedding reveal">
+          <div class="event-card-inner-frame"></div>
+          <span class="event-corner event-corner-tl"></span>
+          <span class="event-corner event-corner-tr"></span>
+          <span class="event-corner event-corner-bl"></span>
+          <span class="event-corner event-corner-br"></span>
+
+          <div class="event-icon-badge" style="border-color: #ffd700; background: radial-gradient(circle, #5b0e1e, #2b040a);">
+            <svg class="event-card-svg" viewBox="0 0 24 24" style="stroke: #ffd700;">
+              <path d="M4 20h16M5 20V9l7-5 7 5v11" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 20v-7a3 3 0 0 1 6 0v7" stroke-width="1.4"/>
+              <circle cx="12" cy="7" r="1" fill="#ffd700"/>
+            </svg>
+          </div>
+
+          <h3 class="event-card-title" style="color: #fff2b2;">THE WEDDING</h3>
+          <div class="event-card-date" style="color: #fff8d6;">26 November 2026</div>
+          <div class="event-card-time" style="color: #ffd700;">12:00 PM</div>
+          <div class="card-mini-divider" style="background: linear-gradient(90deg, transparent, #ffd700, transparent);"></div>
+          <div class="event-card-place">Vadange, Kolhapur</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         8. OUR STORY — MOBILE-STYLE PHOTO SLIDER
+         ======================================================== -->
+    <section class="story-section reveal">
+      <h2 class="section-headline gold-text">Our Story</h2>
+      <div class="section-subtext">Moments etched into eternity</div>
+
+      <div class="slider-stage-wrapper">
+        <button class="slider-nav-btn btn-prev" id="sliderPrevBtn" aria-label="Previous Photo">❮</button>
+        <button class="slider-nav-btn btn-next" id="sliderNextBtn" aria-label="Next Photo">❯</button>
+
+        <div class="slider-viewport" id="sliderViewport">
+          <div class="slider-track" id="sliderTrack">
+            <!-- Slide 1 -->
+            <div class="slider-slide">
+              <img class="slide-photo" 
+                   src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" 
+                   alt="Ashish & Aarti - The Beginning of Forever" />
+              <div class="slide-gradient-overlay"></div>
+              <div class="slide-caption-bar">The Beginning of Forever</div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slider-slide">
+              <img class="slide-photo" 
+                   src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80" 
+                   alt="Ashish & Aarti - Two Souls, One Destiny" />
+              <div class="slide-gradient-overlay"></div>
+              <div class="slide-caption-bar">Two Souls, One Destiny</div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slider-slide">
+              <img class="slide-photo" 
+                   src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" 
+                   alt="Ashish & Aarti - Whispers of Love" />
+              <div class="slide-gradient-overlay"></div>
+              <div class="slide-caption-bar">Whispers of Love</div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="slider-slide">
+              <img class="slide-photo" 
+                   src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" 
+                   alt="Ashish & Aarti - Bound by Sacred Promises" />
+              <div class="slide-gradient-overlay"></div>
+              <div class="slide-caption-bar">Bound by Sacred Promises</div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="slider-slide">
+              <img class="slide-photo" 
+                   src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80" 
+                   alt="Ashish & Aarti - Towards Eternity" />
+              <div class="slide-gradient-overlay"></div>
+              <div class="slide-caption-bar">Towards Eternity</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slider-footer-info">
+          <div class="slider-counter" id="sliderCounter">1 / 5</div>
+          <div class="slider-dots" id="sliderDots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         9. VENUE
+         ======================================================== -->
+    <section class="venue-section reveal">
+      <h2 class="section-headline gold-text">The Wedding Venue</h2>
+      <div class="section-subtext">We eagerly await to welcome you</div>
+
+      <div class="venue-box">
+        <div class="venue-place-name gold-text">Vadange</div>
+        <div class="venue-city">Kolhapur, Maharashtra</div>
+
+        <a class="venue-btn" 
+           href="https://maps.google.com/?q=Vadange,+Kolhapur" 
+           target="_blank" 
+           rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+          VIEW LOCATION
+        </a>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         10. FINAL MESSAGE
+         ======================================================== -->
+    <footer class="final-section reveal">
+      <div class="ornament-divider">
+        <div class="ornament-line"></div>
+        <svg class="ornament-mandala" viewBox="0 0 24 24">
+          <path d="M12 2L14 8L20 6L16 12L22 14L16 16L18 22L12 18L6 22L8 16L2 14L8 12L4 6L10 8Z" />
+        </svg>
+        <div class="ornament-line"></div>
+      </div>
+
+      <p class="final-quote">
+        “Two hearts,<br />
+        two families,<br />
+        one beautiful beginning.”
+      </p>
+
+      <div class="final-couple-names gold-text">
+        ASHISH &nbsp;&amp;&nbsp; AARTI
+      </div>
+
+      <div class="final-footer-text">
+        ✦ Forever Begins Here ✦
+      </div>
+    </footer>
+
   </div>
 
+  <!-- ========================================================
+       VANILLA JAVASCRIPT
+       ======================================================== -->
   <script>
-    function breakSeal(e) {
-      spawnPetals(e.clientX, e.clientY);
-      setTimeout(() => {
-        document.getElementById('cardModal').style.display = 'flex';
-      }, 350);
-    }
+    (function () {
+      "use strict";
 
-    function closeCard() {
-      document.getElementById('cardModal').style.display = 'none';
-    }
+      // ----------------------------------------------------
+      // 1. DOOR OPENING & MUSIC TRIGGER
+      // ----------------------------------------------------
+      const openDoorBtn = document.getElementById("openDoorBtn");
+      const doorScene = document.getElementById("doorScene");
+      const audio = document.getElementById("weddingMusic");
+      const musicToggle = document.getElementById("musicToggleBtn");
+      let musicPlaying = false;
 
-    function spawnPetals(x, y) {
-      const items = ['🌸', '✨', '💍', '🌹', '💖', '👑'];
-      for (let i = 0; i < 28; i++) {
-        const p = document.createElement('div');
-        p.className = 'petal';
-        p.innerText = items[Math.floor(Math.random() * items.length)];
-        p.style.left = (x || window.innerWidth / 2) + 'px';
-        p.style.top = (y || window.innerHeight / 2) + 'px';
-        p.style.fontSize = (Math.random() * 16 + 20) + 'px';
-
-        const dx = (Math.random() - 0.5) * 350 + 'px';
-        const dy = (Math.random() - 0.5) * 320 + 'px';
-        p.style.setProperty('--dx', dx);
-        p.style.setProperty('--dy', dy);
-
-        document.body.appendChild(p);
-        setTimeout(() => p.remove(), 2200);
+      function startAudio() {
+        if (!audio) return;
+        audio.play().then(() => {
+          musicPlaying = true;
+          musicToggle.classList.add("spinning");
+          musicToggle.innerHTML = "♫";
+        }).catch((err) => {
+          console.warn("Audio playback gesture caught:", err);
+          musicPlaying = false;
+        });
+        musicToggle.classList.add("visible");
       }
-    }
+
+      openDoorBtn.addEventListener("click", () => {
+        startAudio();
+        doorScene.classList.add("opening");
+        setTimeout(() => {
+          doorScene.classList.add("opened");
+        }, 2600);
+      });
+
+      musicToggle.addEventListener("click", () => {
+        if (audio.paused) {
+          audio.play();
+          musicPlaying = true;
+          musicToggle.classList.add("spinning");
+          musicToggle.innerHTML = "♫";
+        } else {
+          audio.pause();
+          musicPlaying = false;
+          musicToggle.classList.remove("spinning");
+          musicToggle.innerHTML = "❚❚";
+        }
+      });
+
+      // ----------------------------------------------------
+      // 2. SCRATCH-TO-REVEAL
+      // ----------------------------------------------------
+      const scratchCanvas = document.getElementById("scratchCanvas");
+      const scratchStage = document.getElementById("scratchStage");
+      const ctx = scratchCanvas.getContext("2d");
+      let isScratching = false;
+      let isFullyRevealed = false;
+
+      function setupScratchCanvas() {
+        const rect = scratchStage.getBoundingClientRect();
+        scratchCanvas.width = rect.width;
+        scratchCanvas.height = rect.height;
+
+        const grad = ctx.createLinearGradient(0, 0, rect.width, rect.height);
+        grad.addColorStop(0, "#8a6616");
+        grad.addColorStop(0.25, "#e5c05d");
+        grad.addColorStop(0.5, "#fff6be");
+        grad.addColorStop(0.75, "#c6962f");
+        grad.addColorStop(1, "#7d5b12");
+
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, rect.width, rect.height);
+
+        // Gold grain speckles
+        for (let i = 0; i < 400; i++) {
+          ctx.fillStyle = Math.random() > 0.5 ? "rgba(255,255,255,0.35)" : "rgba(80,50,0,0.25)";
+          ctx.fillRect(Math.random() * rect.width, Math.random() * rect.height, Math.random() * 2 + 1, Math.random() * 2 + 1);
+        }
+
+        ctx.fillStyle = "#2c040b";
+        ctx.font = "bold 13px 'Cinzel Decorative', serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("✦ SCRATCH TO REVEAL ✦", rect.width / 2, rect.height / 2);
+      }
+
+      window.addEventListener("load", setupScratchCanvas);
+      window.addEventListener("resize", () => {
+        if (!isFullyRevealed) setupScratchCanvas();
+      });
+
+      function scratchAt(x, y) {
+        if (isFullyRevealed) return;
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.beginPath();
+        ctx.arc(x, y, 22, 0, Math.PI * 2, false);
+        ctx.fill();
+
+        spawnScratchSparkles(x, y);
+        checkScratchProgress();
+      }
+
+      function getPos(e) {
+        const rect = scratchCanvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return {
+          x: clientX - rect.left,
+          y: clientY - rect.top
+        };
+      }
+
+      scratchCanvas.addEventListener("mousedown", (e) => {
+        isScratching = true;
+        const pos = getPos(e);
+        scratchAt(pos.x, pos.y);
+      });
+      window.addEventListener("mousemove", (e) => {
+        if (!isScratching) return;
+        const pos = getPos(e);
+        scratchAt(pos.x, pos.y);
+      });
+      window.addEventListener("mouseup", () => { isScratching = false; });
+
+      scratchCanvas.addEventListener("touchstart", (e) => {
+        isScratching = true;
+        const pos = getPos(e);
+        scratchAt(pos.x, pos.y);
+      }, { passive: true });
+      scratchCanvas.addEventListener("touchmove", (e) => {
+        if (!isScratching) return;
+        const pos = getPos(e);
+        scratchAt(pos.x, pos.y);
+      }, { passive: true });
+      scratchCanvas.addEventListener("touchend", () => { isScratching = false; });
+
+      function checkScratchProgress() {
+        if (isFullyRevealed) return;
+        const width = scratchCanvas.width;
+        const height = scratchCanvas.height;
+        const imgData = ctx.getImageData(0, 0, width, height);
+        const totalPixels = imgData.data.length / 4;
+        let cleared = 0;
+
+        for (let i = 3; i < imgData.data.length; i += 64) {
+          if (imgData.data[i] === 0) cleared++;
+        }
+
+        const pct = (cleared / (totalPixels / 16)) * 100;
+        if (pct >= 45) {
+          isFullyRevealed = true;
+          scratchCanvas.style.transition = "opacity 0.8s ease";
+          scratchCanvas.style.opacity = "0";
+          setTimeout(() => {
+            scratchCanvas.style.display = "none";
+          }, 800);
+        }
+      }
+
+      // ----------------------------------------------------
+      // 3. LIVE COUNTDOWN (26 NOV 2026, 12:00 PM IST)
+      // ----------------------------------------------------
+      const weddingDate = new Date("November 26, 2026 12:00:00 GMT+0530").getTime();
+      const elDays = document.getElementById("cDays");
+      const elHours = document.getElementById("cHours");
+      const elMins = document.getElementById("cMins");
+      const elSecs = document.getElementById("cSecs");
+      const countdownHearts = document.getElementById("countdownHearts");
+      const zeroMsg = document.getElementById("countdownZeroMsg");
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const diff = weddingDate - now;
+
+        if (diff <= 0) {
+          countdownHearts.style.display = "none";
+          zeroMsg.style.display = "block";
+          return;
+        }
+
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+        elDays.textContent = d < 10 ? "0" + d : d;
+        elHours.textContent = h < 10 ? "0" + h : h;
+        elMins.textContent = m < 10 ? "0" + m : m;
+        elSecs.textContent = s < 10 ? "0" + s : s;
+      }
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+
+      // ----------------------------------------------------
+      // 4. MOBILE-STYLE PHOTO SLIDER
+      // ----------------------------------------------------
+      const sliderViewport = document.getElementById("sliderViewport");
+      const sliderTrack = document.getElementById("sliderTrack");
+      const slides = document.querySelectorAll(".slider-slide");
+      const counterEl = document.getElementById("sliderCounter");
+      const dotsContainer = document.getElementById("sliderDots");
+      const btnPrev = document.getElementById("sliderPrevBtn");
+      const btnNext = document.getElementById("sliderNextBtn");
+
+      let currentSlide = 0;
+      const totalSlides = slides.length;
+      let startX = 0;
+      let currentX = 0;
+      let isSwiping = false;
+
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement("div");
+        dot.className = "slider-dot" + (i === 0 ? " active" : "");
+        dotsContainer.appendChild(dot);
+      }
+      const dots = document.querySelectorAll(".slider-dot");
+
+      function updateSlider(animate = true) {
+        sliderTrack.style.transition = animate ? "transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1)" : "none";
+        sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+        counterEl.textContent = `${currentSlide + 1} / ${totalSlides}`;
+        dots.forEach((d, idx) => {
+          d.classList.toggle("active", idx === currentSlide);
+        });
+      }
+
+      function nextSlide() {
+        if (currentSlide < totalSlides - 1) {
+          currentSlide++;
+          updateSlider();
+        }
+      }
+
+      function prevSlide() {
+        if (currentSlide > 0) {
+          currentSlide--;
+          updateSlider();
+        }
+      }
+
+      btnNext.addEventListener("click", nextSlide);
+      btnPrev.addEventListener("click", prevSlide);
+
+      sliderViewport.addEventListener("touchstart", (e) => {
+        isSwiping = true;
+        startX = e.touches[0].clientX;
+        currentX = startX;
+      }, { passive: true });
+
+      sliderViewport.addEventListener("touchmove", (e) => {
+        if (!isSwiping) return;
+        currentX = e.touches[0].clientX;
+      }, { passive: true });
+
+      sliderViewport.addEventListener("touchend", () => {
+        if (!isSwiping) return;
+        isSwiping = false;
+        const diffX = startX - currentX;
+        if (diffX > 45) nextSlide();
+        else if (diffX < -45) prevSlide();
+      });
+
+      sliderViewport.addEventListener("mousedown", (e) => {
+        isSwiping = true;
+        startX = e.clientX;
+        currentX = startX;
+      });
+
+      window.addEventListener("mousemove", (e) => {
+        if (!isSwiping) return;
+        currentX = e.clientX;
+      });
+
+      window.addEventListener("mouseup", () => {
+        if (!isSwiping) return;
+        isSwiping = false;
+        const diffX = startX - currentX;
+        if (diffX > 45) nextSlide();
+        else if (diffX < -45) prevSlide();
+      });
+
+      // ----------------------------------------------------
+      // 5. AMBIENT PARTICLES
+      // ----------------------------------------------------
+      const ambientCanvas = document.getElementById("ambientCanvas");
+      const aCtx = ambientCanvas.getContext("2d");
+      let w, h;
+      const particles = [];
+
+      function resizeAmbient() {
+        w = ambientCanvas.width = window.innerWidth;
+        h = ambientCanvas.height = window.innerHeight;
+      }
+      window.addEventListener("resize", resizeAmbient);
+      resizeAmbient();
+
+      class Particle {
+        constructor() {
+          this.reset(true);
+        }
+        reset(initial = false) {
+          this.x = Math.random() * w;
+          this.y = initial ? Math.random() * h : -20;
+          this.size = Math.random() * 2.8 + 1.2;
+          this.speedY = Math.random() * 0.7 + 0.3;
+          this.speedX = (Math.random() - 0.5) * 0.5;
+          this.opacity = Math.random() * 0.65 + 0.2;
+          this.type = Math.random() > 0.22 ? "sparkle" : "petal";
+          this.angle = Math.random() * Math.PI * 2;
+          this.rotSpeed = (Math.random() - 0.5) * 0.02;
+        }
+        update() {
+          this.y += this.speedY;
+          this.x += Math.sin(this.angle) * 0.5 + this.speedX;
+          this.angle += this.rotSpeed;
+          if (this.y > h + 20 || this.x < -20 || this.x > w + 20) {
+            this.reset(false);
+          }
+        }
+        draw() {
+          aCtx.save();
+          aCtx.globalAlpha = this.opacity;
+          if (this.type === "sparkle") {
+            aCtx.fillStyle = "#ffd875";
+            aCtx.shadowBlur = 8;
+            aCtx.shadowColor = "#e5b73b";
+            aCtx.beginPath();
+            aCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            aCtx.fill();
+          } else {
+            aCtx.translate(this.x, this.y);
+            aCtx.rotate(this.angle);
+            aCtx.fillStyle = "#6d0d21";
+            aCtx.beginPath();
+            aCtx.ellipse(0, 0, this.size * 2, this.size * 3.5, 0, 0, Math.PI * 2);
+            aCtx.fill();
+          }
+          aCtx.restore();
+        }
+      }
+
+      for (let i = 0; i < 45; i++) particles.push(new Particle());
+
+      function spawnScratchSparkles(cx, cy) {
+        const stageRect = scratchStage.getBoundingClientRect();
+        for (let i = 0; i < 3; i++) {
+          const p = new Particle();
+          p.x = stageRect.left + cx + (Math.random() - 0.5) * 20;
+          p.y = stageRect.top + cy + (Math.random() - 0.5) * 20;
+          p.speedY = -Math.random() * 1.5 - 0.5;
+          p.speedX = (Math.random() - 0.5) * 2;
+          p.type = "sparkle";
+          p.size = Math.random() * 3 + 2;
+          p.opacity = 1;
+          particles.push(p);
+          if (particles.length > 70) particles.shift();
+        }
+      }
+
+      function renderAmbient() {
+        aCtx.clearRect(0, 0, w, h);
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+        }
+        requestAnimationFrame(renderAmbient);
+      }
+      renderAmbient();
+
+      // ----------------------------------------------------
+      // 6. INTERSECTION OBSERVER SCROLL REVEAL
+      // ----------------------------------------------------
+      const reveals = document.querySelectorAll(".reveal");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: "0px 0px -40px 0px"
+      });
+
+      reveals.forEach((el) => observer.observe(el));
+
+    })();
   </script>
 </body>
 </html>
