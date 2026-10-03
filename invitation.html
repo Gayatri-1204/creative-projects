@@ -81,15 +81,13 @@
       transform: translateY(0);
     }
 
-    /* ========================================================
-       तुम्ही दिलेल्या फोटोप्रमाणेच सुबक GOLDEN STAR DIVIDER
-       ======================================================== */
+    /* सुबक GOLDEN STAR DIVIDER */
     .royal-star-divider {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 14px;
-      margin: 48px auto; /* मोबाइलवर प्रत्येक सेक्शनमध्ये भरपूर मोकळी जागा */
+      margin: 48px auto;
       max-width: 320px;
       position: relative;
     }
@@ -156,7 +154,7 @@
     }
 
     /* ========================================================
-       1. OPENING: COMPACT MOBILE-FRIENDLY PALACE DOOR
+       1. OPENING: COMPACT ROYAL PALACE DOOR (अपरिवर्तित)
        ======================================================== */
     #doorScene {
       position: fixed;
@@ -508,7 +506,7 @@
     }
 
     /* ========================================================
-       MAIN PALACE CONTAINER & BREATHING SPACE
+       MAIN PALACE CONTAINER (मोबाइलसाठी बेस स्टाईल)
        ======================================================== */
     .palace-container {
       position: relative;
@@ -517,6 +515,7 @@
       max-width: 700px;
       margin: 0 auto;
       padding: 30px 18px 90px 18px;
+      transition: max-width 0.3s ease;
     }
 
     /* GANPATI SECTION */
@@ -547,8 +546,8 @@
     }
 
     .ganpati-image-photo {
-      width: 100px;
-      height: 100px;
+      width: 110px;
+      height: 110px;
       object-fit: contain;
       filter: drop-shadow(0 0 14px rgba(212, 175, 55, 0.75));
     }
@@ -738,7 +737,37 @@
       transition: opacity 0.6s ease;
     }
 
-    /* COUNTDOWN (SCRATCH केल्यानंतरच सक्रिय) */
+    /* GOOGLE CALENDAR BUTTON */
+    .calendar-btn-wrap {
+      margin-top: 16px;
+      display: none;
+      animation: fadeIn 1s forwards;
+    }
+
+    .royal-calendar-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: radial-gradient(circle at center, #fff0a8 0%, #caa030 70%, #7e5c0e 100%);
+      color: #1a0206;
+      border: 1px solid #fff6ce;
+      border-radius: 30px;
+      padding: 10px 22px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      box-shadow: 0 4px 18px rgba(212, 175, 55, 0.4);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .royal-calendar-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(255, 215, 0, 0.6);
+    }
+
+    /* COUNTDOWN */
     .countdown-standalone-section {
       margin: 0 auto;
       max-width: 520px;
@@ -1157,6 +1186,71 @@
       border-color: #fff;
     }
 
+    /* WHATSAPP BLESSINGS CARD */
+    .blessing-section {
+      margin: 10px 0;
+      text-align: center;
+    }
+
+    .blessing-box {
+      border: 1px solid var(--gold-antique);
+      border-radius: 12px;
+      background: radial-gradient(circle at center, #34070f 0%, #180205 100%);
+      padding: 28px 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.65);
+    }
+
+    .blessing-input, .blessing-textarea {
+      width: 100%;
+      background: rgba(20, 2, 5, 0.7);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      border-radius: 8px;
+      padding: 12px 14px;
+      color: var(--ivory);
+      font-family: var(--font-body);
+      font-size: 14px;
+      margin-bottom: 12px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .blessing-input:focus, .blessing-textarea:focus {
+      border-color: var(--gold-light);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    }
+
+    .blessing-textarea {
+      resize: none;
+      height: 80px;
+    }
+
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #25D366;
+      color: #ffffff;
+      border: 1px solid #20ba5a;
+      border-radius: 30px;
+      padding: 12px 28px;
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      width: 100%;
+      max-width: 290px;
+      margin: 0 auto;
+    }
+
+    .whatsapp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 26px rgba(37, 211, 102, 0.55);
+    }
+
     /* FINAL */
     .final-section {
       text-align: center;
@@ -1187,11 +1281,152 @@
       color: var(--gold-antique);
       text-transform: uppercase;
     }
+
+    /* ========================================================
+       ✨ लॅपटॉप व डेस्कटॉपसाठी खास भव्य साईझ (DESKTOP ENHANCEMENTS)
+       ======================================================== */
+    @media (min-width: 992px) {
+      .palace-container {
+        max-width: 1050px; /* लॅपटॉपवर पूर्ण भव्य पसरेल */
+        padding: 50px 30px 120px 30px;
+      }
+
+      /* गणेश प्रतिमा व मजकूर */
+      .ganpati-image-photo {
+        width: 150px;
+        height: 150px;
+      }
+      .ganpati-glow {
+        width: 180px;
+        height: 180px;
+      }
+      .shri-ganeshaya {
+        font-size: 36px;
+        margin-bottom: 16px;
+      }
+      .vakratunda-shloka {
+        font-size: 23px;
+        max-width: 750px;
+        line-height: 2;
+      }
+
+      /* डिव्हायडर */
+      .royal-star-divider {
+        margin: 65px auto;
+        max-width: 460px;
+      }
+      .divider-star-icon {
+        width: 28px;
+        height: 28px;
+      }
+
+      /* मुख्य लग्न पत्रिका कार्ड */
+      .royal-card {
+        padding: 70px 60px;
+        border-width: 3px;
+        border-radius: 18px;
+      }
+      .invitation-header-text {
+        font-size: 15px;
+        letter-spacing: 5px;
+        margin-bottom: 25px;
+      }
+      .couple-name {
+        font-size: 54px;
+        letter-spacing: 4px;
+      }
+      .parentage {
+        font-size: 17px;
+        margin-top: 8px;
+      }
+      .ampersand {
+        font-size: 65px;
+        margin: 12px 0;
+      }
+      .invitation-prose {
+        font-size: 19px;
+        max-width: 720px;
+        line-height: 2;
+      }
+      .corner-motif {
+        width: 50px;
+        height: 50px;
+      }
+
+      /* स्क्रॅच कार्ड व काउंटडाउन */
+      .scratch-standalone-section {
+        max-width: 480px;
+      }
+      .scratch-stage {
+        height: 160px;
+      }
+      .revealed-date {
+        font-size: 26px;
+      }
+      .revealed-venue {
+        font-size: 16px;
+      }
+      .countdown-standalone-section {
+        max-width: 680px;
+      }
+      .heart-unit {
+        width: 110px;
+        height: 110px;
+      }
+      .heart-number {
+        font-size: 28px;
+      }
+      .heart-label {
+        font-size: 12px;
+      }
+      .royal-calendar-btn {
+        font-size: 13px;
+        padding: 13px 30px;
+      }
+
+      /* कार्यक्रम (Events) */
+      .events-grid {
+        gap: 30px;
+      }
+      .royal-event-box {
+        padding: 35px 25px;
+      }
+      .event-card-title {
+        font-size: 24px;
+      }
+      .event-card-date {
+        font-size: 17px;
+      }
+
+      /* फोटो स्लाइडर */
+      .slider-stage-wrapper {
+        max-width: 580px;
+      }
+      .slider-viewport {
+        height: 520px;
+      }
+      .btn-prev { left: -25px; width: 44px; height: 44px; font-size: 18px; }
+      .btn-next { right: -25px; width: 44px; height: 44px; font-size: 18px; }
+
+      /* ठिकाण व आशीर्वाद */
+      .venue-box, .blessing-box {
+        max-width: 650px;
+        margin: 0 auto;
+        padding: 38px 30px;
+      }
+      .venue-place-name {
+        font-size: 32px;
+      }
+      .whatsapp-btn {
+        font-size: 14px;
+        padding: 14px 34px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Ambient Gold Dust -->
+  <!-- Ambient Gold Dust & Falling Rose Petals Canvas -->
   <canvas id="ambientCanvas"></canvas>
 
   <!-- SVG Gradients Definition -->
@@ -1206,7 +1441,7 @@
     </defs>
   </svg>
 
-  <!-- Audio Element (येथे तुमचे audio.mp3 जोडले आहे) -->
+  <!-- Audio Element (येथे audio.mp3 सेट केले आहे) -->
   <audio id="weddingMusic" loop preload="auto">
     <source src="audio.mp3" type="audio/mpeg" />
   </audio>
@@ -1215,7 +1450,7 @@
   <div id="musicToggleBtn" class="music-widget" aria-label="Toggle Music">♫</div>
 
   <!-- ========================================================
-       1. OPENING: COMPACT ROYAL PALACE ENTRANCE
+       1. OPENING: COMPACT ROYAL PALACE ENTRANCE (दाराची मूळ साईझ)
        ======================================================== -->
   <div id="doorScene">
     <div class="palace-fog-layer"></div>
@@ -1295,7 +1530,7 @@
   </div>
 
   <!-- ========================================================
-       MAIN INVITATION CONTENT
+       MAIN INVITATION CONTENT (लॅपटॉपवर भव्य व रुंद)
        ======================================================== -->
   <div class="palace-container">
 
@@ -1315,11 +1550,10 @@
       </p>
     </section>
 
-    <!-- [DIVIDER 1] फोटोप्रमाणेच सुबक स्टार डिव्हायडर -->
+    <!-- [DIVIDER 1] -->
     <div class="royal-star-divider reveal">
       <div class="divider-gold-line"></div>
       <svg class="divider-star-icon" viewBox="0 0 24 24">
-        <!-- 8-Point Octagram Star -->
         <path d="M12 0L14.2 8.8L23 6.5L16.8 13.2L22 20.5L13.2 18.2L12 24L10.8 18.2L2 20.5L7.2 13.2L1 6.5L9.8 8.8Z" />
       </svg>
       <div class="divider-gold-line right"></div>
@@ -1385,6 +1619,15 @@
             <div class="revealed-time">12:00 PM IST</div>
           </div>
           <canvas id="scratchCanvas"></canvas>
+        </div>
+
+        <!-- Google Calendar Button (स्क्रॅच केल्यावर दिसेल) -->
+        <div class="calendar-btn-wrap" id="calendarBtnWrap">
+          <a class="royal-calendar-btn" 
+             href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ashish+%26+Aarti+-+Wedding+Ceremony&dates=20261126T063000Z/20261126T103000Z&details=Bless+the+sacred+union+of+Ashish+%26+Aarti.+We+look+forward+to+welcoming+you!&location=Vadange,+Kolhapur,+Maharashtra" 
+             target="_blank" rel="noopener noreferrer">
+            📅 ADD TO GOOGLE CALENDAR
+          </a>
         </div>
       </div>
     </section>
@@ -1653,6 +1896,33 @@
       <div class="divider-gold-line right"></div>
     </div>
 
+    <!-- WHATSAPP BLESSINGS SECTION -->
+    <section class="blessing-section reveal">
+      <h2 class="section-headline gold-text">Shower Your Blessings</h2>
+      <div class="section-subtext">Send your love directly to the couple</div>
+
+      <div class="blessing-box">
+        <input type="text" id="guestName" class="blessing-input" placeholder="Your Name (तुमचे नाव)" />
+        <textarea id="guestMessage" class="blessing-textarea" placeholder="Your Blessing / Wishes (तुमच्या शुभेच्छा व आशीर्वाद)..."></textarea>
+        
+        <button class="whatsapp-btn" onclick="sendWhatsAppBlessing()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.077-1.782-.397-1.467-.608-2.42-2.1-2.493-2.199-.074-.099-.594-.789-.594-1.505 0-.715.373-1.066.506-1.212.132-.146.29-.182.387-.182.096 0 .193.002.277.006.09.004.21.033.32.298.114.277.391.954.425 1.024.034.07.057.151.011.242-.045.092-.068.149-.136.228-.068.079-.143.177-.205.237-.068.068-.139.141-.06.277.079.136.353.582.758.942.521.463.961.606 1.097.674.136.068.216.057.295-.034.08-.09.341-.397.432-.533.091-.136.182-.113.307-.068.125.045.795.375.932.443.136.068.227.102.261.159.034.057.034.329-.11.734z"/>
+          </svg>
+          SEND ON WHATSAPP
+        </button>
+      </div>
+    </section>
+
+    <!-- [DIVIDER 7] -->
+    <div class="royal-star-divider reveal">
+      <div class="divider-gold-line"></div>
+      <svg class="divider-star-icon" viewBox="0 0 24 24">
+        <path d="M12 0L14.2 8.8L23 6.5L16.8 13.2L22 20.5L13.2 18.2L12 24L10.8 18.2L2 20.5L7.2 13.2L1 6.5L9.8 8.8Z" />
+      </svg>
+      <div class="divider-gold-line right"></div>
+    </div>
+
     <!-- 10. FINAL MESSAGE -->
     <footer class="final-section reveal">
       <p class="final-quote">
@@ -1677,7 +1947,7 @@
     (function () {
       "use strict";
 
-      // 1. DOOR OPEN & AUDIO
+      // 1. DOOR OPEN & AUDIO & ROSE PETAL SHOWER
       const openDoorBtn = document.getElementById("openDoorBtn");
       const doorScene = document.getElementById("doorScene");
       const audio = document.getElementById("weddingMusic");
@@ -1700,6 +1970,10 @@
       openDoorBtn.addEventListener("click", () => {
         startAudio();
         doorScene.classList.add("opening");
+
+        // दरवाजा उघडताच गुलाबाच्या पाकळ्यांचा वर्षाव सुरू करणे
+        triggerGrandPetalShower();
+
         setTimeout(() => {
           doorScene.classList.add("opened");
         }, 2400);
@@ -1719,10 +1993,11 @@
         }
       });
 
-      // 2. SCRATCH-TO-REVEAL & COUNTDOWN TRIGGER
+      // 2. SCRATCH-TO-REVEAL & COUNTDOWN & CALENDAR TRIGGER
       const scratchCanvas = document.getElementById("scratchCanvas");
       const scratchStage = document.getElementById("scratchStage");
       const countdownSection = document.getElementById("countdownSection");
+      const calendarBtnWrap = document.getElementById("calendarBtnWrap");
       const ctx = scratchCanvas.getContext("2d");
       let isScratching = false;
       let isFullyRevealed = false;
@@ -1730,6 +2005,9 @@
       function triggerCountdownShow() {
         if (countdownSection && !countdownSection.classList.contains("active-countdown")) {
           countdownSection.classList.add("active-countdown");
+        }
+        if (calendarBtnWrap) {
+          calendarBtnWrap.style.display = "block";
         }
       }
 
@@ -1772,7 +2050,7 @@
         ctx.arc(x, y, 22, 0, Math.PI * 2, false);
         ctx.fill();
 
-        // स्क्रॅच सुरू होताच काउंटडाउन प्रकट करणे
+        // स्क्रॅच सुरू होताच काउंटडाउन आणि कॅलेंडर बटण दाखवणे
         triggerCountdownShow();
 
         spawnScratchSparkles(x, y);
@@ -1932,7 +2210,7 @@
         else if (diffX < -40) prevSlide();
       });
 
-      // 5. AMBIENT PARTICLES
+      // 5. AMBIENT PARTICLES & ROSE PETALS
       const ambientCanvas = document.getElementById("ambientCanvas");
       const aCtx = ambientCanvas.getContext("2d");
       let w, h;
@@ -1946,23 +2224,26 @@
       resizeAmbient();
 
       class Particle {
-        constructor() { this.reset(true); }
-        reset(initial = false) {
+        constructor(isShower = false) { 
+          this.reset(true, isShower); 
+        }
+        reset(initial = false, isShower = false) {
           this.x = Math.random() * w;
-          this.y = initial ? Math.random() * h : -20;
-          this.size = Math.random() * 2.5 + 1;
-          this.speedY = Math.random() * 0.7 + 0.3;
-          this.speedX = (Math.random() - 0.5) * 0.4;
-          this.opacity = Math.random() * 0.65 + 0.2;
-          this.type = Math.random() > 0.2 ? "sparkle" : "petal";
+          this.y = initial ? (isShower ? -Math.random() * h : Math.random() * h) : -30;
+          this.size = Math.random() * 2.8 + 1.2;
+          this.speedY = isShower ? (Math.random() * 2.2 + 1.2) : (Math.random() * 0.7 + 0.3);
+          this.speedX = (Math.random() - 0.5) * 0.7;
+          this.opacity = Math.random() * 0.7 + 0.3;
+          this.type = Math.random() > 0.35 ? "petal" : "sparkle";
           this.angle = Math.random() * Math.PI * 2;
-          this.rotSpeed = (Math.random() - 0.5) * 0.02;
+          this.rotSpeed = (Math.random() - 0.5) * 0.035;
+          this.petalColor = Math.random() > 0.5 ? "#b81432" : "#880d24";
         }
         update() {
           this.y += this.speedY;
-          this.x += Math.sin(this.angle) * 0.5 + this.speedX;
+          this.x += Math.sin(this.angle) * 0.7 + this.speedX;
           this.angle += this.rotSpeed;
-          if (this.y > h + 20 || this.x < -20 || this.x > w + 20) this.reset(false);
+          if (this.y > h + 30 || this.x < -30 || this.x > w + 30) this.reset(false);
         }
         draw() {
           aCtx.save();
@@ -1977,9 +2258,11 @@
           } else {
             aCtx.translate(this.x, this.y);
             aCtx.rotate(this.angle);
-            aCtx.fillStyle = "#6d0d21";
+            aCtx.fillStyle = this.petalColor;
+            aCtx.shadowBlur = 5;
+            aCtx.shadowColor = "rgba(184, 20, 50, 0.4)";
             aCtx.beginPath();
-            aCtx.ellipse(0, 0, this.size * 1.8, this.size * 3, 0, 0, Math.PI * 2);
+            aCtx.ellipse(0, 0, this.size * 2.5, this.size * 4, 0, 0, Math.PI * 2);
             aCtx.fill();
           }
           aCtx.restore();
@@ -1987,6 +2270,12 @@
       }
 
       for (let i = 0; i < 40; i++) particles.push(new Particle());
+
+      function triggerGrandPetalShower() {
+        for (let i = 0; i < 60; i++) {
+          particles.push(new Particle(true));
+        }
+      }
 
       function spawnScratchSparkles(cx, cy) {
         const stageRect = scratchStage.getBoundingClientRect();
@@ -2000,7 +2289,7 @@
           p.size = Math.random() * 3 + 1.5;
           p.opacity = 1;
           particles.push(p);
-          if (particles.length > 60) particles.shift();
+          if (particles.length > 90) particles.shift();
         }
       }
 
@@ -2024,6 +2313,20 @@
       reveals.forEach((el) => observer.observe(el));
 
     })();
+
+    // 7. WHATSAPP BLESSING FUNCTION
+    function sendWhatsAppBlessing() {
+      // तुमचा १० अंकी व्हॉट्सॲप नंबर ९१ सह येथे टाका
+      const hostWhatsAppNumber = "919876543210"; 
+
+      const name = document.getElementById("guestName").value.trim() || "Well-wisher";
+      const message = document.getElementById("guestMessage").value.trim() || "Heartiest Congratulations & Best Wishes for the wedding!";
+
+      const text = encodeURIComponent(`*Wedding Blessing for Ashish & Aarti* 💍❤️\n\n*From:* ${name}\n*Message:* ${message}`);
+      const whatsappURL = `https://wa.me/${hostWhatsAppNumber}?text=${text}`;
+
+      window.open(whatsappURL, "_blank");
+    }
   </script>
 </body>
 </html>
