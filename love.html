@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>The Love Archives ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    body {
+      background: radial-gradient(ellipse at bottom, #2b040e 0%, #150005 50%, #050002 100%);
+      min-height: 100vh;
+      width: 100vw;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Background Atmosphere */
+    .glow-aura {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255, 45, 85, 0.22), transparent 70%);
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .glow-1 { top: -100px; left: -100px; }
+    .glow-2 { bottom: -100px; right: -100px; }
+
+    /* Scene Container */
+    .scene-stage {
+      display: none;
+      width: 100vw;
+      min-height: 100vh;
+      padding: 40px 20px 80px 20px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 10;
+      text-align: center;
+    }
+
+    .scene-stage.active {
+      display: flex;
+      animation: sceneReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes sceneReveal {
+      from { opacity: 0; transform: scale(0.96) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* Bottom Navigation / Progress Dots */
+    .bottom-nav {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 117, 143, 0.3);
+      padding: 8px 18px;
+      border-radius: 30px;
+      backdrop-filter: blur(15px);
+      z-index: 100;
+    }
+
+    .nav-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      transition: all 0.3s ease;
+    }
+
+    .nav-dot.active {
+      background: #ff4d6d;
+      transform: scale(1.4);
+      box-shadow: 0 0 10px #ff4d6d;
+    }
+
+    /* =========================================
+       SCENE 1: BIOMETRIC SCANNER (UNLOCK)
+       ========================================= */
+    .badge-tag {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #ff758f;
+      border: 1px solid rgba(255, 117, 143, 0.4);
+      padding: 6px 16px;
+      border-radius: 50px;
+      background: rgba(255, 77, 109, 0.08);
+      margin-bottom: 20px;
+    }
+
+    .script-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      color: #ff758f;
+      text-shadow: 0 0 25px rgba(255, 117, 143, 0.7);
+    }
+
+    .main-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      letter-spacing: 2px;
+      margin-top: -6px;
+      margin-bottom: 35px;
+      color: #ffe5ec;
+    }
+
+    .scanner-pad {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 2px dashed rgba(255, 117, 143, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 0 35px rgba(255, 77, 109, 0.25);
+      transition: transform 0.2s;
+    }
+
+    .scanner-pad:active {
+      transform: scale(1.05);
+      border-style: solid;
+      border-color: #ff4d6d;
+      box-shadow: 0 0 50px #ff4d6d;
+    }
+
+    .scanner-icon {
+      font-size: 3.5rem;
+    }
+
+    .scanner-beam {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #ff4d6d, transparent);
+      box-shadow: 0 0 15px #ff4d6d;
+      opacity: 0;
+    }
+
+    .scanner-pad.scanning .scanner-beam {
+      opacity: 1;
+      animation: scanLaser 1.2s ease-in-out infinite alternate;
+    }
+
+    @keyframes scanLaser {
+      0% { top: 10%; }
+      100% { top: 90%; }
+    }
+
+    .scan-hint {
+      margin-top: 25px;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      color: #ffccd5;
+    }
+
+    /* =========================================
+       SCENE 2: RECEIPTIFY STYLE LOVE RECEIPT
+       ========================================= */
+    .receipt-container {
+      background: #fffdfa;
+      color: #2b040e;
+      border-radius: 8px;
+      padding: 30px 22px;
+      max-width: 380px;
+      width: 100%;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 77, 109, 0.3);
+      position: relative;
+      font-family: 'Courier Prime', monospace, monospace;
+      text-align: left;
+    }
+
+    .receipt-container::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: radial-gradient(circle, transparent, transparent 50%, #fffdfa 50%, #fffdfa 100%);
+      background-size: 15px 15px;
+    }
+
+    .receipt-header {
+      text-align: center;
+      border-bottom: 2px dashed #ff8fa3;
+      padding-bottom: 12px;
+      margin-bottom: 15px;
+    }
+
+    .receipt-header h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+    }
+
+    .receipt-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+    }
+
+    .receipt-total {
+      border-top: 2px dashed #ff8fa3;
+      padding-top: 10px;
+      margin-top: 15px;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .stamp-paid {
+      position: absolute;
+      top: 45%;
+      right: 15px;
+      border: 3px solid #c9184a;
+      color: #c9184a;
+      font-size: 1.2rem;
+      font-weight: 900;
+      padding: 6px 14px;
+      border-radius: 8px;
+      transform: rotate(-15deg);
+      letter-spacing: 2px;
+      opacity: 0.85;
+      text-transform: uppercase;
+    }
+
+    /* =========================================
+       SCENE 3: MEMORY POLAROIDS GALLERY
+       ========================================= */
+    .polaroid-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      max-width: 420px;
+      width: 100%;
+      margin-bottom: 25px;
+    }
+
+    .polaroid-item {
+      background: #fff;
+      padding: 8px 8px 20px 8px;
+      border-radius: 6px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+      transform: rotate(var(--rot));
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .polaroid-item:hover {
+      transform: scale(1.08) rotate(0deg) !important;
+      z-index: 20;
+      box-shadow: 0 20px 40px rgba(255, 77, 109, 0.5);
+    }
+
+    .polaroid-item img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .polaroid-caption {
+      color: #2b040e;
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.4rem;
+      margin-top: 6px;
+      text-align: center;
+    }
+
+    /* =========================================
+       SCENE 4: APOLOGY & HUG GENERATOR
+       ========================================= */
+    .contract-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 117, 143, 0.3);
+      backdrop-filter: blur(15px);
+      border-radius: 24px;
+      padding: 30px 24px;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.7);
+    }
+
+    .clause-list {
+      text-align: left;
+      margin: 20px 0;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #ffe5ec;
+    }
+
+    .clause-list li {
+      list-style: none;
+      margin-bottom: 8px;
+    }
+
+    .btn-arena {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      height: 70px;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .agree-btn {
+      background: linear-gradient(135deg, #ff4d6d, #c9184a);
+      color: white;
+      border: none;
+      padding: 12px 34px;
+      border-radius: 35px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255, 77, 109, 0.5);
+      z-index: 2;
+      transition: transform 0.2s;
+    }
+
+    .agree-btn:hover {
+      transform: scale(1.08);
+    }
+
+    .dodge-btn {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffccd5;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 12px 30px;
+      border-radius: 35px;
+      cursor: pointer;
+      position: absolute;
+      right: 15px;
+      z-index: 10;
+      transition: transform 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* Action Buttons */
+    .next-stage-btn {
+      background: linear-gradient(135deg, #ff4d6d, #c9184a);
+      color: white;
+      border: none;
+      padding: 12px 36px;
+      border-radius: 40px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255, 77, 109, 0.5);
+      margin-top: 20px;
+      transition: all 0.3s;
+    }
+
+    .next-stage-btn:hover {
+      transform: scale(1.06);
+    }
+
+    /* Floating Hearts Burst */
+    .heart-burst {
+      position: absolute;
+      font-size: 2rem;
+      pointer-events: none;
+      opacity: 0;
+      animation: heartFly 1.5s ease-out forwards;
+      z-index: 1000;
+    }
+
+    @keyframes heartFly {
+      0% { opacity: 1; transform: scale(0.5) translate(0, 0); }
+      100% { opacity: 0; transform: scale(1.8) translate(var(--dx), var(--dy)); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-aura glow-1"></div>
+  <div class="glow-aura glow-2"></div>
+
+  <!-- ==============================================
+       SCENE 1: BIOMETRIC SCANNER (SECURITY PASS)
+       ============================================== -->
+  <section id="scene1" class="scene-stage active">
+    <div class="badge-tag">Top Secret File #1003</div>
+    <div class="script-title">For Your Eyes Only</div>
+    <h1 class="main-title">The Love Archives</h1>
+
+    <div class="scanner-pad" id="scannerPad" onmousedown="startScan()" onmouseup="endScan()" ontouchstart="startScan()" ontouchend="endScan()">
+      <div class="scanner-beam"></div>
+      <div class="scanner-icon">🫀</div>
+    </div>
+
+    <div class="scan-hint" id="scanText">Hold finger for 2 seconds to authenticate 🔒</div>
+  </section>
+
+  <!-- ==============================================
+       SCENE 2: RECEIPTIFY ORDER SLIP
+       ============================================== -->
+  <section id="scene2" class="scene-stage">
+    <div class="badge-tag">Official Summary</div>
+    <h2 class="script-title" style="margin-bottom: 20px;">Our Relationship Receipt</h2>
+
+    <div class="receipt-container">
+      <div class="stamp-paid">PAID IN LOVE</div>
+      <div class="receipt-header">
+        <h3>❤️️ SPECIAL RECEIPT ❤️</h3>
+        <p>ORDER #0001 — LIFETIME ACCESS</p>
+      </div>
+
+      <div class="receipt-row"><span>Late Night Conversations</span><span>4,280 Hrs</span></div>
+      <div class="receipt-row"><span>"Bhookh Lagi Hai" Whining</span><span>980 Times</span></div>
+      <div class="receipt-row"><span>Stealing Oversized Hoodies</span><span>100% True</span></div>
+      <div class="receipt-row"><span>Forehead & Tight Hugs</span><span>Unlimited</span></div>
+      <div class="receipt-row"><span>Falling Asleep On Call</span><span>Priceless</span></div>
+
+      <div class="receipt-total">
+        <span>TOTAL BALANCE:</span>
+        <span>∞ INFINITE LOVE</span>
+      </div>
+    </div>
+
+    <button class="next-stage-btn" onclick="goToScene(3)">Open Photo Gallery 📷</button>
+  </section>
+
+  <!-- ==============================================
+       SCENE 3: MEMORY POLAROIDS
+       ============================================== -->
+  <section id="scene3" class="scene-stage">
+    <div class="script-title">Our Little World</div>
+    <h2 class="main-title" style="margin-bottom: 25px;">Polaroids Of Forever</h2>
+
+    <div class="polaroid-grid">
+      <div class="polaroid-item" style="--rot: -4deg;" onclick="popHeart(this)">
+        <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=500" alt="Memory">
+        <div class="polaroid-caption">My Heart ❤️</div>
+      </div>
+      <div class="polaroid-item" style="--rot: 3deg;" onclick="popHeart(this)">
+        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=500" alt="Memory">
+        <div class="polaroid-caption">Safe Space 🌸</div>
+      </div>
+      <div class="polaroid-item" style="--rot: 2deg;" onclick="popHeart(this)">
+        <img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=500" alt="Memory">
+        <div class="polaroid-caption">Best Smiles ✨</div>
+      </div>
+      <div class="polaroid-item" style="--rot: -3deg;" onclick="popHeart(this)">
+        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=500" alt="Memory">
+        <div class="polaroid-caption">Always You 💋</div>
+      </div>
+    </div>
+
+    <button class="next-stage-btn" onclick="goToScene(4)">Proceed to Final Step 📜</button>
+  </section>
+
+  <!-- ==============================================
+       SCENE 4: THE FOREVER CONTRACT
+       ============================================== -->
+  <section id="scene4" class="scene-stage">
+    <div class="contract-card">
+      <div class="script-title" style="font-size: 2.8rem;">Lifetime Agreement</div>
+      <h3 style="font-family: 'Cinzel', serif; letter-spacing: 2px; color: #ffccd5; font-size: 1rem;">TERMS OF LOVING ME</h3>
+
+      <ul class="clause-list">
+        <li>✦ You cannot stay mad at me for more than 10 minutes.</li>
+        <li>✦ Infinite forehead kisses are mandatory upon demand.</li>
+        <li>✦ I am your forever safe home, through every high and low.</li>
+      </ul>
+
+      <p style="font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #ffe5ec; margin-top: 15px;">
+        Will you sign and stay mine forever? 🥺👉👈
+      </p>
+
+      <div class="btn-arena">
+        <button class="agree-btn" onclick="finishCelebration()">Yes, Forever! 🥰</button>
+        <button id="dodgeBtn" class="dodge-btn" onmouseover="dodgeNo()" onclick="dodgeNo()">No 🙈</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation Dots Indicator -->
+  <div class="bottom-nav">
+    <div class="nav-dot active" id="dot1"></div>
+    <div class="nav-dot" id="dot2"></div>
+    <div class="nav-dot" id="dot3"></div>
+    <div class="nav-dot" id="dot4"></div>
+  </div>
+
+  <script>
+    let currentScene = 1;
+    let scanTimer = null;
+
+    // SCENE 1: BIOMETRIC SCANNER ENGINE
+    function startScan() {
+      const pad = document.getElementById('scannerPad');
+      const text = document.getElementById('scanText');
+      pad.classList.add('scanning');
+      text.innerText = 'Scanning soul frequency... ⏳';
+
+      scanTimer = setTimeout(() => {
+        pad.classList.remove('scanning');
+        text.innerText = 'Authentication Verified! Welcome ❤️';
+        blastHearts();
+        setTimeout(() => goToScene(2), 1000);
+      }, 1600);
+    }
+
+    function endScan() {
+      clearTimeout(scanTimer);
+      const pad = document.getElementById('scannerPad');
+      pad.classList.remove('scanning');
+      document.getElementById('scanText').innerText = 'Hold finger for 2 seconds to authenticate 🔒';
+    }
+
+    // SCENE SWITCHER
+    function goToScene(sceneNum) {
+      document.querySelectorAll('.scene-stage').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav-dot').forEach(d => d.classList.remove('active'));
+
+      document.getElementById(`scene${sceneNum}`).classList.add('active');
+      document.getElementById(`dot${sceneNum}`).classList.add('active');
+      currentScene = sceneNum;
+      window.scrollTo(0, 0);
+    }
+
+    // DODGING BUTTON ENGINE
+    function dodgeNo() {
+      const btn = document.getElementById('dodgeBtn');
+      const maxDistance = window.innerWidth <= 768 ? 110 : 220;
+      const x = (Math.random() - 0.5) * maxDistance;
+      const y = (Math.random() - 0.5) * (maxDistance * 0.85);
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    // FINAL CELEBRATION
+    function finishCelebration() {
+      blastHearts();
+      const card = document.querySelector('.contract-card');
+      card.innerHTML = `
+        <h2 style="font-family: 'Great Vibes', cursive; font-size: 3.2rem; color: #ff758f; margin-bottom: 12px;">Sealed Forever! 🫂❤️</h2>
+        <p style="font-family: 'Playfair Display', serif; font-size: 1.2rem; line-height: 1.7; color: #ffe5ec; margin-bottom: 20px;">
+          "Contract successfully signed with infinite hugs and kisses. You are my favorite boy in the whole wide world!"
+        </p>
+        <button class="next-stage-btn" onclick="location.reload()">Replay Love Story ✨</button>
+      `;
+    }
+
+    function popHeart(elem) {
+      blastHearts();
+    }
+
+    function blastHearts() {
+      for (let i = 0; i < 30; i++) {
+        const h = document.createElement('div');
+        h.className = 'heart-burst';
+        h.innerText = ['❤️', '💖', '✨', '🌸', '🥰'][Math.floor(Math.random() * 5)];
+        const dx = (Math.random() - 0.5) * 550 + 'px';
+        const dy = (Math.random() - 0.5) * 450 + 'px';
+        h.style.setProperty('--dx', dx);
+        h.style.setProperty('--dy', dy);
+        h.style.left = '50%';
+        h.style.top = '50%';
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 1500);
+      }
+    }
+  </script>
+</body>
+</html>
