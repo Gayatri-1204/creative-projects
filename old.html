@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Until We Grow Old ❤️</title>
+
+  <!-- Google Fonts: Timeless Serif, Warm Script & Minimal Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       CINEMATIC COLOR PALETTE & DESIGN SYSTEM
+       Rich Burgundy, Warm Dark Espresso, Cream, Golden Amber, Sunset Warmth
+       ========================================================================== */
+    :root {
+      --bg-dark: #0d0407;
+      --bg-espresso: #1a080d;
+      --bg-burgundy: #2e0611;
+      
+      --cream: #fbf5eb;
+      --warm-beige: #e9dac6;
+      --gold-amber: #d4a359;
+      --gold-soft: rgba(212, 163, 89, 0.35);
+      
+      --rose-wine: #9e2a4b;
+      --rose-subtle: #f2849e;
+      --border-warm: rgba(233, 218, 198, 0.18);
+      
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-cinematic: 'Cinzel', serif;
+      --font-script: 'Great Vibes', cursive;
+      --font-sans: 'Montserrat', -apple-system, sans-serif;
+      
+      --ease-cinema: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-dark);
+      color: var(--warm-beige);
+      font-family: var(--font-sans);
+    }
+
+    body {
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+      background: radial-gradient(ellipse at 50% 15%, var(--bg-burgundy) 0%, var(--bg-espresso) 50%, var(--bg-dark) 100%);
+      line-height: 1.7;
+    }
+
+    /* Ambient Warm Cinematic Light Flares */
+    .cinema-flare {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(150px);
+      z-index: 0;
+      opacity: 0.55;
+    }
+    .flare-1 { top: -120px; left: 15%; width: 500px; height: 500px; background: rgba(158, 42, 75, 0.32); }
+    .flare-2 { bottom: -150px; right: 10%; width: 600px; height: 600px; background: rgba(212, 163, 89, 0.22); }
+
+    /* Particles & Golden Embers Background Canvas */
+    #ambientCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Subtle Film Grain Noise Overlay for True Movie Feel */
+    .film-grain {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Floating Navigation Pill */
+    .nav-pill {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 100;
+      background: rgba(26, 8, 13, 0.85);
+      border: 1px solid var(--gold-soft);
+      backdrop-filter: blur(16px);
+      padding: 12px 24px;
+      border-radius: 50px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      color: var(--cream);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.35s var(--ease-cinema);
+    }
+    .nav-pill:hover {
+      transform: translateY(-3px) scale(1.04);
+      background: rgba(46, 6, 17, 0.95);
+      border-color: var(--gold-amber);
+      box-shadow: 0 16px 45px rgba(212, 163, 89, 0.4);
+    }
+    .nav-pill .arrow {
+      color: var(--gold-amber);
+      font-size: 1.1rem;
+      transition: transform 0.3s;
+    }
+    .nav-pill:hover .arrow {
+      transform: translateX(4px);
+    }
+
+    /* ==========================================================================
+       SECTION 1: SEQUENTIAL TIME CINEMATIC INTRO
+       ========================================================================== */
+    #openingStage {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      overflow: hidden;
+    }
+
+    .intro-sequence {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 320px;
+    }
+
+    .seq-phrase {
+      font-family: var(--font-cinematic);
+      font-size: clamp(2.4rem, 6.5vw, 5.2rem);
+      font-weight: 900;
+      letter-spacing: clamp(4px, 1.2vw, 12px);
+      text-transform: uppercase;
+      color: var(--cream);
+      opacity: 0;
+      transform: scale(0.92) translateY(30px);
+      filter: blur(10px);
+      transition: opacity 1.4s var(--ease-cinema), transform 1.4s var(--ease-cinema), filter 1.4s var(--ease-cinema);
+      position: absolute;
+      text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+    }
+
+    .seq-phrase.active {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      filter: blur(0);
+    }
+
+    .seq-phrase.fade-out {
+      opacity: 0;
+      transform: scale(1.08) translateY(-25px);
+      filter: blur(14px);
+    }
+
+    .title-highlight {
+      background: linear-gradient(180deg, #ffffff 0%, var(--warm-beige) 50%, var(--gold-amber) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: none;
+    }
+
+    .intro-cta-box {
+      margin-top: 50px;
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 1.2s var(--ease-cinema) 0.3s, transform 1.2s var(--ease-cinema) 0.3s;
+      pointer-events: none;
+    }
+    .intro-cta-box.revealed {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Luxurious Button */
+    .btn-cinema {
+      position: relative;
+      background: linear-gradient(135deg, rgba(158, 42, 75, 0.9), rgba(64, 9, 23, 0.95));
+      color: var(--cream);
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 16px 44px;
+      border-radius: 50px;
+      border: 1px solid var(--gold-soft);
+      cursor: pointer;
+      box-shadow: 0 12px 40px rgba(158, 42, 75, 0.45), inset 0 0 15px rgba(212, 163, 89, 0.25);
+      transition: all 0.4s var(--ease-cinema);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      overflow: hidden;
+    }
+    .btn-cinema:hover {
+      transform: translateY(-3px) scale(1.03);
+      border-color: var(--gold-amber);
+      box-shadow: 0 18px 50px rgba(158, 42, 75, 0.7), 0 0 25px rgba(212, 163, 89, 0.4);
+    }
+    .btn-cinema::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+      transform: rotate(25deg);
+      transition: all 0.9s;
+    }
+    .btn-cinema:hover::after {
+      left: 140%;
+    }
+
+    /* ==========================================================================
+       SECTION 2: VERTICAL TIMELINE OF THE FUTURE
+       ========================================================================== */
+    #timelineStage {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 100px 24px 140px 24px;
+      display: none;
+      opacity: 0;
+      transition: opacity 1s var(--ease-cinema);
+    }
+    #timelineStage.visible {
+      display: block;
+      opacity: 1;
+    }
+
+    .timeline-header {
+      text-align: center;
+      margin-bottom: 90px;
+    }
+    .timeline-tag {
+      font-size: 0.8rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--gold-amber);
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+    .timeline-main-title {
+      font-family: var(--font-cinematic);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 2px;
+    }
+    .timeline-script-subtitle {
+      font-family: var(--font-script);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      color: var(--gold-amber);
+      margin-top: -8px;
+    }
+
+    /* Vertical Golden Spine */
+    .timeline-spine {
+      position: relative;
+      width: 100%;
+    }
+    .timeline-spine::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: linear-gradient(180deg, transparent, var(--gold-amber) 15%, var(--gold-amber) 85%, transparent);
+      transform: translateX(-50%);
+      opacity: 0.45;
+    }
+
+    /* Individual Milestone Node */
+    .milestone-block {
+      position: relative;
+      width: 50%;
+      padding: 30px 45px;
+      margin-bottom: 70px;
+      opacity: 0;
+      transform: translateY(45px);
+      transition: opacity 1s var(--ease-cinema), transform 1s var(--ease-cinema);
+    }
+    .milestone-block.reveal-on-scroll {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .milestone-block.left {
+      left: 0;
+      text-align: right;
+    }
+    .milestone-block.right {
+      left: 50%;
+      text-align: left;
+    }
+
+    /* Golden Center Ring Tracker */
+    .node-orb {
+      position: absolute;
+      top: 42px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--bg-dark);
+      border: 3px solid var(--gold-amber);
+      box-shadow: 0 0 20px var(--gold-amber);
+      z-index: 5;
+    }
+    .milestone-block.left .node-orb { right: -11px; }
+    .milestone-block.right .node-orb { left: -11px; }
+
+    /* Milestone Content Card */
+    .milestone-card {
+      background: linear-gradient(145deg, rgba(46, 6, 17, 0.65), rgba(20, 5, 10, 0.85));
+      border: 1px solid var(--border-warm);
+      backdrop-filter: blur(18px);
+      border-radius: 20px;
+      padding: clamp(24px, 3vw, 36px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), inset 0 0 25px rgba(212, 163, 89, 0.05);
+      transition: transform 0.4s var(--ease-cinema), border-color 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+    }
+    .milestone-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold-amber);
+      box-shadow: 0 30px 75px rgba(0, 0, 0, 0.85), 0 0 30px rgba(212, 163, 89, 0.2);
+    }
+
+    .year-badge {
+      display: inline-block;
+      font-family: var(--font-cinematic);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--gold-amber);
+      background: rgba(212, 163, 89, 0.12);
+      border: 1px solid var(--gold-soft);
+      padding: 6px 18px;
+      border-radius: 30px;
+      margin-bottom: 16px;
+    }
+
+    .milestone-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+
+    .milestone-desc {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+      color: var(--warm-beige);
+      line-height: 1.7;
+      opacity: 0.92;
+      margin-bottom: 22px;
+    }
+
+    /* Visual Photo Window Placeholder */
+    .photo-window {
+      width: 100%;
+      height: 220px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(233, 218, 198, 0.25);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+      position: relative;
+      background: #000;
+    }
+    .photo-window img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: sepia(0.18) contrast(1.05) brightness(0.92);
+      transition: transform 0.8s var(--ease-cinema), filter 0.8s ease;
+    }
+    .milestone-card:hover .photo-window img {
+      transform: scale(1.06);
+      filter: sepia(0) contrast(1.08) brightness(1);
+    }
+    .photo-window-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(13, 4, 7, 0.85) 100%);
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       SECTION 3: SUNSET CLIMAX & FOREVER PROMISE
+       ========================================================================== */
+    #sunsetFinaleStage {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 100px 24px 80px 24px;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 50% 80%, #5a191b 0%, #2e0611 40%, var(--bg-dark) 100%);
+    }
+
+    /* Dramatic Sunset Sky Backing */
+    .sunset-haze {
+      position: absolute;
+      bottom: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(243, 142, 70, 0.35) 0%, rgba(158, 42, 75, 0.25) 50%, transparent 75%);
+      filter: blur(100px);
+      pointer-events: none;
+    }
+
+    .heart-symbol-wrapper {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .sunset-heart {
+      font-size: 5rem;
+      animation: heartGlowPulse 2.2s ease-in-out infinite;
+      filter: drop-shadow(0 0 35px rgba(243, 142, 70, 0.9));
+      user-select: none;
+    }
+
+    @keyframes heartGlowPulse {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 25px rgba(158, 42, 75, 0.7)); }
+      50% { transform: scale(1.15); filter: drop-shadow(0 0 45px rgba(243, 142, 70, 0.95)); }
+    }
+
+    .sunset-quote-box {
+      max-width: 780px;
+      margin-bottom: 40px;
+    }
+
+    .sunset-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 4vw, 3.2rem);
+      font-weight: 600;
+      line-height: 1.45;
+      color: var(--cream);
+      font-style: italic;
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
+      margin-bottom: 35px;
+    }
+
+    .sunset-climax-title {
+      font-family: var(--font-cinematic);
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 900;
+      letter-spacing: clamp(3px, 1vw, 8px);
+      text-transform: uppercase;
+      background: linear-gradient(180deg, #ffffff 0%, var(--warm-beige) 50%, var(--gold-amber) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+
+    .sunset-climax-script {
+      font-family: var(--font-script);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      color: var(--gold-amber);
+      margin-bottom: 50px;
+      text-shadow: 0 0 30px rgba(212, 163, 89, 0.5);
+    }
+
+    .btn-replay {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--gold-soft);
+      color: var(--warm-beige);
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 14px 34px;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-replay:hover {
+      background: var(--gold-amber);
+      color: var(--bg-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(212, 163, 89, 0.4);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE DESIGN (MOBILE ADAPTATION)
+       ========================================================================== */
+    @media (max-width: 768px) {
+      .timeline-spine::before {
+        left: 20px;
+      }
+      .milestone-block {
+        width: 100%;
+        padding-left: 55px;
+        padding-right: 15px;
+        text-align: left !important;
+      }
+      .milestone-block.left, .milestone-block.right {
+        left: 0;
+      }
+      .node-orb {
+        left: 9px !important;
+      }
+      .nav-pill {
+        bottom: 16px;
+        right: 16px;
+        padding: 10px 18px;
+        font-size: 0.75rem;
+      }
+      .photo-window {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cinematic Background Noise & Lighting -->
+  <div class="film-grain"></div>
+  <div class="cinema-flare flare-1"></div>
+  <div class="cinema-flare flare-2"></div>
+
+  <!-- Ambient Golden Embers & Floating Hearts Canvas -->
+  <canvas id="ambientCanvas"></canvas>
+
+  <!-- Floating Sticky Action: Next Chapter Controller -->
+  <div class="nav-pill" id="nextChapterBtn" onclick="advanceToNextMilestone()">
+    <span id="navPillText">Next Chapter</span>
+    <span class="arrow">→</span>
+  </div>
+
+  <main>
+
+    <!-- ========================================================================
+         PHASE 1: THE FOUR-WORD TIME PASSAGE OPENING
+         ======================================================================== -->
+    <section id="openingStage">
+      <div class="intro-sequence">
+        <div class="seq-phrase" id="phrase1">Today.</div>
+        <div class="seq-phrase" id="phrase2">Tomorrow.</div>
+        <div class="seq-phrase" id="phrase3">Years from now.</div>
+        <div class="seq-phrase" id="phrase4">
+          <span class="title-highlight">Until we grow old.</span>
+        </div>
+      </div>
+
+      <div class="intro-cta-box" id="introCta">
+        <button type="button" class="btn-cinema" onclick="beginJourney()">
+          <span>SEE OUR FUTURE</span>
+          <span>❤️</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         PHASE 2: VERTICAL FUTURE TIMELINE (FROM TODAY TO FOREVER)
+         ======================================================================== -->
+    <section id="timelineStage">
+      <div class="timeline-header">
+        <span class="timeline-tag">A LIFETIME CHOSEN</span>
+        <h2 class="timeline-main-title">OUR FUTURE MILESTONES</h2>
+        <div class="timeline-script-subtitle">With every passing year</div>
+      </div>
+
+      <div class="timeline-spine">
+
+        <!-- 1. TODAY -->
+        <article class="milestone-block left" id="ms-0">
+          <div class="node-orb"></div>
+          <div class="milestone-card">
+            <span class="year-badge">TODAY</span>
+            <h3 class="milestone-title">Still making memories.</h3>
+            <p class="milestone-desc">
+              Laughing at ordinary days, learning every corner of each other’s hearts, and laying the gentle foundation for all our tomorrows.
+            </p>
+            <div class="photo-window">
+              <!-- COUPLE PHOTO 1: The Present Day -->
+              <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=900&auto=format&fit=crop&q=80" alt="Today: Making Memories" />
+              <div class="photo-window-overlay"></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. 5 YEARS -->
+        <article class="milestone-block right" id="ms-1">
+          <div class="node-orb"></div>
+          <div class="milestone-card">
+            <span class="year-badge">5 YEARS</span>
+            <h3 class="milestone-title">Still laughing at the same silly jokes.</h3>
+            <p class="milestone-desc">
+              Half a decade later, and your smile still disarms me completely. The world changes around us, but our cozy silliness remains home.
+            </p>
+            <div class="photo-window">
+              <!-- COUPLE PHOTO 2: 5 Years -->
+              <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=900&auto=format&fit=crop&q=80" alt="5 Years: Silly Jokes" />
+              <div class="photo-window-overlay"></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. 10 YEARS -->
+        <article class="milestone-block left" id="ms-2">
+          <div class="node-orb"></div>
+          <div class="milestone-card">
+            <span class="year-badge">10 YEARS</span>
+            <h3 class="milestone-title">Still choosing each other.</h3>
+            <p class="milestone-desc">
+              Through crazy storms, tired evenings, triumphs and quiet routines. Through it all, waking up and making the easiest choice: you.
+            </p>
+            <div class="photo-window">
+              <!-- COUPLE PHOTO 3: 10 Years -->
+              <img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=900&auto=format&fit=crop&q=80" alt="10 Years: Choosing You" />
+              <div class="photo-window-overlay"></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. 25 YEARS -->
+        <article class="milestone-block right" id="ms-3">
+          <div class="node-orb"></div>
+          <div class="milestone-card">
+            <span class="year-badge">25 YEARS</span>
+            <h3 class="milestone-title">Still holding hands.</h3>
+            <p class="milestone-desc">
+              Silver strands in our hair, gentle laughter lines around our eyes, and the same familiar fingers intertwined as we walk.
+            </p>
+            <div class="photo-window">
+              <!-- COUPLE PHOTO 4: 25 Years -->
+              <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=900&auto=format&fit=crop&q=80" alt="25 Years: Holding Hands" />
+              <div class="photo-window-overlay"></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. 50 YEARS -->
+        <article class="milestone-block left" id="ms-4">
+          <div class="node-orb"></div>
+          <div class="milestone-card">
+            <span class="year-badge">50 YEARS</span>
+            <h3 class="milestone-title">Still saying: “I would choose you again.”</h3>
+            <p class="milestone-desc">
+              A lifetime of morning coffees, shared quiet evenings, and enduring proof that true love only deepens with age.
+            </p>
+            <div class="photo-window">
+              <!-- COUPLE PHOTO 5: 50 Years (Elderly Couple) -->
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=900&auto=format&fit=crop&q=80" alt="50 Years: Golden Lifetime" />
+              <div class="photo-window-overlay"></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6. FOREVER -->
+        <article class="milestone-block right" id="ms-5">
+          <div class="node-orb"></div>
+          <div class="milestone-card">
+            <span class="year-badge">FOREVER</span>
+            <h3 class="milestone-title">Some stories don’t need an ending.</h3>
+            <p class="milestone-desc">
+              Beyond the count of seasons and the march of clocks. An enduring love etched into the universe itself.
+            </p>
+            <div class="photo-window">
+              <!-- COUPLE PHOTO 6: Eternity -->
+              <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=900&auto=format&fit=crop&q=80" alt="Forever: An Endless Story" />
+              <div class="photo-window-overlay"></div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         PHASE 3: SUNSET CLIMAX (UNTIL WE GROW OLD)
+         ======================================================================== -->
+    <section id="sunsetFinaleStage">
+      <div class="sunset-haze"></div>
+
+      <div class="heart-symbol-wrapper">
+        <div class="sunset-heart">❤️</div>
+      </div>
+
+      <div class="sunset-quote-box">
+        <blockquote class="sunset-quote">
+          “If I get to grow old with you,<br>
+          then I don't need a perfect life.<br><br>
+          I just need our life.”
+        </blockquote>
+
+        <h2 class="sunset-climax-title">UNTIL WE GROW OLD</h2>
+        <div class="sunset-climax-script">Always &amp; Forever ❤️</div>
+      </div>
+
+      <button type="button" class="btn-replay" onclick="replayExperience()">
+        <span>Replay Our Journey ↺</span>
+      </button>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       VANILLA JAVASCRIPT: TIMING SEQUENCES, SCROLL ENGINE & EMBER CANVAS
+       ========================================================================== -->
+  <script>
+    /* ==========================================================================
+       1. PHASE 1: SEQUENTIAL PHRASE TIMELINE TIMING
+       ========================================================================== */
+    const phrases = [
+      document.getElementById('phrase1'),
+      document.getElementById('phrase2'),
+      document.getElementById('phrase3'),
+      document.getElementById('phrase4')
+    ];
+    const introCta = document.getElementById('introCta');
+
+    function playOpeningSequence() {
+      // 0.0s: Phrase 1 (Today)
+      setTimeout(() => phrases[0].classList.add('active'), 400);
+
+      // 2.2s: Phrase 1 out, Phrase 2 in (Tomorrow)
+      setTimeout(() => {
+        phrases[0].classList.remove('active');
+        phrases[0].classList.add('fade-out');
+        phrases[1].classList.add('active');
+      }, 2400);
+
+      // 4.6s: Phrase 2 out, Phrase 3 in (Years from now)
+      setTimeout(() => {
+        phrases[1].classList.remove('active');
+        phrases[1].classList.add('fade-out');
+        phrases[2].classList.add('active');
+      }, 4800);
+
+      // 7.0s: Phrase 3 out, Phrase 4 in (Until we grow old)
+      setTimeout(() => {
+        phrases[2].classList.remove('active');
+        phrases[2].classList.add('fade-out');
+        phrases[3].classList.add('active');
+        introCta.classList.add('revealed');
+      }, 7200);
+    }
+
+    window.addEventListener('load', playOpeningSequence);
+
+    /* ==========================================================================
+       2. PHASE 2 & 3: TRANSITION TO TIMELINE & SPECIAL NAVIGATION
+       ========================================================================== */
+    const timelineStage = document.getElementById('timelineStage');
+    const nextChapterBtn = document.getElementById('nextChapterBtn');
+    let currentMilestoneIndex = 0;
+    const totalMilestones = 6;
+
+    function beginJourney() {
+      timelineStage.classList.add('visible');
+      nextChapterBtn.style.display = 'flex';
+      
+      const firstNode = document.getElementById('ms-0');
+      if (firstNode) {
+        firstNode.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    /* SPECIAL INTERACTION: "NEXT CHAPTER →" Button Action */
+    function advanceToNextMilestone() {
+      currentMilestoneIndex++;
+
+      if (currentMilestoneIndex < totalMilestones) {
+        const nextTarget = document.getElementById(`ms-${currentMilestoneIndex}`);
+        if (nextTarget) {
+          nextTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        if (currentMilestoneIndex === totalMilestones - 1) {
+          document.getElementById('navPillText').textContent = "To Eternity";
+        }
+      } else {
+        // Scroll to Sunset Climax
+        document.getElementById('sunsetFinaleStage').scrollIntoView({ behavior: 'smooth' });
+        nextChapterBtn.style.display = 'none';
+      }
+    }
+
+    /* Scroll Reveal Observer for Timeline Elements */
+    const scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-on-scroll');
+          
+          // Sync current index for the Next Chapter pill
+          const id = entry.target.id;
+          if (id && id.startsWith('ms-')) {
+            const idx = parseInt(id.replace('ms-', ''));
+            if (!isNaN(idx)) currentMilestoneIndex = idx;
+          }
+        }
+      });
+    }, { threshold: 0.25 });
+
+    document.querySelectorAll('.milestone-block').forEach(b => scrollObserver.observe(b));
+
+    function replayExperience() {
+      currentMilestoneIndex = 0;
+      document.getElementById('navPillText').textContent = "Next Chapter";
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ==========================================================================
+       3. AMBIENT WARM EMBERS & FLOATING HEARTS CANVAS
+       ========================================================================== */
+    const canvas = document.getElementById('ambientCanvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let embers = [];
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class EmberParticle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = height + Math.random() * 60;
+        this.size = Math.random() * 2.6 + 1.2;
+        this.speedY = Math.random() * 0.5 + 0.18;
+        this.speedX = (Math.random() - 0.5) * 0.35;
+        this.opacity = Math.random() * 0.6 + 0.2;
+        this.isHeart = Math.random() > 0.68;
+        this.angle = Math.random() * Math.PI * 2;
+        this.spin = (Math.random() - 0.5) * 0.015;
+      }
+      update() {
+        this.y -= this.speedY;
+        this.x += this.speedX;
+        this.angle += this.spin;
+        if (this.y < -30) this.reset();
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+
+        if (this.isHeart) {
+          // Delicate floating heart
+          ctx.fillStyle = `rgba(212, 163, 89, ${this.opacity})`;
+          const s = this.size * 2.2;
+          ctx.beginPath();
+          ctx.moveTo(0, s / 4);
+          ctx.quadraticCurveTo(0, 0, s / 4, 0);
+          ctx.quadraticCurveTo(s / 2, 0, s / 2, s / 4);
+          ctx.quadraticCurveTo(s / 2, 0, (3 * s) / 4, 0);
+          ctx.quadraticCurveTo(s, 0, s, s / 4);
+          ctx.quadraticCurveTo(s, s / 2, (3 * s) / 4, (3 * s) / 4);
+          ctx.lineTo(s / 2, s);
+          ctx.lineTo(s / 4, (3 * s) / 4);
+          ctx.quadraticCurveTo(0, s / 2, 0, s / 4);
+          ctx.fill();
+        } else {
+          // Warm cinematic glowing ember
+          ctx.beginPath();
+          ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(242, 132, 158, ${this.opacity * 0.75})`;
+          ctx.fill();
+        }
+        ctx.restore();
+      }
+    }
+
+    const emberCount = window.innerWidth < 768 ? 30 : 60;
+    for (let i = 0; i < emberCount; i++) {
+      embers.push(new EmberParticle());
+    }
+
+    function renderParticles() {
+      ctx.clearRect(0, 0, width, height);
+      embers.forEach(e => {
+        e.update();
+        e.draw();
+      });
+      requestAnimationFrame(renderParticles);
+    }
+    renderParticles();
+  </script>
+</body>
+</html>
