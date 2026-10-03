@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Wedding of Ashish & Aarti 💍✨</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,400&family=Alex+Brush&family=Rozha+One&display=swap" rel="stylesheet">
+  <title>The Royal Union of Ashish & Aarti 👑💍</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&family=Rozha+One&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -13,53 +13,62 @@
     }
 
     body {
-      background: #120b0e;
-      color: #3b2a2e;
+      background: #060103;
+      color: #fff;
       font-family: 'Montserrat', sans-serif;
       overflow-x: hidden;
       position: relative;
     }
 
     /* -----------------------------------------------------------
-       1. MODERN PASTEL IVORY & FLORAL WOODEN ARCH GATE
+       1. GRAND 3D PALACE GOLDEN DOORS
     ----------------------------------------------------------- */
     #doorCurtain {
       position: fixed;
       inset: 0;
       z-index: 9999;
       display: flex;
+      perspective: 2000px;
       cursor: pointer;
-      background: #1a1114;
+      background: #020001;
       overflow: hidden;
     }
 
-    .gate-half {
+    .shahi-door {
       width: 50%;
       height: 100%;
       position: relative;
       background: 
-        linear-gradient(rgba(255, 248, 245, 0.15), rgba(40, 25, 30, 0.45)),
-        url('https://images.unsplash.com/photo-1546484396-fb3fc6f95f98?w=1200') center/cover no-repeat;
-      transition: transform 2.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 1.8s ease;
-      box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.6);
+        linear-gradient(135deg, rgba(20, 2, 8, 0.75) 0%, rgba(5, 0, 2, 0.95) 100%),
+        url('https://images.unsplash.com/photo-1546484396-fb3fc6f95f98?w=1400') center/cover no-repeat;
+      box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.95);
+      transition: transform 2.4s cubic-bezier(0.77, 0, 0.175, 1), opacity 1.8s ease;
       display: flex;
       align-items: center;
     }
 
-    .gate-left {
+    .shahi-door::after {
+      content: "";
+      position: absolute;
+      inset: 20px;
+      border: 2px solid rgba(212, 175, 55, 0.4);
+      pointer-events: none;
+    }
+
+    .door-left {
       transform-origin: left center;
-      border-right: 2px solid rgba(224, 185, 155, 0.85);
+      border-right: 3px solid #d4af37;
       justify-content: flex-end;
     }
 
-    .gate-right {
+    .door-right {
       transform-origin: right center;
-      border-left: 2px solid rgba(224, 185, 155, 0.85);
+      border-left: 3px solid #d4af37;
       justify-content: flex-start;
     }
 
-    /* Chiffon Drapes with Fresh Pastel Pink & White Roses */
-    .drape-left, .drape-right {
+    /* Elegant Floral Arch Drapes */
+    .shahi-drape-left, .shahi-drape-right {
       position: absolute;
       inset: 0;
       pointer-events: none;
@@ -67,323 +76,331 @@
       background-position: center;
     }
 
-    .drape-left {
+    .shahi-drape-left {
       background-image: 
-        radial-gradient(circle at 75% 25%, rgba(255, 250, 252, 0.6) 0%, transparent 65%),
+        radial-gradient(circle at 80% 20%, rgba(255, 235, 240, 0.5) 0%, transparent 60%),
         url('https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=900');
-      opacity: 0.95;
-      filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5));
+      opacity: 0.92;
+      filter: drop-shadow(0 25px 35px rgba(0,0,0,0.85));
     }
 
-    .drape-right {
+    .shahi-drape-right {
       background-image: 
-        radial-gradient(circle at 25% 25%, rgba(255, 250, 252, 0.6) 0%, transparent 65%),
+        radial-gradient(circle at 20% 20%, rgba(255, 235, 240, 0.5) 0%, transparent 60%),
         url('https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=900');
       transform: scaleX(-1);
-      opacity: 0.95;
-      filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5));
+      opacity: 0.92;
+      filter: drop-shadow(0 25px 35px rgba(0,0,0,0.85));
     }
 
-    /* Center Silk Monogram Ribbon */
-    .center-ribbon-badge {
+    /* Royal Golden Monogram Seal */
+    .royal-lock-seal {
       position: absolute;
       top: 45%;
       left: 50%;
       transform: translate(-50%, -50%);
-      z-index: 30;
+      z-index: 40;
       pointer-events: none;
       text-align: center;
       transition: opacity 0.5s ease;
     }
 
-    .badge-ring {
-      width: 95px;
-      height: 95px;
+    .seal-medallion {
+      width: 105px;
+      height: 105px;
       border-radius: 50%;
-      background: radial-gradient(circle, #fffaf6 0%, #f3e5dc 70%, #d4b29c 100%);
+      background: radial-gradient(circle, #fff7db 0%, #d4af37 60%, #854d0e 100%);
       border: 3px solid #ffffff;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 25px rgba(228, 193, 170, 0.8);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.9), 0 0 35px rgba(212, 175, 55, 0.9);
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #5c3b43;
-      animation: floatBadge 2.6s infinite alternate ease-in-out;
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #1a0409;
+      animation: pulseRoyalGlow 2.5s infinite alternate ease-in-out;
     }
 
-    @keyframes floatBadge {
-      0% { transform: scale(0.97); }
-      100% { transform: scale(1.05); }
+    @keyframes pulseRoyalGlow {
+      0% { transform: scale(0.96); box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+      100% { transform: scale(1.06); box-shadow: 0 0 45px rgba(254, 240, 138, 1); }
     }
 
-    .open-prompt {
+    .enter-instruction {
       position: absolute;
       bottom: 8%;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid rgba(224, 185, 155, 0.6);
-      padding: 12px 30px;
-      border-radius: 50px;
+      background: rgba(10, 2, 5, 0.7);
+      border: 1px solid rgba(212, 175, 55, 0.6);
+      padding: 12px 32px;
+      border-radius: 40px;
       backdrop-filter: blur(15px);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.95rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
       letter-spacing: 4px;
-      color: #5c3b43;
+      color: #fef08a;
       text-transform: uppercase;
       font-weight: 700;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.9);
       pointer-events: none;
     }
 
-    /* Doors Slide Open */
-    .doors-open .gate-left {
-      transform: translateX(-100%);
+    /* 3D Doors Unfold */
+    .doors-open .door-left {
+      transform: rotateY(-115deg) translateX(-40px);
       opacity: 0;
     }
 
-    .doors-open .gate-right {
-      transform: translateX(100%);
+    .doors-open .door-right {
+      transform: rotateY(115deg) translateX(40px);
       opacity: 0;
     }
 
-    .doors-open .center-ribbon-badge,
-    .doors-open .open-prompt {
+    .doors-open .royal-lock-seal,
+    .doors-open .enter-instruction {
       opacity: 0;
     }
 
     /* -----------------------------------------------------------
-       2. MODERN CANDLELIGHT PASTEL BACKGROUND
+       2. REVEALED PALACE MANDAP BACKDROP
     ----------------------------------------------------------- */
-    .mandap-stage {
+    .palace-stage {
       position: fixed;
       inset: 0;
       background: 
-        radial-gradient(circle at 50% 25%, rgba(255, 245, 240, 0.75) 0%, rgba(245, 235, 230, 0.92) 80%),
+        radial-gradient(circle at 50% 25%, rgba(55, 6, 19, 0.45) 0%, rgba(6, 1, 3, 0.97) 80%),
         url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1600') center/cover no-repeat;
-      filter: blur(16px);
+      filter: blur(14px);
       transform: scale(1.08);
       z-index: 1;
     }
 
     /* -----------------------------------------------------------
-       3. MODERN IVORY & ROSE-GOLD PATRIKA CARD
+       3. ROYAL INVITATION CARD (LUXURY GLASS & VELVET)
     ----------------------------------------------------------- */
-    .content-stream {
+    .main-canvas {
       position: relative;
       z-index: 10;
       width: 100%;
-      max-width: 580px;
+      max-width: 600px;
       margin: 0 auto;
-      padding: 40px 18px 100px 18px;
+      padding: 45px 18px 110px 18px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
     }
 
-    .ivory-card {
+    .shahi-card {
       width: 100%;
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(224, 185, 155, 0.5);
-      border-radius: 36px;
-      padding: 45px 24px;
-      backdrop-filter: blur(30px);
-      box-shadow: 0 25px 70px rgba(92, 59, 67, 0.15), 0 0 40px rgba(255, 255, 255, 0.9);
-      margin-bottom: 40px;
+      background: rgba(22, 4, 10, 0.75);
+      border: 1.5px solid rgba(212, 175, 55, 0.45);
+      border-radius: 38px;
+      padding: 48px 24px;
+      backdrop-filter: blur(32px);
+      box-shadow: 0 35px 95px rgba(0, 0, 0, 0.98), 0 0 50px rgba(212, 175, 55, 0.2);
+      margin-bottom: 42px;
       position: relative;
     }
 
-    .ivory-card::before {
+    .shahi-card::before {
       content: "";
       position: absolute;
       inset: 12px;
-      border: 1px solid rgba(224, 185, 155, 0.3);
-      border-radius: 26px;
+      border: 1px solid rgba(254, 240, 138, 0.2);
+      border-radius: 28px;
       pointer-events: none;
     }
 
-    .ganesh-crest {
-      width: 58px;
-      height: 58px;
-      margin: 0 auto 12px auto;
+    .ganpati-mark {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 14px auto;
       border-radius: 50%;
-      background: #faf2ec;
-      border: 1px solid rgba(224, 185, 155, 0.6);
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.3), transparent 70%);
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 2rem;
-      box-shadow: 0 4px 15px rgba(224, 185, 155, 0.35);
+      font-size: 2.4rem;
+      filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.8));
     }
 
-    .shlok-text {
+    .shlok-box {
       font-family: 'Rozha One', serif;
       font-size: 1.05rem;
-      color: #8c535d;
+      color: #fef08a;
       line-height: 1.8;
-      margin-bottom: 22px;
+      letter-spacing: 0.5px;
+      margin-bottom: 24px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.7);
     }
 
-    .wedding-pill {
+    .badge-royal {
       display: inline-block;
-      border: 1px solid rgba(201, 148, 126, 0.5);
-      background: #fbf3ee;
-      color: #9c636f;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.85rem;
+      border: 1px solid rgba(212, 175, 55, 0.6);
+      background: rgba(212, 175, 55, 0.1);
+      color: #fef08a;
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
       letter-spacing: 4px;
-      padding: 6px 22px;
+      padding: 7px 22px;
       border-radius: 40px;
       text-transform: uppercase;
-      font-weight: 600;
-      margin-bottom: 26px;
+      font-weight: 700;
+      margin-bottom: 28px;
     }
 
     .name-groom {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Cinzel', serif;
       font-size: 2.9rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: #3b2027;
+      font-weight: 900;
+      letter-spacing: 3px;
+      background: linear-gradient(180deg, #ffffff 0%, #fef08a 60%, #ca8a04 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       margin: 4px 0;
     }
 
     .name-bride {
-      font-family: 'Alex Brush', cursive;
+      font-family: 'Great Vibes', cursive;
       font-size: 4.8rem;
-      color: #b86576;
-      line-height: 1;
-      margin: 4px 0 10px 0;
-      text-shadow: 0 2px 15px rgba(184, 101, 118, 0.2);
+      color: #fca5a5;
+      line-height: 1.05;
+      margin: 6px 0 10px 0;
+      text-shadow: 0 0 35px rgba(252, 165, 165, 0.5);
     }
 
-    .parents-info {
+    .family-line {
       font-family: 'Rozha One', serif;
-      font-size: 0.95rem;
-      color: #6e5158;
+      font-size: 1rem;
+      color: #cbd5e1;
       line-height: 1.6;
     }
 
-    .parents-info strong {
-      color: #3b2027;
+    .family-line strong {
+      color: #fef08a;
     }
 
-    .wedding-vow {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
+    .knot-emblem {
+      font-size: 1.8rem;
+      color: #d4af37;
+      margin: 14px 0;
+    }
+
+    .royal-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
       font-style: italic;
-      line-height: 1.7;
-      color: #61444b;
-      margin-top: 24px;
-      max-width: 440px;
+      line-height: 1.8;
+      color: #fce7f3;
+      margin-top: 26px;
+      max-width: 460px;
       margin-left: auto;
       margin-right: auto;
     }
 
     /* -----------------------------------------------------------
-       4. MODERN PASTEL COUNTDOWN
+       4. GRAND LIVE COUNTDOWN (26 NOV 2026)
     ----------------------------------------------------------- */
-    .section-label {
-      font-family: 'Cormorant Garamond', serif;
+    .section-title {
+      font-family: 'Cinzel', serif;
       font-size: 1.35rem;
       letter-spacing: 4px;
-      color: #6e414c;
-      margin-bottom: 18px;
+      color: #fef08a;
+      margin-bottom: 20px;
       text-transform: uppercase;
-      font-weight: 700;
     }
 
-    .timer-grid {
+    .timer-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 12px;
       width: 100%;
-      margin-bottom: 42px;
+      margin-bottom: 45px;
     }
 
-    .timer-card {
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid rgba(224, 185, 155, 0.5);
+    .timer-tile {
+      background: rgba(30, 6, 14, 0.75);
+      border: 1px solid rgba(212, 175, 55, 0.4);
       border-radius: 22px;
-      padding: 16px 6px;
-      backdrop-filter: blur(15px);
-      box-shadow: 0 10px 25px rgba(92, 59, 67, 0.08);
+      padding: 18px 6px;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
     }
 
-    .timer-val {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: #4a2931;
+    .tile-val {
+      font-family: 'Cinzel', serif;
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: #fff;
       display: block;
     }
 
-    .timer-lbl {
+    .tile-tag {
       font-size: 0.65rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #9c636f;
+      color: #d4af37;
       margin-top: 4px;
       display: block;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     /* -----------------------------------------------------------
-       5. ROSE-GOLD SHIMMER HEART SCRATCH CARD
+       5. REAL GOLD FOIL HEART SCRATCH CARD
     ----------------------------------------------------------- */
-    .heart-scratch-shell {
+    .heart-scratch-wrapper {
       position: relative;
-      width: 290px;
-      height: 260px;
+      width: 300px;
+      height: 270px;
       margin: 0 auto 35px auto;
-      filter: drop-shadow(0 20px 35px rgba(92, 59, 67, 0.15));
+      filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.95));
     }
 
-    .heart-cutter {
+    .heart-frame {
       position: absolute;
       inset: 0;
-      clip-path: path("M 145 245 C 140 240, 20 155, 20 90 A 68 68 0 0 1 145 65 A 68 68 0 0 1 270 90 C 270 155, 150 240, 145 245 Z");
+      clip-path: path("M 150 255 C 145 250, 20 160, 20 95 A 70 70 0 0 1 150 70 A 70 70 0 0 1 280 95 C 280 160, 155 250, 150 255 Z");
     }
 
-    .heart-unveiled {
+    .heart-secret-content {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at center, #fff9f6 0%, #f6e8e2 75%, #ecd2c7 100%);
+      background: radial-gradient(circle at center, #2e050f 0%, #150207 75%, #050002 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding-top: 20px;
-      border: 2px solid #e0b99b;
+      padding-top: 25px;
+      border: 2px solid #d4af37;
     }
 
-    .heart-tagline {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.85rem;
+    .heart-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
       letter-spacing: 3px;
-      color: #b86576;
+      color: #fca5a5;
       text-transform: uppercase;
-      font-weight: 600;
+      font-weight: 700;
     }
 
-    .heart-date {
-      font-family: 'Cormorant Garamond', serif;
+    .heart-big-date {
+      font-family: 'Cinzel', serif;
       font-size: 2.1rem;
-      font-weight: 700;
-      color: #3b2027;
+      font-weight: 900;
+      color: #fef08a;
       letter-spacing: 2px;
       margin: 4px 0;
+      text-shadow: 0 0 25px rgba(254, 240, 138, 0.7);
     }
 
     .heart-muhurat {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
+      color: #cbd5e1;
       letter-spacing: 1px;
-      color: #7a5a62;
-      font-weight: 600;
     }
 
     #scratchCanvas {
@@ -395,84 +412,84 @@
       z-index: 5;
     }
 
-    .scratch-instruction {
+    .scratch-helper {
       font-size: 0.75rem;
       letter-spacing: 2px;
-      color: #8c6871;
+      color: #a89f91;
       margin-top: -20px;
       margin-bottom: 45px;
       text-transform: uppercase;
-      font-weight: 600;
     }
 
     /* -----------------------------------------------------------
-       6. EDITORIAL OUR STORY FRAME
+       6. OUR STORY
     ----------------------------------------------------------- */
-    .story-card {
+    .story-card-box {
       width: 100%;
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(224, 185, 155, 0.45);
+      background: rgba(22, 4, 10, 0.75);
+      border: 1px solid rgba(212, 175, 55, 0.35);
       border-radius: 34px;
       padding: 26px 20px;
       backdrop-filter: blur(25px);
-      margin-bottom: 40px;
-      box-shadow: 0 20px 50px rgba(92, 59, 67, 0.08);
+      margin-bottom: 42px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
     }
 
-    .story-photo {
+    .story-photo-holder {
       width: 100%;
-      height: 300px;
+      height: 310px;
       border-radius: 24px;
       overflow: hidden;
       margin-bottom: 20px;
-      border: 1px solid rgba(224, 185, 155, 0.4);
+      border: 1.5px solid rgba(212, 175, 55, 0.4);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
     }
 
-    .story-photo img {
+    .story-photo-holder img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .story-prose {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.18rem;
+    .story-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
       line-height: 1.8;
-      color: #5c3b43;
+      color: #ede5da;
       font-style: italic;
     }
 
     /* -----------------------------------------------------------
        7. CELEBRATION TIMELINE
     ----------------------------------------------------------- */
-    .timeline-grid {
+    .timeline-stack {
       width: 100%;
       display: flex;
       flex-direction: column;
       gap: 22px;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
     }
 
-    .event-card {
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid rgba(224, 185, 155, 0.45);
+    .event-tile {
+      background: rgba(22, 4, 10, 0.75);
+      border: 1px solid rgba(212, 175, 55, 0.35);
       border-radius: 28px;
-      padding: 16px;
+      padding: 18px;
       text-align: left;
       backdrop-filter: blur(20px);
-      box-shadow: 0 15px 35px rgba(92, 59, 67, 0.08);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
     }
 
-    .event-img {
+    .event-img-wrap {
       width: 100%;
-      height: 180px;
+      height: 185px;
       border-radius: 20px;
       overflow: hidden;
       margin-bottom: 14px;
     }
 
-    .event-img img {
+    .event-img-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -480,32 +497,32 @@
     }
 
     .event-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.45rem;
+      font-family: 'Cinzel', serif;
+      font-size: 1.35rem;
       font-weight: 700;
-      color: #3b2027;
+      color: #fef08a;
       margin-bottom: 6px;
     }
 
-    .event-info {
+    .event-desc {
       font-size: 0.85rem;
-      color: #6e5158;
+      color: #d1c7bd;
       line-height: 1.6;
     }
 
-    .event-info strong {
-      color: #b86576;
+    .event-desc strong {
+      color: #fca5a5;
     }
 
-    /* Floating Rose Petals */
-    .petal-spark {
+    /* Floating Royal Sparks */
+    .royal-spark {
       position: absolute;
       pointer-events: none;
-      animation: floatPetal 2.5s ease-out forwards;
+      animation: floatSpark 2.5s ease-out forwards;
       z-index: 1000;
     }
 
-    @keyframes floatPetal {
+    @keyframes floatSpark {
       0% { opacity: 1; transform: scale(0.6) translateY(0); }
       100% { opacity: 0; transform: scale(1.6) translateY(-140px) translateX(var(--dx)); }
     }
@@ -513,143 +530,143 @@
 </head>
 <body>
 
-  <!-- 1. PASTEL FLORAL ARCH GATES (INSTAGRAM REEL STYLE) -->
-  <div id="doorCurtain" onclick="unfoldArchDoors(event)">
-    <div class="gate-half gate-left">
-      <div class="drape-left"></div>
+  <!-- 1. GRAND 3D PALACE DOORS -->
+  <div id="doorCurtain" onclick="unfoldPalaceDoors(event)">
+    <div class="shahi-door door-left">
+      <div class="shahi-drape-left"></div>
     </div>
     
-    <div class="gate-half gate-right">
-      <div class="drape-right"></div>
+    <div class="shahi-door door-right">
+      <div class="shahi-drape-right"></div>
     </div>
 
-    <!-- Center Monogram -->
-    <div class="center-ribbon-badge">
-      <div class="badge-ring">A & A</div>
+    <!-- Center Royal Crest -->
+    <div class="royal-lock-seal">
+      <div class="seal-medallion">A & A</div>
     </div>
 
-    <div class="open-prompt">✦ Tap Gate To Open Celebration ✦</div>
+    <div class="enter-instruction">✦ Tap Royal Gate To Enter The Celebration ✦</div>
   </div>
 
-  <!-- 2. WARM PASTEL MANDAP BACKDROP -->
-  <div class="mandap-stage"></div>
+  <!-- 2. REVEALED PALACE MANDAP BACKDROP -->
+  <div class="palace-stage"></div>
 
-  <!-- 3. INVITATION CONTENT -->
-  <div class="content-stream">
+  <!-- 3. INVITATION CONTENT STREAM -->
+  <div class="main-canvas">
 
-    <div class="ivory-card">
-      <div class="ganesh-crest">🕉️</div>
-      <div class="shlok-text">
+    <div class="shahi-card">
+      <div class="ganpati-mark">🕉️</div>
+      <div class="shlok-box">
         ॥ श्री गणेशाय नमः ॥<br>
         वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>
         निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
       </div>
 
-      <div class="wedding-pill">The Wedding Invitation</div>
+      <div class="badge-royal">Royal Wedding Invitation</div>
 
       <!-- Groom -->
       <div>
-        <div style="font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: #9c636f; font-weight: 600;">The Groom</div>
+        <div style="font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: #a89f91; font-weight: 600;">The Groom</div>
         <div class="name-groom">Ashish</div>
-        <div class="parents-info">सुपुत्र: <strong>श्री. अशोकराव पाटील</strong></div>
+        <div class="family-line">सुपुत्र: <strong>श्री. अशोकराव पाटील</strong></div>
       </div>
 
-      <div style="font-size: 1.6rem; color: #e0b99b; margin: 12px 0;">💍</div>
+      <div class="knot-emblem">💍</div>
 
       <!-- Bride -->
       <div>
-        <div style="font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: #9c636f; font-weight: 600;">The Bride</div>
+        <div style="font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: #a89f91; font-weight: 600;">The Bride</div>
         <div class="name-bride">Aarti</div>
-        <div class="parents-info">सुकन्या: <strong>श्री. दत्तात्रय कदम</strong></div>
+        <div class="family-line">सुकन्या: <strong>श्री. दत्तात्रय कदम</strong></div>
       </div>
 
-      <p class="wedding-vow">
+      <p class="royal-quote">
         "Two souls, one destiny. Together with our families, we invite you to be part of our most treasured chapter as we begin forever."
       </p>
     </div>
 
-    <!-- 4. PASTEL WEDDING COUNTDOWN (26 NOV 2026) -->
-    <div class="section-label">Wedding Countdown</div>
-    <div class="timer-grid">
-      <div class="timer-card">
-        <span id="d" class="timer-val">00</span>
-        <span class="timer-lbl">Days</span>
+    <!-- 4. LIVE WEDDING COUNTDOWN (26 NOV 2026) -->
+    <div class="section-title">The Wedding Countdown</div>
+    <div class="timer-row">
+      <div class="timer-tile">
+        <span id="d" class="tile-val">00</span>
+        <span class="tile-tag">Days</span>
       </div>
-      <div class="timer-card">
-        <span id="h" class="timer-val">00</span>
-        <span class="timer-lbl">Hours</span>
+      <div class="timer-tile">
+        <span id="h" class="tile-val">00</span>
+        <span class="tile-tag">Hours</span>
       </div>
-      <div class="timer-card">
-        <span id="m" class="timer-val">00</span>
-        <span class="timer-lbl">Mins</span>
+      <div class="timer-tile">
+        <span id="m" class="tile-val">00</span>
+        <span class="tile-tag">Mins</span>
       </div>
-      <div class="timer-card">
-        <span id="s" class="timer-val">00</span>
-        <span class="timer-lbl">Secs</span>
+      <div class="timer-tile">
+        <span id="s" class="tile-val">00</span>
+        <span class="tile-tag">Secs</span>
       </div>
     </div>
 
-    <!-- 5. ROSE-GOLD HEART SCRATCH CARD -->
-    <div class="heart-scratch-shell">
-      <div class="heart-cutter">
-        <div class="heart-unveiled">
-          <div class="heart-tagline">Save The Date</div>
-          <div class="heart-date">26 • 11 • 2026</div>
+    <!-- 5. REAL GOLD FOIL HEART SCRATCH CARD -->
+    <div class="heart-scratch-wrapper">
+      <div class="heart-frame">
+        <div class="heart-secret-content">
+          <div class="heart-label">Save The Date</div>
+          <div class="heart-big-date">26 • 11 • 2026</div>
           <div class="heart-muhurat">शुभ मुहूर्त: दुपारी १२:३५ वा.</div>
         </div>
-        <canvas id="scratchCanvas" width="290" height="260"></canvas>
+        <canvas id="scratchCanvas" width="300" height="270"></canvas>
       </div>
     </div>
-    <div class="scratch-instruction">✦ Scratch heart to reveal auspicious date ✦</div>
+    <div class="scratch-helper">✦ Scratch golden heart to reveal auspicious date ✦</div>
 
     <!-- 6. OUR STORY -->
-    <div class="story-card">
-      <div class="section-label" style="margin-bottom: 14px;">Our Journey Forever</div>
+    <div class="story-card-box">
+      <div class="section-title" style="margin-bottom: 14px;">Our Journey Forever</div>
       
-      <div class="story-photo">
+      <div class="story-photo-holder">
         <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=900" alt="Engagement Memory">
       </div>
 
-      <p class="story-prose">
+      <p class="story-text">
         "एका साध्या भेटीतून सुरू झालेली आमची ही गोष्ट, हळूहळू अतूट विश्वासात आणि सुंदर प्रेमामध्ये बदलली. आज आम्ही आयुष्यभराच्या सोबतीसाठी एकत्र पाऊल टाकत आहोत. आमची ही सुंदर वाटचाल तुमच्या आशीर्वादाने अधिक परिपूर्ण होईल."
       </p>
     </div>
 
     <!-- 7. CELEBRATION TIMELINE -->
-    <div class="section-label">The Grand Itinerary</div>
-    <div class="timeline-grid">
+    <div class="section-title">The Grand Celebrations</div>
+    <div class="timeline-stack">
       
       <!-- Haldi -->
-      <div class="event-card">
-        <div class="event-img">
+      <div class="event-tile">
+        <div class="event-img-wrap">
           <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=800" alt="Haldi Ceremony">
         </div>
         <div class="event-title">💛 हळदी समारंभ (Haldi)</div>
-        <div class="event-info">
+        <div class="event-desc">
           <strong>तारीख:</strong> 25 नोव्हेंबर 2026 &nbsp;|&nbsp; <strong>वेळ:</strong> सकाळी 10:00 वाजता<br>
           <strong>स्थान:</strong> पाटील फार्महाऊस, पुणे.
         </div>
       </div>
 
       <!-- Mehendi -->
-      <div class="event-card">
-        <div class="event-img">
+      <div class="event-tile">
+        <div class="event-img-wrap">
           <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?w=800" alt="Mehendi Ceremony">
         </div>
         <div class="event-title">💚 मेंहदी व संगीत (Mehendi)</div>
-        <div class="event-info">
+        <div class="event-desc">
           <strong>तारीख:</strong> 25 नोव्हेंबर 2026 &nbsp;|&nbsp; <strong>वेळ:</strong> संध्याकाळी 06:00 वाजता<br>
           <strong>स्थान:</strong> रोझवूड बॅन्क्वेट हॉल, पुणे.
         </div>
       </div>
 
       <!-- Wedding -->
-      <div class="event-card">
-        <div class="event-img">
+      <div class="event-tile">
+        <div class="event-img-wrap">
           <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800" alt="Wedding Ceremony">
         </div>
         <div class="event-title">🥁 बारात व विवाह सोहळा (The Wedding)</div>
-        <div class="event-info">
+        <div class="event-desc">
           <strong>तारीख:</strong> 26 नोव्हेंबर 2026 &nbsp;|&nbsp; <strong>शुभ मुहूर्त:</strong> दुपारी 12:35 वाजता<br>
           <strong>स्थान:</strong> रॉयल पॅलेस ग्रँड लॉन्स, पुणे.
         </div>
@@ -660,14 +677,14 @@
   </div>
 
   <script>
-    // 1. OPEN PASTEL GATES
-    function unfoldArchDoors(e) {
+    // 1. OPEN PALACE GATES
+    function unfoldPalaceDoors(e) {
       const curtain = document.getElementById('doorCurtain');
       curtain.classList.add('doors-open');
-      spawnGlitter(e.clientX, e.clientY);
+      spawnRoyalSparks(e.clientX, e.clientY);
       setTimeout(() => {
         curtain.style.display = 'none';
-      }, 2100);
+      }, 2300);
     }
 
     // 2. LIVE COUNTDOWN TO 26 NOV 2026
@@ -692,26 +709,26 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // 3. ROSE-GOLD SHIMMER HEART FOIL SCRATCH
+    // 3. REAL GOLD FOIL HEART SCRATCH
     const canvas = document.getElementById('scratchCanvas');
     const ctx = canvas.getContext('2d');
 
-    const roseGoldGrad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-    roseGoldGrad.addColorStop(0, '#e8c5ba');
-    roseGoldGrad.addColorStop(0.35, '#fff0eb');
-    roseGoldGrad.addColorStop(0.7, '#dfada0');
-    roseGoldGrad.addColorStop(1, '#c99485');
-    ctx.fillStyle = roseGoldGrad;
+    const goldGrad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    goldGrad.addColorStop(0, '#d4af37');
+    goldGrad.addColorStop(0.35, '#fff7db');
+    goldGrad.addColorStop(0.7, '#eab308');
+    goldGrad.addColorStop(1, '#854d0e');
+    ctx.fillStyle = goldGrad;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    ctx.font = "600 13px 'Cormorant Garamond', serif";
-    ctx.fillStyle = "#5c3b43";
+    ctx.font = "bold 14px 'Cinzel', serif";
+    ctx.fillStyle = "#1c040a";
     ctx.textAlign = "center";
     ctx.fillText("✦ SCRATCH HEART ✦", canvas.width / 2, canvas.height / 2 + 10);
 
     let isScratching = false;
 
-    function scratchHeart(e) {
+    function scratchAction(e) {
       if (!isScratching) return;
       const rect = canvas.getBoundingClientRect();
       const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
@@ -719,30 +736,30 @@
 
       ctx.globalCompositeOperation = 'destination-out';
       ctx.beginPath();
-      ctx.arc(x, y, 22, 0, Math.PI * 2);
+      ctx.arc(x, y, 24, 0, Math.PI * 2);
       ctx.fill();
     }
 
     canvas.addEventListener('mousedown', () => isScratching = true);
     canvas.addEventListener('mouseup', () => isScratching = false);
-    canvas.addEventListener('mousemove', scratchHeart);
+    canvas.addEventListener('mousemove', scratchAction);
 
-    canvas.addEventListener('touchstart', (e) => { isScratching = true; scratchHeart(e); });
+    canvas.addEventListener('touchstart', (e) => { isScratching = true; scratchAction(e); });
     canvas.addEventListener('touchend', () => isScratching = false);
-    canvas.addEventListener('touchmove', scratchHeart);
+    canvas.addEventListener('touchmove', scratchAction);
 
-    // 4. FLOATING PETALS
-    function spawnGlitter(x, y) {
-      const symbols = ['🌸', '✨', '🤍', '🥂', '🌹', '💖'];
+    // 4. FLOATING SPARKS
+    function spawnRoyalSparks(x, y) {
+      const symbols = ['✨', '👑', '🌸', '💍', '🥂', '🌹', '💛'];
       for (let i = 0; i < 35; i++) {
         const item = document.createElement('div');
-        item.className = 'petal-spark';
+        item.className = 'royal-spark';
         item.innerText = symbols[Math.floor(Math.random() * symbols.length)];
         item.style.left = (x || window.innerWidth / 2) + 'px';
         item.style.top = (y || window.innerHeight / 2) + 'px';
-        item.style.fontSize = (Math.random() * 16 + 18) + 'px';
+        item.style.fontSize = (Math.random() * 16 + 20) + 'px';
 
-        const dx = (Math.random() - 0.5) * 360 + 'px';
+        const dx = (Math.random() - 0.5) * 380 + 'px';
         item.style.setProperty('--dx', dx);
 
         document.body.appendChild(item);
