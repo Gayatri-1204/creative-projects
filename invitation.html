@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Ashish & Aarti — Royal Wedding Invitation</title>
   
-  <!-- Premium Fonts: Cinzel Decorative, Playfair Display, Great Vibes & Yatra One for Sanskrit -->
+  <!-- Premium Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Great+Vibes&family=Marcellus&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Yatra+One&display=swap" rel="stylesheet">
@@ -72,8 +72,8 @@
 
     .reveal {
       opacity: 0;
-      transform: translateY(35px);
-      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(30px);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .reveal.active {
@@ -81,35 +81,51 @@
       transform: translateY(0);
     }
 
-    .ornament-divider {
+    /* ========================================================
+       तुम्ही दिलेल्या फोटोप्रमाणेच सुबक GOLDEN STAR DIVIDER
+       ======================================================== */
+    .royal-star-divider {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 16px;
-      margin: 26px 0;
-      opacity: 0.9;
+      gap: 14px;
+      margin: 48px auto; /* मोबाइलवर प्रत्येक सेक्शनमध्ये भरपूर मोकळी जागा */
+      max-width: 320px;
+      position: relative;
     }
 
-    .ornament-line {
-      height: 1px;
-      width: 65px;
-      background: linear-gradient(90deg, transparent, var(--gold-antique), transparent);
+    .divider-gold-line {
+      flex: 1;
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.9) 60%, rgba(255, 242, 178, 1) 100%);
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
     }
 
-    .ornament-mandala {
+    .divider-gold-line.right {
+      background: linear-gradient(90deg, rgba(255, 242, 178, 1) 0%, rgba(212, 175, 55, 0.9) 40%, transparent 100%);
+    }
+
+    .divider-star-icon {
       width: 22px;
       height: 22px;
-      fill: var(--gold-antique);
+      fill: url(#starGoldGrad);
+      filter: drop-shadow(0 0 8px rgba(255, 225, 120, 0.85));
+      animation: starBlink 3.5s infinite ease-in-out alternate;
+    }
+
+    @keyframes starBlink {
+      0% { transform: scale(0.92) rotate(0deg); filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.6)); }
+      100% { transform: scale(1.1) rotate(15deg); filter: drop-shadow(0 0 12px rgba(255, 235, 140, 1)); }
     }
 
     /* MUSIC FLOATING BUTTON */
     .music-widget {
       position: fixed;
-      top: 20px;
-      right: 20px;
+      top: 18px;
+      right: 18px;
       z-index: 999;
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       background: radial-gradient(circle, var(--maroon-rich), var(--maroon-deep));
       border: 1px solid var(--gold-antique);
@@ -119,7 +135,7 @@
       align-items: center;
       justify-content: center;
       color: var(--gold-light);
-      font-size: 19px;
+      font-size: 18px;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.8s ease, transform 0.3s ease;
@@ -200,11 +216,10 @@
       opacity: 1;
     }
 
-    /* दरवाजा मोबाइलसाठी कॉम्पॅक्ट केला आहे */
     .palace-gateway-structure {
       position: relative;
-      width: min(88vw, 560px);
-      height: min(74vh, 680px);
+      width: min(88vw, 540px);
+      height: min(72vh, 660px);
       display: flex;
       justify-content: center;
       align-items: flex-end;
@@ -216,7 +231,7 @@
       position: absolute;
       top: 0;
       bottom: 0;
-      width: clamp(20px, 4.5vw, 48px);
+      width: clamp(20px, 4.5vw, 44px);
       background: linear-gradient(90deg, #0d0103 0%, #36060f 35%, #4f0c1a 55%, #140104 100%);
       border: 1px solid rgba(212, 175, 55, 0.45);
       box-shadow: 0 0 25px rgba(0,0,0,0.9), inset 0 0 12px rgba(0,0,0,0.8);
@@ -231,7 +246,7 @@
       top: 0;
       width: 130%;
       left: -15%;
-      height: 18px;
+      height: 16px;
       background: var(--gold-gradient);
       border-radius: 3px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.8);
@@ -240,9 +255,9 @@
     .palace-cusped-arch {
       position: absolute;
       top: 0;
-      left: clamp(18px, 4vw, 45px);
-      right: clamp(18px, 4vw, 45px);
-      height: clamp(55px, 11vh, 95px);
+      left: clamp(18px, 4vw, 42px);
+      right: clamp(18px, 4vw, 42px);
+      height: clamp(50px, 10vh, 90px);
       background: linear-gradient(180deg, #180205 0%, #29040c 80%, transparent 100%);
       border-top: 2.5px solid var(--gold-antique);
       border-left: 2px solid var(--gold-antique);
@@ -259,13 +274,13 @@
     .arch-jharokha-svg {
       width: 100%;
       height: 100%;
-      max-height: 70px;
-      padding: 6px 20px 0;
+      max-height: 65px;
+      padding: 6px 18px 0;
     }
 
     .doors-assembly {
       position: relative;
-      width: calc(100% - clamp(36px, 8vw, 90px));
+      width: calc(100% - clamp(36px, 8vw, 84px));
       height: 100%;
       display: flex;
       transform-style: preserve-3d;
@@ -310,7 +325,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-evenly;
-      padding: clamp(45px, 9vh, 80px) 8px 20px;
+      padding: clamp(45px, 8.5vh, 75px) 8px 20px;
     }
 
     .wing-left {
@@ -367,8 +382,8 @@
     .grand-brass-handle {
       position: absolute;
       top: 54%;
-      width: 36px;
-      height: 36px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
       background: radial-gradient(circle, #ffe285 0%, #aa7c11 75%, #3d2301 100%);
       border: 2px solid #fff2b2;
@@ -379,21 +394,21 @@
 
     .handle-hanging-ring {
       position: absolute;
-      top: 16px;
+      top: 15px;
       left: 6px;
-      width: 24px;
-      height: 40px;
+      width: 22px;
+      height: 38px;
       border: 3.5px solid var(--gold-antique);
       border-radius: 50%;
       box-shadow: 0 4px 8px rgba(0,0,0,0.8);
     }
 
-    .wing-left .grand-brass-handle { right: 12px; }
-    .wing-right .grand-brass-handle { left: 12px; }
+    .wing-left .grand-brass-handle { right: 10px; }
+    .wing-right .grand-brass-handle { left: 10px; }
 
     .door-action-pod {
       position: absolute;
-      bottom: clamp(24px, 4.5vh, 48px);
+      bottom: clamp(20px, 4vh, 45px);
       z-index: 12;
       display: flex;
       flex-direction: column;
@@ -414,9 +429,9 @@
       color: #1a0206;
       border: 1px solid #fff6ce;
       border-radius: 50px;
-      padding: 13px 34px;
+      padding: 12px 32px;
       font-family: var(--font-display);
-      font-size: clamp(11px, 2.8vw, 13px);
+      font-size: clamp(11px, 2.7vw, 13px);
       font-weight: 700;
       letter-spacing: 2px;
       cursor: pointer;
@@ -437,10 +452,10 @@
     .door-tap-subtext {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: 12px;
+      font-size: 11.5px;
       letter-spacing: 1.5px;
       color: var(--gold-light);
-      margin-top: 10px;
+      margin-top: 8px;
       opacity: 0.9;
       animation: pulseSubtle 2.2s infinite ease-in-out;
       text-shadow: 0 2px 8px rgba(0,0,0,0.9);
@@ -454,7 +469,7 @@
     .portal-base-diyas {
       position: absolute;
       bottom: 12px;
-      width: min(78vw, 480px);
+      width: min(78vw, 460px);
       display: flex;
       justify-content: space-between;
       pointer-events: none;
@@ -469,8 +484,8 @@
     }
 
     .diya-flame {
-      width: 12px;
-      height: 18px;
+      width: 11px;
+      height: 17px;
       background: radial-gradient(ellipse at bottom, #fff 0%, #ffcf40 45%, #ff4500 85%, transparent 100%);
       border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
       animation: flameWobble 2.5s infinite ease-in-out alternate;
@@ -478,10 +493,10 @@
     }
 
     .diya-base {
-      width: 38px;
-      height: 15px;
+      width: 36px;
+      height: 14px;
       background: var(--gold-gradient);
-      border-radius: 0 0 20px 20px;
+      border-radius: 0 0 18px 18px;
       margin-top: -2px;
       border-top: 2px solid #5a0d1d;
     }
@@ -492,20 +507,22 @@
       100% { transform: scale(0.96, 1.04) rotate(-2deg); }
     }
 
-    /* MAIN CONTAINER */
+    /* ========================================================
+       MAIN PALACE CONTAINER & BREATHING SPACE
+       ======================================================== */
     .palace-container {
       position: relative;
       z-index: 2;
       width: 100%;
-      max-width: 740px;
+      max-width: 700px;
       margin: 0 auto;
-      padding: 30px 18px 80px 18px;
+      padding: 30px 18px 90px 18px;
     }
 
-    /* GANPATI */
+    /* GANPATI SECTION */
     .ganpati-section {
       text-align: center;
-      padding: 40px 10px 25px;
+      padding: 35px 10px 15px;
     }
 
     .ganpati-frame {
@@ -518,39 +535,40 @@
 
     .ganpati-glow {
       position: absolute;
-      width: 120px;
-      height: 120px;
-      background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
+      width: 130px;
+      height: 130px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
       border-radius: 50%;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      filter: blur(10px);
+      filter: blur(14px);
       z-index: -1;
     }
 
-    .ganpati-icon {
-      width: 90px;
-      height: 90px;
-      filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.65));
+    .ganpati-image-photo {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 14px rgba(212, 175, 55, 0.75));
     }
 
     .shri-ganeshaya {
       font-family: var(--font-devanagari);
-      font-size: clamp(20px, 4.8vw, 28px);
+      font-size: clamp(20px, 4.8vw, 27px);
       color: var(--gold-light);
       letter-spacing: 2px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
     }
 
     .vakratunda-shloka {
       font-family: var(--font-serif);
-      font-size: clamp(14px, 3.6vw, 18px);
-      line-height: 1.8;
+      font-size: clamp(14px, 3.6vw, 17.5px);
+      line-height: 1.85;
       color: var(--ivory);
       font-style: italic;
-      max-width: 520px;
+      max-width: 500px;
       margin: 0 auto;
       text-shadow: 0 2px 8px rgba(0,0,0,0.8);
     }
@@ -560,10 +578,10 @@
       background: radial-gradient(ellipse at 50% 30%, #460915 0%, #28040a 70%, #170104 100%);
       border: 2px solid var(--gold-antique);
       border-radius: 12px;
-      padding: clamp(30px, 5.5vw, 55px) clamp(16px, 3.5vw, 36px);
+      padding: clamp(32px, 6vw, 55px) clamp(16px, 4vw, 36px);
       position: relative;
       box-shadow: 0 15px 50px rgba(0,0,0,0.7), 0 0 30px rgba(212, 175, 55, 0.15);
-      margin-bottom: 40px;
+      margin-top: 10px;
     }
 
     .corner-motif {
@@ -628,13 +646,13 @@
       font-size: clamp(14px, 3.4vw, 16.5px);
       line-height: 1.8;
       color: var(--ivory);
-      max-width: 540px;
+      max-width: 520px;
       margin: 18px auto 0;
     }
 
-    /* SCRATCH CARD */
+    /* SCRATCH CARD SECTION */
     .scratch-standalone-section {
-      margin: 0 auto 35px;
+      margin: 0 auto;
       max-width: 390px;
       text-align: center;
     }
@@ -720,16 +738,14 @@
       transition: opacity 0.6s ease;
     }
 
-    /* ========================================================
-       COUNTDOWN (सुरवातीला लपवून ठेवले आहे, स्क्रॅच झाल्यावर दिसेल)
-       ======================================================== */
+    /* COUNTDOWN (SCRATCH केल्यानंतरच सक्रिय) */
     .countdown-standalone-section {
-      margin: 0 auto 60px;
+      margin: 0 auto;
       max-width: 520px;
       text-align: center;
-      display: none; /* स्क्रॅच नंतर दिसेल */
+      display: none;
       opacity: 0;
-      transform: translateY(25px);
+      transform: translateY(20px);
       transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -813,8 +829,11 @@
       padding: 15px;
     }
 
-    /* CELEBRATIONS */
-    .celebrations-wrap { margin: 60px 0; }
+    /* CELEBRATIONS SECTION */
+    .celebrations-wrap {
+      margin: 10px 0;
+    }
+
     .section-headline {
       text-align: center;
       font-family: var(--font-display);
@@ -822,6 +841,7 @@
       letter-spacing: 3px;
       margin-bottom: 8px;
     }
+
     .section-subtext {
       text-align: center;
       font-family: var(--font-serif);
@@ -834,13 +854,13 @@
     .events-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 20px;
+      gap: 22px;
     }
 
     @media (min-width: 620px) {
       .events-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        gap: 22px;
       }
     }
 
@@ -959,8 +979,11 @@
       margin: 6px auto;
     }
 
-    /* STORY SLIDER */
-    .story-section { margin: 60px 0; }
+    /* STORY PHOTO SLIDER */
+    .story-section {
+      margin: 10px 0;
+    }
+
     .slider-stage-wrapper {
       position: relative;
       max-width: 440px;
@@ -1083,7 +1106,11 @@
     }
 
     /* VENUE */
-    .venue-section { margin: 60px 0; text-align: center; }
+    .venue-section {
+      margin: 10px 0;
+      text-align: center;
+    }
+
     .venue-box {
       border: 1px solid var(--gold-antique);
       border-radius: 12px;
@@ -1133,8 +1160,7 @@
     /* FINAL */
     .final-section {
       text-align: center;
-      padding: 40px 10px 30px;
-      margin-top: 30px;
+      padding: 30px 10px 20px;
     }
 
     .final-quote {
@@ -1167,6 +1193,18 @@
 
   <!-- Ambient Gold Dust -->
   <canvas id="ambientCanvas"></canvas>
+
+  <!-- SVG Gradients Definition -->
+  <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="starGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fff5cc" />
+        <stop offset="45%" stop-color="#e8be48" />
+        <stop offset="85%" stop-color="#ab7f1b" />
+        <stop offset="100%" stop-color="#ffd700" />
+      </linearGradient>
+    </defs>
+  </svg>
 
   <!-- Audio Element -->
   <audio id="weddingMusic" loop preload="auto">
@@ -1265,20 +1303,8 @@
     <section class="ganpati-section reveal">
       <div class="ganpati-frame">
         <div class="ganpati-glow"></div>
-        <svg class="ganpati-icon" viewBox="0 0 100 100" fill="none">
-          <path d="M50 15 C45 15, 38 18, 38 28 C38 36, 46 39, 46 44 C46 51, 37 54, 34 60 C31 66, 34 76, 42 81 C48 85, 56 83, 59 78 C62 73, 60 67, 57 65 C53 62, 48 64, 48 59 C48 56, 52 53, 56 48 C61 42, 63 35, 61 27 C59 20, 55 15, 50 15 Z" fill="url(#goldGrad)" />
-          <path d="M49 20 Q54 28 49 36" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round" />
-          <circle cx="50" cy="22" r="2.5" fill="#f7e7a9" />
-          <path d="M41 33 C33 33, 27 38, 27 46 C27 52, 32 57, 39 57" stroke="url(#goldGrad)" stroke-width="2" stroke-linecap="round" fill="none" />
-          <path d="M58 33 C66 33, 72 38, 72 46 C72 52, 67 57, 60 57" stroke="url(#goldGrad)" stroke-width="2" stroke-linecap="round" fill="none" />
-          <defs>
-            <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#fff2b2"/>
-              <stop offset="50%" stop-color="#d4af37"/>
-              <stop offset="100%" stop-color="#8b6508"/>
-            </linearGradient>
-          </defs>
-        </svg>
+        <!-- Ganpati Bappa Photo -->
+        <img class="ganpati-image-photo" src="bapu.png" alt="Shree Ganesh" onerror="this.src='bapu.png.jpeg';" />
       </div>
 
       <div class="shri-ganeshaya">॥ श्री गणेशाय नमः ॥</div>
@@ -1287,16 +1313,17 @@
         वक्रतुण्ड महाकाय सूर्यकोटि समप्रभः ।<br />
         निर्विघ्नं कुरु मे देव शुभकार्येषु सर्वदा ॥
       </p>
-
-      <div class="ornament-divider">
-        <div class="ornament-line"></div>
-        <svg class="ornament-mandala" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="5" fill="#d4af37"/>
-          <path d="M12 2L14 7H10L12 2ZM12 22L10 17H14L12 22ZM2 12L7 10V14L2 12ZM22 12L17 14V10L22 12Z" fill="#d4af37"/>
-        </svg>
-        <div class="ornament-line"></div>
-      </div>
     </section>
+
+    <!-- [DIVIDER 1] फोटोप्रमाणेच सुबक स्टार डिव्हायडर -->
+    <div class="royal-star-divider reveal">
+      <div class="divider-gold-line"></div>
+      <svg class="divider-star-icon" viewBox="0 0 24 24">
+        <!-- 8-Point Octagram Star -->
+        <path d="M12 0L14.2 8.8L23 6.5L16.8 13.2L22 20.5L13.2 18.2L12 24L10.8 18.2L2 20.5L7.2 13.2L1 6.5L9.8 8.8Z" />
+      </svg>
+      <div class="divider-gold-line right"></div>
+    </div>
 
     <!-- 4. MAIN WEDDING CARD -->
     <section class="royal-card reveal">
@@ -1338,6 +1365,15 @@
       </p>
     </section>
 
+    <!-- [DIVIDER 2] -->
+    <div class="royal-star-divider reveal">
+      <div class="divider-gold-line"></div>
+      <svg class="divider-star-icon" viewBox="0 0 24 24">
+        <path d="M12 0L14.2 8.8L23 6.5L16.8 13.2L22 20.5L13.2 18.2L12 24L10.8 18.2L2 20.5L7.2 13.2L1 6.5L9.8 8.8Z" />
+      </svg>
+      <div class="divider-gold-line right"></div>
+    </div>
+
     <!-- 5. SCRATCH DATE CARD -->
     <section class="scratch-standalone-section reveal">
       <div class="scratch-card-box">
@@ -1353,7 +1389,7 @@
       </div>
     </section>
 
-    <!-- 6. LIVE COUNTDOWN — स्क्रॅच झाल्यानंतरच दिसेल -->
+    <!-- 6. LIVE COUNTDOWN (स्क्रॅच झाल्यावर हळूच प्रकट होईल) -->
     <section class="countdown-standalone-section" id="countdownSection">
       <div class="countdown-title">The Auspicious Muhurat Approaches</div>
 
@@ -1404,6 +1440,15 @@
         <span style="font-size: 15px; color: var(--ivory);">THE WEDDING DAY IS HERE ❤️</span>
       </div>
     </section>
+
+    <!-- [DIVIDER 3] -->
+    <div class="royal-star-divider reveal">
+      <div class="divider-gold-line"></div>
+      <svg class="divider-star-icon" viewBox="0 0 24 24">
+        <path d="M12 0L14.2 8.8L23 6.5L16.8 13.2L22 20.5L13.2 18.2L12 24L10.8 18.2L2 20.5L7.2 13.2L1 6.5L9.8 8.8Z" />
+      </svg>
+      <div class="divider-gold-line right"></div>
+    </div>
 
     <!-- 7. CELEBRATIONS / EVENTS -->
     <section class="celebrations-wrap">
@@ -1508,6 +1553,15 @@
       </div>
     </section>
 
+    <!-- [DIVIDER 4] -->
+    <div class="royal-star-divider reveal">
+      <div class="divider-gold-line"></div>
+      <svg class="divider-star-icon" viewBox="0 0 24 24">
+        <path d="M12 0L14.2 8.8L23 6.5L16.8 13.2L22 20.5L13.2 18.2L12 24L10.8 18.2L2 20.5L7.2 13.2L1 6.5L9.8 8.8Z" />
+      </svg>
+      <div class="divider-gold-line right"></div>
+    </div>
+
     <!-- 8. OUR STORY SLIDER -->
     <section class="story-section reveal">
       <h2 class="section-headline gold-text">Our Story</h2>
@@ -1563,6 +1617,15 @@
       </div>
     </section>
 
+    <!-- [DIVIDER 5] -->
+    <div class="royal-star-divider reveal">
+      <div class="divider-gold-line"></div>
+      <svg class="divider-star-icon" viewBox="0 0 24 24">
+        <path d="M12 0L14.2 8.8L23 6.5L16.8 13.2L22 20.5L13.2 18.2L12 24L10.8 18.2L2 20.5L7.2 13.2L1 6.5L9.8 8.8Z" />
+      </svg>
+      <div class="divider-gold-line right"></div>
+    </div>
+
     <!-- 9. VENUE -->
     <section class="venue-section reveal">
       <h2 class="section-headline gold-text">The Wedding Venue</h2>
@@ -1581,16 +1644,17 @@
       </div>
     </section>
 
+    <!-- [DIVIDER 6] -->
+    <div class="royal-star-divider reveal">
+      <div class="divider-gold-line"></div>
+      <svg class="divider-star-icon" viewBox="0 0 24 24">
+        <path d="M12 0L14.2 8.8L23 6.5L16.8 13.2L22 20.5L13.2 18.2L12 24L10.8 18.2L2 20.5L7.2 13.2L1 6.5L9.8 8.8Z" />
+      </svg>
+      <div class="divider-gold-line right"></div>
+    </div>
+
     <!-- 10. FINAL MESSAGE -->
     <footer class="final-section reveal">
-      <div class="ornament-divider">
-        <div class="ornament-line"></div>
-        <svg class="ornament-mandala" viewBox="0 0 24 24">
-          <path d="M12 2L14 8L20 6L16 12L22 14L16 16L18 22L12 18L6 22L8 16L2 14L8 12L4 6L10 8Z" />
-        </svg>
-        <div class="ornament-line"></div>
-      </div>
-
       <p class="final-quote">
         “Two hearts,<br />
         two families,<br />
@@ -1708,7 +1772,7 @@
         ctx.arc(x, y, 22, 0, Math.PI * 2, false);
         ctx.fill();
 
-        // स्क्रॅच सुरू होताच काउंटडाउन दृश्यमान करणे
+        // स्क्रॅच सुरू होताच काउंटडाउन प्रकट करणे
         triggerCountdownShow();
 
         spawnScratchSparkles(x, y);
