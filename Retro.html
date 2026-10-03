@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vintage Lo-Fi Cassette 📼</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at center, #2e1c2b 0%, #150d18 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #ffd6e0;
+      font-family: 'Courier Prime', monospace;
+      overflow: hidden;
+      padding: 20px;
+    }
+    .scene {
+      width: clamp(310px, 85vw, 420px);
+      height: 250px;
+      perspective: 1000px;
+      margin-bottom: 25px;
+    }
+    .cassette {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .cassette.flipped { transform: rotateY(180deg); }
+    .side {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      background: linear-gradient(135deg, #1f1f2e, #13131c);
+      border: 4px solid #ff758f;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 0 25px rgba(255, 117, 143, 0.2);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .side-b { transform: rotateY(180deg); }
+    .label-sticker {
+      background: #fdf0d5;
+      color: #3d0c1e;
+      border-radius: 10px;
+      padding: 8px 12px;
+      border: 2px dashed #ff4d6d;
+      text-align: center;
+    }
+    .tape-title { font-weight: 700; font-size: 1.1rem; }
+    .window-cutout {
+      background: #000;
+      height: 70px;
+      border-radius: 12px;
+      border: 2px solid #555;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: relative;
+    }
+    .spool {
+      width: 48px;
+      height: 48px;
+      background: #ffffff;
+      border-radius: 50%;
+      border: 6px dashed #222;
+      box-shadow: 0 0 0 6px #ff758f;
+    }
+    .spinning { animation: spin 1.8s linear infinite; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    .controls { display: flex; gap: 15px; }
+    button {
+      background: linear-gradient(135deg, #ff4d6d, #c9184a);
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4);
+      transition: transform 0.2s;
+    }
+    button:hover { transform: scale(1.05); }
+    .note {
+      position: absolute;
+      font-size: 1.5rem;
+      pointer-events: none;
+      animation: floatNote 2s ease-out forwards;
+    }
+    @keyframes floatNote {
+      0% { opacity: 1; transform: translate(0, 0) scale(0.6); }
+      100% { opacity: 0; transform: translate(var(--x), -120px) scale(1.4); }
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div id="cassetteBox" class="cassette">
+      <div class="side side-a">
+        <div class="label-sticker">
+          <div class="tape-title">Side A: Late Night Coffee ☕</div>
+        </div>
+        <div class="window-cutout">
+          <div class="spool" id="spool1"></div>
+          <div class="spool" id="spool2"></div>
+        </div>
+      </div>
+      <div class="side side-b">
+        <div class="label-sticker">
+          <div class="tape-title">Side B: Sunset Boulevard 🌅</div>
+        </div>
+        <div class="window-cutout">
+          <div class="spool" id="spool3"></div>
+          <div class="spool" id="spool4"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button onclick="toggleMusic()">▶ / ⏸ Play Tape</button>
+    <button onclick="flipTape()">🔄 Flip Side</button>
+  </div>
+
+  <script>
+    let isPlaying = false, audioCtx, loopId;
+    const notes = [261.63, 329.63, 392.00, 523.25, 440.00];
+
+    function initAudio() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+
+    function playNote(freq) {
+      if (!audioCtx) return;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.2);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 1.2);
+    }
+
+    function toggleMusic() {
+      initAudio();
+      isPlaying = !isPlaying;
+      document.querySelectorAll('.spool').forEach(s => s.classList.toggle('spinning', isPlaying));
+      if (isPlaying) {
+        let i = 0;
+        loopId = setInterval(() => {
+          playNote(notes[i % notes.length]);
+          createNoteElement();
+          i++;
+        }, 500);
+      } else {
+        clearInterval(loopId);
+      }
+    }
+
+    function flipTape() {
+      document.getElementById('cassetteBox').classList.toggle('flipped');
+    }
+
+    function createNoteElement() {
+      const n = document.createElement('div');
+      n.className = 'note';
+      n.innerText = ['🎵', '🎶', '✨', '💖'][Math.floor(Math.random() * 4)];
+      n.style.setProperty('--x', `${(Math.random() - 0.5) * 160}px`);
+      n.style.left = '50%';
+      n.style.top = '40%';
+      document.body.appendChild(n);
+      setTimeout(() => n.remove(), 2000);
+    }
+  </script>
+</body>
+</html>
