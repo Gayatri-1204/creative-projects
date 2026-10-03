@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ashish & Aarti | The Royal Wedding 💍✨</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@200;300;400;500;600&family=Rozha+One&family=Alex+Brush&display=swap" rel="stylesheet">
+  <title>Aarti & Ashish | The Royal Wedding 💍✨</title>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400;1,600&family=Rozha+One&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -13,358 +13,219 @@
     }
 
     body {
-      background: #12060e;
-      color: #e8d7cf;
-      font-family: 'Cormorant Garamond', serif;
-      overflow-x: hidden;
-      min-height: 100vh;
+      background: #0f090d;
+      font-family: 'Montserrat', sans-serif;
+      color: #3b2027;
       display: flex;
       justify-content: center;
-      position: relative;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    /* -----------------------------------------------------------
-       1. FULLSCREEN HERO COVER (PHOTO ENTRY)
-    ----------------------------------------------------------- */
-    #heroCover {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: #000;
+    /* Main Responsive Viewport (Mobile & Laptop Tablet Mockup) */
+    .wedding-viewport {
+      width: 100%;
+      max-width: 520px;
+      min-height: 100vh;
+      background: #faf6f0;
+      box-shadow: 0 0 90px rgba(0, 0, 0, 0.9);
+      position: relative;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
-      padding-bottom: 60px;
-      transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 1s ease;
-      overflow: hidden;
     }
 
-    /* Background Couple Image */
-    .hero-bg-image {
-      position: absolute;
-      inset: 0;
-      background: 
-        linear-gradient(180deg, rgba(18, 6, 14, 0.2) 0%, rgba(18, 6, 14, 0.7) 65%, rgba(14, 4, 10, 0.98) 100%),
-        url('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200') center/cover no-repeat;
-      filter: contrast(105%);
-      transform: scale(1.02);
-      transition: transform 4s ease-out;
-    }
-
-    #heroCover:hover .hero-bg-image {
-      transform: scale(1.06);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 10;
-      text-align: center;
-      max-width: 440px;
-      padding: 0 20px;
-    }
-
-    .hero-tagline {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: #cda763;
-      margin-bottom: 12px;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-    }
-
-    .hero-couple-names {
-      font-size: clamp(3rem, 7vw, 4.2rem);
-      color: #fff;
-      font-weight: 400;
-      letter-spacing: 3px;
-      line-height: 1.1;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
-      margin-bottom: 8px;
-    }
-
-    .hero-lead-quote {
-      font-size: 1.1rem;
-      font-style: italic;
-      color: #f2e3db;
-      line-height: 1.6;
-      margin-bottom: 28px;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.9);
-    }
-
-    .btn-open-invitation {
-      background: linear-gradient(135deg, rgba(205, 167, 99, 0.9), rgba(163, 122, 53, 0.95));
-      color: #1a0814;
-      border: 1px solid #ffffff;
-      padding: 14px 34px;
-      border-radius: 40px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(205, 167, 99, 0.6);
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn-open-invitation:hover {
-      transform: scale(1.05);
-      box-shadow: 0 15px 40px rgba(205, 167, 99, 0.8);
-    }
-
-    /* Cover Slide Up */
-    .cover-slide-away {
-      transform: translateY(-100%);
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    /* Background Audio Floating Toggle Button */
-    .music-player-btn {
+    /* Top Floating Music Controller */
+    .audio-player-tag {
       position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 10000;
-      width: 44px;
-      height: 44px;
+      top: 18px;
+      right: 18px;
+      z-index: 9999;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
-      background: rgba(36, 17, 31, 0.75);
-      border: 1px solid #cda763;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid #d4af37;
       backdrop-filter: blur(10px);
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      color: #cda763;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
       font-size: 1.1rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    }
-
-    .music-rotating {
-      animation: spinMusic 4s linear infinite;
-    }
-
-    @keyframes spinMusic {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
     }
 
     /* -----------------------------------------------------------
-       2. MAIN VIEWPORT (SCREENSHOT ROYAL LUXURY THEME)
+       SECTION 1: PURE IVORY ROYAL MAIN CARD (SCREENSHOT 1)
     ----------------------------------------------------------- */
-    .app-viewport {
-      width: 100%;
-      max-width: 480px;
-      min-height: 100vh;
-      background: #24111f;
-      box-shadow: 0 0 80px rgba(0, 0, 0, 0.9);
-      position: relative;
-      padding: 50px 22px 90px 22px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .sec-home {
+      background: radial-gradient(circle at 50% 30%, #ffffff 0%, #faf3eb 100%);
+      padding: 55px 24px 60px 24px;
       text-align: center;
-    }
-
-    .gold-ornament {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin: 24px 0;
-      opacity: 0.75;
-    }
-
-    .gold-ornament::before,
-    .gold-ornament::after {
-      content: "";
-      width: 50px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #cda763, transparent);
-    }
-
-    .gold-ornament span {
-      color: #cda763;
-      font-size: 0.9rem;
-    }
-
-    /* Section 1 Card */
-    .shahi-frame {
-      width: 100%;
-      border: 1px solid rgba(205, 167, 99, 0.45);
-      border-radius: 4px;
-      padding: 35px 20px;
       position: relative;
-      background: rgba(30, 13, 24, 0.5);
-      margin-bottom: 50px;
+      border-bottom: 3px double #e8d5be;
     }
 
-    .shahi-frame::after {
-      content: "";
-      position: absolute;
-      inset: 5px;
-      border: 1px solid rgba(205, 167, 99, 0.25);
-      pointer-events: none;
-    }
-
-    .corner-diya {
-      position: absolute;
-      font-size: 1.1rem;
-      opacity: 0.8;
-      filter: drop-shadow(0 0 5px rgba(205, 167, 99, 0.5));
-    }
-    .diya-bl { bottom: 12px; left: 14px; }
-    .diya-br { bottom: 12px; right: 14px; }
-
-    .shlok-header {
+    .shlok-text {
       font-family: 'Rozha One', serif;
       font-size: 0.85rem;
-      color: #cda763;
+      color: #9c6e3b;
       line-height: 1.8;
-      letter-spacing: 0.5px;
-      margin-bottom: 18px;
-    }
-
-    .sub-head {
-      font-size: 0.8rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #baa193;
-      margin-bottom: 15px;
-    }
-
-    .bride-box, .groom-box {
-      margin: 18px 0;
-    }
-
-    .person-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
-      letter-spacing: 2px;
-      color: #f7ede4;
-      font-weight: 500;
-    }
-
-    .person-sub {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.65rem;
-      letter-spacing: 2px;
-      color: #cda763;
-      text-transform: uppercase;
-      margin-top: 4px;
-    }
-
-    .person-parents {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.72rem;
-      color: #a89184;
-      margin-top: 5px;
-      line-height: 1.5;
-    }
-
-    .knot-and {
-      color: #cda763;
-      font-size: 1.4rem;
-      font-style: italic;
-      margin: 10px 0;
-    }
-
-    .shloka-footer {
-      font-family: 'Rozha One', serif;
-      font-size: 0.85rem;
-      color: #cda763;
-      margin-top: 25px;
-    }
-
-    /* Countdown & Scratch */
-    .section-caption {
-      font-size: 0.75rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #cda763;
-      margin-bottom: 20px;
-    }
-
-    .countdown-boxes {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      width: 100%;
       margin-bottom: 25px;
     }
 
-    .cd-box {
-      border: 1px solid rgba(205, 167, 99, 0.35);
-      background: rgba(22, 9, 18, 0.4);
-      padding: 14px 4px;
-      border-radius: 3px;
+    .together-tag {
+      font-size: 0.65rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #8c7265;
+      font-weight: 600;
+      margin-bottom: 20px;
+      display: block;
     }
 
-    .cd-num {
-      font-size: 1.8rem;
-      color: #f7ede4;
-      font-weight: 400;
+    .bride-cursive {
+      font-family: 'Alex Brush', cursive;
+      font-size: clamp(4.2rem, 12vw, 5.2rem);
+      color: #b3734a;
       line-height: 1;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 10px rgba(179, 115, 74, 0.15);
     }
 
-    .cd-lbl {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.55rem;
+    .family-parents {
+      font-size: 0.72rem;
+      color: #8f7467;
+      margin-bottom: 12px;
+    }
+
+    .knot-with {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      color: #8c7265;
+      margin: 10px 0;
+    }
+
+    .groom-cursive {
+      font-family: 'Alex Brush', cursive;
+      font-size: clamp(4.2rem, 12vw, 5.2rem);
+      color: #9c5c3b;
+      line-height: 1;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 10px rgba(156, 92, 59, 0.15);
+    }
+
+    .quote-lead {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: #6e554b;
+      line-height: 1.7;
+      margin: 28px 0 15px 0;
+    }
+
+    .location-pill {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #9c6e3b;
+      border: 1px solid rgba(156, 110, 59, 0.4);
+      padding: 6px 18px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.6);
+      font-weight: 600;
+    }
+
+    /* -----------------------------------------------------------
+       SECTION 2: RICH RUBY RED COUNTDOWN & SCRATCH (SCREENSHOT 2 & 3)
+    ----------------------------------------------------------- */
+    .sec-countdown {
+      background: radial-gradient(circle at 50% 20%, #8a0c28 0%, #5e051a 60%, #420211 100%);
+      color: #fff;
+      padding: 55px 22px 65px 22px;
+      text-align: center;
+      position: relative;
+    }
+
+    .counting-heading {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 2.5rem;
+      color: #f7eed7;
+      line-height: 1.2;
+      margin-bottom: 25px;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .timer-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .t-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(247, 238, 215, 0.4);
+      border-radius: 8px;
+      padding: 14px 4px;
+      backdrop-filter: blur(10px);
+    }
+
+    .t-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.1rem;
+      color: #f7eed7;
+      font-style: italic;
+      display: block;
+    }
+
+    .t-lbl {
+      font-size: 0.6rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #a89184;
-      margin-top: 6px;
+      color: #f5c4b3;
+      margin-top: 4px;
       display: block;
     }
 
     .scratch-pod {
       position: relative;
       width: 100%;
-      height: 170px;
-      border: 1px solid rgba(205, 167, 99, 0.5);
-      border-radius: 4px;
+      height: 160px;
+      border-radius: 8px;
       overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(247, 238, 215, 0.4);
       margin-bottom: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
     }
 
-    .scratch-secret {
+    .scratch-unveiled {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle, #3d1b32 0%, #200d1b 100%);
+      background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 15px;
+      text-align: center;
+      color: #7c2d12;
     }
 
-    .secret-tag {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.65rem;
+    .unveil-tag {
+      font-size: 0.7rem;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: #cda763;
+      font-weight: 700;
     }
 
-    .secret-date {
+    .unveil-date {
+      font-family: 'Playfair Display', serif;
       font-size: 2.2rem;
-      font-weight: 600;
-      color: #f7ede4;
-      letter-spacing: 3px;
+      font-weight: 700;
+      letter-spacing: 2px;
       margin: 4px 0;
-    }
-
-    .secret-time {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 1px;
-      color: #baa193;
     }
 
     #scratchCanvas {
@@ -376,365 +237,484 @@
       z-index: 5;
     }
 
-    .scratch-footnote {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.65rem;
+    .scratch-hint-text {
+      font-size: 0.7rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #8c7265;
-      margin-bottom: 60px;
+      color: #f7eed7;
+      opacity: 0.85;
     }
 
-    /* Story Section */
-    .story-section {
-      width: 100%;
-      margin-bottom: 60px;
+    /* -----------------------------------------------------------
+       SECTION 3: TIMELINE LOVE STORY (SCREENSHOT 4)
+    ----------------------------------------------------------- */
+    .sec-story {
+      background: #fbf7f2;
+      padding: 55px 24px;
+      text-align: center;
     }
 
-    .story-hero-frame {
-      width: 100%;
-      border: 1px solid rgba(205, 167, 99, 0.45);
-      padding: 12px;
-      background: rgba(30, 13, 24, 0.4);
-      margin: 20px 0;
-      border-radius: 4px;
+    .story-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: #4a2831;
+      margin-bottom: 30px;
     }
 
-    .story-hero-frame img {
-      width: 100%;
-      height: 380px;
-      object-fit: cover;
-      display: block;
-      border-radius: 2px;
-      filter: sepia(15%) contrast(105%);
+    .timeline-chain {
+      position: relative;
+      margin-top: 20px;
     }
 
-    .story-lead-quote {
-      font-size: 0.95rem;
-      font-style: italic;
-      color: #c8b2a5;
-      line-height: 1.7;
-      margin: 15px 0 35px 0;
-      padding: 0 10px;
+    .timeline-chain::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      background: #d4b8a5;
+      transform: translateX(-50%);
     }
 
-    .chapter-block {
-      text-align: left;
-      margin: 28px 0;
-      padding-left: 15px;
-      border-left: 1px solid rgba(205, 167, 99, 0.4);
+    .timeline-node {
+      position: relative;
+      margin-bottom: 35px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .chapter-title {
-      font-size: 1.35rem;
-      color: #cda763;
-      margin-bottom: 4px;
-      letter-spacing: 1px;
-    }
-
-    .chapter-text {
-      font-family: 'Montserrat', sans-serif;
+    .node-pin {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #8a0c28;
+      border: 3px solid #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
       font-size: 0.75rem;
-      line-height: 1.7;
-      color: #baa193;
-    }
-
-    /* Functions */
-    .function-card {
-      width: 100%;
-      border: 1px solid rgba(205, 167, 99, 0.35);
-      background: rgba(30, 13, 24, 0.5);
-      border-radius: 4px;
-      padding: 14px;
-      margin-bottom: 24px;
-      text-align: left;
-    }
-
-    .function-img-wrap {
-      width: 100%;
-      height: 200px;
-      overflow: hidden;
-      margin-bottom: 15px;
-      border-radius: 2px;
-    }
-
-    .function-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .func-date {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.65rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #cda763;
-      margin-bottom: 4px;
-    }
-
-    .func-name {
-      font-size: 1.7rem;
-      color: #f7ede4;
-      font-weight: 500;
-      margin-bottom: 6px;
-    }
-
-    .func-tagline {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.65rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #8f7467;
+      z-index: 2;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
       margin-bottom: 12px;
     }
 
-    .func-venue {
-      font-family: 'Montserrat', sans-serif;
+    .node-card {
+      width: 85%;
+      background: #ffffff;
+      border: 1px solid #ebd9cc;
+      border-radius: 12px;
+      padding: 18px 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+      text-align: center;
+    }
+
+    .node-date {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #a87965;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .node-title {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      color: #8a0c28;
+      margin-bottom: 6px;
+    }
+
+    .node-desc {
+      font-size: 0.8rem;
+      color: #6e554b;
+      line-height: 1.6;
+    }
+
+    /* -----------------------------------------------------------
+       SECTION 4: WEDDING WARDROBE / ITINERARY (SCREENSHOT 5)
+    ----------------------------------------------------------- */
+    .sec-wardrobe {
+      background: #f4ede4;
+      padding: 55px 22px;
+      text-align: center;
+    }
+
+    .wardrobe-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-style: italic;
+      color: #8a0c28;
+      margin-bottom: 6px;
+    }
+
+    .wardrobe-sub {
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      color: #8c7265;
+      margin-bottom: 30px;
+    }
+
+    .wardrobe-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .event-tile {
+      background: #ffffff;
+      border: 1px solid #e5d5c5;
+      border-radius: 16px;
+      padding: 18px 14px;
+      text-align: left;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+    }
+
+    .ev-icon {
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+    }
+
+    .ev-day {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: #4a2831;
+      margin-bottom: 6px;
+    }
+
+    .ev-colors {
+      display: flex;
+      gap: 6px;
+      margin: 8px 0;
+    }
+
+    .color-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .ev-info {
       font-size: 0.72rem;
-      color: #baa193;
+      color: #8c7265;
       line-height: 1.5;
+    }
+
+    /* -----------------------------------------------------------
+       SECTION 5: AUTO SLIDESHOW (OUR GALLERY)
+    ----------------------------------------------------------- */
+    .sec-gallery {
+      background: #ffffff;
+      padding: 55px 24px;
+      text-align: center;
+    }
+
+    .gallery-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      color: #4a2831;
+      margin-bottom: 25px;
+    }
+
+    .slider-box {
+      width: 100%;
+      height: 380px;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+      border: 1px solid #ebd9cc;
+    }
+
+    .slide-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide-img.active {
+      opacity: 1;
+    }
+
+    /* -----------------------------------------------------------
+       SECTION 6: THANK YOU ROYAL CARD (SCREENSHOT 6)
+    ----------------------------------------------------------- */
+    .sec-thankyou {
+      background: radial-gradient(circle at 50% 20%, #8a0c28 0%, #520415 75%, #38010d 100%);
+      color: #fff;
+      padding: 65px 24px 85px 24px;
+      text-align: center;
+      position: relative;
+    }
+
+    .ty-pre {
+      font-size: 0.65rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #f7eed7;
+      opacity: 0.85;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .ty-heading {
+      font-family: 'Alex Brush', cursive;
+      font-size: clamp(3.8rem, 11vw, 4.8rem);
+      color: #fce7b2;
+      line-height: 1.1;
+      margin-bottom: 25px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    .ty-body {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #fde8e8;
+      max-width: 420px;
+      margin: 0 auto 35px auto;
+    }
+
+    .ty-signature {
+      font-family: 'Alex Brush', cursive;
+      font-size: 3.2rem;
+      color: #fce7b2;
+      margin-bottom: 10px;
+    }
+
+    .ty-date {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #f5c4b3;
+    }
+
+    /* Floating Hearts Animation */
+    .floating-heart {
+      position: absolute;
+      pointer-events: none;
+      animation: floatHeart 2.5s ease-out forwards;
+      z-index: 9999;
+    }
+
+    @keyframes floatHeart {
+      0% { opacity: 1; transform: scale(0.5) translateY(0); }
+      100% { opacity: 0; transform: scale(1.6) translateY(-160px) translateX(var(--dx)); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Floating Audio Player (Shehnai/Flute) -->
-  <div id="musicBtn" class="music-player-btn" onclick="toggleMusic()" title="Play Wedding Music">
+  <!-- Floating Audio Player -->
+  <div class="audio-player-tag" onclick="toggleAudio()" title="Play Wedding Music">
     🎵
   </div>
-  <audio id="bgMusic" loop>
+  <audio id="weddingTrack" loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=indian-flute-ambient-112199.mp3" type="audio/mp3">
   </audio>
 
-  <!-- 1. FULLSCREEN HERO COVER (THEIR REAL PHOTO ENTRY) -->
-  <div id="heroCover">
-    <div class="hero-bg-image"></div>
-    <div class="hero-content">
-      <div class="hero-tagline">✦ Royal Wedding Celebration ✦</div>
-      <h1 class="hero-couple-names">Ashish & Aarti</h1>
-      <p class="hero-lead-quote">
-        "We joyfully invite you to celebrate the union of our hearts as we step into our forever."
-      </p>
-      <button class="btn-open-invitation" onclick="openWeddingInvitation()">
-        Open The Royal Invitation 💌
-      </button>
-    </div>
-  </div>
+  <div class="wedding-viewport">
 
-  <!-- 2. MAIN WEDDING INVITATION (REVEALED ON SLIDE) -->
-  <div class="app-viewport">
-
-    <!-- Sacred Traditional Card -->
-    <div class="shahi-frame">
-      <div class="shlok-header">
+    <!-- 1. PURE IVORY ROYAL MAIN CARD -->
+    <div class="sec-home">
+      <div class="shlok-text">
         ॥ श्री गणेशाय नमः ॥<br>
         वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>
         निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
       </div>
 
-      <div class="sub-head">Royal Wedding Invitation</div>
+      <span class="together-tag">• TOGETHER WITH THEIR FAMILIES •</span>
 
-      <div class="bride-box">
-        <div class="person-title">Aarti</div>
-        <div class="person-sub">The Bride</div>
-        <div class="person-parents">
-          D/o Smt. & Shri Dattatray Kadam
-        </div>
-      </div>
+      <div class="bride-cursive">Aarti</div>
+      <div class="family-parents">( D/o Smt. & Shri Dattatray Kadam )</div>
 
-      <div class="knot-and">&</div>
+      <div class="knot-with">with</div>
 
-      <div class="groom-box">
-        <div class="person-title">Ashish</div>
-        <div class="person-sub">The Groom</div>
-        <div class="person-parents">
-          S/o Smt. & Shri Ashokrao Patil
-        </div>
-      </div>
+      <div class="groom-cursive">Ashish</div>
+      <div class="family-parents">( S/o Smt. & Shri Ashokrao Patil )</div>
 
-      <div class="shloka-footer">
-        सर्वे भवन्तु सुखिनः • May all be happy
-      </div>
-
-      <div class="corner-diya diya-bl">🪔</div>
-      <div class="corner-diya diya-br">🪔</div>
-    </div>
-
-    <div class="gold-ornament"><span>✦ ✦ ✦</span></div>
-
-    <!-- Countdown & Scratch Card -->
-    <div class="section-caption">Until Two Souls Become One</div>
-
-    <div class="countdown-boxes">
-      <div class="cd-box">
-        <div id="days" class="cd-num">00</div>
-        <span class="cd-lbl">Days</span>
-      </div>
-      <div class="cd-box">
-        <div id="hours" class="cd-num">00</div>
-        <span class="cd-lbl">Hours</span>
-      </div>
-      <div class="cd-box">
-        <div id="minutes" class="cd-num">00</div>
-        <span class="cd-lbl">Minutes</span>
-      </div>
-      <div class="cd-box">
-        <div id="seconds" class="cd-num">00</div>
-        <span class="cd-lbl">Seconds</span>
-      </div>
-    </div>
-
-    <!-- Red-Amber Metallic Foil Scratch Card -->
-    <div class="scratch-pod">
-      <div class="scratch-secret">
-        <div class="secret-tag">Save The Auspicious Date</div>
-        <div class="secret-date">26 • 11 • 2026</div>
-        <div class="secret-time">Thursday • Shubh Muhurat 12:35 PM</div>
-      </div>
-      <canvas id="scratchCanvas" width="440" height="170"></canvas>
-    </div>
-    <div class="scratch-footnote">• Scratch The Golden Foil •</div>
-
-    <div class="gold-ornament"><span>✦ ✦ ✦</span></div>
-
-    <!-- Our Story -->
-    <div class="story-section">
-      <div class="section-caption" style="margin-bottom: 6px;">How It All Began</div>
-      <h2 style="font-size: 2.2rem; color: #f7ede4; font-weight: 500;">Our Story</h2>
-
-      <p class="story-lead-quote">
-        "Some love stories are written in the stars — ours began with a single glance across a crowded room and has only grown more beautiful with every passing season."
+      <p class="quote-lead">
+        "Two souls, one heart, woven by destiny — request the joy of your presence as we begin our forever."
       </p>
 
-      <div class="story-hero-frame">
-        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800" alt="Ashish & Aarti Journey">
-        <div style="font-size: 0.85rem; letter-spacing: 2px; color: #cda763; margin-top: 10px;">Ashish & Aarti</div>
-      </div>
+      <div class="location-pill">📍 PUNE, MAHARASHTRA</div>
+    </div>
 
-      <div class="chapter-block">
-        <div class="chapter-title">The Knowing</div>
-        <div class="chapter-text">
-          Quiet conversations turned into the certainty of finding the right person.
+    <!-- 2. RICH RUBY RED COUNTDOWN & SCRATCH CARD -->
+    <div class="sec-countdown">
+      <h2 class="counting-heading">Counting the Moments</h2>
+
+      <div class="timer-cards">
+        <div class="t-card">
+          <span id="days" class="t-val">00</span>
+          <span class="t-lbl">Days</span>
+        </div>
+        <div class="t-card">
+          <span id="hours" class="t-val">00</span>
+          <span class="t-lbl">Hours</span>
+        </div>
+        <div class="t-card">
+          <span id="minutes" class="t-val">00</span>
+          <span class="t-lbl">Minutes</span>
+        </div>
+        <div class="t-card">
+          <span id="seconds" class="t-val">00</span>
+          <span class="t-lbl">Seconds</span>
         </div>
       </div>
 
-      <div class="chapter-block">
-        <div class="chapter-title">The Promise</div>
-        <div class="chapter-text">
-          With blessings all around, a connection became a forever promise.
+      <div class="scratch-pod">
+        <div class="scratch-unveiled">
+          <span class="unveil-tag">Save The Auspicious Date</span>
+          <span class="unveil-date">26 • 11 • 2026</span>
+          <span style="font-size: 0.8rem; font-weight: 600;">Thursday • Shubh Muhurat 12:35 PM</span>
+        </div>
+        <canvas id="scratchCanvas" width="460" height="160"></canvas>
+      </div>
+      <span class="scratch-hint-text">✦ Scratch The Golden Foil ✦</span>
+    </div>
+
+    <!-- 3. TIMELINE LOVE STORY -->
+    <div class="sec-story">
+      <h2 class="story-heading">How It All Began</h2>
+
+      <div class="timeline-chain">
+        
+        <div class="timeline-node">
+          <div class="node-pin">1</div>
+          <div class="node-card">
+            <div class="node-date">First Meeting</div>
+            <div class="node-title">The First Glance</div>
+            <p class="node-desc">A simple introduction turned into conversations that felt like home.</p>
+          </div>
+        </div>
+
+        <div class="timeline-node">
+          <div class="node-pin">2</div>
+          <div class="node-card">
+            <div class="node-date">Growing Closer</div>
+            <div class="node-title">Falling In Love</div>
+            <p class="node-desc">Long calls, shared smiles, and the realization that she is the one.</p>
+          </div>
+        </div>
+
+        <div class="timeline-node">
+          <div class="node-pin">3</div>
+          <div class="node-card">
+            <div class="node-date">The Decision</div>
+            <div class="node-title">The Forever Promise</div>
+            <p class="node-desc">With families cheering and hearts aligned, forever officially began.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 4. WEDDING WARDROBE / ITINERARY -->
+    <div class="sec-wardrobe">
+      <h2 class="wardrobe-heading">Wedding Wardrobe</h2>
+      <div class="wardrobe-sub">A little something to inspire your look for each celebration</div>
+
+      <div class="wardrobe-grid">
+        <div class="event-tile">
+          <div class="ev-icon">🌻</div>
+          <div class="ev-day">Haldi</div>
+          <div class="ev-colors">
+            <div class="color-dot" style="background: #facc15;"></div>
+            <div class="color-dot" style="background: #eab308;"></div>
+            <div class="color-dot" style="background: #ca8a04;"></div>
+          </div>
+          <div class="ev-info">
+            <strong>25 Nov | 10:00 AM</strong><br>
+            Sunshine Yellow & Mustard
+          </div>
+        </div>
+
+        <div class="event-tile">
+          <div class="ev-icon">🌿</div>
+          <div class="ev-day">Mehendi</div>
+          <div class="ev-colors">
+            <div class="color-dot" style="background: #15803d;"></div>
+            <div class="color-dot" style="background: #166534;"></div>
+            <div class="color-dot" style="background: #86efac;"></div>
+          </div>
+          <div class="ev-info">
+            <strong>25 Nov | 04:00 PM</strong><br>
+            Emerald Green & Mint
+          </div>
+        </div>
+
+        <div class="event-tile">
+          <div class="ev-icon">✨</div>
+          <div class="ev-day">Sangeet</div>
+          <div class="ev-colors">
+            <div class="color-dot" style="background: #701a75;"></div>
+            <div class="color-dot" style="background: #4a044e;"></div>
+            <div class="color-dot" style="background: #f472b6;"></div>
+          </div>
+          <div class="ev-info">
+            <strong>25 Nov | 07:00 PM</strong><br>
+            Glamour Plum & Sequins
+          </div>
+        </div>
+
+        <div class="event-tile">
+          <div class="ev-icon">👑</div>
+          <div class="ev-day">The Wedding</div>
+          <div class="ev-colors">
+            <div class="color-dot" style="background: #881337;"></div>
+            <div class="color-dot" style="background: #e2cd9d;"></div>
+            <div class="color-dot" style="background: #fff;"></div>
+          </div>
+          <div class="ev-info">
+            <strong>26 Nov | 12:35 PM</strong><br>
+            Royal Red, Ivory & Gold
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="chapter-block">
-        <div class="chapter-title">Forever Begins</div>
-        <div class="chapter-text">
-          Surrounded by love, the most beautiful chapter of our lives begins.
-        </div>
+    <!-- 5. OUR GALLERY (AUTO SLIDESHOW) -->
+    <div class="sec-gallery">
+      <h2 class="gallery-heading">Our Gallery</h2>
+      
+      <div class="slider-box">
+        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=900" class="slide-img active" alt="Couple 1">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900" class="slide-img" alt="Couple 2">
+        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=900" class="slide-img" alt="Couple 3">
       </div>
     </div>
 
-    <div class="gold-ornament"><span>✦ ✦ ✦</span></div>
+    <!-- 6. ROYAL THANK YOU CARD -->
+    <div class="sec-thankyou">
+      <span class="ty-pre">FROM THE BOTTOM OF OUR HEARTS</span>
+      <h2 class="ty-heading">Thank You</h2>
 
-    <!-- Celebrations / Itinerary -->
-    <div class="section-caption" style="margin-bottom: 6px;">The Celebrations</div>
-    <h2 style="font-size: 2rem; color: #f7ede4; font-weight: 500; margin-bottom: 25px;">Wedding Itinerary</h2>
+      <p class="ty-body">
+        "To every soul who has loved us, prayed for us, and journeyed with us — your presence is a blessing we will carry forever. May your homes be filled with the same joy you bring to ours."
+      </p>
 
-    <!-- Haldi -->
-    <div class="function-card">
-      <div class="function-img-wrap">
-        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=700" alt="Haldi Ceremony">
-      </div>
-      <div class="func-date">— Wednesday • 25 November 2026 —</div>
-      <div class="func-name">Haldi</div>
-      <div class="func-tagline">A sacred blessing of turmeric, love & new beginnings</div>
-      <div class="func-venue">
-        <strong>Time:</strong> 11:00 AM Onwards<br>
-        <strong>Venue:</strong> The Open Courtyard, Patil Farmhouse, Pune<br>
-        <strong>Dress Code:</strong> Shades of Yellow 💛
-      </div>
-    </div>
-
-    <!-- Sangeet -->
-    <div class="function-card">
-      <div class="function-img-wrap">
-        <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?w=700" alt="Sangeet Ceremony">
-      </div>
-      <div class="func-date">— Wednesday • 25 November 2026 —</div>
-      <div class="func-name">Sangeet</div>
-      <div class="func-tagline">Two families, one dance floor — an evening of pure joy</div>
-      <div class="func-venue">
-        <strong>Time:</strong> 06:30 PM Onwards<br>
-        <strong>Venue:</strong> Grand Rosewood Ballroom, Pune<br>
-        <strong>Dress Code:</strong> Glamorous & Festive ✨
-      </div>
-    </div>
-
-    <!-- Wedding -->
-    <div class="function-card">
-      <div class="function-img-wrap">
-        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=700" alt="The Wedding Ceremony">
-      </div>
-      <div class="func-date">— Thursday • 26 November 2026 —</div>
-      <div class="func-name">Wedding</div>
-      <div class="func-tagline">Where two hearts become one forever</div>
-      <div class="func-venue">
-        <strong>Shubh Muhurat:</strong> 12:35 PM<br>
-        <strong>Venue:</strong> Royal Palace Grand Lawns, Pune<br>
-        <strong>Followed by:</strong> Reception & Royal Dinner 🍽️️
-      </div>
-    </div>
-
-    <div style="font-size: 0.85rem; color: #8f7467; letter-spacing: 2px; text-transform: uppercase; margin-top: 30px;">
-      ✦ We look forward to celebrating with you ✦
+      <div class="ty-signature">Aarti & Ashish</div>
+      <div class="ty-date">MADE WITH LOVE • 26 NOVEMBER 2026</div>
     </div>
 
   </div>
 
   <script>
-    // 1. OPEN INVITATION SLIDE TRANSITION
-    function openWeddingInvitation() {
-      const cover = document.getElementById('heroCover');
-      cover.classList.add('cover-slide-away');
-      
-      // Auto play background flute/shehnai on click
-      playMusic();
-    }
-
-    // 2. BACKGROUND MUSIC TOGGLE
-    const audio = document.getElementById('bgMusic');
-    const musicBtn = document.getElementById('musicBtn');
-    let isPlaying = false;
-
-    function playMusic() {
-      audio.play().then(() => {
-        isPlaying = true;
-        musicBtn.classList.add('music-rotating');
-        musicBtn.innerText = '🎶';
-      }).catch(() => {
-        // User interaction required policy
-      });
-    }
-
-    function toggleMusic() {
-      if (isPlaying) {
-        audio.pause();
-        musicBtn.classList.remove('music-rotating');
-        musicBtn.innerText = '🔇';
-        isPlaying = false;
-      } else {
-        audio.play();
-        musicBtn.classList.add('music-rotating');
-        musicBtn.innerText = '🎶';
-        isPlaying = true;
-      }
-    }
-
-    // 3. LIVE COUNTDOWN TO 26 NOV 2026
+    // 1. COUNTDOWN TIMER TO 26 NOV 2026
     const targetDate = new Date("November 26, 2026 12:35:00").getTime();
 
-    function updateCountdown() {
+    function updateTimer() {
       const now = new Date().getTime();
       const diff = targetDate - now;
 
@@ -750,51 +730,92 @@
         document.getElementById("seconds").innerText = String(s).padStart(2, '0');
       }
     }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+    setInterval(updateTimer, 1000);
+    updateTimer();
 
-    // 4. SCRATCH CARD (METALLIC FOIL)
+    // 2. SCRATCH CARD WITH HEART BURST
     const canvas = document.getElementById('scratchCanvas');
     const ctx = canvas.getContext('2d');
 
-    const foilGrad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-    foilGrad.addColorStop(0, '#e11d48');
-    foilGrad.addColorStop(0.35, '#ea580c');
-    foilGrad.addColorStop(0.65, '#facc15');
-    foilGrad.addColorStop(1, '#dc2626');
-    ctx.fillStyle = foilGrad;
+    const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    grad.addColorStop(0, '#eab308');
+    grad.addColorStop(0.5, '#fde047');
+    grad.addColorStop(1, '#ca8a04');
+    ctx.fillStyle = grad;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    ctx.font = "600 13px 'Montserrat', sans-serif";
-    ctx.fillStyle = "#ffffff";
+    ctx.font = "bold 13px 'Montserrat', sans-serif";
+    ctx.fillStyle = "#78350f";
     ctx.textAlign = "center";
     ctx.letterSpacing = "2px";
     ctx.fillText("✦ SCRATCH TO REVEAL ✦", canvas.width / 2, canvas.height / 2 + 5);
 
     let isScratching = false;
 
-    function scratch(e) {
+    function scratchAction(e) {
       if (!isScratching) return;
       const rect = canvas.getBoundingClientRect();
       const clientX = e.clientX || (e.touches && e.touches[0].clientX);
       const clientY = e.clientY || (e.touches && e.touches[0].clientY);
-      
+
       const x = (clientX - rect.left) * (canvas.width / rect.width);
       const y = (clientY - rect.top) * (canvas.height / rect.height);
 
       ctx.globalCompositeOperation = 'destination-out';
       ctx.beginPath();
-      ctx.arc(x, y, 24, 0, Math.PI * 2);
+      ctx.arc(x, y, 22, 0, Math.PI * 2);
       ctx.fill();
+
+      // Spawn Floating Hearts
+      spawnHearts(clientX, clientY);
     }
 
     canvas.addEventListener('mousedown', () => isScratching = true);
     canvas.addEventListener('mouseup', () => isScratching = false);
-    canvas.addEventListener('mousemove', scratch);
+    canvas.addEventListener('mousemove', scratchAction);
 
-    canvas.addEventListener('touchstart', (e) => { isScratching = true; scratch(e); });
+    canvas.addEventListener('touchstart', (e) => { isScratching = true; scratchAction(e); });
     canvas.addEventListener('touchend', () => isScratching = false);
-    canvas.addEventListener('touchmove', scratch);
+    canvas.addEventListener('touchmove', scratchAction);
+
+    function spawnHearts(x, y) {
+      if (Math.random() > 0.4) return;
+      const icons = ['❤️', '💖', '✨', '🌸', '💍'];
+      const p = document.createElement('div');
+      p.className = 'floating-heart';
+      p.innerText = icons[Math.floor(Math.random() * icons.length)];
+      p.style.left = (x - 10) + 'px';
+      p.style.top = (y - 10) + 'px';
+      p.style.fontSize = (Math.random() * 12 + 18) + 'px';
+      p.style.setProperty('--dx', (Math.random() - 0.5) * 120 + 'px');
+      document.body.appendChild(p);
+
+      setTimeout(() => p.remove(), 2500);
+    }
+
+    // 3. AUTO SLIDESHOW FOR GALLERY
+    const slides = document.querySelectorAll('.slide-img');
+    let currentSlide = 0;
+
+    setInterval(() => {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }, 3000);
+
+    // 4. AUDIO TOGGLE
+    const audio = document.getElementById('weddingTrack');
+    let isPlaying = false;
+
+    function toggleAudio() {
+      if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+      } else {
+        audio.play().catch(() => {});
+        isPlaying = true;
+      }
+    }
   </script>
 </body>
 </html>
