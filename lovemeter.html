@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Who Loves Whom More? 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Montserrat:wght@500;700;800&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #260f1e 0%, #13060f 60%, #050104 100%);
+      min-height: 100vh;
+      width: 100vw;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Ambient Glows */
+    .glow-pink {
+      position: absolute;
+      top: -10%;
+      left: 20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(244, 63, 94, 0.22), transparent 70%);
+      filter: blur(100px);
+      pointer-events: none;
+    }
+
+    .glow-purple {
+      position: absolute;
+      bottom: -10%;
+      right: 20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 70%);
+      filter: blur(100px);
+      pointer-events: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 520px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .badge-tag {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #f43f5e;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .main-title {
+      font-family: 'Fredoka', cursive;
+      font-size: clamp(2rem, 3.8vw, 2.8rem);
+      color: #fff;
+      text-shadow: 0 4px 25px rgba(244, 63, 94, 0.45);
+      margin-bottom: 25px;
+    }
+
+    /* Counter Battle Arena */
+    .counter-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      width: 100%;
+      margin-bottom: 25px;
+    }
+
+    .player-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(244, 63, 94, 0.3);
+      border-radius: 24px;
+      padding: 22px 14px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .player-card:hover {
+      transform: translateY(-5px);
+      border-color: #f43f5e;
+    }
+
+    .avatar-icon {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .player-name {
+      font-family: 'Fredoka', cursive;
+      font-size: 1.15rem;
+      color: #fce7f3;
+      margin-bottom: 8px;
+    }
+
+    .score-display {
+      font-family: 'Fredoka', cursive;
+      font-size: 2.2rem;
+      color: #fb7185;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+
+    .btn-vote {
+      background: linear-gradient(135deg, #f43f5e, #be123c);
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      border-radius: 30px;
+      cursor: pointer;
+      width: 100%;
+      box-shadow: 0 8px 20px rgba(244, 63, 94, 0.35);
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-transform: uppercase;
+    }
+
+    .btn-vote:active {
+      transform: scale(0.92);
+    }
+
+    /* Verdict Box */
+    .verdict-box {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(244, 63, 94, 0.35);
+      border-radius: 20px;
+      padding: 18px 16px;
+      backdrop-filter: blur(15px);
+      margin-top: 10px;
+    }
+
+    .verdict-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #fbcfe8;
+      line-height: 1.5;
+    }
+
+    /* Particle Burst */
+    .particle {
+      position: absolute;
+      pointer-events: none;
+      animation: flyParticle 1.4s ease-out forwards;
+      z-index: 1000;
+    }
+
+    @keyframes flyParticle {
+      0% { opacity: 1; transform: scale(0.5) translate(0, 0); }
+      100% { opacity: 0; transform: scale(1.6) translate(var(--dx), var(--dy)); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-pink"></div>
+  <div class="glow-purple"></div>
+
+  <div class="container">
+    <div class="badge-tag">✦ The Ultimate Scientific Battle ✦</div>
+    <h1 class="main-title">Who Loves More? 👀❤️</h1>
+
+    <div class="counter-grid">
+      
+      <!-- Player 1: Him -->
+      <div class="player-card">
+        <div class="avatar-icon">👦🏻☕</div>
+        <div class="player-name">Him</div>
+        <div id="scoreHim" class="score-display">0</div>
+        <button class="btn-vote" onclick="voteHim(event)">I Love More! 💙</button>
+      </div>
+
+      <!-- Player 2: Her -->
+      <div class="player-card" style="border-color: #f43f5e; box-shadow: 0 0 30px rgba(244, 63, 94, 0.2);">
+        <div class="avatar-icon">👧🏻✨</div>
+        <div class="player-name">Her</div>
+        <div id="scoreHer" class="score-display">0</div>
+        <button class="btn-vote" style="background: linear-gradient(135deg, #fb7185, #e11d48);" onclick="voteHer(event)">Obviously Me! 💖</button>
+      </div>
+
+    </div>
+
+    <div class="verdict-box">
+      <p id="verdictMsg" class="verdict-text">
+        "Tap your respective buttons to test the official love algorithm! ⚖️"
+      </p>
+    </div>
+  </div>
+
+  <script>
+    let himCount = 0;
+    let herCount = 0;
+
+    function voteHim(e) {
+      himCount += 1;
+      document.getElementById('scoreHim').innerText = himCount;
+      document.getElementById('verdictMsg').innerText = "Cute effort, but you only gain +1 point per tap! 🐢 Keep trying!";
+      spawnParticles(e.clientX, e.clientY, ['🌱', '🥺', '👍']);
+    }
+
+    function voteHer(e) {
+      herCount += 1000;
+      document.getElementById('scoreHer').innerText = herCount;
+      document.getElementById('verdictMsg').innerText = "⚡ BOOM! +1000 points! It's officially proven: She loves you infinitely more! 🏆👑";
+      spawnParticles(e.clientX, e.clientY, ['💖', '✨', '👑', '🔥', '🥰', '💯']);
+    }
+
+    function spawnParticles(x, y, icons) {
+      for (let i = 0; i < 20; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.innerText = icons[Math.floor(Math.random() * icons.length)];
+        p.style.left = x + 'px';
+        p.style.top = y + 'px';
+        p.style.fontSize = (Math.random() * 16 + 20) + 'px';
+
+        const dx = (Math.random() - 0.5) * 350 + 'px';
+        const dy = (Math.random() - 0.5) * 300 + 'px';
+        p.style.setProperty('--dx', dx);
+        p.style.setProperty('--dy', dy);
+
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 1400);
+      }
+    }
+  </script>
+</body>
+</html>
