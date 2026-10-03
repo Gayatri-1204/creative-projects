@@ -3,161 +3,375 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Love Story ❤️</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;1,400&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <title>Did you miss me? 🥺❤️️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;1,500&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       background: radial-gradient(ellipse at bottom, #2b040e 0%, #150005 50%, #050002 100%);
+      min-height: 100vh;
+      width: 100vw;
       color: #fff;
       font-family: 'Montserrat', sans-serif;
-      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       overflow-x: hidden;
-      padding: 40px 15px;
+      position: relative;
+      padding: 20px 14px;
     }
-    .header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    .header h2 { font-family: 'Great Vibes', cursive; font-size: clamp(2.4rem, 4vw, 3.5rem); color: #ff758f; }
-    .header h1 { font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); letter-spacing: 2px; }
 
-    /* Live Days Counter */
-    .counter-card {
+    .ambient-glow {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(255, 45, 85, 0.22), transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    .main-card {
+      width: 100%;
+      max-width: 460px;
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 117, 143, 0.3);
-      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 117, 143, 0.35);
+      backdrop-filter: blur(16px);
+      border-radius: 28px;
+      padding: 30px 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.7), inset 0 0 25px rgba(255, 77, 109, 0.15);
+      position: relative;
+      z-index: 10;
+    }
+
+    .top-badge {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.2rem;
+      color: #ff758f;
+      text-shadow: 0 0 20px rgba(255, 117, 143, 0.6);
+      margin-bottom: 8px;
+    }
+
+    /* Sticker Art Frame */
+    .sticker-stage {
+      width: 100%;
+      max-width: 320px;
+      height: 200px;
+      background: #fff5f7;
       border-radius: 20px;
-      max-width: 480px;
-      margin: 0 auto 50px auto;
-      padding: 18px 24px;
-      text-align: center;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+      border: 2px solid rgba(255, 77, 109, 0.4);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+      margin-bottom: 18px;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    .counter-title { font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: #ffccd5; font-weight: 700; }
-    .counter-value { font-family: 'Cinzel', serif; font-size: 2rem; color: #ff4d6d; margin: 6px 0; font-weight: 900; }
-    .counter-sub { font-size: 0.85rem; color: #ff8fa3; }
 
-    /* Timeline Structure */
-    .timeline {
+    .dialogue-bubble {
+      background: rgba(255, 77, 109, 0.18);
+      border: 1px solid #ff4d6d;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      color: #ffccd5;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .main-question {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+      line-height: 1.5;
+      color: #ffe5ec;
+      text-shadow: 0 4px 15px rgba(255, 77, 109, 0.6);
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+
+    /* Buttons Container */
+    .button-arena {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 70px;
       position: relative;
-      max-width: 800px;
-      margin: 0 auto;
     }
-    .timeline::after {
-      content: '';
-      position: absolute;
-      width: 3px;
-      background: linear-gradient(180deg, #ff4d6d, transparent);
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .timeline-item {
-      padding: 15px 30px;
-      position: relative;
-      width: 50%;
-    }
-    .timeline-item.left { left: 0; text-align: right; }
-    .timeline-item.right { left: 50%; text-align: left; }
-    .timeline-node {
-      position: absolute;
-      width: 22px;
-      height: 22px;
-      background: #ff4d6d;
-      border: 4px solid #fff;
-      border-radius: 50%;
-      top: 24px;
+
+    /* Nahiji (Safe Button) */
+    .btn-nahiji {
+      background: linear-gradient(135deg, #ff4d6d, #c9184a);
+      color: white;
+      border: none;
+      padding: 12px 32px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      border-radius: 35px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255, 77, 109, 0.5);
+      transition: transform 0.2s ease;
       z-index: 2;
-      box-shadow: 0 0 15px #ff4d6d;
     }
-    .left .timeline-node { right: -11px; }
-    .right .timeline-node { left: -11px; }
 
-    .card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 77, 109, 0.3);
-      backdrop-filter: blur(12px);
-      padding: 20px;
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      transition: transform 0.3s;
+    .btn-nahiji:hover {
+      transform: scale(1.1);
     }
-    .card:hover { transform: translateY(-5px); border-color: #ff4d6d; }
-    .card h3 { font-family: 'Cinzel', serif; font-size: 1.1rem; color: #ffccd5; margin-bottom: 5px; }
-    .card span.date { font-size: 0.8rem; color: #ff758f; font-weight: 700; display: block; margin-bottom: 8px; }
-    .card p { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: #ffe5ec; line-height: 1.6; }
 
-    @media (max-width: 768px) {
-      .timeline::after { left: 25px; }
-      .timeline-item { width: 100%; padding-left: 60px; padding-right: 15px; text-align: left !important; }
-      .timeline-item.right { left: 0; }
-      .left .timeline-node, .right .timeline-node { left: 14px; }
+    /* Haanji (Dodging Button) */
+    .btn-haanji {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffccd5;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      padding: 12px 30px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      border-radius: 35px;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: transform 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: absolute;
+      right: 25px;
+      z-index: 100;
+      user-select: none;
+    }
+
+    /* Ending Screen */
+    .celebration-view {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      animation: smoothReveal 0.6s ease forwards;
+    }
+
+    @keyframes smoothReveal {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .celebration-view h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem;
+      color: #ff758f;
+      margin-bottom: 10px;
+    }
+
+    .celebration-view p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #ffe5ec;
+      margin-top: 15px;
+      margin-bottom: 20px;
+    }
+
+    .btn-reset {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 117, 143, 0.4);
+      color: #ffccd5;
+      padding: 10px 26px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-reset:hover {
+      background: #ff4d6d;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    /* Heart Blast */
+    .heart-blast {
+      position: absolute;
+      font-size: 2rem;
+      pointer-events: none;
+      opacity: 0;
+      animation: flyHeart 1.5s ease-out forwards;
+      z-index: 1000;
+    }
+
+    @keyframes flyHeart {
+      0% { opacity: 1; transform: scale(0.5) translate(0, 0); }
+      100% { opacity: 0; transform: scale(1.8) translate(var(--dx), var(--dy)); }
     }
   </style>
 </head>
 <body>
-  <div class="header">
-    <h2>The Beautiful Story of</h2>
-    <h1>Us & Our Forever</h1>
-  </div>
 
-  <div class="counter-card">
-    <div class="counter-title">✨ Walking Hand In Hand For ✨</div>
-    <div class="counter-value" id="daysCounter">Calculating...</div>
-    <div class="counter-sub">And every single second is a blessing! ❤️</div>
-  </div>
+  <div class="ambient-glow"></div>
 
-  <div class="timeline">
-    <div class="timeline-item left">
-      <div class="timeline-node"></div>
-      <div class="card">
-        <span class="date">Day 1</span>
-        <h3>The First "Hello"</h3>
-        <p>The moment our paths crossed. Who knew a simple conversation would turn into the most important chapter of my life?</p>
+  <div class="main-card">
+
+    <!-- 1. Question Screen -->
+    <div id="questionScreen" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+      
+      <div class="top-badge">Can you miss me? 🥺</div>
+
+      <!-- Cartoon: Pouting Cat (Girl) + Pacifying Cat (Boy) -->
+      <div class="sticker-stage">
+        <svg viewBox="0 0 360 200" width="100%" height="100%">
+          <!-- Boy Cat (Brown - Saying Sorry) -->
+          <g transform="translate(60, 20)">
+            <!-- Ears -->
+            <polygon points="40,40 55,10 70,35" fill="#d4a373" stroke="#58311e" stroke-width="4"/>
+            <polygon points="90,35 105,10 120,40" fill="#d4a373" stroke="#58311e" stroke-width="4"/>
+            <!-- Body -->
+            <ellipse cx="80" cy="140" rx="45" ry="40" fill="#d4a373" stroke="#58311e" stroke-width="4"/>
+            <!-- Head -->
+            <circle cx="80" cy="70" r="42" fill="#d4a373" stroke="#58311e" stroke-width="4"/>
+            <!-- Pleading Eyes -->
+            <ellipse cx="68" cy="65" rx="5" ry="7" fill="#222"/>
+            <circle cx="66" cy="62" r="2" fill="#fff"/>
+            <ellipse cx="92" cy="65" rx="5" ry="7" fill="#222"/>
+            <circle cx="90" cy="62" r="2" fill="#fff"/>
+            <!-- Blush -->
+            <circle cx="58" cy="75" r="7" fill="#ffb4a2" opacity="0.6"/>
+            <circle cx="102" cy="75" r="7" fill="#ffb4a2" opacity="0.6"/>
+            <!-- Mouth pleading -->
+            <path d="M 74 78 Q 80 84 86 78" stroke="#58311e" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <!-- Paw reaching out to console -->
+            <ellipse cx="125" cy="115" rx="18" ry="12" fill="#d4a373" stroke="#58311e" stroke-width="4" transform="rotate(-15 125 115)"/>
+          </g>
+
+          <!-- Girl Cat (White - Angry/Pouting with turned back) -->
+          <g transform="translate(180, 25)">
+            <!-- Ears -->
+            <polygon points="50,38 65,8 80,35" fill="#ffffff" stroke="#333" stroke-width="4"/>
+            <polygon points="100,35 115,8 130,38" fill="#ffffff" stroke="#333" stroke-width="4"/>
+            <polygon points="55,34 65,16 75,32" fill="#ffb3c1"/>
+            <polygon points="105,32 115,16 125,34" fill="#ffb3c1"/>
+            <!-- Body -->
+            <ellipse cx="90" cy="135" rx="42" ry="38" fill="#ffffff" stroke="#333" stroke-width="4"/>
+            <!-- Head -->
+            <circle cx="90" cy="65" r="40" fill="#ffffff" stroke="#333" stroke-width="4"/>
+            <!-- Angry/Sulking Pouting Eyes -->
+            <path d="M 72 60 L 84 66" stroke="#333" stroke-width="4" stroke-linecap="round"/>
+            <path d="M 108 60 L 96 66" stroke="#333" stroke-width="4" stroke-linecap="round"/>
+            <!-- Pout Mouth -->
+            <path d="M 85 76 Q 90 70 95 76" stroke="#e63946" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <!-- Puffed Blush Cheeks -->
+            <circle cx="70" cy="72" r="8" fill="#ff8fa3" opacity="0.8"/>
+            <circle cx="110" cy="72" r="8" fill="#ff8fa3" opacity="0.8"/>
+            <!-- Sulking Red Mark -->
+            <path d="M 125 35 L 135 45 M 135 35 L 125 45" stroke="#e63946" stroke-width="3" stroke-linecap="round"/>
+          </g>
+        </svg>
       </div>
+
+      <div class="dialogue-bubble">"Mela baby gussa hai na? Maan jao na please... 🥺"</div>
+
+      <h1 class="main-question">Kya firse mujhe itni der chhodke jaoge? 🥺👉👈</h1>
+
+      <div class="button-arena">
+        <button class="btn-nahiji" onclick="acceptApology()">Nahiji! 🥰</button>
+        <button id="haanjiBtn" class="btn-haanji" onmouseover="runAway()" onclick="runAway()">Haanji 🙈</button>
+      </div>
+
     </div>
 
-    <div class="timeline-item right">
-      <div class="timeline-node"></div>
-      <div class="card">
-        <span class="date">First Date</span>
-        <h3>Butterflies & Long Talks</h3>
-        <p>Laughing nervously, matching eyes, and realizing that time completely stopped when I was with you.</p>
+    <!-- 2. Happy Cute Couple Hug Screen -->
+    <div id="celebrationScreen" class="celebration-view">
+      
+      <h2>Pakka Promise! 🫂❤️</h2>
+
+      <div class="sticker-stage">
+        <!-- Cute Happy Couple Embracing SVG -->
+        <svg viewBox="0 0 360 200" width="100%" height="100%">
+          <path d="M 180 20 Q 190 5 200 18 Q 210 32 180 50 Q 150 32 160 18 Q 170 5 180 20 Z" fill="#ff4d6d"/>
+          <!-- Sweet Couple Hugging -->
+          <g transform="translate(65, 10)">
+            <!-- Boy Head & Body -->
+            <circle cx="95" cy="50" r="18" fill="#d4a373" stroke="#58311e" stroke-width="4"/>
+            <ellipse cx="105" cy="115" rx="45" ry="40" fill="#d4a373" stroke="#58311e" stroke-width="4"/>
+            <ellipse cx="90" cy="75" rx="35" ry="32" fill="#d4a373" stroke="#58311e" stroke-width="4"/>
+            
+            <!-- Girl Snuggling In Arms -->
+            <ellipse cx="140" cy="118" rx="42" ry="38" fill="#ffffff" stroke="#333" stroke-width="4"/>
+            <circle cx="145" cy="72" r="32" fill="#ffffff" stroke="#333" stroke-width="4"/>
+            
+            <!-- Girl Happy Closed Eyes (^_^) -->
+            <path d="M 130 68 Q 138 60 146 68" stroke="#333" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M 154 68 Q 162 60 170 68" stroke="#333" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <circle cx="130" cy="76" r="6" fill="#ff8fa3"/>
+            <circle cx="168" cy="76" r="6" fill="#ff8fa3"/>
+
+            <!-- Boy Happy Closed Eye -->
+            <path d="M 80 72 Q 88 64 96 72" stroke="#58311e" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+            <!-- Arms Wrapped Around Tight -->
+            <path d="M 75 110 Q 130 135 160 105" stroke="#58311e" stroke-width="12" fill="none" stroke-linecap="round"/>
+            <path d="M 160 115 Q 120 145 95 115" stroke="#ffffff" stroke-width="10" fill="none" stroke-linecap="round"/>
+          </g>
+        </svg>
       </div>
+
+      <p>"Ab kabhi bhi itni der akela nahi chhodunga! You are my favourite person and my safe home forever. Tight wala hug! ❤️✨"</p>
+      
+      <button class="btn-reset" onclick="resetState()">Ask Again? 🙈</button>
     </div>
 
-    <div class="timeline-item left">
-      <div class="timeline-node"></div>
-      <div class="card">
-        <span class="date">Our First Fight & Makeup</span>
-        <h3>Stronger Together</h3>
-        <p>Proof that love isn't just about smooth sailing, but about choosing each other again and holding on tighter.</p>
-      </div>
-    </div>
-
-    <div class="timeline-item right">
-      <div class="timeline-node"></div>
-      <div class="card">
-        <span class="date">Today & Beyond</span>
-        <h3>My Forever & Always</h3>
-        <p>Still my favorite person to laugh with, complain to, and love with all my heart.</p>
-      </div>
-    </div>
   </div>
 
   <script>
-    // तुमची स्पेशल तारीख येथे सेट करा (Year, Month Index 0-11, Day)
-    const startDate = new Date(2023, 9, 3); // Example date
+    // Haanji Button Dodges (Pulls away when hovering/clicking)
+    function runAway() {
+      const btn = document.getElementById('haanjiBtn');
+      const maxDistance = window.innerWidth <= 768 ? 120 : 250;
+      
+      // Random coordinates so it stays away
+      const randomX = (Math.random() - 0.5) * maxDistance;
+      const randomY = (Math.random() - 0.5) * (maxDistance * 0.85);
 
-    function updateCounter() {
-      const now = new Date();
-      const diffTime = Math.abs(now - startDate);
-      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-      document.getElementById('daysCounter').innerText = `${diffDays} Days Together`;
+      btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
     }
-    updateCounter();
+
+    // Nahiji Clicked -> Celebration and Confetti
+    function acceptApology() {
+      document.getElementById('questionScreen').style.display = 'none';
+      document.getElementById('celebrationScreen').style.display = 'flex';
+      blastHearts();
+    }
+
+    // Reset back to question
+    function resetState() {
+      document.getElementById('celebrationScreen').style.display = 'none';
+      document.getElementById('questionScreen').style.display = 'flex';
+      const btn = document.getElementById('haanjiBtn');
+      if (btn) btn.style.transform = 'translate(0px, 0px)';
+    }
+
+    // Floating Hearts Celebration Effect
+    function blastHearts() {
+      const card = document.querySelector('.main-card');
+      for (let i = 0; i < 28; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart-blast';
+        heart.innerText = ['❤️️', '💖', '🥺', '✨', '🥰', '🌸'][Math.floor(Math.random() * 6)];
+        
+        const dx = (Math.random() - 0.5) * 550 + 'px';
+        const dy = (Math.random() - 0.5) * 450 + 'px';
+        
+        heart.style.setProperty('--dx', dx);
+        heart.style.setProperty('--dy', dy);
+        heart.style.left = '50%';
+        heart.style.top = '50%';
+        
+        card.appendChild(heart);
+        setTimeout(() => heart.remove(), 1500);
+      }
+    }
   </script>
 </body>
 </html>
