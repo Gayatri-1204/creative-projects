@@ -1,720 +1,1101 @@
 <!DOCTYPE html>
-<html lang="mr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>शुभविवाह निमंत्रण | जाधव व चौगुले परिवार</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Yatra+One&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Royal Wedding Invitation | Ashish & Aarti</title>
+  
+  <!-- Google Fonts: Royal serif, devanagari script, & modern luxury styling -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700;800&family=Rozha+One&family=Yatra+One&family=Montserrat:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+
   <style>
+    /* -------------------------------------------------------------
+       1. ROOT COLOR PALETTE & RESET
+       ------------------------------------------------------------- */
     :root {
-      --maroon: #700B1A;
-      --gold: #D4AF37;
-      --light-gold: #FFF5D0;
-      --cream: #FFFDF9;
-      --dark-text: #331014;
+      --gold-deep: #9d7827;
+      --gold-primary: #d4af37;
+      --gold-light: #fff2a3;
+      --gold-spark: #ffe57f;
+      --maroon-dark: #2d040a;
+      --maroon-rich: #480611;
+      --maroon-velvet: #630818;
+      --wood-dark: #1f0b07;
+      --wood-panel: #33150d;
+      --wood-highlight: #4a2114;
+      --parchment: #fdfaf3;
+      --cream: #fbf6ec;
+      --shadow-lux: 0 15px 35px rgba(0, 0, 0, 0.45);
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Poppins', sans-serif;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    body {
-      background: #1a0508;
-      color: var(--dark-text);
+    html, body {
+      width: 100%;
+      height: 100%;
+      background-color: var(--maroon-dark);
+      color: #3b2818;
+      font-family: 'Montserrat', sans-serif;
       overflow-x: hidden;
-      display: flex;
-      justify-content: center;
-      min-height: 100vh;
     }
 
-    .main-container {
-      width: 100%;
-      max-width: 600px;
-      background: var(--cream);
-      position: relative;
-      box-shadow: 0 0 30px rgba(0,0,0,0.8);
+    body.locked {
       overflow: hidden;
-      min-height: 100vh;
     }
 
-    /* --- रॉयल डोअर स्क्रीन --- */
-    #door-overlay {
+    /* Ambient Canvas for Golden Particles */
+    #ambient-particles {
       position: fixed;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      max-width: 600px;
-      height: 100%;
-      z-index: 100;
-      display: flex;
-      perspective: 1200px;
-      background: rgba(0,0,0,0.5);
-      transition: visibility 1.2s;
-    }
-
-    .door {
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(135deg, #4a050f 0%, #7d1120 50%, #30030a 100%);
-      border: 4px solid var(--gold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 1.8s cubic-bezier(0.7, 0, 0.3, 1);
-      position: relative;
-    }
-
-    .door-left {
-      transform-origin: left;
-      border-right: 2px solid var(--gold);
-    }
-
-    .door-right {
-      transform-origin: right;
-      border-left: 2px solid var(--gold);
-    }
-
-    .door-handle {
-      width: 45px;
-      height: 45px;
-      border: 3px solid var(--gold);
-      border-radius: 50%;
-      position: absolute;
-      background: radial-gradient(circle, #ffe27a 0%, #b8860b 100%);
-      box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
-    }
-    .door-left .door-handle { right: 10px; }
-    .door-right .door-handle { left: 10px; }
-
-    .open-btn-container {
-      position: absolute;
-      top: 75%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 110;
-      text-align: center;
-    }
-
-    .open-btn {
-      background: linear-gradient(45deg, #d4af37, #fff3a8, #b8860b);
-      color: #3b0007;
-      font-weight: bold;
-      border: none;
-      padding: 14px 28px;
-      font-size: 16px;
-      border-radius: 30px;
-      cursor: pointer;
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.9);
-      animation: pulse 1.8s infinite;
-      letter-spacing: 1px;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.06); }
-      100% { transform: scale(1); }
-    }
-
-    .doors-open .door-left { transform: rotateY(-110deg); }
-    .doors-open .door-right { transform: rotateY(110deg); }
-
-    /* दिव्य प्रकाश */
-    .divine-light {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #fff 0%, #ffeaa7 50%, transparent 80%);
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      z-index: 99;
-      pointer-events: none;
-      transition: all 1.2s ease-out;
-    }
-    .light-active {
-      width: 800px;
-      height: 800px;
-      opacity: 0.9;
-    }
-
-    /* --- मुख्य आमंत्रण सामग्री --- */
-    .content-wrap {
-      padding: 24px 18px;
-      text-align: center;
-      background: radial-gradient(circle, #fffbf0 0%, #fff7e6 100%);
-    }
-
-    .shree-ganesh {
-      margin-top: 20px;
-      animation: fadeIn 2s ease-in;
-    }
-
-    .ganpati-img {
-      width: 110px;
-      height: 110px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.7));
-    }
-
-    .shlok {
-      font-family: 'Rozha One', serif;
-      color: var(--maroon);
-      font-size: 17px;
-      margin: 12px 0 24px;
-      line-height: 1.6;
-    }
-
-    .card-border {
-      border: 2px dashed var(--gold);
-      padding: 22px 14px;
-      border-radius: 14px;
-      background: #ffffff;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-      margin-bottom: 25px;
-    }
-
-    .family-heading {
-      font-family: 'Yatra One', cursive;
-      color: var(--maroon);
-      font-size: 20px;
-      margin-bottom: 6px;
-    }
-
-    .couple-names {
-      font-family: 'Rozha One', serif;
-      font-size: 26px;
-      color: var(--maroon);
-      margin: 14px 0;
-    }
-
-    .couple-names span {
-      color: var(--gold);
-      font-size: 28px;
-    }
-
-    .invite-msg {
-      font-size: 14px;
-      line-height: 1.7;
-      color: #4f4f4f;
-      margin: 14px 0;
-    }
-
-    /* --- स्क्रॅच कार्ड --- */
-    .scratch-section {
-      margin: 30px 0;
-      position: relative;
-    }
-
-    .scratch-title {
-      font-family: 'Yatra One', cursive;
-      color: var(--maroon);
-      font-size: 19px;
-      margin-bottom: 10px;
-    }
-
-    .scratch-container {
-      position: relative;
-      width: 290px;
-      height: 140px;
-      margin: 0 auto;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.18);
-      border: 3px solid var(--gold);
-    }
-
-    .scratch-secret {
-      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, #fff0f3 0%, #ffe3e8 100%);
+      pointer-events: none;
+      z-index: 40;
+    }
+
+    /* -------------------------------------------------------------
+       2. ROYAL WEDDING DOORS (3D PERSPECTIVE)
+       ------------------------------------------------------------- */
+    #door-curtain {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      perspective: 1800px;
+      perspective-origin: center center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background: radial-gradient(circle, #2a0307 0%, #0d0102 100%);
+      cursor: pointer;
+      transition: visibility 2.8s ease;
+    }
+
+    #door-curtain.hidden {
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* Golden back-glow during door opening */
+    .door-burst-light {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at center, rgba(255, 235, 150, 0.95) 0%, rgba(212, 175, 55, 0.6) 35%, rgba(45, 4, 10, 0) 75%);
+      opacity: 0;
+      transform: scale(0.6);
+      transition: opacity 2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 2.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    #door-curtain.opening .door-burst-light {
+      opacity: 1;
+      transform: scale(1.6);
+    }
+
+    /* Toran Garland at Archway */
+    .toran-frieze {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 95px;
+      z-index: 10;
+      background: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, transparent 100%);
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      padding: 0 10px;
+      pointer-events: none;
+    }
+
+    .marigold-swag {
+      width: 100%;
+      height: 60px;
+      background-image: radial-gradient(circle at 10px 10px, #ff9900 3px, #e65c00 6px, transparent 7px),
+                        radial-gradient(circle at 25px 25px, #ffc107 4px, #ff9800 7px, transparent 8px);
+      background-size: 35px 35px;
+      mask-image: radial-gradient(ellipse at 50% 0%, black 65%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 0%, black 65%, transparent 70%);
+      border-bottom: 2px dashed rgba(255, 215, 0, 0.4);
+    }
+
+    .door-wrapper {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+    }
+
+    .door-leaf {
+      width: 50%;
+      height: 100%;
+      position: relative;
+      background:
+        radial-gradient(ellipse at center, rgba(74, 33, 20, 0.5) 0%, rgba(31, 11, 7, 0.95) 100%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.015) 0px, rgba(0,0,0,0.06) 8px, transparent 16px),
+        linear-gradient(180deg, #180704 0%, #2f120a 50%, #150603 100%);
+      border: 8px solid #33150d;
+      box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.95);
+      transition: transform 2.4s cubic-bezier(0.65, 0, 0.25, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      padding: 50px 20px;
+      backface-visibility: hidden;
+    }
+
+    .door-leaf.left {
+      transform-origin: left center;
+      border-right: 3px solid var(--gold-deep);
+      box-shadow: inset -10px 0 30px rgba(0,0,0,0.8);
+    }
+
+    .door-leaf.right {
+      transform-origin: right center;
+      border-left: 3px solid var(--gold-deep);
+      box-shadow: inset 10px 0 30px rgba(0,0,0,0.8);
+    }
+
+    #door-curtain.opening .door-leaf.left {
+      transform: rotateY(-112deg);
+    }
+
+    #door-curtain.opening .door-leaf.right {
+      transform: rotateY(112deg);
+    }
+
+    /* Traditional Indian Wood-Carving Panels */
+    .wood-panel {
+      width: 82%;
+      height: 25%;
+      border: 2px solid var(--gold-deep);
+      border-radius: 8px;
+      background: linear-gradient(145deg, rgba(74, 33, 20, 0.8), rgba(20, 7, 4, 0.95));
+      position: relative;
+      box-shadow: inset 0 0 18px rgba(0,0,0,0.9), 0 0 12px rgba(212, 175, 55, 0.15);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .wood-panel::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px dashed rgba(212, 175, 55, 0.45);
+      border-radius: 4px;
+    }
+
+    /* Filigree Brass Mandala Emblem in Panels */
+    .brass-mandala {
+      width: 68px;
+      height: 68px;
+      border: 2px solid var(--gold-primary);
+      border-radius: 50%;
+      position: relative;
+      opacity: 0.85;
+      box-shadow: 0 0 14px rgba(212, 175, 55, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brass-mandala::after {
+      content: "";
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--gold-light);
+      transform: rotate(45deg);
+    }
+
+    /* Central Royal Brass Handles */
+    .door-handle-assembly {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 72px;
+      height: 140px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: var(--maroon);
-      font-family: 'Rozha One', serif;
+      z-index: 12;
     }
 
-    .scratch-secret h3 { font-size: 22px; }
-    .scratch-secret p { font-size: 15px; color: #555; }
+    .door-leaf.left .door-handle-assembly { right: 8px; }
+    .door-leaf.right .door-handle-assembly { left: 8px; }
 
-    #scratch-canvas {
+    .brass-plate {
+      width: 38px;
+      height: 130px;
+      background: linear-gradient(135deg, #c59f33 0%, #fae188 50%, #876218 100%);
+      border-radius: 19px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.85), inset 0 0 6px rgba(255,255,255,0.7);
+      border: 2px solid #573a06;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+    }
+
+    .brass-knocker-ring {
+      width: 48px;
+      height: 48px;
+      border: 7px solid #deb842;
+      border-radius: 50%;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.7), inset 0 2px 4px rgba(255,255,255,0.6);
+      transform: translateY(6px);
+      background: radial-gradient(circle, transparent 40%, rgba(68, 47, 9, 0.5) 100%);
+    }
+
+    /* Center prompt: "Tap to Open" */
+    .door-prompt {
       position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 2;
-      cursor: crosshair;
-    }
-
-    /* फ्लोटिंग हार्ट्स */
-    .heart-bubble {
-      position: fixed;
-      font-size: 20px;
-      color: #e63946;
+      bottom: 12%;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       pointer-events: none;
-      animation: floatUp 3s forwards;
-      z-index: 999;
+      text-align: center;
+      transition: opacity 0.8s ease;
     }
 
-    @keyframes floatUp {
-      0% { transform: translateY(0) scale(0.8); opacity: 1; }
-      100% { transform: translateY(-300px) scale(1.6); opacity: 0; }
+    #door-curtain.opening .door-prompt {
+      opacity: 0;
     }
 
-    /* --- हार्ट काउंटडाउन --- */
-    .heart-countdown {
-      width: 240px;
-      height: 220px;
-      margin: 25px auto;
-      background: radial-gradient(circle, #a81329 0%, #630514 100%);
-      position: relative;
-      transform: rotate(-45deg);
+    .prompt-gold-badge {
+      background: rgba(22, 4, 7, 0.85);
+      border: 1px solid var(--gold-primary);
+      padding: 14px 28px;
+      border-radius: 50px;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.5), inset 0 0 10px rgba(212, 175, 55, 0.2);
+      backdrop-filter: blur(8px);
+      animation: pulseGlow 2.4s infinite ease-in-out;
+    }
+
+    .prompt-text {
+      font-family: 'Cinzel', serif;
+      font-size: 15px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      font-weight: 700;
+      text-shadow: 0 0 12px rgba(255, 235, 120, 0.8);
+    }
+
+    .prompt-sub {
+      font-family: 'Yatra One', cursive;
+      font-size: 13px;
+      color: #ffd88a;
+      margin-top: 4px;
+      letter-spacing: 1px;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.4), inset 0 0 8px rgba(212, 175, 55, 0.2);
+      }
+      50% {
+        transform: scale(1.04);
+        box-shadow: 0 0 35px rgba(212, 175, 55, 0.8), inset 0 0 15px rgba(212, 175, 55, 0.4);
+      }
+    }
+
+    /* -------------------------------------------------------------
+       3. FLOATING MUSIC CONTROLLER
+       ------------------------------------------------------------- */
+    #music-control {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 90;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(30, 3, 7, 0.85);
+      border: 1.5px solid var(--gold-primary);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 10px 25px rgba(112, 11, 26, 0.4);
+      color: var(--gold-light);
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.5), 0 0 12px rgba(212, 175, 55, 0.35);
+      backdrop-filter: blur(5px);
+      transition: all 0.35s ease;
+      opacity: 0;
+      visibility: hidden;
     }
 
-    .heart-countdown::before,
-    .heart-countdown::after {
-      content: "";
-      width: 240px;
-      height: 220px;
-      background: inherit;
-      border-radius: 50%;
-      position: absolute;
+    #music-control.visible {
+      opacity: 1;
+      visibility: visible;
     }
 
-    .heart-countdown::before { top: -110px; left: 0; }
-    .heart-countdown::after { left: 110px; top: 0; }
+    #music-control:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
+    }
 
-    .timer-text-wrap {
-      transform: rotate(45deg);
-      position: relative;
-      z-index: 5;
-      color: #fff;
+    .music-waves {
       display: flex;
-      gap: 10px;
+      align-items: flex-end;
+      gap: 3px;
+      height: 18px;
     }
 
-    .time-unit {
+    .wave-bar {
+      width: 3px;
+      background: var(--gold-light);
+      border-radius: 2px;
+      height: 4px;
+      transition: height 0.2s ease;
+    }
+
+    .playing .wave-bar:nth-child(1) { animation: soundBar 1s infinite alternate 0.1s; }
+    .playing .wave-bar:nth-child(2) { animation: soundBar 1.2s infinite alternate 0.3s; }
+    .playing .wave-bar:nth-child(3) { animation: soundBar 0.8s infinite alternate 0.2s; }
+    .playing .wave-bar:nth-child(4) { animation: soundBar 1.1s infinite alternate 0.4s; }
+
+    @keyframes soundBar {
+      0% { height: 4px; }
+      100% { height: 17px; }
+    }
+
+    /* -------------------------------------------------------------
+       4. ROYAL INVITATION STAGE & CANVAS
+       ------------------------------------------------------------- */
+    #invitation-stage {
+      min-height: 100vh;
+      width: 100%;
+      background:
+        radial-gradient(circle at 50% 10%, rgba(99, 8, 24, 0.6) 0%, rgba(20, 2, 5, 0.95) 75%),
+        radial-gradient(circle at center, #35040b 0%, #150103 100%);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 60px 16px 80px;
+      position: relative;
+    }
+
+    /* Seamless Golden Traditional Mandap Frame */
+    .royal-scroll-sheet {
+      width: 100%;
+      max-width: 660px;
+      background:
+        radial-gradient(ellipse at top, #fffdf8 0%, #fbf3e2 70%, #f5e7c8 100%);
+      border-radius: 18px;
+      padding: 48px 24px;
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.85),
+        0 0 0 1px rgba(212, 175, 55, 0.5),
+        inset 0 0 45px rgba(212, 175, 55, 0.18);
+      position: relative;
       text-align: center;
-      background: rgba(0,0,0,0.25);
-      padding: 6px 8px;
-      border-radius: 6px;
-      border: 1px solid var(--gold);
+      border: 3px solid #d4af37;
+      margin: auto 0;
     }
 
-    .time-unit span {
-      display: block;
-      font-size: 16px;
+    /* Intricate Ornamental Border Inset */
+    .ornate-border-inner {
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(157, 120, 39, 0.45);
+      border-radius: 12px;
+      pointer-events: none;
+    }
+
+    .corner-motif {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      pointer-events: none;
+      color: var(--gold-deep);
+    }
+    .corner-motif.tl { top: 6px; left: 6px; }
+    .corner-motif.tr { top: 6px; right: 6px; transform: rotate(90deg); }
+    .corner-motif.br { bottom: 6px; right: 6px; transform: rotate(180deg); }
+    .corner-motif.bl { bottom: 6px; left: 6px; transform: rotate(270deg); }
+
+    /* -------------------------------------------------------------
+       5. LORD GANESHA SECTION
+       ------------------------------------------------------------- */
+    .ganesha-wrapper {
+      position: relative;
+      margin: 0 auto 20px;
+      display: inline-block;
+    }
+
+    .ganesha-halo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 155px;
+      height: 155px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 225, 120, 0.8) 0%, rgba(212, 175, 55, 0.25) 55%, transparent 75%);
+      filter: blur(10px);
+      animation: divineGlow 3.5s infinite alternate ease-in-out;
+      z-index: 1;
+    }
+
+    @keyframes divineGlow {
+      0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.9); }
+      100% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
+    }
+
+    .ganesha-svg-container {
+      position: relative;
+      z-index: 2;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto;
+      filter: drop-shadow(0 6px 12px rgba(120, 80, 10, 0.35));
+      animation: gentleFloat 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes gentleFloat {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-7px); }
+    }
+
+    .auspicious-mantra-title {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--maroon-rich);
       font-weight: 700;
-      color: var(--light-gold);
+      margin-top: 10px;
+      position: relative;
+      display: inline-block;
     }
 
-    .time-unit label {
-      font-size: 10px;
+    .auspicious-mantra-title::before,
+    .auspicious-mantra-title::after {
+      content: "◆";
+      font-size: 8px;
+      color: var(--gold-primary);
+      margin: 0 10px;
+      vertical-align: middle;
+    }
+
+    /* Sacred Shlok Block */
+    .shlok-card {
+      position: relative;
+      margin: 18px auto 26px;
+      padding: 16px 20px;
+      max-width: 480px;
+      background: rgba(255, 255, 255, 0.65);
+      border-radius: 8px;
+      border-left: 2px solid var(--gold-primary);
+      border-right: 2px solid var(--gold-primary);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.12);
+    }
+
+    .sanskrit-shlok {
+      font-family: 'Rozha One', 'Yatra One', serif;
+      color: var(--maroon-velvet);
+      font-size: 17.5px;
+      line-height: 1.85;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+      letter-spacing: 0.5px;
+    }
+
+    /* Divider */
+    .royal-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 26px auto;
+      max-width: 320px;
+      color: var(--gold-deep);
+    }
+
+    .royal-divider .line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+    }
+
+    /* -------------------------------------------------------------
+       6. BRIDE & GROOM CELEBRATION SECTION
+       ------------------------------------------------------------- */
+    .intro-subtext {
+      font-family: 'Cinzel', serif;
+      font-size: 13.5px;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: #6d4e28;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .couple-layout {
+      position: relative;
+      margin: 20px 0 10px;
+    }
+
+    .profile-card {
+      margin: 8px 0;
+      position: relative;
+    }
+
+    .name-title {
+      font-family: 'Cinzel Decorative', 'Cinzel', serif;
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: 4px;
+      line-height: 1.15;
+      background: linear-gradient(135deg, #4d0a15 0%, #870f23 50%, #40050e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 3px rgba(120, 20, 30, 0.15));
       text-transform: uppercase;
     }
 
-    /* --- कार्यक्रम टाइमलाइन --- */
-    .events-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin: 30px 0;
+    .family-lineage {
+      font-size: 13.5px;
+      color: #573a21;
+      font-weight: 500;
+      margin-top: 6px;
+      font-style: italic;
+      letter-spacing: 0.6px;
     }
 
-    .event-card {
-      background: #ffffff;
-      border: 1px solid #ebd08d;
-      border-radius: 10px;
-      padding: 12px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.04);
-    }
-
-    .event-card h4 {
-      font-family: 'Yatra One', cursive;
-      color: var(--maroon);
-      margin-bottom: 4px;
-    }
-
-    .event-card p {
-      font-size: 12px;
-      color: #555;
-    }
-
-    /* --- फोटो गॅलरी स्लाइडर --- */
-    .gallery-section {
-      margin: 35px 0;
-    }
-
-    .slider-box {
-      position: relative;
-      width: 100%;
-      height: 330px;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 3px solid var(--gold);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-    }
-
-    .slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 0.6s ease-in-out;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #fdf2f4;
-    }
-
-    .slide.active { opacity: 1; }
-
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .slider-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(112, 11, 26, 0.75);
-      color: var(--gold);
-      border: none;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 18px;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .prev-btn { left: 10px; }
-    .next-btn { right: 10px; }
-
-    /* --- व्हेन्यू व आशिर्वाद --- */
-    .venue-btn {
-      display: inline-block;
-      margin-top: 10px;
-      background: var(--maroon);
-      color: var(--gold);
-      padding: 10px 20px;
-      border-radius: 20px;
-      text-decoration: none;
-      font-size: 14px;
+    .family-lineage strong {
+      color: var(--maroon-rich);
       font-weight: 600;
-      border: 1px solid var(--gold);
+      font-style: normal;
     }
 
-    .blessing-form {
-      background: #ffffff;
-      padding: 18px;
-      border-radius: 12px;
-      border: 1px solid #e8d095;
-      margin: 25px 0;
+    /* Romantic Center Knot/Heart */
+    .sacred-knot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 18px 0;
     }
 
-    .blessing-form textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      resize: none;
-      height: 75px;
-      margin: 10px 0;
-      font-size: 13px;
+    .knot-symbol {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #fff7dc 0%, #fed876 100%);
+      border: 1.5px solid var(--gold-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--maroon-velvet);
+      font-size: 18px;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+      position: relative;
+      animation: heartbeat 2s ease-in-out infinite;
     }
 
-    .submit-bless {
-      background: var(--maroon);
-      color: #fff;
-      border: none;
-      padding: 8px 18px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 14px;
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      14% { transform: scale(1.15); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.1); }
+      70% { transform: scale(1); }
     }
 
-    .thanks-note {
-      padding: 20px;
-      background: var(--light-gold);
-      border-radius: 10px;
-      margin-top: 20px;
+    .solitary-shubh {
       font-family: 'Rozha One', serif;
-      color: var(--maroon);
-      font-size: 15px;
-      line-height: 1.7;
+      font-size: 12px;
+      color: var(--gold-deep);
+      margin-top: 4px;
+      letter-spacing: 1.5px;
+    }
+
+    /* Responsive Adaptation for Tablets & Desktops */
+    @media (min-width: 600px) {
+      .royal-scroll-sheet {
+        padding: 58px 46px;
+      }
+
+      .name-title {
+        font-size: 44px;
+        letter-spacing: 5px;
+      }
+
+      .sanskrit-shlok {
+        font-size: 20px;
+      }
+
+      .wood-panel {
+        height: 27%;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .name-title {
+        font-size: 29px;
+      }
+      .sanskrit-shlok {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
-<body>
 
-  <!-- पार्श्वसंगीत (सनई / वेडिंग ट्यून) -->
-  <audio id="wedding-music" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_2d8329b3f3.mp3?filename=shehnai-indian-wedding-instrument-110255.mp3" type="audio/mp3">
+<body class="locked">
+
+  <!-- Ambient Golden Sparkle Canvas -->
+  <canvas id="ambient-particles"></canvas>
+
+  <!-- Floating Audio Player Control -->
+  <div id="music-control" aria-label="Toggle Music" title="Audio Control">
+    <div class="music-waves">
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+      <div class="wave-bar"></div>
+    </div>
+  </div>
+
+  <!-- Audio Element with Robust Graceful Fallback Placeholder -->
+  <audio id="wedding-audio" loop preload="auto">
+    <!-- Replace 'wedding-song.mp3' with your actual audio track URL -->
+    <source src="wedding-song.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- 3D दार आणि ओपन बटण -->
-  <div id="door-overlay">
-    <div class="door door-left"><div class="door-handle"></div></div>
-    <div class="door door-right"><div class="door-handle"></div></div>
-    <div class="open-btn-container" id="open-btn-box">
-      <button class="open-btn" onclick="openDoor()">आमंत्रण उघडा 🪔</button>
+  <!-- -----------------------------------------------------------
+       SECTION 1: ROYAL WEDDING DOORS (3D PERSPECTIVE)
+       ----------------------------------------------------------- -->
+  <div id="door-curtain" role="button" aria-label="Click to open the wedding invitation">
+    
+    <!-- Cinematic Backlight burst on open -->
+    <div class="door-burst-light"></div>
+
+    <!-- Festive Traditional Floral Arch (Toran) -->
+    <div class="toran-frieze">
+      <div class="marigold-swag"></div>
+      <div class="marigold-swag"></div>
     </div>
-  </div>
 
-  <div class="divine-light" id="divine-light"></div>
-
-  <!-- मुख्य निमंत्रण कंटेनर -->
-  <div class="main-container">
-    <div class="content-wrap">
+    <!-- The Dual Grand Doors -->
+    <div class="door-wrapper">
       
-      <!-- गणेश प्रतिमा व श्लोक -->
-      <div class="shree-ganesh">
-        <img class="ganpati-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Ganesha_symbol_gold.png/320px-Ganesha_symbol_gold.png" alt="गणपती बाप्पा" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3063/3063822.png'">
-        <div class="shlok">
-          ॥ श्री गणेशाय नमः ॥<br>
-          वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>
-          निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
+      <!-- Left Door -->
+      <div class="door-leaf left">
+        <div class="wood-panel">
+          <div class="brass-mandala"></div>
         </div>
-      </div>
-
-      <!-- निमंत्रण पत्रिका माहिती -->
-      <div class="card-border">
-        <div class="family-heading">जाधव परिवार & चौगुले परिवार</div>
-        <p style="font-size: 13px; color: #777;">स्नेहपूर्वक आमंत्रण</p>
-        
-        <div class="couple-names">
-          चि. रोहन <span>💍</span> चि.सौ.कां. अनन्या
+        <div class="wood-panel">
+          <div class="brass-mandala"></div>
         </div>
-        
-        <p style="font-size: 13px; font-weight: 600; color: #444;">
-          सुपुत्र: श्री. व सौ. जाधव | सुपुत्री: श्री. व सौ. चौगुले
-        </p>
-
-        <p class="invite-msg">
-          आमच्या लाडक्या मुला-मुलीचा शुभविवाह ठरला असून, या मंगल सोहळ्यास आपण सहकुटुंब सहपरिवार उपस्थित राहून वधू-वरांस शुभाशीर्वाद द्यावेत ही नम्र विनंती.
-        </p>
-      </div>
-
-      <!-- गोल्डन स्क्रॅच कार्ड -->
-      <div class="scratch-section">
-        <div class="scratch-title">✨ शुभ मुहूर्त जाणून घेण्यासाठी स्क्रॅच करा ✨</div>
-        <div class="scratch-container">
-          <div class="scratch-secret">
-            <h3>२४ नोव्हेंबर २०२६</h3>
-            <p>दुपारी १२:३५ वा.</p>
-          </div>
-          <canvas id="scratch-canvas" width="290" height="140"></canvas>
+        <div class="wood-panel">
+          <div class="brass-mandala"></div>
         </div>
-      </div>
 
-      <!-- हार्ट काउंटडाउन -->
-      <div style="margin-top: 40px;">
-        <h4 style="font-family:'Yatra One'; color: var(--maroon); margin-bottom: 25px;">विवाहाची घटिका समीप येत आहे</h4>
-        <div class="heart-countdown">
-          <div class="timer-text-wrap" id="timer">
-            <div class="time-unit"><span id="days">00</span><label>दिवस</label></div>
-            <div class="time-unit"><span id="hours">00</span><label>तास</label></div>
-            <div class="time-unit"><span id="minutes">00</span><label>मिनीट</label></div>
-            <div class="time-unit"><span id="seconds">00</span><label>सेकंद</label></div>
+        <!-- Left Handle Assembly -->
+        <div class="door-handle-assembly">
+          <div class="brass-plate">
+            <div class="brass-knocker-ring"></div>
           </div>
         </div>
       </div>
 
-      <!-- कार्यक्रम वेळापत्रक -->
-      <h3 style="font-family:'Yatra One'; color:var(--maroon); margin-top: 40px;">॥ मंगल सोहळा ॥</h3>
-      <div class="events-grid">
-        <div class="event-card">
-          <h4>हळदी समारंभ</h4>
-          <p>२३ नोव्हेंबर | स. ९:०० वा.</p>
+      <!-- Right Door -->
+      <div class="door-leaf right">
+        <div class="wood-panel">
+          <div class="brass-mandala"></div>
         </div>
-        <div class="event-card">
-          <h4>मेहंदी & संगीत</h4>
-          <p>२३ नोव्हेंबर | सायं. ६:०० वा.</p>
+        <div class="wood-panel">
+          <div class="brass-mandala"></div>
         </div>
-        <div class="event-card">
-          <h4>शुभविवाह</h4>
-          <p>२४ नोव्हेंबर | दु. १२:३५ वा.</p>
+        <div class="wood-panel">
+          <div class="brass-mandala"></div>
         </div>
-        <div class="event-card">
-          <h4>स्नेहभोजन</h4>
-          <p>२४ नोव्हेंबर | दु. १:३० नंतर</p>
-        </div>
-      </div>
 
-      <!-- फोटो गॅलरी स्लाइडर -->
-      <div class="gallery-section">
-        <h3 style="font-family:'Yatra One'; color:var(--maroon); margin-bottom:12px;">प्री-वेडिंग क्षणचित्रे</h3>
-        <div class="slider-box">
-          <div class="slide active">
-            <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&auto=format&fit=crop" alt="Couple 1">
+        <!-- Right Handle Assembly -->
+        <div class="door-handle-assembly">
+          <div class="brass-plate">
+            <div class="brass-knocker-ring"></div>
           </div>
-          <div class="slide">
-            <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&auto=format&fit=crop" alt="Couple 2">
-          </div>
-          <div class="slide">
-            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop" alt="Couple 3">
-          </div>
-          <button class="slider-btn prev-btn" onclick="prevSlide()">&#10094;</button>
-          <button class="slider-btn next-btn" onclick="nextSlide()">&#10095;</button>
         </div>
-      </div>
-
-      <!-- स्थळ व लोकेशन -->
-      <div class="card-border">
-        <h4 style="font-family:'Yatra One'; color: var(--maroon);">शुभविवाह स्थळ</h4>
-        <p style="font-size: 14px; margin-top: 5px;">राजलक्ष्मी मंगल कार्यालय, कोल्हापूर रोड, सांगली.</p>
-        <a class="venue-btn" href="https://maps.google.com" target="_blank">📍 लोकेशन (Google Maps)</a>
-      </div>
-
-      <!-- आशिर्वाद व मेसेज फॉर्म -->
-      <div class="blessing-form">
-        <h4 style="font-family:'Yatra One'; color: var(--maroon);">वधू-वरांस शुभाशीर्वाद द्या</h4>
-        <textarea id="guest-msg" placeholder="आपला सप्रेम आशीर्वाद किंवा शुभेच्छा संदेश येथे लिहा..."></textarea>
-        <button class="submit-bless" onclick="sendBlessing()">आशीर्वाद पाठवा ✨</button>
-        <p id="bless-ack" style="font-size: 13px; color: green; margin-top: 8px; display: none;">आपल्या बहुमूल्य आशीर्वादाबद्दल मनःपूर्वक धन्यवाद!</p>
-      </div>
-
-      <!-- आभाराचा संदेश -->
-      <div class="thanks-note">
-        "आपली उपस्थिती हेच आमचे वैभव आणि आपले प्रेम हेच आमचे बळ.<br>
-        आमच्या आनंदात सहभागी होऊन नवदाम्पत्याला शुभाशीर्वाद द्यावेत."<br>
-        <strong>- निमंत्रक: समस्त जाधव व चौगुले परिवार</strong>
       </div>
 
     </div>
+
+    <!-- Tap to Open Badge -->
+    <div class="door-prompt">
+      <div class="prompt-gold-badge">
+        <div class="prompt-text">Tap to Open</div>
+        <div class="prompt-sub">॥ मंगलम् भगवान विष्णुः ॥</div>
+      </div>
+    </div>
+
   </div>
 
+  <!-- -----------------------------------------------------------
+       SECTION 2: INVITATION MAIN STAGE
+       ----------------------------------------------------------- -->
+  <main id="invitation-stage">
+    
+    <div class="royal-scroll-sheet">
+      
+      <!-- Ornate Border Linework -->
+      <div class="ornate-border-inner"></div>
+      
+      <!-- Corner Filigree Vectors -->
+      <svg class="corner-motif tl" viewBox="0 0 100 100" fill="currentColor">
+        <path d="M10,10 L70,10 C60,20 40,40 40,70 L40,40 L10,40 Z M15,15 L15,30 C25,30 30,25 30,15 Z" />
+      </svg>
+      <svg class="corner-motif tr" viewBox="0 0 100 100" fill="currentColor">
+        <path d="M10,10 L70,10 C60,20 40,40 40,70 L40,40 L10,40 Z M15,15 L15,30 C25,30 30,25 30,15 Z" />
+      </svg>
+      <svg class="corner-motif br" viewBox="0 0 100 100" fill="currentColor">
+        <path d="M10,10 L70,10 C60,20 40,40 40,70 L40,40 L10,40 Z M15,15 L15,30 C25,30 30,25 30,15 Z" />
+      </svg>
+      <svg class="corner-motif bl" viewBox="0 0 100 100" fill="currentColor">
+        <path d="M10,10 L70,10 C60,20 40,40 40,70 L40,40 L10,40 Z M15,15 L15,30 C25,30 30,25 30,15 Z" />
+      </svg>
+
+      <!-- -------------------------------------------------------
+           SECTION 3: GANPATI BAPPA SECTION
+           ------------------------------------------------------- -->
+      <section class="ganesha-section" aria-label="Auspicious Lord Ganesha Invocation">
+        <div class="ganesha-wrapper">
+          <div class="ganesha-halo"></div>
+          
+          <!-- Masterclass Crafted Golden Ganesha Vector -->
+          <div class="ganesha-svg-container">
+            <svg viewBox="0 0 200 200" width="100%" height="100%">
+              <defs>
+                <linearGradient id="goldGleam" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fff8db"/>
+                  <stop offset="40%" stop-color="#d4af37"/>
+                  <stop offset="85%" stop-color="#8c6218"/>
+                  <stop offset="100%" stop-color="#fced9d"/>
+                </linearGradient>
+                <filter id="ganeshaShadow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#540813" flood-opacity="0.3"/>
+                </filter>
+              </defs>
+              
+              <g fill="url(#goldGleam)" filter="url(#ganeshaShadow)">
+                <!-- Mukut / Crown -->
+                <path d="M85,32 L115,32 L120,55 L80,55 Z" />
+                <path d="M92,15 L108,15 L112,30 L88,30 Z" />
+                <circle cx="100" cy="10" r="4" />
+                <!-- Traditional Ears -->
+                <path d="M78,65 C60,60 50,75 52,95 C54,112 68,115 76,108 C74,92 74,78 78,65 Z" />
+                <path d="M122,65 C140,60 150,75 148,95 C146,112 132,115 124,108 C126,92 126,78 122,65 Z" />
+                <!-- Mastak & Trunk (Graceful Ganesha Contour) -->
+                <path d="M78,68 C85,60 115,60 122,68 C126,78 122,96 116,114 C110,132 118,142 124,142 C129,142 132,137 131,133 C130,130 126,130 125,133 C124,136 120,136 118,131 C112,117 122,98 126,82 C128,74 122,68 100,68 C78,68 72,74 74,82 C78,98 88,117 82,131 C80,136 76,136 75,133 C74,130 70,130 69,133 C68,137 71,142 76,142 C82,142 90,132 84,114 C78,96 74,78 78,68 Z" />
+                <!-- Sacred Tilak / Trikund -->
+                <path d="M94,66 C94,62 106,62 106,66 C106,78 94,78 94,66 Z" fill="#b10b24" />
+                <circle cx="100" cy="72" r="2.5" fill="#f7d459" />
+                <!-- Modak / Sweets in blessing motif -->
+                <circle cx="100" cy="148" r="5" fill="url(#goldGleam)" />
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div>
+          <div class="auspicious-mantra-title">॥ श्री गणेशाय नमः ॥</div>
+        </div>
+
+        <!-- Sacred Sanskrit Sloka -->
+        <div class="shlok-card">
+          <p class="sanskrit-shlok">
+            वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>
+            निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
+          </p>
+        </div>
+      </section>
+
+      <!-- Royal Golden Divider -->
+      <div class="royal-divider">
+        <span class="line"></span>
+        <span>❧ ❖ ☙</span>
+        <span class="line"></span>
+      </div>
+
+      <!-- -------------------------------------------------------
+           SECTION 4: BRIDE & GROOM ANNOUNCEMENT
+           ------------------------------------------------------- -->
+      <section class="couple-announcement" aria-label="Bride and Groom Details">
+        
+        <p class="intro-subtext">Together with their families</p>
+
+        <div class="couple-layout">
+          
+          <!-- Groom Presentation -->
+          <div class="profile-card">
+            <h1 class="name-title">ASHISH</h1>
+            <p class="family-lineage">
+              Son of <strong>Jadhav Family</strong>
+            </p>
+          </div>
+
+          <!-- Central Knot / Romantic Union Emblem -->
+          <div class="sacred-knot" aria-hidden="true">
+            <div class="knot-symbol">♥</div>
+            <span class="solitary-shubh">शुभविवाह</span>
+          </div>
+
+          <!-- Bride Presentation -->
+          <div class="profile-card">
+            <h2 class="name-title">AARTI</h2>
+            <p class="family-lineage">
+              Daughter of <strong>Chougule Family</strong>
+            </p>
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- -----------------------------------------------------------
+       7. JAVASCRIPT: LOGIC, PARTICLES, DOOR 3D INTERACTION & AUDIO
+       ----------------------------------------------------------- -->
   <script>
-    // १. दार उघडणे व गाणे सुरू करणे
-    function openDoor() {
-      const music = document.getElementById('wedding-music');
-      music.play().catch(e => console.log('Autoplay restriction handled'));
+    (function () {
+      'use strict';
 
-      const light = document.getElementById('divine-light');
-      light.classList.add('light-active');
+      /* --- Elements Cache --- */
+      const doorCurtain = document.getElementById('door-curtain');
+      const weddingAudio = document.getElementById('wedding-audio');
+      const musicControl = document.getElementById('music-control');
+      const canvas = document.getElementById('ambient-particles');
+      const ctx = canvas.getContext('2d');
+      const body = document.body;
 
-      document.getElementById('door-overlay').classList.add('doors-open');
-      document.getElementById('open-btn-box').style.display = 'none';
+      let isAudioPlaying = false;
+      let doorsOpened = false;
 
-      setTimeout(() => {
-        light.style.opacity = '0';
-        document.getElementById('door-overlay').style.display = 'none';
-      }, 1800);
-    }
+      /* -----------------------------------------------------------
+         AUDIO SYSTEM: Fail-Safe Web Audio Synthesizer Fallback
+         If 'wedding-song.mp3' doesn't exist locally, it generates
+         a subtle, divine Indian Tanpura / meditative drone chord.
+         ----------------------------------------------------------- */
+      let audioCtx = null;
+      let synthInterval = null;
 
-    // २. स्क्रॅच कार्ड लॉजिक (सोनरी रंग व हार्ट इफेक्ट)
-    const canvas = document.getElementById('scratch-canvas');
-    const ctx = canvas.getContext('2d');
-    let isDrawing = false;
-    let scratched = false;
+      function playSyntheticShehnaiAmbience() {
+        try {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (!AudioContext) return;
+          if (!audioCtx) audioCtx = new AudioContext();
+          if (audioCtx.state === 'suspended') audioCtx.resume();
 
-    // सोनेरी टेक्सचर लेयर
-    ctx.fillStyle = '#D4AF37';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.font = 'bold 15px sans-serif';
-    ctx.fillStyle = '#3a2000';
-    ctx.textAlign = 'center';
-    ctx.fillText('✨ येथे बोटाने स्क्रॅच करा ✨', canvas.width / 2, canvas.height / 2 + 5);
+          // Meditative Indian Santoor/Drone Frequencies (Sa - Pa harmonic chords)
+          const notes = [220, 277.18, 329.63, 440, 554.37, 659.25];
+          
+          function triggerPluck(freq, delay) {
+            setTimeout(() => {
+              if (!isAudioPlaying) return;
+              try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
 
-    function scratch(e) {
-      if (!isDrawing) return;
-      const rect = canvas.getBoundingClientRect();
-      const clientX = e.clientX || (e.touches && e.touches[0].clientX);
-      const clientY = e.clientY || (e.touches && e.touches[0].clientY);
-      const x = clientX - rect.left;
-      const y = clientY - rect.top;
+                gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.08, audioCtx.currentTime + 0.1);
+                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 3.8);
 
-      ctx.globalCompositeOperation = 'destination-out';
-      ctx.beginPath();
-      ctx.arc(x, y, 22, 0, Math.PI * 2);
-      ctx.fill();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 4.0);
+              } catch (e) {
+                // Silently handle context boundary
+              }
+            }, delay);
+          }
 
-      // हार्ट्स उडवणे
-      createHeart(clientX, clientY);
+          function cycleArpeggio() {
+            if (!isAudioPlaying) return;
+            notes.forEach((freq, idx) => {
+              triggerPluck(freq, idx * 600);
+            });
+          }
 
-      if (!scratched) {
-        scratched = true;
-        for (let i = 0; i < 15; i++) {
-          setTimeout(() => {
-            createHeart(clientX + (Math.random() * 80 - 40), clientY + (Math.random() * 80 - 40));
-          }, i * 150);
+          cycleArpeggio();
+          synthInterval = setInterval(cycleArpeggio, 4200);
+        } catch (err) {
+          console.warn('Web Audio synthesis unassisted');
         }
       }
-    }
 
-    function createHeart(x, y) {
-      const heart = document.createElement('div');
-      heart.className = 'heart-bubble';
-      heart.innerHTML = '❤️';
-      heart.style.left = x + 'px';
-      heart.style.top = y + 'px';
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 2500);
-    }
-
-    canvas.addEventListener('mousedown', () => isDrawing = true);
-    canvas.addEventListener('mouseup', () => isDrawing = false);
-    canvas.addEventListener('mousemove', scratch);
-    canvas.addEventListener('touchstart', (e) => { isDrawing = true; scratch(e); });
-    canvas.addEventListener('touchend', () => isDrawing = false);
-    canvas.addEventListener('touchmove', scratch);
-
-    // ३. हार्ट काउंटडाउन टाइमर
-    const weddingDate = new Date('Nov 24, 2026 12:35:00').getTime();
-    setInterval(() => {
-      const now = new Date().getTime();
-      const diff = weddingDate - now;
-
-      if (diff > 0) {
-        document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-        document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000);
+      function stopSyntheticAudio() {
+        if (synthInterval) {
+          clearInterval(synthInterval);
+          synthInterval = null;
+        }
+        if (audioCtx && audioCtx.state === 'running') {
+          audioCtx.suspend();
+        }
       }
-    }, 1000);
 
-    // ४. फोटो गॅलरी स्लाइडर
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
+      function startAudio() {
+        weddingAudio.volume = 0.75;
+        const playPromise = weddingAudio.play();
 
-    function showSlide(idx) {
-      slides.forEach(s => s.classList.remove('active'));
-      currentSlide = (idx + slides.length) % slides.length;
-      slides[currentSlide].classList.add('active');
-    }
-
-    function nextSlide() { showSlide(currentSlide + 1); }
-    function prevSlide() { showSlide(currentSlide - 1); }
-
-    // ५. आशीर्वाद फॉर्म सबमिशन
-    function sendBlessing() {
-      const txt = document.getElementById('guest-msg').value.trim();
-      if (txt) {
-        document.getElementById('bless-ack').style.display = 'block';
-        document.getElementById('guest-msg').value = '';
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              isAudioPlaying = true;
+              musicControl.classList.add('playing');
+            })
+            .catch(() => {
+              // File not found or blocked: Fall back gracefully to synthesized ambient drone
+              isAudioPlaying = true;
+              musicControl.classList.add('playing');
+              playSyntheticShehnaiAmbience();
+            });
+        }
       }
-    }
+
+      function toggleAudio() {
+        if (isAudioPlaying) {
+          weddingAudio.pause();
+          stopSyntheticAudio();
+          isAudioPlaying = false;
+          musicControl.classList.remove('playing');
+        } else {
+          startAudio();
+        }
+      }
+
+      musicControl.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleAudio();
+      });
+
+      /* -----------------------------------------------------------
+         DOOR INTERACTION: Seamless 3D Door Open & Transitions
+         ----------------------------------------------------------- */
+      function openRoyalDoors() {
+        if (doorsOpened) return;
+        doorsOpened = true;
+
+        // Unlock scroll after slight cinematic pause
+        setTimeout(() => {
+          body.classList.remove('locked');
+        }, 1200);
+
+        // Initiate opening animation
+        doorCurtain.classList.add('opening');
+
+        // Play wedding music automatically as a result of user tap
+        startAudio();
+
+        // Reveal Floating Music Controller
+        setTimeout(() => {
+          musicControl.classList.add('visible');
+        }, 1500);
+
+        // Remove doors from viewport flow after complete swing
+        setTimeout(() => {
+          doorCurtain.classList.add('hidden');
+        }, 2600);
+      }
+
+      doorCurtain.addEventListener('click', openRoyalDoors);
+      doorCurtain.addEventListener('touchstart', openRoyalDoors, { passive: true });
+
+      /* -----------------------------------------------------------
+         PARTICLE SYSTEM: Subtle, Golden Shimmer & Dust Effect
+         ----------------------------------------------------------- */
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const particleCount = 45;
+      const particles = [];
+
+      class GoldenParticle {
+        constructor() {
+          this.reset(true);
+        }
+
+        reset(initial = false) {
+          this.x = Math.random() * width;
+          this.y = initial ? Math.random() * height : height + 15;
+          this.size = Math.random() * 2.8 + 1;
+          this.speedY = Math.random() * 0.7 + 0.25;
+          this.speedX = (Math.random() - 0.5) * 0.45;
+          this.alpha = Math.random() * 0.65 + 0.25;
+          this.glowSpeed = Math.random() * 0.02 + 0.008;
+          this.glowAngle = Math.random() * Math.PI * 2;
+        }
+
+        update() {
+          this.y -= this.speedY;
+          this.x += this.speedX;
+          this.glowAngle += this.glowSpeed;
+
+          // Flicker luminosity gently
+          this.currentAlpha = this.alpha + Math.sin(this.glowAngle) * 0.22;
+          if (this.currentAlpha < 0.1) this.currentAlpha = 0.1;
+
+          // Wrap boundaries
+          if (this.y < -20 || this.x < -20 || this.x > width + 20) {
+            this.reset(false);
+          }
+        }
+
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 228, 130, ${this.currentAlpha})`;
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = '#d4af37';
+          ctx.fill();
+          ctx.shadowBlur = 0; // reset for performance
+        }
+      }
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new GoldenParticle());
+      }
+
+      function animateParticles() {
+        ctx.clearRect(0, 0, width, height);
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+        }
+        requestAnimationFrame(animateParticles);
+      }
+
+      animateParticles();
+
+    })();
   </script>
 </body>
 </html>
