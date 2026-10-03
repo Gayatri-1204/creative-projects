@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-select=no" />
+  <title>FaceTime Call 📱</title>
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    body {
+      background: #000;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Montserrat", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    /* iPhone Frame Simulator */
+    .iphone-viewport {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      max-width: 430px;
+      max-height: 932px;
+      background: #111;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 50px rgba(255, 77, 109, 0.2);
+    }
+
+    @media (min-width: 500px) {
+      .iphone-viewport {
+        border-radius: 48px;
+        height: 880px;
+        border: 4px solid #2d2d2d;
+      }
+    }
+
+    /* Dynamic Island */
+    .dynamic-island {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 125px;
+      height: 35px;
+      background: #000;
+      border-radius: 20px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    }
+
+    .island-cam {
+      width: 11px;
+      height: 11px;
+      background: #080d26;
+      border-radius: 50%;
+      box-shadow: inset 0 0 2px #3b5998;
+    }
+
+    .island-sensor {
+      width: 8px;
+      height: 8px;
+      background: #0d1217;
+      border-radius: 50%;
+    }
+
+    /* =========================================
+       SCREEN 1: INCOMING CALL SCREEN
+       ========================================= */
+    .incoming-screen {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(20, 10, 15, 0.75) 0%, rgba(5, 5, 5, 0.95) 100%),
+                  url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=1000&auto=format&fit=crop') center/cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 100px 30px 65px 30px;
+      z-index: 50;
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s ease;
+    }
+
+    .caller-details {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .caller-avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      object-fit: cover;
+      margin-bottom: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      animation: gentlePulse 2s infinite ease-in-out;
+    }
+
+    @keyframes gentlePulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 77, 109, 0.4); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(255, 77, 109, 0); }
+      100% { transform: scale(1); }
+    }
+
+    .caller-title {
+      font-size: 1.85rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #fff;
+      margin-bottom: 6px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+    }
+
+    .caller-tag {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+
+    /* Incoming Actions */
+    .incoming-actions {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .call-btn-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .call-btn-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .call-btn-circle:active {
+      transform: scale(0.9);
+    }
+
+    .decline-btn {
+      background: #eb4d4b;
+    }
+
+    .accept-btn {
+      background: #2ecc71;
+      animation: acceptRumble 1.4s infinite ease-in-out;
+    }
+
+    @keyframes acceptRumble {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); box-shadow: 0 0 25px rgba(46, 204, 113, 0.7); }
+    }
+
+    .btn-svg {
+      width: 32px;
+      height: 32px;
+      fill: #fff;
+    }
+
+    .btn-text {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #fff;
+    }
+
+    /* =========================================
+       SCREEN 2: CONNECTED FACETIME SCREEN
+       ========================================= */
+    .connected-screen {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 60px 20px 35px 20px;
+      z-index: 20;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+    }
+
+    .connected-screen.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Video Feed in Background */
+    .partner-video-feed {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      filter: brightness(0.92);
+    }
+
+    .video-vignette {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent 30%, transparent 60%, rgba(0,0,0,0.85) 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Top Connected Bar */
+    .connected-top {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .status-left {
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(20px);
+      padding: 8px 16px;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .active-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .active-duration {
+      font-size: 0.75rem;
+      color: #2ecc71;
+      font-weight: 500;
+    }
+
+    /* Small Picture-in-Picture (My camera) */
+    .pip-camera {
+      width: 95px;
+      height: 140px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      background: #222;
+    }
+
+    .pip-camera img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Live Subtitle / Typewriter Dialogue Area */
+    .dialogue-zone {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .chat-bubble {
+      background: rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 20px 20px 20px 4px;
+      padding: 14px 20px;
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.45;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      max-width: 90%;
+      animation: bubblePop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    @keyframes bubblePop {
+      from { opacity: 0; transform: translateY(15px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .chat-heart-burst {
+      font-size: 1.3rem;
+    }
+
+    /* FaceTime Control Dock */
+    .facetime-dock {
+      position: relative;
+      z-index: 10;
+      background: rgba(30, 30, 30, 0.7);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-radius: 36px;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .dock-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.15);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all 0.2s;
+    }
+
+    .dock-btn.end-call {
+      background: #eb4d4b;
+    }
+
+    .dock-btn:active {
+      transform: scale(0.88);
+    }
+
+    /* Floating Hearts on screen */
+    .floating-call-heart {
+      position: absolute;
+      font-size: 1.8rem;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 15;
+      animation: floatUp 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes floatUp {
+      0% { opacity: 1; transform: translateY(0) scale(0.6); }
+      100% { opacity: 0; transform: translateY(-180px) scale(1.5); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="iphone-viewport">
+    
+    <!-- Dynamic Island -->
+    <div class="dynamic-island">
+      <div class="island-cam"></div>
+      <div class="island-sensor"></div>
+    </div>
+
+    <!-- ==============================================
+         1. INCOMING FACETIME CALL SCREEN
+         ============================================== -->
+    <div id="incomingScreen" class="incoming-screen">
+      
+      <div class="caller-details">
+        <img class="caller-avatar" src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=500&auto=format&fit=crop" alt="Caller Avatar" />
+        <h1 class="caller-title">Mera Fav Human 🥺❤️️</h1>
+        <p class="caller-tag">FaceTime Video...</p>
+      </div>
+
+      <div class="incoming-actions">
+        <!-- Decline Button -->
+        <div class="call-btn-wrap">
+          <button class="call-btn-circle decline-btn" onclick="declineCall()" aria-label="Decline">
+            <svg class="btn-svg" viewBox="0 0 24 24">
+              <path d="M12 9c-1.6 0-3.15.25-4.6.72v3.1c0 .39-.23.74-.56.9-.98.49-1.87 1.12-2.66 1.85-.18.18-.43.28-.7.28-.28 0-.53-.11-.71-.29L.29 13.08a.99.99 0 0 1 0-1.41C2.79 9.24 6.8 7.5 12 7.5s9.21 1.74 11.71 4.17c.39.39.39 1.02 0 1.41l-2.48 2.48c-.18.18-.43.29-.71.29s-.52-.1-.7-.28c-.79-.74-1.69-1.36-2.67-1.85-.33-.16-.56-.5-.56-.9v-3.1C15.15 9.25 13.6 9 12 9z"/>
+            </svg>
+          </button>
+          <span class="btn-text">Decline</span>
+        </div>
+
+        <!-- Accept Button (Swipe / Tap) -->
+        <div class="call-btn-wrap">
+          <button class="call-btn-circle accept-btn" onclick="acceptFaceTime()" aria-label="Accept">
+            <svg class="btn-svg" viewBox="0 0 24 24">
+              <path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57a1.02 1.02 0 0 0-1.02.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21a.96.96 0 0 0 .25-1A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM19 12h2a9 9 0 0 0-9-9v2c3.87 0 7 3.13 7 7zm-4 0h2c0-2.76-2.24-5-5-5v2c1.66 0 3 1.34 3 3z"/>
+            </svg>
+          </button>
+          <span class="btn-text">Accept</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ==============================================
+         2. CONNECTED FACETIME SCREEN
+         ============================================== -->
+    <div id="connectedScreen" class="connected-screen">
+      
+      <!-- Video / GIF Loop of Boyfriend/Couple (Replace with your video/gif) -->
+      <img id="partnerVideo" class="partner-video-feed" 
+           src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=1000&auto=format&fit=crop" 
+           alt="Partner Video Feed" />
+      
+      <div class="video-vignette"></div>
+
+      <!-- Header Information -->
+      <div class="connected-top">
+        <div class="status-left">
+          <div class="active-name">Mera Fav Human ❤️</div>
+          <div class="active-duration" id="callTimer">00:00</div>
+        </div>
+
+        <!-- PIP My Camera -->
+        <div class="pip-camera">
+          <img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=400&auto=format&fit=crop" alt="My Camera" />
+        </div>
+      </div>
+
+      <!-- Typewriter Live Chat Dialogues -->
+      <div class="dialogue-zone" id="dialogueContainer">
+        <!-- Messages append here dynamically -->
+      </div>
+
+      <!-- Controls Dock -->
+      <div class="facetime-dock">
+        <button class="dock-btn" onclick="sendHeart()">❤️</button>
+        <button class="dock-btn" onclick="sendHeart()">✨</button>
+        <button class="dock-btn" onclick="sendHeart()">🌸</button>
+        <button class="dock-btn end-call" onclick="endCall()">📞</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    // ==============================================
+    // SOUND EFFECTS ENGINE (Web Audio API)
+    // ==============================================
+    let audioCtx = null;
+    let ringInterval = null;
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
+
+    // iPhone Marimba / Ringtone Synthesizer
+    function playRingTone() {
+      if (!audioCtx) return;
+      const notes = [659.25, 783.99, 659.25, 523.25, 587.33];
+      notes.forEach((freq, idx) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime + idx * 0.12);
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime + idx * 0.12);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + idx * 0.12 + 0.3);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(audioCtx.currentTime + idx * 0.12);
+        osc.stop(audioCtx.currentTime + idx * 0.12 + 0.3);
+      });
+    }
+
+    function startRingtoneLoop() {
+      initAudio();
+      playRingTone();
+      ringInterval = setInterval(playRingTone, 2200);
+    }
+
+    function stopRingtone() {
+      clearInterval(ringInterval);
+    }
+
+    // Play ring on first tap/interaction
+    window.addEventListener('click', () => {
+      if (!ringInterval) startRingtoneLoop();
+    }, { once: true });
+
+    // ==============================================
+    // CALL TIMER & SCRIPT DIALOGUES
+    // ==============================================
+    let seconds = 0;
+    let timerInterval = null;
+
+    const messages = [
+      "Hey idiot... Happy Boyfriend's Day! ❤️✨",
+      "Just called to remind you that you're stuck with me forever! 🙈",
+      "Thank you for being my calmest safe space and favourite boy. 🫂",
+      "Now smile... you look handsome when you smile! 🥰💋"
+    ];
+
+    function acceptFaceTime() {
+      stopRingtone();
+
+      const incoming = document.getElementById('incomingScreen');
+      const connected = document.getElementById('connectedScreen');
+
+      incoming.style.opacity = '0';
+      incoming.style.transform = 'scale(0.95)';
+
+      setTimeout(() => {
+        incoming.style.display = 'none';
+        connected.classList.add('active');
+
+        // Start duration counter
+        timerInterval = setInterval(() => {
+          seconds++;
+          const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+          const secs = String(seconds % 60).padStart(2, '0');
+          document.getElementById('callTimer').innerText = `${mins}:${secs}`;
+        }, 1000);
+
+        // Deliver messages with Typewriter feel
+        runDialogueSequence();
+      }, 400);
+    }
+
+    function runDialogueSequence() {
+      const container = document.getElementById('dialogueContainer');
+      messages.forEach((msg, index) => {
+        setTimeout(() => {
+          const bubble = document.createElement('div');
+          bubble.className = 'chat-bubble';
+          bubble.innerHTML = `<span>${msg}</span><span class="chat-heart-burst">✨</span>`;
+          container.appendChild(bubble);
+
+          // Trigger screen hearts
+          sendHeart();
+        }, (index + 1) * 2200);
+      });
+    }
+
+    function sendHeart() {
+      const screen = document.getElementById('connectedScreen');
+      const heart = document.createElement('div');
+      heart.className = 'floating-call-heart';
+      heart.innerText = ['❤️', '💖', '🥰', '✨', '🌸'][Math.floor(Math.random() * 5)];
+      heart.style.left = Math.random() * 70 + 15 + '%';
+      heart.style.bottom = '110px';
+      screen.appendChild(heart);
+      setTimeout(() => heart.remove(), 2000);
+    }
+
+    function declineCall() {
+      stopRingtone();
+      alert("Oops! You can't decline this call... you're trapped in love! 😜❤️");
+    }
+
+    function endCall() {
+      clearInterval(timerInterval);
+      document.getElementById('connectedScreen').innerHTML = `
+        <div style="margin: auto; text-align: center; z-index: 10;">
+          <h2 style="font-size: 2rem; margin-bottom: 10px;">Call Ended ❤️</h2>
+          <p style="color: #ffccd5;">Miss you already! See you soon!</p>
+          <button onclick="location.reload()" style="margin-top: 25px; background: #2ecc71; color: white; border: none; padding: 12px 28px; border-radius: 30px; font-weight: 700; cursor: pointer;">Call Back 📞</button>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
