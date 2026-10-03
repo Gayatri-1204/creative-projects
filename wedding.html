@@ -1,978 +1,949 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Ashish & Aarti| The Royal Wedding 💍✨</title>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400;1,600&family=Rozha+One&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background: radial-gradient(circle at 50% 20%, #200a16 0%, #0d0309 60%, #050104 100%);
-      font-family: 'Montserrat', sans-serif;
-      color: #3b2027;
-      display: flex;
-      justify-content: center;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    /* Ambient Glowing Fairy Lights Background */
-    .glow-bulb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(40px);
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0.65;
-      animation: bulbBlink 4s infinite alternate ease-in-out;
-    }
-
-    .bulb-1 { top: 5%; left: 10%; width: 140px; height: 140px; background: rgba(254, 240, 138, 0.45); }
-    .bulb-2 { top: 30%; right: 8%; width: 180px; height: 180px; background: rgba(251, 146, 60, 0.35); }
-    .bulb-3 { bottom: 15%; left: 12%; width: 220px; height: 220px; background: rgba(244, 63, 94, 0.3); }
-
-    @keyframes bulbBlink {
-      0% { transform: scale(0.9) translateY(0); opacity: 0.45; }
-      100% { transform: scale(1.15) translateY(-15px); opacity: 0.85; filter: blur(55px); }
-    }
-
-    /* Main Responsive Viewport */
-    .wedding-viewport {
-      width: 100%;
-      max-width: 520px;
-      min-height: 100vh;
-      background: #faf6f0;
-      box-shadow: 0 0 100px rgba(0, 0, 0, 0.95), 0 0 40px rgba(212, 175, 55, 0.2);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      z-index: 10;
-    }
-
-    /* -----------------------------------------------------------
-       1. FIRST COVER PAGE (SLIDE-UP HERO HOME ENTRY)
-    ----------------------------------------------------------- */
-    #heroCover {
-      position: fixed;
-      inset: 0;
-      z-index: 99999;
-      background: #000;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
-      padding-bottom: 60px;
-      transition: transform 1.3s cubic-bezier(0.77, 0, 0.175, 1), opacity 1s ease;
-      overflow: hidden;
-    }
-
-    .hero-bg-img {
-      position: absolute;
-      inset: 0;
-      background: 
-        linear-gradient(180deg, rgba(14, 4, 10, 0.2) 0%, rgba(20, 6, 15, 0.65) 60%, rgba(10, 2, 8, 0.98) 100%),
-        url('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200') center/cover no-repeat;
-      filter: contrast(105%);
-      transform: scale(1.02);
-      transition: transform 4s ease-out;
-    }
-
-    #heroCover:hover .hero-bg-img {
-      transform: scale(1.06);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 10;
-      text-align: center;
-      max-width: 440px;
-      padding: 0 20px;
-    }
-
-    .hero-tag {
-      font-size: 0.72rem;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: #fef08a;
-      margin-bottom: 12px;
-      text-shadow: 0 0 15px rgba(254, 240, 138, 0.7);
-    }
-
-    .hero-title {
-      font-family: 'Alex Brush', cursive;
-      font-size: clamp(3.8rem, 11vw, 5.4rem);
-      color: #fff;
-      line-height: 1.05;
-      text-shadow: 0 4px 25px rgba(0, 0, 0, 0.9), 0 0 20px rgba(254, 240, 138, 0.4);
-      margin-bottom: 10px;
-    }
-
-    .hero-quote {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1.05rem;
-      color: #fce7f3;
-      line-height: 1.6;
-      margin-bottom: 30px;
-      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
-    }
-
-    .btn-slide-open {
-      background: linear-gradient(135deg, #fef08a, #d4af37, #b45309);
-      color: #1f040d;
-      border: 1px solid #ffffff;
-      padding: 15px 36px;
-      border-radius: 40px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.9), 0 0 30px rgba(254, 240, 138, 0.8);
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn-slide-open:hover {
-      transform: scale(1.06);
-      box-shadow: 0 15px 45px rgba(254, 240, 138, 1);
-    }
-
-    .cover-slide-away {
-      transform: translateY(-100%);
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    /* Floating Music Toggle */
-    .audio-tag {
-      position: fixed;
-      top: 18px;
-      right: 18px;
-      z-index: 999999;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1.5px solid #d4af37;
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-      font-size: 1.15rem;
-    }
-
-    /* -----------------------------------------------------------
-       SECTION 1: PURE IVORY ROYAL CARD (HOME PAGE)
-    ----------------------------------------------------------- */
-    .sec-home {
-      background: radial-gradient(circle at 50% 25%, #ffffff 0%, #fdf8f2 60%, #f7eedf 100%);
-      padding: 60px 24px 65px 24px;
-      text-align: center;
-      position: relative;
-      border-bottom: 3px double #e8d5be;
-    }
-
-    .shlok-text {
-      font-family: 'Rozha One', serif;
-      font-size: 0.9rem;
-      color: #9c6e3b;
-      line-height: 1.8;
-      margin-bottom: 25px;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.05);
-    }
-
-    .together-tag {
-      font-size: 0.65rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #8c7265;
-      font-weight: 700;
-      margin-bottom: 18px;
-      display: block;
-    }
-
-    .bride-cursive {
-      font-family: 'Alex Brush', cursive;
-      font-size: clamp(4.5rem, 12vw, 5.5rem);
-      color: #b3734a;
-      line-height: 1;
-      margin-bottom: 6px;
-      text-shadow: 0 2px 15px rgba(179, 115, 74, 0.2);
-    }
-
-    .family-parents {
-      font-size: 0.75rem;
-      color: #8f7467;
-      margin-bottom: 12px;
-    }
-
-    .knot-with {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1.6rem;
-      color: #8c7265;
-      margin: 10px 0;
-    }
-
-    .groom-cursive {
-      font-family: 'Alex Brush', cursive;
-      font-size: clamp(4.5rem, 12vw, 5.5rem);
-      color: #9c5c3b;
-      line-height: 1;
-      margin-bottom: 6px;
-      text-shadow: 0 2px 15px rgba(156, 92, 59, 0.2);
-    }
-
-    .quote-lead {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.08rem;
-      font-style: italic;
-      color: #6e554b;
-      line-height: 1.8;
-      margin: 28px 0 18px 0;
-    }
-
-    .location-pill {
-      display: inline-block;
-      font-size: 0.72rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #9c6e3b;
-      border: 1px solid rgba(156, 110, 59, 0.45);
-      padding: 7px 22px;
-      border-radius: 30px;
-      background: rgba(255, 255, 255, 0.8);
-      font-weight: 700;
-      box-shadow: 0 4px 15px rgba(156, 110, 59, 0.1);
-    }
-
-    /* -----------------------------------------------------------
-       SECTION 2: GLOWING CRIMSON COUNTDOWN & SCRATCH CARD
-    ----------------------------------------------------------- */
-    .sec-countdown {
-      background: radial-gradient(circle at 50% 20%, #9e0e31 0%, #68051c 65%, #420211 100%);
-      color: #fff;
-      padding: 60px 22px 70px 22px;
-      text-align: center;
-      position: relative;
-      box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.6);
-    }
-
-    .counting-heading {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 2.6rem;
-      color: #fef08a;
-      line-height: 1.2;
-      margin-bottom: 25px;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 25px rgba(254, 240, 138, 0.4);
-    }
-
-    .timer-cards {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-bottom: 32px;
-    }
-
-    .t-card {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(254, 240, 138, 0.45);
-      border-radius: 12px;
-      padding: 16px 4px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-    }
-
-    .t-val {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      color: #fef08a;
-      font-style: italic;
-      display: block;
-      text-shadow: 0 0 10px rgba(254, 240, 138, 0.5);
-    }
-
-    .t-lbl {
-      font-size: 0.62rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #fecdd3;
-      margin-top: 4px;
-      display: block;
-      font-weight: 600;
-    }
-
-    .scratch-pod {
-      position: relative;
-      width: 100%;
-      height: 170px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 30px rgba(254, 240, 138, 0.25);
-      border: 1.5px solid rgba(254, 240, 138, 0.5);
-      margin-bottom: 14px;
-    }
-
-    .scratch-unveiled {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, #fffbeb 0%, #fde68a 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #78350f;
-    }
-
-    .unveil-tag {
-      font-size: 0.72rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: #b45309;
-    }
-
-    .unveil-date {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.3rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin: 4px 0;
-      color: #78350f;
-    }
-
-    #scratchCanvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      cursor: crosshair;
-      z-index: 5;
-    }
-
-    .scratch-hint-text {
-      font-size: 0.72rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #fef08a;
-      text-shadow: 0 0 10px rgba(254, 240, 138, 0.6);
-    }
-
-    /* -----------------------------------------------------------
-       SECTION 3: TIMELINE LOVE STORY
-    ----------------------------------------------------------- */
-    .sec-story {
-      background: #fbf7f2;
-      padding: 60px 24px;
-      text-align: center;
-      border-bottom: 2px dashed #ebd9cc;
-    }
-
-    .story-heading {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      color: #4a2831;
-      margin-bottom: 30px;
-    }
-
-    .timeline-chain {
-      position: relative;
-      margin-top: 20px;
-    }
-
-    .timeline-chain::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 1px;
-      background: #d4b8a5;
-      transform: translateX(-50%);
-    }
-
-    .timeline-node {
-      position: relative;
-      margin-bottom: 35px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .node-pin {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: #9e0e31;
-      border: 3px solid #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      font-size: 0.8rem;
-      z-index: 2;
-      box-shadow: 0 4px 12px rgba(158, 14, 49, 0.3);
-      margin-bottom: 12px;
-    }
-
-    .node-card {
-      width: 88%;
-      background: #ffffff;
-      border: 1px solid #ebd9cc;
-      border-radius: 16px;
-      padding: 20px 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      text-align: center;
-    }
-
-    .node-date {
-      font-size: 0.68rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #a87965;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .node-title {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1.4rem;
-      color: #9e0e31;
-      margin-bottom: 6px;
-    }
-
-    .node-desc {
-      font-size: 0.82rem;
-      color: #6e554b;
-      line-height: 1.6;
-    }
-
-    /* -----------------------------------------------------------
-       SECTION 4: WEDDING WARDROBE / DRESS CODE
-    ----------------------------------------------------------- */
-    .sec-wardrobe {
-      background: #f4ede4;
-      padding: 60px 22px;
-      text-align: center;
-      border-bottom: 3px double #e5d5c5;
-    }
-
-    .wardrobe-heading {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.7rem;
-      font-style: italic;
-      color: #9e0e31;
-      margin-bottom: 6px;
-    }
-
-    .wardrobe-sub {
-      font-size: 0.78rem;
-      letter-spacing: 1px;
-      color: #8c7265;
-      margin-bottom: 30px;
-    }
-
-    .wardrobe-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .event-tile {
-      background: #ffffff;
-      border: 1px solid #e5d5c5;
-      border-radius: 18px;
-      padding: 20px 14px;
-      text-align: left;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.04);
-    }
-
-    .ev-icon {
-      font-size: 1.7rem;
-      margin-bottom: 6px;
-    }
-
-    .ev-day {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1.3rem;
-      color: #4a2831;
-      margin-bottom: 6px;
-    }
-
-    .ev-colors {
-      display: flex;
-      gap: 6px;
-      margin: 8px 0;
-    }
-
-    .color-dot {
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      border: 1px solid rgba(0,0,0,0.1);
-    }
-
-    .ev-info {
-      font-size: 0.74rem;
-      color: #8c7265;
-      line-height: 1.5;
-    }
-
-    /* -----------------------------------------------------------
-       SECTION 5: AUTO SLIDESHOW (OUR GALLERY)
-    ----------------------------------------------------------- */
-    .sec-gallery {
-      background: #ffffff;
-      padding: 60px 24px;
-      text-align: center;
-      border-bottom: 3px double #e8d5be;
-    }
-
-    .gallery-heading {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
-      color: #4a2831;
-      margin-bottom: 25px;
-    }
-
-    .slider-box {
-      width: 100%;
-      height: 380px;
-      border-radius: 20px;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 15px 45px rgba(0,0,0,0.15);
-      border: 1px solid #ebd9cc;
-    }
-
-    .slide-img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 1.2s ease-in-out;
-    }
-
-    .slide-img.active {
-      opacity: 1;
-    }
-
-    /* -----------------------------------------------------------
-       SECTION 6: THANK YOU ROYAL CARD
-    ----------------------------------------------------------- */
-    .sec-thankyou {
-      background: radial-gradient(circle at 50% 20%, #9e0e31 0%, #5e051a 75%, #3d010e 100%);
-      color: #fff;
-      padding: 70px 24px 90px 24px;
-      text-align: center;
-      position: relative;
-      box-shadow: inset 0 0 60px rgba(0,0,0,0.6);
-    }
-
-    .ty-pre {
-      font-size: 0.68rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #fef08a;
-      opacity: 0.9;
-      margin-bottom: 12px;
-      display: block;
-    }
-
-    .ty-heading {
-      font-family: 'Alex Brush', cursive;
-      font-size: clamp(4rem, 12vw, 5.2rem);
-      color: #fef08a;
-      line-height: 1.1;
-      margin-bottom: 25px;
-      text-shadow: 0 4px 25px rgba(0,0,0,0.6), 0 0 25px rgba(254, 240, 138, 0.4);
-    }
-
-    .ty-body {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1.08rem;
-      line-height: 1.8;
-      color: #fde8e8;
-      max-width: 420px;
-      margin: 0 auto 35px auto;
-    }
-
-    .ty-signature {
-      font-family: 'Alex Brush', cursive;
-      font-size: 3.4rem;
-      color: #fef08a;
-      margin-bottom: 10px;
-      text-shadow: 0 0 15px rgba(254, 240, 138, 0.4);
-    }
-
-    .ty-date {
-      font-size: 0.72rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #fecdd3;
-    }
-
-    /* Floating Hearts on Scratch */
-    .floating-heart {
-      position: absolute;
-      pointer-events: none;
-      animation: floatHeart 2.5s ease-out forwards;
-      z-index: 99999;
-    }
-
-    @keyframes floatHeart {
-      0% { opacity: 1; transform: scale(0.6) translateY(0); }
-      100% { opacity: 0; transform: scale(1.6) translateY(-170px) translateX(var(--dx)); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ashish & Aarti — Royal Wedding Invitation</title>
+
+    <!-- Google Fonts: Premium Serif & Royal Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Great+Vibes&family=Marcellus&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========================================================
+           GLOBAL COLOR PALETTE & LUXURY DESIGN TOKENS
+           ======================================================== */
+        :root {
+            /* Primary Royal Hues */
+            --color-maroon-dark: #120306;
+            --color-maroon-base: #2a0810;
+            --color-maroon-rich: #480d19;
+            --color-burgundy: #5d1121;
+
+            /* Luxury Gold Palette */
+            --gold-bright: #f5d77f;
+            --gold-base: #d4af37;
+            --gold-deep: #aa7c11;
+            --gold-antique: #826019;
+            --gold-shadow: rgba(212, 175, 55, 0.25);
+
+            /* Ivory & Highlights */
+            --ivory-warm: #faf5eb;
+            --ivory-muted: #e7decb;
+            --candle-glow: rgba(255, 200, 115, 0.45);
+
+            /* Architectural Wood Palette */
+            --wood-dark: #180d09;
+            --wood-panel: #27160e;
+            --wood-border: #382014;
+            --wood-highlight: #4a2d1d;
+
+            /* Fonts */
+            --font-cinzel: 'Cinzel', serif;
+            --font-marcellus: 'Marcellus', serif;
+            --font-script: 'Great Vibes', cursive;
+
+            /* Fluid Typography */
+            --fs-title: clamp(1.4rem, 4vw, 2.3rem);
+            --fs-sub: clamp(0.75rem, 2vw, 0.95rem);
+            --fs-btn: clamp(0.85rem, 2.2vw, 1.05rem);
+        }
+
+        /* Reset & Core Setup */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: var(--color-maroon-dark);
+            color: var(--ivory-warm);
+            font-family: var(--font-marcellus);
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* ========================================================
+           BACKGROUND AMBIENCE & PALACE GLOW
+           ======================================================== */
+        .ambient-background {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            background: 
+                radial-gradient(circle at 50% 50%, var(--color-maroon-rich) 0%, var(--color-maroon-base) 45%, var(--color-maroon-dark) 100%);
+            overflow: hidden;
+        }
+
+        /* Subtle Arch Motif on wall behind doors */
+        .ambient-background::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(92vw, 750px);
+            height: 110%;
+            background: radial-gradient(circle at 50% 40%, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+            border-radius: 50% 50% 0 0;
+            pointer-events: none;
+        }
+
+        /* Canvas for drifting golden sparks */
+        #particle-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* Warm Candlelight Flickering behind the door seam */
+        .palace-core-light {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 25vw;
+            height: 70vh;
+            background: radial-gradient(ellipse at center, rgba(255, 215, 120, 0.85) 0%, rgba(212, 175, 55, 0.4) 40%, transparent 80%);
+            filter: blur(28px);
+            opacity: 0.35;
+            z-index: 2;
+            pointer-events: none;
+            animation: candleFlicker 4.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes candleFlicker {
+            0% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.96); filter: blur(24px); }
+            50% { opacity: 0.45; transform: translate(-50%, -50%) scale(1.05); filter: blur(30px); }
+            100% { opacity: 0.35; transform: translate(-50%, -50%) scale(1); filter: blur(26px); }
+        }
+
+        /* ========================================================
+           OPENING SCREEN WRAPPER
+           ======================================================== */
+        .stage-container {
+            position: relative;
+            z-index: 5;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: clamp(15px, 3vh, 32px) clamp(16px, 4vw, 36px);
+            perspective: 1200px;
+            transition: opacity 1.8s cubic-bezier(0.25, 1, 0.5, 1), transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* When camera moves in */
+        .stage-container.zoomed-in {
+            transform: scale(1.18);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Header Area */
+        .header-title-box {
+            text-align: center;
+            z-index: 10;
+            padding-top: clamp(8px, 1.5vh, 20px);
+            animation: fadeInDown 1.8s ease-out both;
+        }
+
+        .decorative-emblem {
+            display: inline-block;
+            width: 32px;
+            height: 12px;
+            margin-bottom: 6px;
+            opacity: 0.8;
+            fill: var(--gold-base);
+        }
+
+        .header-subtitle {
+            font-family: var(--font-cinzel);
+            font-size: var(--fs-sub);
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--gold-bright);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+            margin-bottom: 4px;
+        }
+
+        .header-main-title {
+            font-family: var(--font-cinzel);
+            font-size: var(--fs-title);
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            color: var(--ivory-warm);
+            text-transform: uppercase;
+            text-shadow: 0 4px 18px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .header-line-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 6px auto 0;
+            width: min(80vw, 320px);
+            opacity: 0.85;
+        }
+
+        .header-line-divider::before,
+        .header-line-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-base), transparent);
+        }
+
+        .header-line-divider span {
+            color: var(--gold-bright);
+            font-size: 0.75rem;
+        }
+
+        /* ========================================================
+           GRAND ROYAL CARVED PALACE DOORS
+           ======================================================== */
+        .doors-assembly {
+            position: relative;
+            width: min(88vw, 420px);
+            height: clamp(340px, 58vh, 560px);
+            margin: auto 0;
+            perspective: 1400px;
+            border-radius: 260px 260px 4px 4px;
+            padding: 8px 8px 0 8px;
+            box-shadow: 
+                0 25px 60px rgba(0, 0, 0, 0.95),
+                0 0 35px rgba(138, 26, 44, 0.4),
+                inset 0 0 25px rgba(0, 0, 0, 0.8);
+            background: linear-gradient(180deg, var(--wood-border) 0%, #150a06 100%);
+            border: 2px solid var(--gold-antique);
+            border-bottom: 4px solid var(--wood-dark);
+            display: flex;
+            overflow: visible;
+        }
+
+        /* Archway Outer Carving Ring */
+        .doors-assembly::before {
+            content: '';
+            position: absolute;
+            inset: -9px -9px 0 -9px;
+            border: 1px solid var(--gold-base);
+            border-radius: 270px 270px 0 0;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        /* Threshold glow between bottom and floor */
+        .doors-assembly::after {
+            content: '';
+            position: absolute;
+            bottom: -14px;
+            left: 10%;
+            width: 80%;
+            height: 20px;
+            background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.35) 0%, transparent 70%);
+            filter: blur(6px);
+            pointer-events: none;
+        }
+
+        .door-panel-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            border-radius: 250px 250px 0 0;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        /* Common Door Wing Rules */
+        .door-leaf {
+            position: relative;
+            width: 50%;
+            height: 100%;
+            background: 
+                linear-gradient(135deg, rgba(255, 215, 120, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 50% 50%, var(--wood-highlight) 0%, var(--wood-panel) 50%, var(--wood-dark) 100%);
+            box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.9);
+            transform-style: preserve-3d;
+            transition: transform 3.2s cubic-bezier(0.25, 0.85, 0.25, 1);
+            will-change: transform;
+            overflow: hidden;
+        }
+
+        .door-leaf.left {
+            transform-origin: left center;
+            border-right: 1.5px solid #000;
+        }
+
+        .door-leaf.right {
+            transform-origin: right center;
+            border-left: 1.5px solid rgba(212, 175, 55, 0.4);
+        }
+
+        /* Subtle Wood Grain Overlay */
+        .wood-texture {
+            position: absolute;
+            inset: 0;
+            opacity: 0.16;
+            background-image: repeating-linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.15) 0px,
+                rgba(0, 0, 0, 0.15) 2px,
+                transparent 2px,
+                transparent 8px
+            );
+            pointer-events: none;
+        }
+
+        /* Ornate Traditional Paneling on Doors */
+        .door-panel-artwork {
+            position: absolute;
+            inset: 10px 8px 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--gold-antique);
+            border-radius: inherit;
+            padding: 12px 6px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .carved-box {
+            width: 90%;
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            background: linear-gradient(145deg, rgba(56, 32, 20, 0.6) 0%, rgba(20, 10, 6, 0.8) 100%);
+            box-shadow: 
+                inset 1px 1px 4px rgba(255, 215, 120, 0.15),
+                inset -1px -1px 4px rgba(0, 0, 0, 0.8),
+                0 3px 8px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .carved-box.arch-top {
+            height: 38%;
+            border-radius: 120px 120px 6px 6px;
+            margin-top: 4px;
+        }
+
+        .carved-box.square-mid {
+            height: 25%;
+            border-radius: 6px;
+        }
+
+        .carved-box.square-bottom {
+            height: 25%;
+            border-radius: 6px;
+            margin-bottom: 4px;
+        }
+
+        /* Traditional Brass Studs (Rivets/Kilas) */
+        .brass-stud {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, var(--gold-bright) 0%, var(--gold-base) 55%, var(--gold-deep) 100%);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+            position: absolute;
+        }
+
+        .stud-tl { top: 6px; left: 6px; }
+        .stud-tr { top: 6px; right: 6px; }
+        .stud-bl { bottom: 6px; left: 6px; }
+        .stud-br { bottom: 6px; right: 6px; }
+
+        /* Indian Floral Medallion inside carving */
+        .mandala-medallion {
+            width: clamp(34px, 7vw, 48px);
+            height: clamp(34px, 7vw, 48px);
+            opacity: 0.65;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+        }
+
+        /* Ornate Royal Brass Handles / Kundan Door Rings */
+        .door-handle-assembly {
+            position: absolute;
+            top: 54%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 15;
+            filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.95));
+        }
+
+        .door-leaf.left .door-handle-assembly {
+            right: 8px;
+        }
+
+        .door-leaf.right .door-handle-assembly {
+            left: 8px;
+        }
+
+        .brass-plate {
+            width: 14px;
+            height: 58px;
+            background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold-base) 50%, var(--gold-antique) 100%);
+            border: 1px solid #ffea9f;
+            border-radius: 8px;
+            box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .door-ring {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 3.5px solid var(--gold-bright);
+            box-shadow: 
+                0 3px 6px rgba(0, 0, 0, 0.8),
+                inset 0 2px 4px rgba(0, 0, 0, 0.6);
+            margin-top: -12px;
+            background: transparent;
+        }
+
+        /* Door Light Leak Seam when closed */
+        .door-seam-glow {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            background: linear-gradient(180deg, transparent, rgba(255, 215, 120, 0.9), transparent);
+            filter: blur(1.5px);
+            opacity: 0.75;
+            z-index: 8;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        /* ========================================================
+           BOTTOM INTERACTIVE BUTTON & INSTRUCTIONS
+           ======================================================== */
+        .footer-action-box {
+            text-align: center;
+            z-index: 10;
+            padding-bottom: clamp(10px, 2.5vh, 24px);
+            animation: fadeInUp 1.8s ease-out both;
+        }
+
+        .royal-enter-button {
+            position: relative;
+            background: linear-gradient(135deg, #440d18 0%, #20050b 100%);
+            color: var(--gold-bright);
+            font-family: var(--font-cinzel);
+            font-size: var(--fs-btn);
+            font-weight: 700;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            padding: clamp(14px, 2.2vh, 18px) clamp(26px, 6vw, 42px);
+            border: 1px solid var(--gold-base);
+            border-radius: 50px;
+            cursor: pointer;
+            outline: none;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.8),
+                0 0 25px rgba(212, 175, 55, 0.35),
+                inset 0 0 14px rgba(212, 175, 55, 0.2);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        /* Subtle metallic sheen sweep */
+        .royal-enter-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 80%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 245, 220, 0.4), transparent);
+            transform: skewX(-25deg);
+            transition: left 0.9s ease;
+        }
+
+        .royal-enter-button:hover::before,
+        .royal-enter-button:focus::before {
+            left: 140%;
+        }
+
+        .royal-enter-button:hover {
+            transform: translateY(-2px) scale(1.02);
+            border-color: var(--gold-bright);
+            box-shadow: 
+                0 14px 40px rgba(0, 0, 0, 0.9),
+                0 0 35px rgba(212, 175, 55, 0.55),
+                inset 0 0 20px rgba(212, 175, 55, 0.35);
+        }
+
+        .royal-enter-button:active {
+            transform: translateY(1px) scale(0.98);
+        }
+
+        .subtle-tap-instruction {
+            margin-top: 10px;
+            font-size: 0.78rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--ivory-muted);
+            opacity: 0.65;
+            font-weight: 400;
+        }
+
+        /* ========================================================
+           CINEMATIC OPENING ANIMATIONS (STATE: .is-opening)
+           ======================================================== */
+        .doors-assembly.is-opening .door-leaf.left {
+            transform: rotateY(-96deg);
+        }
+
+        .doors-assembly.is-opening .door-leaf.right {
+            transform: rotateY(96deg);
+        }
+
+        .doors-assembly.is-opening .door-seam-glow {
+            opacity: 0;
+        }
+
+        /* Burst of brilliant royal light as doors swing wide */
+        .sanctum-burst-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, #ffe9b3 0%, #dfb64d 30%, #4a0d18 70%, transparent 100%);
+            opacity: 0;
+            filter: blur(20px);
+            z-index: 1;
+            pointer-events: none;
+            transition: opacity 2.2s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .doors-assembly.is-opening .sanctum-burst-glow {
+            opacity: 0.95;
+        }
+
+        /* ========================================================
+           TEMPORARY TRANSITION / PLACEHOLDER SCREEN
+           ======================================================== */
+        <!-- TEMPORARY NEXT SECTION -->
+        .next-section-transition {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            background: radial-gradient(circle at center, var(--color-maroon-rich) 0%, var(--color-maroon-dark) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 2.4s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 2.4s;
+            pointer-events: none;
+        }
+
+        .next-section-transition.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .transition-content-box {
+            max-width: 600px;
+            padding: 40px 30px;
+            border: 1px solid var(--gold-antique);
+            border-radius: 12px;
+            background: rgba(20, 4, 8, 0.65);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.15);
+            position: relative;
+        }
+
+        .transition-corner-motif {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--gold-base);
+            opacity: 0.7;
+        }
+
+        .t-top-left { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+        .t-top-right { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+        .t-bottom-left { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+        .t-bottom-right { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+        .transition-placeholder-text {
+            font-family: var(--font-cinzel);
+            font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+            color: var(--gold-bright);
+            letter-spacing: 0.18em;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
+        }
+
+        .transition-sub-note {
+            font-family: var(--font-marcellus);
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            color: var(--ivory-muted);
+            opacity: 0.75;
+            letter-spacing: 0.1em;
+        }
+
+        /* Keyframes */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 480px) {
+            .doors-assembly {
+                width: 90vw;
+                height: 54vh;
+                min-height: 330px;
+                border-radius: 200px 200px 4px 4px;
+            }
+
+            .door-panel-container {
+                border-radius: 190px 190px 0 0;
+            }
+
+            .doors-assembly::before {
+                border-radius: 205px 205px 0 0;
+            }
+
+            .royal-enter-button {
+                width: 100%;
+                max-width: 290px;
+                letter-spacing: 0.18em;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Floating Fairy Glow Bulbs -->
-  <div class="glow-bulb bulb-1"></div>
-  <div class="glow-bulb bulb-2"></div>
-  <div class="glow-bulb bulb-3"></div>
+    <!-- AMBIENT ROYAL ATMOSPHERE -->
+    <div class="ambient-background"></div>
+    <div class="palace-core-light"></div>
+    <canvas id="particle-canvas"></canvas>
 
-  <!-- Floating Audio Player -->
-  <div class="audio-tag" onclick="toggleAudio()" title="Play Wedding Music">
-    🎵
-  </div>
-  <audio id="weddingTrack" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=indian-flute-ambient-112199.mp3" type="audio/mp3">
-  </audio>
+    <!-- ========================================================
+         OPENING SCREEN
+         ======================================================== -->
+    <!-- OPENING SCREEN -->
+    <main class="stage-container" id="opening-stage">
+        
+        <!-- Top Title -->
+        <header class="header-title-box">
+            <!-- Royal Arch Emblem SVG -->
+            <svg class="decorative-emblem" viewBox="0 0 100 35">
+                <path d="M50 0 C30 15, 10 18, 0 35 C30 25, 70 25, 100 35 C90 18, 70 15, 50 0 Z" />
+            </svg>
+            <div class="header-subtitle">Invitation</div>
+            <h1 class="header-main-title">A Royal Celebration of Love</h1>
+            <div class="header-line-divider">
+                <span>✦</span>
+            </div>
+        </header>
 
-  <!-- 1. FULLSCREEN FIRST HERO PAGE (COUPLE PHOTO + SLIDE UP) -->
-  <div id="heroCover">
-    <div class="hero-bg-img"></div>
-    <div class="hero-content">
-      <div class="hero-tag">✦ The Royal Wedding Celebration ✦</div>
-      <h1 class="hero-title">Aarti & Ashish</h1>
-      <p class="hero-quote">
-        "We joyfully invite you to celebrate the union of our hearts as we step into our forever."
-      </p>
-      <button class="btn-slide-open" onclick="openWeddingInvitation()">
-        Open Royal Invitation 💌
-      </button>
-    </div>
-  </div>
+        <!-- Grand Indian Wooden Palace Doors -->
+        <!-- DOOR ANIMATION -->
+        <section class="doors-assembly" id="doors-assembly" aria-label="Royal Palace Doors">
+            <div class="sanctum-burst-glow"></div>
+            <div class="door-seam-glow"></div>
 
-  <!-- 2. MAIN WEDDING PORTAL (REVEALED IN SHINE) -->
-  <div class="wedding-viewport">
+            <div class="door-panel-container">
+                
+                <!-- Left Door Wing -->
+                <div class="door-leaf left" id="door-left">
+                    <div class="wood-texture"></div>
+                    <div class="door-panel-artwork">
+                        
+                        <!-- Top Arch Carving -->
+                        <div class="carved-box arch-top">
+                            <span class="brass-stud stud-tl"></span>
+                            <span class="brass-stud stud-tr"></span>
+                            <span class="brass-stud stud-bl"></span>
+                            <span class="brass-stud stud-br"></span>
+                            <!-- Indian Traditional Floral Jali Motif -->
+                            <svg class="mandala-medallion" viewBox="0 0 100 100" fill="none" stroke="var(--gold-bright)" stroke-width="3">
+                                <circle cx="50" cy="50" r="38" stroke-dasharray="4 3"/>
+                                <circle cx="50" cy="50" r="22"/>
+                                <path d="M50 12 Q50 50 88 50 Q50 50 50 88 Q50 50 12 50 Q50 50 50 12 Z" fill="rgba(212,175,55,0.2)"/>
+                            </svg>
+                        </div>
 
-    <!-- Section 1: Pure Ivory Home Card -->
-    <div class="sec-home">
-      <div class="shlok-text">
-        ॥ श्री गणेशाय नमः ॥<br>
-        वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>
-        निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
-      </div>
+                        <!-- Center Panel with Handle -->
+                        <div class="carved-box square-mid">
+                            <span class="brass-stud stud-tl"></span>
+                            <span class="brass-stud stud-tr"></span>
+                            <span class="brass-stud stud-bl"></span>
+                            <span class="brass-stud stud-br"></span>
+                            <svg class="mandala-medallion" viewBox="0 0 100 100" fill="none" stroke="var(--gold-bright)" stroke-width="2.5">
+                                <rect x="25" y="25" width="50" height="50" rx="8" transform="rotate(45 50 50)" stroke-dasharray="3 3"/>
+                                <circle cx="50" cy="50" r="14"/>
+                            </svg>
+                        </div>
 
-      <span class="together-tag">• TOGETHER WITH THEIR FAMILIES •</span>
+                        <!-- Bottom Structural Panel -->
+                        <div class="carved-box square-bottom">
+                            <span class="brass-stud stud-tl"></span>
+                            <span class="brass-stud stud-tr"></span>
+                            <span class="brass-stud stud-bl"></span>
+                            <span class="brass-stud stud-br"></span>
+                            <svg class="mandala-medallion" viewBox="0 0 100 100" fill="none" stroke="var(--gold-bright)" stroke-width="2">
+                                <path d="M50 20 L80 50 L50 80 L20 50 Z" />
+                                <circle cx="50" cy="50" r="8"/>
+                            </svg>
+                        </div>
 
-      <div class="bride-cursive">Ashish</div>
-      <div class="family-parents">( D/o Smt. & Shri Arun Jadav )</div>
+                    </div>
 
-      <div class="knot-with">with</div>
+                    <!-- Brass Pull Handle Left -->
+                    <div class="door-handle-assembly">
+                        <div class="brass-plate"></div>
+                        <div class="door-ring"></div>
+                    </div>
+                </div>
 
-      <div class="groom-cursive">Aarti</div>
-      <div class="family-parents">( S/o Smt. & Shri chougule )</div>
+                <!-- Right Door Wing -->
+                <div class="door-leaf right" id="door-right">
+                    <div class="wood-texture"></div>
+                    <div class="door-panel-artwork">
+                        
+                        <!-- Top Arch Carving -->
+                        <div class="carved-box arch-top">
+                            <span class="brass-stud stud-tl"></span>
+                            <span class="brass-stud stud-tr"></span>
+                            <span class="brass-stud stud-bl"></span>
+                            <span class="brass-stud stud-br"></span>
+                            <svg class="mandala-medallion" viewBox="0 0 100 100" fill="none" stroke="var(--gold-bright)" stroke-width="3">
+                                <circle cx="50" cy="50" r="38" stroke-dasharray="4 3"/>
+                                <circle cx="50" cy="50" r="22"/>
+                                <path d="M50 12 Q50 50 88 50 Q50 50 50 88 Q50 50 12 50 Q50 50 50 12 Z" fill="rgba(212,175,55,0.2)"/>
+                            </svg>
+                        </div>
 
-      <p class="quote-lead">
-        "Two souls, one heart, woven by destiny — request the joy of your presence as we begin our forever."
-      </p>
+                        <!-- Center Panel with Handle -->
+                        <div class="carved-box square-mid">
+                            <span class="brass-stud stud-tl"></span>
+                            <span class="brass-stud stud-tr"></span>
+                            <span class="brass-stud stud-bl"></span>
+                            <span class="brass-stud stud-br"></span>
+                            <svg class="mandala-medallion" viewBox="0 0 100 100" fill="none" stroke="var(--gold-bright)" stroke-width="2.5">
+                                <rect x="25" y="25" width="50" height="50" rx="8" transform="rotate(45 50 50)" stroke-dasharray="3 3"/>
+                                <circle cx="50" cy="50" r="14"/>
+                            </svg>
+                        </div>
 
-      <div class="location-pill">📍 Kolhapur, MAHARASHTRA</div>
-    </div>
+                        <!-- Bottom Structural Panel -->
+                        <div class="carved-box square-bottom">
+                            <span class="brass-stud stud-tl"></span>
+                            <span class="brass-stud stud-tr"></span>
+                            <span class="brass-stud stud-bl"></span>
+                            <span class="brass-stud stud-br"></span>
+                            <svg class="mandala-medallion" viewBox="0 0 100 100" fill="none" stroke="var(--gold-bright)" stroke-width="2">
+                                <path d="M50 20 L80 50 L50 80 L20 50 Z" />
+                                <circle cx="50" cy="50" r="8"/>
+                            </svg>
+                        </div>
 
-    <!-- Section 2: Crimson Red Glow Countdown & Scratch Card -->
-    <div class="sec-countdown">
-      <h2 class="counting-heading">Counting the Moments</h2>
+                    </div>
 
-      <div class="timer-cards">
-        <div class="t-card">
-          <span id="days" class="t-val">00</span>
-          <span class="t-lbl">Days</span>
+                    <!-- Brass Pull Handle Right -->
+                    <div class="door-handle-assembly">
+                        <div class="brass-plate"></div>
+                        <div class="door-ring"></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Bottom Invitation Trigger -->
+        <footer class="footer-action-box">
+            <button class="royal-enter-button" id="btn-open-invitation">
+                <span>Open The Invitation</span>
+            </button>
+            <div class="subtle-tap-instruction">Tap to enter</div>
+        </footer>
+
+    </main>
+
+    <!-- ========================================================
+         TEMPORARY TRANSITION PLACEHOLDER (STEP 1 ONLY)
+         ======================================================== -->
+    <!-- TEMPORARY NEXT SECTION -->
+    <div class="next-section-transition" id="temp-next-section" aria-live="polite">
+        <div class="transition-content-box">
+            <div class="transition-corner-motif t-top-left"></div>
+            <div class="transition-corner-motif t-top-right"></div>
+            <div class="transition-corner-motif t-bottom-left"></div>
+            <div class="transition-corner-motif t-bottom-right"></div>
+
+            <div class="transition-placeholder-text">
+                With the blessings of Lord Ganesha...
+            </div>
+            <div class="transition-sub-note">
+                (Section placeholder — Step 2 will seamlessly continue here)
+            </div>
         </div>
-        <div class="t-card">
-          <span id="hours" class="t-val">00</span>
-          <span class="t-lbl">Hours</span>
-        </div>
-        <div class="t-card">
-          <span id="minutes" class="t-val">00</span>
-          <span class="t-lbl">Minutes</span>
-        </div>
-        <div class="t-card">
-          <span id="seconds" class="t-val">00</span>
-          <span class="t-lbl">Seconds</span>
-        </div>
-      </div>
-
-      <div class="scratch-pod">
-        <div class="scratch-unveiled">
-          <span class="unveil-tag">Save The Auspicious Date</span>
-          <span class="unveil-date">26 • 11 • 2026</span>
-          <span style="font-size: 0.82rem; font-weight: 600; color: #b45309;">Thursday • Shubh Muhurat 12:35 PM</span>
-        </div>
-        <canvas id="scratchCanvas" width="460" height="170"></canvas>
-      </div>
-      <span class="scratch-hint-text">✦ Scratch The Golden Foil ✦</span>
-    </div>
-
-    <!-- Section 3: Timeline Love Story -->
-    <div class="sec-story">
-      <h2 class="story-heading">How It All Began</h2>
-
-      <div class="timeline-chain">
-        <div class="timeline-node">
-          <div class="node-pin">1</div>
-          <div class="node-card">
-            <div class="node-date">First Meeting</div>
-            <div class="node-title">The First Glance</div>
-            <p class="node-desc">A simple introduction turned into conversations that felt like home.</p>
-          </div>
-        </div>
-
-        <div class="timeline-node">
-          <div class="node-pin">2</div>
-          <div class="node-card">
-            <div class="node-date">Growing Closer</div>
-            <div class="node-title">Falling In Love</div>
-            <p class="node-desc">Long calls, shared smiles, and the realization that she is the one.</p>
-          </div>
-        </div>
-
-        <div class="timeline-node">
-          <div class="node-pin">3</div>
-          <div class="node-card">
-            <div class="node-date">The Decision</div>
-            <div class="node-title">The Forever Promise</div>
-            <p class="node-desc">With families cheering and hearts aligned, forever officially began.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Section 4: Wedding Wardrobe / Dress Code -->
-    <div class="sec-wardrobe">
-      <h2 class="wardrobe-heading">Wedding Wardrobe</h2>
-      <div class="wardrobe-sub">A little something to inspire your look for each celebration</div>
-
-      <div class="wardrobe-grid">
-        <div class="event-tile">
-          <div class="ev-icon">🌻</div>
-          <div class="ev-day">Haldi</div>
-          <div class="ev-colors">
-            <div class="color-dot" style="background: #facc15;"></div>
-            <div class="color-dot" style="background: #eab308;"></div>
-            <div class="color-dot" style="background: #ca8a04;"></div>
-          </div>
-          <div class="ev-info">
-            <strong>25 Nov | 10:00 AM</strong><br>
-            Sunshine Yellow & Mustard
-          </div>
-        </div>
-
-        <div class="event-tile">
-          <div class="ev-icon">🌿</div>
-          <div class="ev-day">Mehendi</div>
-          <div class="ev-colors">
-            <div class="color-dot" style="background: #15803d;"></div>
-            <div class="color-dot" style="background: #166534;"></div>
-            <div class="color-dot" style="background: #86efac;"></div>
-          </div>
-          <div class="ev-info">
-            <strong>25 Nov | 04:00 PM</strong><br>
-            Emerald Green & Mint
-          </div>
-        </div>
-
-        <div class="event-tile">
-          <div class="ev-icon">✨</div>
-          <div class="ev-day">Sangeet</div>
-          <div class="ev-colors">
-            <div class="color-dot" style="background: #701a75;"></div>
-            <div class="color-dot" style="background: #4a044e;"></div>
-            <div class="color-dot" style="background: #f472b6;"></div>
-          </div>
-          <div class="ev-info">
-            <strong>25 Nov | 07:00 PM</strong><br>
-            Glamour Plum & Sequins
-          </div>
-        </div>
-
-        <div class="event-tile">
-          <div class="ev-icon">👑</div>
-          <div class="ev-day">The Wedding</div>
-          <div class="ev-colors">
-            <div class="color-dot" style="background: #881337;"></div>
-            <div class="color-dot" style="background: #e2cd9d;"></div>
-            <div class="color-dot" style="background: #fff;"></div>
-          </div>
-          <div class="ev-info">
-            <strong>26 Nov | 12:35 PM</strong><br>
-            Royal Red, Ivory & Gold
-          </div>
-        </div>
-      </div>
     </div>
 
-    <!-- Section 5: Our Gallery (Auto Slideshow) -->
-    <div class="sec-gallery">
-      <h2 class="gallery-heading">Our Gallery</h2>
-      
-      <div class="slider-box">
-        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=900" class="slide-img active" alt="Couple 1">
-        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900" class="slide-img" alt="Couple 2">
-        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=900" class="slide-img" alt="Couple 3">
-      </div>
-    </div>
+    <!-- ========================================================
+         VANILLA JAVASCRIPT: PARTICLES & CINEMATIC LOGIC
+         ======================================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
 
-    <!-- Section 6: Royal Thank You Card -->
-    <div class="sec-thankyou">
-      <span class="ty-pre">FROM THE BOTTOM OF OUR HEARTS</span>
-      <h2 class="ty-heading">Thank You</h2>
+            /* ----------------------------------------------------
+               1. FLOATING GOLDEN DUST PARTICLES (CANVAS)
+               ---------------------------------------------------- */
+            const canvas = document.getElementById('particle-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let animationFrameId;
+            let particleSpeedMultiplier = 1;
+            let targetParticleCount = 45;
 
-      <p class="ty-body">
-        "To every soul who has loved us, prayed for us, and journeyed with us — your presence is a blessing we will carry forever. May your homes be filled with the same joy you bring to ours."
-      </p>
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                if (window.innerWidth < 600) {
+                    targetParticleCount = 28; // Optimized for mobile
+                } else {
+                    targetParticleCount = 55;
+                }
+            }
 
-      <div class="ty-signature">Aarti & Ashish</div>
-      <div class="ty-date">MADE WITH LOVE • 26 NOVEMBER 2026</div>
-    </div>
+            class GoldenParticle {
+                constructor() {
+                    this.reset(true);
+                }
 
-  </div>
+                reset(initial = false) {
+                    this.x = Math.random() * canvas.width;
+                    this.y = initial ? Math.random() * canvas.height : canvas.height + 15;
+                    this.size = Math.random() * 2.2 + 0.8;
+                    this.baseSpeedY = Math.random() * 0.45 + 0.2;
+                    this.speedX = (Math.random() - 0.5) * 0.35;
+                    this.opacity = Math.random() * 0.65 + 0.25;
+                    this.pulseSpeed = Math.random() * 0.02 + 0.01;
+                    this.pulseVal = Math.random() * Math.PI;
+                }
 
-  <script>
-    // 1. OPEN SLIDE-UP HERO COVER
-    function openWeddingInvitation() {
-      const cover = document.getElementById('heroCover');
-      cover.classList.add('cover-slide-away');
-      toggleAudio(true);
-    }
+                update() {
+                    this.y -= this.baseSpeedY * particleSpeedMultiplier;
+                    this.x += this.speedX;
+                    this.pulseVal += this.pulseSpeed;
 
-    // 2. LIVE COUNTDOWN TO 26 NOV 2026
-    const targetDate = new Date("November 26, 2026 12:35:00").getTime();
+                    // Wrap boundaries
+                    if (this.y < -20 || this.x < -20 || this.x > canvas.width + 20) {
+                        this.reset(false);
+                    }
+                }
 
-    function updateTimer() {
-      const now = new Date().getTime();
-      const diff = targetDate - now;
+                draw() {
+                    const currentOpacity = this.opacity * (0.65 + Math.sin(this.pulseVal) * 0.35);
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(245, 215, 127, ${currentOpacity})`;
+                    ctx.shadowBlur = 8;
+                    ctx.shadowColor = 'rgba(212, 175, 55, 0.7)';
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            }
 
-      if (diff > 0) {
-        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((diff % (1000 * 60)) / 1000);
+            function initParticles() {
+                resizeCanvas();
+                particles = [];
+                for (let i = 0; i < targetParticleCount; i++) {
+                    particles.push(new GoldenParticle());
+                }
+            }
 
-        document.getElementById("days").innerText = String(d).padStart(2, '0');
-        document.getElementById("hours").innerText = String(h).padStart(2, '0');
-        document.getElementById("minutes").innerText = String(m).padStart(2, '0');
-        document.getElementById("seconds").innerText = String(s).padStart(2, '0');
-      }
-    }
-    setInterval(updateTimer, 1000);
-    updateTimer();
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                animationFrameId = requestAnimationFrame(animateParticles);
+            }
 
-    // 3. GLOWING GOLD FOIL SCRATCH CARD WITH HEARTS
-    const canvas = document.getElementById('scratchCanvas');
-    const ctx = canvas.getContext('2d');
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+            });
 
-    const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-    grad.addColorStop(0, '#f59e0b');
-    grad.addColorStop(0.5, '#fef08a');
-    grad.addColorStop(1, '#d97706');
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+            initParticles();
+            animateParticles();
 
-    ctx.font = "bold 13px 'Montserrat', sans-serif";
-    ctx.fillStyle = "#78350f";
-    ctx.textAlign = "center";
-    ctx.letterSpacing = "2px";
-    ctx.fillText("✦ SCRATCH TO REVEAL ✦", canvas.width / 2, canvas.height / 2 + 5);
+            /* ----------------------------------------------------
+               2. DOOR OPENING & CINEMATIC TRANSITION
+               ---------------------------------------------------- */
+            const btnOpen = document.getElementById('btn-open-invitation');
+            const doorsAssembly = document.getElementById('doors-assembly');
+            const openingStage = document.getElementById('opening-stage');
+            const tempNextSection = document.getElementById('temp-next-section');
 
-    let isScratching = false;
+            let isOpeningTriggered = false;
 
-    function scratchAction(e) {
-      if (!isScratching) return;
-      const rect = canvas.getBoundingClientRect();
-      const clientX = e.clientX || (e.touches && e.touches[0].clientX);
-      const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+            function triggerRoyalDoorOpening() {
+                if (isOpeningTriggered) return;
+                isOpeningTriggered = true;
 
-      const x = (clientX - rect.left) * (canvas.width / rect.width);
-      const y = (clientY - rect.top) * (canvas.height / rect.height);
+                // 1. Disable button interactions
+                btnOpen.style.pointerEvents = 'none';
+                btnOpen.style.opacity = '0.5';
 
-      ctx.globalCompositeOperation = 'destination-out';
-      ctx.beginPath();
-      ctx.arc(x, y, 24, 0, Math.PI * 2);
-      ctx.fill();
+                // 2. Accelerate ambient gold particles for celebration effect
+                particleSpeedMultiplier = 2.4;
 
-      spawnHearts(clientX, clientY);
-    }
+                // 3. Initiate Door Swing (CSS 3D transform)
+                doorsAssembly.classList.add('is-opening');
 
-    canvas.addEventListener('mousedown', () => isScratching = true);
-    canvas.addEventListener('mouseup', () => isScratching = false);
-    canvas.addEventListener('mousemove', scratchAction);
+                // 4. Subtle camera push forward (zoom) after doors part slightly
+                setTimeout(() => {
+                    openingStage.classList.add('zoomed-in');
+                }, 1000);
 
-    canvas.addEventListener('touchstart', (e) => { isScratching = true; scratchAction(e); });
-    canvas.addEventListener('touchend', () => isScratching = false);
-    canvas.addEventListener('touchmove', scratchAction);
+                // 5. Smoothly transition to the placeholder screen
+                setTimeout(() => {
+                    tempNextSection.classList.add('active');
+                }, 2200);
+            }
 
-    function spawnHearts(x, y) {
-      if (Math.random() > 0.45) return;
-      const icons = ['❤️', '💖', '✨', '🌸', '💍', '💛'];
-      const p = document.createElement('div');
-      p.className = 'floating-heart';
-      p.innerText = icons[Math.floor(Math.random() * icons.length)];
-      p.style.left = (x - 10) + 'px';
-      p.style.top = (y - 10) + 'px';
-      p.style.fontSize = (Math.random() * 12 + 18) + 'px';
-      p.style.setProperty('--dx', (Math.random() - 0.5) * 140 + 'px');
-      document.body.appendChild(p);
+            // Click & touch events
+            btnOpen.addEventListener('click', triggerRoyalDoorOpening);
 
-      setTimeout(() => p.remove(), 2500);
-    }
-
-    // 4. AUTO SLIDESHOW GALLERY
-    const slides = document.querySelectorAll('.slide-img');
-    let curSlide = 0;
-
-    setInterval(() => {
-      slides[curSlide].classList.remove('active');
-      curSlide = (curSlide + 1) % slides.length;
-      slides[curSlide].classList.add('active');
-    }, 3000);
-
-    // 5. AUDIO CONTROL
-    const audio = document.getElementById('weddingTrack');
-    let isPlaying = false;
-
-    function toggleAudio(forcePlay = false) {
-      if (forcePlay || !isPlaying) {
-        audio.play().then(() => { isPlaying = true; }).catch(() => {});
-      } else {
-        audio.pause();
-        isPlaying = false;
-      }
-    }
-  </script>
+            // Optional: Allow direct tapping on the doors themselves to open
+            doorsAssembly.addEventListener('click', triggerRoyalDoorOpening);
+        });
+    </script>
 </body>
 </html>
