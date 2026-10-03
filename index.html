@@ -22,7 +22,7 @@
       position: relative;
     }
 
-    /* Ambient Romantic Lighting */
+    /* Ambient Lighting */
     .bg-light-1 {
       position: absolute;
       top: -10%;
@@ -45,7 +45,7 @@
       pointer-events: none;
     }
 
-    /* Fullscreen Page Framework */
+    /* Fullscreen Pages */
     .screen-page {
       display: none;
       width: 100vw;
@@ -68,7 +68,7 @@
       to { opacity: 1; transform: scale(1); }
     }
 
-    /* Elegant Back Button */
+    /* Back Button */
     .back-btn {
       position: absolute;
       top: 35px;
@@ -96,7 +96,7 @@
     }
 
     /* =========================================
-       PAGE 0: HOME SCREEN (WIDE LUXURY)
+       PAGE 0: HOME SCREEN (BOUQUET PICKER)
     ========================================= */
     .home-header {
       margin-top: 5vh;
@@ -186,7 +186,7 @@
     }
 
     /* =========================================
-       PAGE 1: SIDE PHOTO & AUTO-SCROLLING TEXT
+       PAGE 1: SIDE PHOTO & AUTO-FLOWING MESSAGE
     ========================================= */
     .page1-layout {
       width: 100%;
@@ -308,7 +308,7 @@
       box-shadow: 0 15px 40px rgba(255, 77, 109, 0.6);
       transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: absolute;
-      top: 14%;
+      top: 12%;
     }
 
     .hug-celebration-title.show {
@@ -318,43 +318,42 @@
 
     .hug-stage-full {
       width: 100%;
-      height: 400px;
+      height: 420px;
       position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    /* Full-body Cute Animated Characters */
     .char-figure {
       position: absolute;
       bottom: 20px;
-      width: 250px;
-      height: 250px;
+      width: 260px;
+      height: 260px;
+      object-fit: contain;
       transition: all 2.2s cubic-bezier(0.25, 1, 0.5, 1);
       filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6));
     }
 
     .char-left-guy {
-      left: 5vw;
+      left: 6vw;
     }
 
     .char-right-girl {
-      right: 5vw;
+      right: 6vw;
+      transform: scaleX(-1);
     }
 
-    /* Final Hug Position - Full Bodied Tight Embrace */
     .hug-stage-full.hugging .char-left-guy {
-      left: calc(50% - 190px);
-      transform: scale(1.05) rotate(5deg);
+      left: calc(50% - 210px);
+      transform: scale(1.05);
     }
 
     .hug-stage-full.hugging .char-right-girl {
-      right: calc(50% - 190px);
-      transform: scale(1.05) rotate(-5deg);
+      right: calc(50% - 210px);
+      transform: scaleX(-1) scale(1.05);
     }
 
-    /* Hearts blasting upon hug */
     .hug-heart-burst {
       position: absolute;
       font-size: 2.5rem;
@@ -382,7 +381,7 @@
     }
 
     .chest-box-container {
-      margin-top: 15px;
+      margin-top: 10px;
       cursor: pointer;
       text-align: center;
       z-index: 10;
@@ -408,18 +407,12 @@
       font-weight: 600;
     }
 
-    /* Clean Auto-Arranging Gallery Grid */
     .photo-stage-grid {
       width: 100%;
       max-width: 1100px;
       height: 480px;
       position: relative;
       margin-top: 25px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-gap: 25px;
-      align-items: center;
-      justify-items: center;
     }
 
     .flying-card {
@@ -558,7 +551,6 @@
       <!-- Left: Big Polaroid -->
       <div class="side-photo-pane">
         <div class="polaroid-grand">
-          <!-- Replace this URL with your favorite photo together -->
           <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800" alt="Us Together">
           <div class="polaroid-grand-caption">Forever with You ❤️</div>
         </div>
@@ -588,9 +580,21 @@
       <div id="hugBigTitle" class="hug-celebration-title">HAPPY BOYFRIEND DAY, MY LOVE! 🤗❤️</div>
 
       <div id="hugFullStage" class="hug-stage-full">
-        <!-- Full-bodied cute Milk & Mocha Hug Animations -->
-        <img id="charLeft" class="char-figure char-left-guy" src="https://media.tenor.com/2s-Z3Yp81q0AAAAi/milk-and-mocha-running.gif" alt="Running to hug">
-        <img id="charRight" class="char-figure char-right-girl" src="https://media.tenor.com/Fw57t0pW9Q0AAAAi/mocha-running.gif" alt="Running to hug">
+        <!-- Running Bear Left -->
+        <img id="charLeft" class="char-figure char-left-guy" 
+             src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Zyd2V5OXQ3NDN4eW1uNXUzaG8xNGM0amFwZ2c5Nm85aWdrMTN5ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif" 
+             alt="Running Bear">
+
+        <!-- Running Bunny Right -->
+        <img id="charRight" class="char-figure char-right-girl" 
+             src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmtlbGtzY2lmb21xN3djdDVqZXRrdjV1b3prbzNtd3Q0bWZ2Y2g1MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/vFKqnCdLPNOKc/giphy.gif" 
+             alt="Running Bunny">
+
+        <!-- Real Full-Body Hug GIF (Appears when they meet) -->
+        <img id="finalHugGif" class="char-figure" 
+             style="display: none; width: 330px; height: 330px; position: absolute; bottom: 15px;" 
+             src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWVpOGpuejB0ZzR3dHFpNW5xdm4wbWppMm8xZWVxc205bzJ3cTU5OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/lrr9rHuoJOE0w/giphy.gif" 
+             alt="Real Tight Hug">
       </div>
     </div>
   </div>
@@ -622,7 +626,6 @@
   </div>
 
   <script>
-    // Navigation
     function switchPage(targetId) {
       document.querySelectorAll('.screen-page').forEach(p => p.classList.remove('active'));
       document.getElementById(targetId).classList.add('active');
@@ -648,25 +651,27 @@
       const title = document.getElementById('hugBigTitle');
       const leftChar = document.getElementById('charLeft');
       const rightChar = document.getElementById('charRight');
+      const finalHug = document.getElementById('finalHugGif');
 
-      // Reset
       stage.classList.remove('hugging');
       title.classList.remove('show');
-      leftChar.src = "https://media.tenor.com/2s-Z3Yp81q0AAAAi/milk-and-mocha-running.gif";
-      rightChar.src = "https://media.tenor.com/Fw57t0pW9Q0AAAAi/mocha-running.gif";
+      finalHug.style.display = "none";
+      leftChar.style.display = "block";
+      rightChar.style.display = "block";
 
-      // Characters run and meet in the center
+      // धावत मधोमध येणे
       setTimeout(() => {
         stage.classList.add('hugging');
-      }, 300);
+      }, 200);
 
-      // Once they meet: switch into a tight full-body hug GIF and explode confetti
+      // मधोमध एकत्र आल्यावर रिअल हग GIF सुरू होणे व स्फोट होणे
       setTimeout(() => {
-        leftChar.src = "https://media.tenor.com/9n9s1-ZtJ84AAAAi/bear-hug.gif";
-        rightChar.style.display = "none"; // Both merge into the single tight hug GIF
+        leftChar.style.display = "none";
+        rightChar.style.display = "none";
+        finalHug.style.display = "block";
         title.classList.add('show');
         blastHearts();
-      }, 2300);
+      }, 2100);
     }
 
     function blastHearts() {
@@ -675,7 +680,7 @@
         const h = document.createElement('div');
         h.className = 'hug-heart-burst';
         h.innerText = ['❤️', '💖', '✨', '🌹', '🥰'][Math.floor(Math.random() * 5)];
-        const dx = (Math.random() - 0.5) * 600 + 'px';
+        const dx = (Math.random() - 0.5) * 650 + 'px';
         const dy = (Math.random() - 0.5) * 450 - 50 + 'px';
         h.style.setProperty('--dx', dx);
         h.style.setProperty('--dy', dy);
@@ -719,12 +724,6 @@
       const stage = document.getElementById('gridStage');
       stage.innerHTML = '';
 
-      // Grid positions for 8 photos (4 columns x 2 rows)
-      const positions = [
-        { row: 1, col: 1 }, { row: 1, col: 2 }, { row: 1, col: 3 }, { row: 1, col: 4 },
-        { row: 2, col: 1 }, { row: 2, col: 2 }, { row: 2, col: 3 }, { row: 2, col: 4 }
-      ];
-
       memoryPhotos.forEach((src, idx) => {
         setTimeout(() => {
           const card = document.createElement('div');
@@ -734,14 +733,13 @@
           img.src = src;
           card.appendChild(img);
 
-          // Click on photo for popup message
           card.onclick = () => {
             openSecretModal(secretLoveNotes[idx % secretLoveNotes.length]);
           };
 
           stage.appendChild(card);
 
-          // Fly smoothly from the chest into their clean grid slots
+          // बॉक्शमधून बाहेर पडून 4x2 च्या ग्रिडमध्ये सेट होणे
           setTimeout(() => {
             const rot = (Math.random() - 0.5) * 8;
             const leftPerc = 12.5 + (idx % 4) * 25;
@@ -756,7 +754,6 @@
       });
     }
 
-    // Modal triggers
     function openSecretModal(text) {
       document.getElementById('secretMsg').innerText = text;
       document.getElementById('secretModal').style.display = 'flex';
