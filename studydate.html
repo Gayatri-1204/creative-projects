@@ -25,7 +25,6 @@
       position: relative;
     }
 
-    /* Ambient Warm Glow */
     .glow-aura {
       position: absolute;
       width: 500px;
@@ -48,11 +47,11 @@
 
     /* Cartoon Stage Card */
     .character-card {
-      width: clamp(260px, 35vw, 320px);
+      width: clamp(280px, 38vw, 340px);
       background: rgba(255, 255, 255, 0.05);
       border: 2px solid rgba(236, 72, 153, 0.35);
       border-radius: 28px;
-      padding: 24px 20px;
+      padding: 20px;
       backdrop-filter: blur(15px);
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(236, 72, 153, 0.25);
       margin-bottom: 25px;
@@ -61,46 +60,55 @@
 
     .character-stage {
       width: 100%;
-      height: 180px;
+      height: 220px;
       background: #fff0f5;
-      border-radius: 18px;
+      border-radius: 20px;
       display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
+      overflow: hidden;
       box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.08);
     }
 
-    /* Stage 1: Pleading Girl Emoji Animation */
+    /* Scene 1: Girl Asking Cutey */
     #pleadScene {
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
     }
 
-    .plead-avatar {
-      font-size: 4.8rem;
-      animation: floatCute 2s ease-in-out infinite alternate;
+    .cartoon-img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      animation: floatCute 2.2s ease-in-out infinite alternate;
+      filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.15));
     }
 
     @keyframes floatCute {
-      0% { transform: translateY(0) rotate(-3deg); }
-      100% { transform: translateY(-8px) rotate(3deg); }
+      0% { transform: translateY(0) scale(0.98); }
+      100% { transform: translateY(-8px) scale(1.02); }
     }
 
     .avatar-label {
       font-family: 'Fredoka', cursive;
       font-size: 0.95rem;
       color: #9d174d;
-      margin-top: 4px;
+      margin-top: 6px;
+      font-weight: 700;
     }
 
-    /* Stage 2: Study + Smirking Boy Scene (Hidden Initially) */
+    /* Scene 2: Girl Studying + Boy Smirking */
     #studyScene {
       display: none;
       align-items: center;
       justify-content: space-around;
       width: 100%;
+      height: 100%;
       padding: 0 10px;
       animation: popReaction 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     }
@@ -110,14 +118,17 @@
       100% { transform: scale(1); opacity: 1; }
     }
 
-    .study-girl-box, .smug-boy-box {
+    .duo-box {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    .character-emoji {
-      font-size: 3.8rem;
+    .duo-img {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.15));
     }
 
     .sub-role {
@@ -215,7 +226,6 @@
       font-style: italic;
     }
 
-    /* Floating Book & Heart Particles */
     .study-particle {
       position: absolute;
       pointer-events: none;
@@ -239,22 +249,22 @@
     <div class="character-card">
       <div class="character-stage">
         
-        <!-- Scene 1: Girl Asking Cutey -->
+        <!-- Scene 1: Cute Pleading Girl Cartoon -->
         <div id="pleadScene">
-          <div class="plead-avatar">🥺👉👈</div>
-          <div class="avatar-label">"Please aapan baher jauya na?"</div>
+          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHIybXNveXdycW9yZzVhcWw4dnpzNjU2dzEwcjltMzQ5ZzNqc2p0OCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/OPU6wzx8JrHna/giphy.gif" alt="Pleading Cartoon" class="cartoon-img">
+          <div class="avatar-label">"Please aapan baher jauya na? 🥺🎒"</div>
         </div>
 
-        <!-- Scene 2: Girl Studying + Boy Smirking -->
+        <!-- Scene 2: Studying Girl + Proud Boy Cartoon -->
         <div id="studyScene">
-          <div class="study-girl-box">
-            <div class="character-emoji">🙇‍♀️📚</div>
-            <div class="sub-role">Rusun Abhyas 🥺</div>
+          <div class="duo-box">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDVqN2l5aTVjZG44bTNodnphNXo1bjY0bDFucnp5dnJkbmQ3Mmg4ciZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3oriO0OEd9QIDdllqo/giphy.gif" alt="Studying Cartoon" class="duo-img">
+            <div class="sub-role">Rusun Abhyas 📖🥺</div>
           </div>
-          <div style="font-size: 2rem;">⚡</div>
-          <div class="smug-boy-box">
-            <div class="character-emoji">😏☕</div>
-            <div class="sub-role">Proud Boyfriend</div>
+          <div style="font-size: 1.8rem; color: #ec4899;">⚡</div>
+          <div class="duo-box">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3ZpcjlsNGw0aG5xM2Vsa2FzZnh4amN5bXpyNmJ0eW12dTZ2OXFrayZlcD12MV9naWZzX3NlYXJjaCZjdD1n/MDJ9IbxxvDUQM/giphy.gif" alt="Smug Cat Boy" class="duo-img">
+            <div class="sub-role">Proud Boyfriend 😏☕</div>
           </div>
         </div>
 
@@ -294,12 +304,10 @@
     }
 
     function forceStudy() {
-      // Switch Scenes
       document.getElementById('pleadScene').style.display = 'none';
       const studyStage = document.getElementById('studyScene');
       studyStage.style.display = 'flex';
 
-      // Hide Questions, Show Reward
       document.getElementById('questionArea').style.display = 'none';
       document.getElementById('rewardBox').style.display = 'block';
 
