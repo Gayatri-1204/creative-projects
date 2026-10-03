@@ -68,8 +68,8 @@
 
     .back-btn {
       position: absolute;
-      top: 18px;
-      left: 18px;
+      top: 20px;
+      left: 20px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 117, 143, 0.3);
       color: #ffccd5;
@@ -352,24 +352,32 @@
     }
 
     /* =========================================
-       PAGE 2: CAN I HUG YOU?
+       PAGE 2: PERFECTLY CENTERED HUG STAGE
     ========================================= */
     .page2-layout {
       width: 100%;
       height: 100%;
+      min-height: calc(100vh - 60px);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       position: relative;
-      padding-top: 40px;
+      margin: auto;
     }
 
     .hug-question-box {
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       z-index: 10;
+      animation: smoothCenterFade 0.6s ease forwards;
+    }
+
+    @keyframes smoothCenterFade {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     .standing-sticker-card {
@@ -451,6 +459,56 @@
       user-select: none;
     }
 
+    /* Post-Hug "Thanks for Hug" Final Screen on Page 2 */
+    .hug-thankyou-box {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 77, 109, 0.4);
+      backdrop-filter: blur(16px);
+      border-radius: 28px;
+      padding: 35px 30px;
+      max-width: 440px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.7), 0 0 35px rgba(255, 75, 110, 0.3);
+      animation: smoothCenterFade 0.6s ease forwards;
+    }
+
+    .hug-thankyou-box h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem;
+      color: #ff758f;
+      margin-bottom: 12px;
+    }
+
+    .hug-thankyou-box p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: #ffe5ec;
+      margin-bottom: 25px;
+    }
+
+    .back-home-btn {
+      background: linear-gradient(135deg, #ff4d6d, #c9184a);
+      color: white;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 35px;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255, 77, 109, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .back-home-btn:hover {
+      transform: scale(1.08);
+    }
+
+    /* Grand Hug Pop-Up */
     .hug-popup-modal {
       display: none;
       position: fixed;
@@ -495,14 +553,21 @@
 
     .close-hug-popup-btn {
       margin-top: 20px;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 117, 143, 0.4);
-      color: #ffccd5;
-      padding: 10px 26px;
+      background: linear-gradient(135deg, #ff4d6d, #c9184a);
+      border: none;
+      color: #fff;
+      padding: 12px 30px;
       border-radius: 30px;
-      font-size: 0.95rem;
-      font-weight: 600;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
       cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255, 77, 109, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .close-hug-popup-btn:hover {
+      transform: scale(1.06);
     }
 
     /* =========================================
@@ -798,6 +863,78 @@
       cursor: pointer;
     }
 
+    /* =========================================
+       NEW AESTHETIC VINTAGE LOVE LETTER (PAGE 3)
+    ========================================= */
+    .letter-parchment-card {
+      background: #fffdf9;
+      color: #3b0918;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 440px;
+      padding: 35px 28px 30px 28px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.85), 0 0 30px rgba(255, 77, 109, 0.4);
+      border: 2px solid #ffccd5;
+      position: relative;
+      text-align: center;
+      animation: paperFloatIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    @keyframes paperFloatIn {
+      from { opacity: 0; transform: scale(0.85) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* Vintage Wax Stamp Icon on top of letter */
+    .letter-stamp-badge {
+      width: 48px;
+      height: 48px;
+      background: radial-gradient(circle, #ff4d6d, #c9184a);
+      border-radius: 50%;
+      margin: -55px auto 15px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 22px;
+      box-shadow: 0 6px 15px rgba(201, 24, 74, 0.4);
+      border: 2px solid #fff;
+    }
+
+    .letter-title-text {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem;
+      color: #a4133c;
+      margin-bottom: 15px;
+      line-height: 1.1;
+    }
+
+    .letter-body-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #4a0e21;
+      margin-bottom: 25px;
+      padding: 0 10px;
+    }
+
+    .letter-close-btn {
+      background: linear-gradient(135deg, #ff4d6d, #c9184a);
+      color: white;
+      border: none;
+      padding: 10px 28px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(255, 77, 109, 0.4);
+      transition: all 0.2s;
+    }
+
+    .letter-close-btn:hover {
+      transform: scale(1.05);
+    }
+
     /* Heart Blasts */
     .hug-heart-burst {
       position: absolute;
@@ -818,7 +955,7 @@
     ========================================= */
     @media (max-width: 768px) {
       body {
-        overflow-y: auto; /* Allow smooth vertical scrolling on mobile */
+        overflow-y: auto;
       }
 
       .screen-page {
@@ -827,7 +964,6 @@
         height: auto;
       }
 
-      /* Home Page Mobile */
       .bouquet-row {
         grid-template-columns: 1fr;
         gap: 14px;
@@ -846,7 +982,6 @@
         margin-bottom: 0;
       }
 
-      /* Page 1 Mobile: Vertical Stack */
       .page1-layout {
         flex-direction: column;
         gap: 25px;
@@ -863,12 +998,10 @@
         height: 340px;
       }
 
-      /* Page 2 Mobile */
       .hug-btns-row {
         width: 260px;
       }
 
-      /* Page 3 Mobile: Grid Clothesline */
       .clothesline-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -878,13 +1011,13 @@
       }
 
       .wire-svg {
-        display: none; /* Hide top string on mobile for neat grid alignment */
+        display: none;
       }
 
       .hanging-polaroid {
         width: 100%;
         margin-top: 0 !important;
-        animation: none !important; /* Stop swing on mobile to prevent overflow */
+        animation: none !important;
       }
 
       .hanging-polaroid img {
@@ -984,11 +1117,12 @@
     </div>
   </div>
 
-  <!-- PAGE 2: INTERACTIVE CAN I HUG YOU? -->
+  <!-- PAGE 2: CENTERED CAN I HUG YOU? -->
   <div id="page-hug" class="screen-page">
     <button class="back-btn" onclick="switchPage('page-home')">← Back</button>
 
     <div class="page2-layout">
+      <!-- 1. Question Box (Vertically Centered) -->
       <div id="hugQuestionBox" class="hug-question-box">
         
         <div class="standing-sticker-card">
@@ -1028,6 +1162,14 @@
         </div>
 
       </div>
+
+      <!-- 2. Post-Hug Thank You Card (Appears after Hug) -->
+      <div id="hugThankYouBox" class="hug-thankyou-box">
+        <h2>Aww, Thank You! 🥰</h2>
+        <p>"That was the warmest, tightest, and best hug ever! You are my favourite human in the whole world. ❤️️✨"</p>
+        <button class="back-home-btn" onclick="switchPage('page-home')">Back to Home 💐</button>
+      </div>
+
     </div>
   </div>
 
@@ -1039,7 +1181,7 @@
       <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWVpOGpuejB0ZzR3dHFpNW5xdm4wbWppMm8xZWVxc205bzJ3cTU5OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/lrr9rHuoJOE0w/giphy.gif" alt="Tight Hug">
     </div>
 
-    <button class="close-hug-popup-btn" onclick="closeHugPopup()">HUG YOU FOREVER 💕</button>
+    <button class="close-hug-popup-btn" onclick="finishHugAndShowThanks()">HUG YOU FOREVER 💕</button>
   </div>
 
   <!-- PAGE 3: FAIRY LIGHTS & "OPEN WHEN" ENVELOPES -->
@@ -1090,7 +1232,7 @@
         </div>
       </div>
 
-      <!-- 3 "OPEN WHEN" MINI ENVELOPES (Balanced Bottom Section) -->
+      <!-- 3 "OPEN WHEN" MINI ENVELOPES -->
       <div class="open-when-section">
         <div class="open-when-heading">✦ Special Notes Just For You ✦</div>
         <div class="envelopes-row">
@@ -1127,20 +1269,19 @@
         <div class="flip-card-back">
           <h2>My Heart Whispers...</h2>
           <p id="flipModalNote">"You are my favourite thought every single day!"</p>
-          <button class="flip-close-btn" onclick="event.stopPropagation(); closeFlipModal();">CLOSE WITH LOVE ❤️</button>
+          <button class="flip-close-btn" onclick="event.stopPropagation(); closeFlipModal();">CLOSE WITH LOVE ❤️️</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- "OPEN WHEN" LETTER MODAL -->
+  <!-- AESTHETIC VINTAGE LOVE LETTER (PAGE 3 BEAUTIFIED) -->
   <div id="letterModal" class="flip-modal-overlay">
-    <div class="flip-card-wrapper" style="height: auto; max-width: 380px;">
-      <div class="flip-card-back" style="transform: none; border-radius: 20px; box-shadow: 0 25px 60px rgba(0,0,0,0.8);">
-        <h2 id="letterTitle" style="font-size: 2.2rem; margin-bottom: 12px;">Love Note</h2>
-        <p id="letterContent" style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 22px;">Here is your message...</p>
-        <button class="flip-close-btn" onclick="closeLetterModal()">HOLD CLOSE TO HEART ❤️</button>
-      </div>
+    <div class="letter-parchment-card">
+      <div class="letter-stamp-badge">💌</div>
+      <h2 id="letterTitle" class="letter-title-text">Love Note</h2>
+      <p id="letterContent" class="letter-body-text">Here is your message...</p>
+      <button class="letter-close-btn" onclick="closeLetterModal()">HOLD CLOSE TO HEART ❤️</button>
     </div>
   </div>
 
@@ -1149,7 +1290,15 @@
       document.querySelectorAll('.screen-page').forEach(p => p.classList.remove('active'));
       const target = document.getElementById(targetId);
       target.classList.add('active');
-      window.scrollTo(0, 0); // Reset scroll on mobile navigation
+      window.scrollTo(0, 0);
+
+      // Page 2 ughadlyavar initial state reset hone
+      if (targetId === 'page-hug') {
+        document.getElementById('hugQuestionBox').style.display = 'flex';
+        document.getElementById('hugThankYouBox').style.display = 'none';
+        const btn = document.getElementById('noBtn');
+        if (btn) btn.style.transform = 'translate(0px, 0px)';
+      }
     }
 
     // HOME: LOVE METER LOGIC
@@ -1165,7 +1314,7 @@
       }, 100);
 
       setTimeout(() => {
-        text.innerText = '∞ Infinity % (Cannot Be Measured! ❤️️)';
+        text.innerText = '∞ Infinity % (Cannot Be Measured! ❤️)';
         blastFloatingHearts();
       }, 2000);
     }
@@ -1175,7 +1324,7 @@
       for (let i = 0; i < 20; i++) {
         const h = document.createElement('div');
         h.className = 'hug-heart-burst';
-        h.innerText = ['❤️', '💖', '✨', '🥰'][Math.floor(Math.random() * 4)];
+        h.innerText = ['❤️️', '💖', '✨', '🥰'][Math.floor(Math.random() * 4)];
         const dx = (Math.random() - 0.5) * 350 + 'px';
         const dy = (Math.random() - 0.5) * 260 - 40 + 'px';
         h.style.setProperty('--dx', dx);
@@ -1201,10 +1350,11 @@
       blastHearts();
     }
 
-    function closeHugPopup() {
+    // Close Hug & Show Thank You Card (Not the question again!)
+    function finishHugAndShowThanks() {
       document.getElementById('hugPopupModal').style.display = 'none';
-      const btn = document.getElementById('noBtn');
-      if (btn) btn.style.transform = 'translate(0px, 0px)';
+      document.getElementById('hugQuestionBox').style.display = 'none';
+      document.getElementById('hugThankYouBox').style.display = 'flex';
     }
 
     function blastHearts() {
@@ -1241,7 +1391,7 @@
       document.getElementById('flipModal').style.display = 'none';
     }
 
-    // PAGE 3: "OPEN WHEN" LETTER MODAL
+    // PAGE 3: BEAUTIFUL LOVE LETTER MODAL
     function openLetterModal(title, message) {
       document.getElementById('letterTitle').innerText = title;
       document.getElementById('letterContent').innerText = message;
