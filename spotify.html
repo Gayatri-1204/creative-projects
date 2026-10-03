@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Lifetime Soundtrack 🎧</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(ellipse at top, #0f1f17 0%, #060b08 55%, #020403 100%);
+      min-height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Emerald & Mint Ambient Glows */
+    .glow-top {
+      position: absolute;
+      top: -15%;
+      left: 15%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(29, 185, 84, 0.22), transparent 70%);
+      filter: blur(90px);
+      pointer-events: none;
+    }
+
+    .glow-bottom {
+      position: absolute;
+      bottom: -15%;
+      right: 15%;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(30, 215, 96, 0.16), transparent 70%);
+      filter: blur(95px);
+      pointer-events: none;
+    }
+
+    .player-wrapper {
+      width: 100%;
+      max-width: 440px;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 10;
+    }
+
+    /* Spotify Glass Player Card */
+    .spotify-card {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border-radius: 28px;
+      padding: clamp(20px, 4vw, 28px);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), 0 0 30px rgba(29, 185, 84, 0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .spotify-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card-top-tag {
+      font-size: 0.75rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #1db954;
+      font-weight: 800;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Album Art Frame */
+    .album-frame {
+      width: clamp(230px, 32vw, 280px);
+      height: clamp(230px, 32vw, 280px);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 25px rgba(29, 185, 84, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      position: relative;
+    }
+
+    .album-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .album-frame:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Track Meta */
+    .track-meta-row {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 22px;
+    }
+
+    .track-info {
+      text-align: left;
+    }
+
+    .track-title {
+      font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+    }
+
+    .track-artist {
+      font-size: 0.9rem;
+      color: #a7a7a7;
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    .like-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      line-height: 1;
+    }
+
+    .like-btn.liked {
+      color: #1db954;
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 10px #1db954);
+    }
+
+    /* Timeline Scroller */
+    .progress-box {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .progress-bar-fill {
+      width: 32%;
+      height: 100%;
+      background: #1db954;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #1db954;
+      transition: width 0.3s linear;
+    }
+
+    .time-labels {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-size: 0.75rem;
+      color: #a7a7a7;
+      font-weight: 600;
+    }
+
+    /* Playback Controls */
+    .controls-row {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 28px;
+      margin-top: 15px;
+    }
+
+    .ctrl-sub-btn {
+      background: none;
+      border: none;
+      color: #b3b3b3;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .ctrl-sub-btn:hover {
+      color: #ffffff;
+    }
+
+    .play-master-btn {
+      width: 62px;
+      height: 62px;
+      background: #1db954;
+      color: #000;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.6rem;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(29, 185, 84, 0.5);
+      transition: all 0.25s ease;
+    }
+
+    .play-master-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 30px rgba(29, 185, 84, 0.8);
+      background: #1ed760;
+    }
+
+    /* Animated Sound Waves */
+    .wave-bars-box {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      height: 24px;
+      margin-top: 18px;
+    }
+
+    .wave-bar {
+      width: 3.5px;
+      height: 6px;
+      background: #1db954;
+      border-radius: 3px;
+      transition: height 0.2s;
+    }
+
+    .wave-bars-box.playing .wave-bar {
+      animation: waveBeat 1.1s ease-in-out infinite alternate;
+    }
+
+    .wave-bars-box.playing .wave-bar:nth-child(1) { animation-delay: 0.1s; }
+    .wave-bars-box.playing .wave-bar:nth-child(2) { animation-delay: 0.3s; }
+    .wave-bars-box.playing .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+    .wave-bars-box.playing .wave-bar:nth-child(4) { animation-delay: 0.4s; }
+    .wave-bars-box.playing .wave-bar:nth-child(5) { animation-delay: 0.15s; }
+
+    @keyframes waveBeat {
+      0% { height: 4px; }
+      100% { height: 22px; }
+    }
+
+    /* Lyrics / Love Note Card */
+    .lyrics-card {
+      width: 100%;
+      margin-top: 18px;
+      background: rgba(29, 185, 84, 0.08);
+      border: 1px solid rgba(29, 185, 84, 0.25);
+      border-radius: 20px;
+      padding: 18px 20px;
+      text-align: left;
+    }
+
+    .lyrics-header {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #1db954;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .lyrics-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #e6e6e6;
+      font-style: italic;
+    }
+
+    .lyrics-quote span {
+      color: #1db954;
+      font-weight: 600;
+    }
+
+    /* Bursting Floating Notes */
+    .floating-note {
+      position: absolute;
+      pointer-events: none;
+      animation: floatUp 1.8s ease-out forwards;
+      z-index: 1000;
+      user-select: none;
+    }
+
+    @keyframes floatUp {
+      0% { opacity: 1; transform: scale(0.6) translateY(0); }
+      100% { opacity: 0; transform: scale(1.6) translateY(-140px) translateX(var(--dx)); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-top"></div>
+  <div class="glow-bottom"></div>
+
+  <div class="player-wrapper">
+    
+    <div class="spotify-card">
+      
+      <div class="card-top-tag">
+        <span>●</span> Playing from your favourite memory
+      </div>
+
+      <!-- Album Cover Photo -->
+      <div class="album-frame">
+        <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700" alt="Couple Cover">
+      </div>
+
+      <!-- Track Details -->
+      <div class="track-meta-row">
+        <div class="track-info">
+          <div class="track-title">My Favorite Person ❤️</div>
+          <div class="track-artist">You & Me • Forever Album</div>
+        </div>
+        <button id="likeBtn" class="like-btn" onclick="toggleLike()">🤍</button>
+      </div>
+
+      <!-- Timeline Bar -->
+      <div class="progress-box">
+        <div class="progress-bar-bg" onclick="seekTrack(event)">
+          <div id="progressFill" class="progress-bar-fill"></div>
+        </div>
+        <div class="time-labels">
+          <span id="currentTime">01:43</span>
+          <span>∞ : ∞</span>
+        </div>
+      </div>
+
+      <!-- Master Controls -->
+      <div class="controls-row">
+        <button class="ctrl-sub-btn" onclick="changeQuote(-1)">⏮</button>
+        <button id="playBtn" class="play-master-btn" onclick="togglePlay()">▶</button>
+        <button class="ctrl-sub-btn" onclick="changeQuote(1)">⏭</button>
+      </div>
+
+      <!-- Sound Waves -->
+      <div id="waveBox" class="wave-bars-box">
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+      </div>
+
+      <!-- Synchronized Love Lyrics -->
+      <div class="lyrics-card">
+        <div class="lyrics-header">✦ Live Lyrics / Love Note ✦</div>
+        <div id="lyricsText" class="lyrics-quote">
+          "Out of 8 billion people in this world, <span>my heart will always choose you</span> over and over again."
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    let isPlaying = false;
+    let progressInterval;
+    let progressPercent = 35;
+    let quoteIndex = 0;
+
+    const loveLyrics = [
+      `"Out of 8 billion people in this world, <span>my heart will always choose you</span> over and over again."`,
+      `"You are my favourite notification, my safest home, and <span>my happiest reality</span>."`,
+      `"Every love song on this planet suddenly made sense <span>the moment I fell in love with you</span>."`,
+      `"I don't need paradise because I found you; <span>you are my forever song</span>."`
+    ];
+
+    function togglePlay() {
+      const playBtn = document.getElementById('playBtn');
+      const waveBox = document.getElementById('waveBox');
+      isPlaying = !isPlaying;
+
+      if (isPlaying) {
+        playBtn.innerText = '⏸';
+        waveBox.classList.add('playing');
+        startProgress();
+        burstMusicNotes();
+      } else {
+        playBtn.innerText = '▶';
+        waveBox.classList.remove('playing');
+        clearInterval(progressInterval);
+      }
+    }
+
+    function startProgress() {
+      clearInterval(progressInterval);
+      progressInterval = setInterval(() => {
+        progressPercent += 0.8;
+        if (progressPercent >= 100) progressPercent = 0;
+        document.getElementById('progressFill').style.width = progressPercent + '%';
+
+        // Update seconds
+        const mins = Math.floor((progressPercent * 2.5) / 60);
+        const secs = Math.floor((progressPercent * 2.5) % 60);
+        document.getElementById('currentTime').innerText = 
+          `0${mins}:${secs < 10 ? '0' : ''}${secs}`;
+      }, 500);
+    }
+
+    function seekTrack(e) {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      progressPercent = (clickX / rect.width) * 100;
+      document.getElementById('progressFill').style.width = progressPercent + '%';
+    }
+
+    function toggleLike() {
+      const btn = document.getElementById('likeBtn');
+      btn.classList.toggle('liked');
+      btn.innerText = btn.classList.contains('liked') ? '💚' : '🤍';
+      burstMusicNotes();
+    }
+
+    function changeQuote(direction) {
+      quoteIndex = (quoteIndex + direction + loveLyrics.length) % loveLyrics.length;
+      document.getElementById('lyricsText').innerHTML = loveLyrics[quoteIndex];
+      burstMusicNotes();
+    }
+
+    function burstMusicNotes() {
+      const icons = ['🎵', '💚', '✨', '🎶', '💫', '🌹'];
+      for (let i = 0; i < 18; i++) {
+        const item = document.createElement('div');
+        item.className = 'floating-note';
+        item.innerText = icons[Math.floor(Math.random() * icons.length)];
+        item.style.left = (Math.random() * 80 + 10) + 'vw';
+        item.style.top = '65vh';
+        item.style.fontSize = (Math.random() * 16 + 20) + 'px';
+        item.style.setProperty('--dx', (Math.random() - 0.5) * 120 + 'px');
+        document.body.appendChild(item);
+
+        setTimeout(() => item.remove(), 1800);
+      }
+    }
+  </script>
+</body>
+</html>
