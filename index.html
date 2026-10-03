@@ -92,9 +92,7 @@
       transform: translateX(-5px);
     }
 
-    /* =========================================
-       PAGE 0: HOME SCREEN
-    ========================================= */
+    /* HOME SCREEN */
     .home-header {
       margin-top: 1vh;
       text-align: center;
@@ -276,9 +274,7 @@
       letter-spacing: 1px;
     }
 
-    /* =========================================
-       PAGE 1: SIDE PHOTO & AUTO-SCROLLING MESSAGE
-    ========================================= */
+    /* PAGE 1 */
     .page1-layout {
       width: 100%;
       height: 100%;
@@ -372,9 +368,7 @@
       font-weight: 600;
     }
 
-    /* =========================================
-       PAGE 2: CAN I HUG YOU? INTERACTIVE SETUP
-    ========================================= */
+    /* PAGE 2: CAN I HUG YOU? */
     .page2-layout {
       width: 100%;
       height: 100%;
@@ -472,7 +466,6 @@
       user-select: none;
     }
 
-    /* Grand Hug Pop-Up */
     .hug-popup-modal {
       display: none;
       position: fixed;
@@ -488,7 +481,7 @@
 
     @keyframes modalFadeIn {
       from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
+      to { transform: scale(1); }
     }
 
     .hug-celebration-title {
@@ -555,340 +548,250 @@
     }
 
     /* =========================================
-       PAGE 3: SINGLE LEFT-SIDE REEL & TILTED PHOTO ENVELOPE
+       PAGE 3: AESTHETIC FAIRY LIGHTS & POLAROID CLOTHESLINE
     ========================================= */
     .page3-layout {
       width: 100%;
       height: 100%;
       display: flex;
+      flex-direction: column;
+      align-items: center;
       justify-content: flex-start;
-      align-items: center;
       position: relative;
-      padding: 10px clamp(15px, 3vw, 40px);
-      gap: clamp(20px, 4vw, 60px);
+      padding-top: 20px;
     }
 
-    .film-column-single {
-      width: clamp(170px, 15vw, 240px);
-      height: 85vh;
-      overflow: hidden;
-      position: relative;
-      border-radius: 14px;
-      background: #110105;
-      border: 3px solid #3d0514;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-      mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
-      flex-shrink: 0;
+    .lights-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.2rem, 3.2vw, 3.4rem);
+      color: #ff758f;
+      text-shadow: 0 0 20px rgba(255, 117, 143, 0.7);
+      margin-bottom: 2px;
     }
 
-    .film-reel-track {
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-      padding: 15px 0;
-      animation: filmScroll 22s linear infinite;
-    }
-
-    .film-reel-track:hover {
-      animation-play-state: paused;
-    }
-
-    @keyframes filmScroll {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-50%); }
-    }
-
-    .film-frame {
-      width: 88%;
-      background: #1c0209;
-      border: 2px solid #52071d;
-      border-radius: 10px;
-      margin: 0 auto;
-      padding: 8px 8px 14px 8px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
-      cursor: pointer;
-      position: relative;
-      transition: all 0.3s ease;
-    }
-
-    .film-frame:hover {
-      transform: scale(1.08);
-      border-color: #ff4d6d;
-      box-shadow: 0 10px 25px rgba(255, 77, 109, 0.4);
-    }
-
-    .film-frame::before, .film-frame::after {
-      content: '••••••••••';
-      position: absolute;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      font-size: 9px;
-      letter-spacing: 8px;
-      color: rgba(255, 255, 255, 0.35);
-      line-height: 1;
-    }
-    .film-frame::before { top: 3px; }
-    .film-frame::after { bottom: 3px; }
-
-    .film-frame img {
-      width: 100%;
-      height: clamp(130px, 15vh, 180px);
-      object-fit: cover;
-      border-radius: 6px;
-      display: block;
-      margin: 5px 0;
-    }
-
-    .center-envelope-stage {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      position: relative;
-      padding-left: 2vw;
-    }
-
-    .envelope-hint {
+    .lights-hint {
       color: #ffccd5;
-      font-size: clamp(0.95rem, 1.2vw, 1.3rem);
+      font-size: 0.9rem;
       letter-spacing: 2px;
       text-transform: uppercase;
       font-weight: 700;
       margin-bottom: 30px;
-      text-shadow: 0 0 12px rgba(255, 77, 109, 0.6);
-      text-align: center;
+      text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
     }
 
-    .envelope-wrapper {
+    /* Clothesline Wire with Curve */
+    .clothesline-container {
       position: relative;
-      width: clamp(340px, 32vw, 480px);
-      height: clamp(230px, 22vw, 320px);
-      background: #800f2f;
-      border-radius: 16px;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 40px rgba(255, 77, 109, 0.3);
-      cursor: pointer;
+      width: 100%;
+      max-width: 1200px;
+      height: 60vh;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: all 0.5s ease;
+      justify-content: space-around;
+      align-items: flex-start;
+      padding-top: 35px;
     }
 
-    .envelope-wrapper:hover {
-      transform: translateY(-8px) scale(1.03);
-    }
-
-    .envelope-flap {
+    /* SVG String with Lights */
+    .wire-svg {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: 60%;
-      background: #a4133c;
-      clip-path: polygon(0 0, 100% 0, 50% 100%);
-      transform-origin: top;
-      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 5;
-    }
-
-    .envelope-pocket {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #590d22;
-      clip-path: polygon(0 100%, 100% 100%, 100% 35%, 50% 70%, 0 35%);
-      border-radius: 0 0 16px 16px;
-      z-index: 4;
+      height: 100px;
       pointer-events: none;
-    }
-
-    .wax-seal {
-      position: absolute;
-      top: 55%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: clamp(48px, 4.5vw, 64px);
-      height: clamp(48px, 4.5vw, 64px);
-      background: radial-gradient(circle, #ff4d6d, #c9184a);
-      border-radius: 50%;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.6), inset 0 0 10px rgba(255,255,255,0.4);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: clamp(20px, 2vw, 28px);
-      z-index: 6;
-      transition: all 0.5s ease;
-    }
-
-    .envelope-tilted-pic {
-      position: absolute;
-      width: clamp(230px, 22vw, 320px);
-      background: #ffffff;
-      padding: 10px 10px 24px 10px;
-      border-radius: 12px;
-      box-shadow: 0 20px 45px rgba(0,0,0,0.7), 0 0 25px rgba(255, 77, 109, 0.35);
-      cursor: pointer;
-      z-index: 8;
-      transform: translate(-10px, -20px) rotate(-7deg);
-      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .envelope-tilted-pic:hover {
-      transform: translate(-10px, -35px) rotate(0deg) scale(1.08);
-      z-index: 15;
-    }
-
-    .envelope-tilted-pic svg {
-      width: 100%;
-      height: clamp(170px, 18vw, 240px);
-      background: #fff5f7;
-      border-radius: 8px;
-      display: block;
-    }
-
-    .envelope-tilted-pic .tilted-caption {
-      color: #333;
-      font-family: 'Great Vibes', cursive;
-      font-size: clamp(1.4rem, 1.6vw, 1.9rem);
-      text-align: center;
-      margin-top: 6px;
-      line-height: 1;
-    }
-
-    .envelope-tilted-pic::before {
-      content: '';
-      position: absolute;
-      top: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 70px;
-      height: 20px;
-      background: rgba(255, 77, 109, 0.75);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-      border-left: 2px dashed rgba(255,255,255,0.7);
-      border-right: 2px dashed rgba(255,255,255,0.7);
-    }
-
-    .center-envelope-stage.opened .envelope-flap {
-      transform: rotateX(180deg);
       z-index: 1;
     }
 
-    .center-envelope-stage.opened .wax-seal {
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(0.2);
+    /* Swinging Hanging Polaroid Card */
+    .hanging-polaroid {
+      position: relative;
+      width: clamp(170px, 17vw, 230px);
+      background: #ffffff;
+      padding: 10px 10px 30px 10px;
+      border-radius: 8px;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.8), 0 0 25px rgba(255, 75, 110, 0.25);
+      cursor: pointer;
+      z-index: 10;
+      transform-origin: top center;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    .center-envelope-stage.opened .envelope-tilted-pic {
-      transform: translate(-10px, -60px) rotate(0deg) scale(1.15);
-      z-index: 20;
+    /* Alternate natural gentle swings */
+    .hanging-polaroid:nth-child(2) { animation: swingOne 4.5s ease-in-out infinite alternate; }
+    .hanging-polaroid:nth-child(3) { animation: swingTwo 5.2s ease-in-out infinite alternate; margin-top: 15px; }
+    .hanging-polaroid:nth-child(4) { animation: swingOne 4.8s ease-in-out infinite alternate; margin-top: 25px; }
+    .hanging-polaroid:nth-child(5) { animation: swingTwo 5.5s ease-in-out infinite alternate; margin-top: 10px; }
+
+    @keyframes swingOne {
+      0% { transform: rotate(-3.5deg); }
+      100% { transform: rotate(3deg); }
+    }
+    @keyframes swingTwo {
+      0% { transform: rotate(3deg); }
+      100% { transform: rotate(-3.5deg); }
     }
 
-    /* CREATIVE POLAROID POP-UP MODAL */
-    .modal-overlay {
+    .hanging-polaroid:hover {
+      animation-play-state: paused;
+      transform: scale(1.12) rotate(0deg) !important;
+      z-index: 50;
+      box-shadow: 0 25px 60px rgba(255, 77, 109, 0.6);
+    }
+
+    /* Wooden Pin / Clip on Wire */
+    .wooden-clip {
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 32px;
+      background: linear-gradient(to right, #b08968, #7f5539);
+      border-radius: 4px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+      z-index: 15;
+    }
+
+    .wooden-clip::after {
+      content: '';
+      position: absolute;
+      top: 12px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #4a3525;
+    }
+
+    .hanging-polaroid img {
+      width: 100%;
+      height: clamp(170px, 18vw, 240px);
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .hanging-polaroid .card-text {
+      color: #2b040e;
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(1.4rem, 1.6vw, 1.9rem);
+      text-align: center;
+      margin-top: 10px;
+      line-height: 1;
+    }
+
+    /* 3D FLIP MEMORY POPUP MODAL */
+    .flip-modal-overlay {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.85);
+      background: rgba(0,0,0,0.88);
       backdrop-filter: blur(14px);
       justify-content: center;
       align-items: center;
       z-index: 999;
     }
 
-    .creative-polaroid-modal {
-      background: #ffffff;
-      padding: 16px 16px 28px 16px;
-      border-radius: 12px;
+    .flip-card-wrapper {
       width: 90%;
-      max-width: 420px;
+      max-width: 440px;
+      height: 520px;
+      perspective: 1000px;
+      animation: modalPopUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes modalPopUp {
+      from { transform: scale(0.7) translateY(40px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    .flip-card-wrapper.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      padding: 20px 20px 30px 20px;
       box-shadow: 0 30px 70px rgba(0,0,0,0.8), 0 0 35px rgba(255, 77, 109, 0.5);
-      animation: polaroidPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* Front side (Grand Polaroid) */
+    .flip-card-front {
+      background: #ffffff;
       display: flex;
       flex-direction: column;
       align-items: center;
-      position: relative;
-      transform: rotate(-1.5deg);
     }
 
-    @keyframes polaroidPop {
-      from { transform: scale(0.7) rotate(6deg); opacity: 0; }
-      to { transform: scale(1) rotate(-1.5deg); opacity: 1; }
-    }
-
-    .washi-tape {
-      position: absolute;
-      top: -12px;
-      width: 120px;
-      height: 26px;
-      background: rgba(255, 77, 109, 0.7);
-      backdrop-filter: blur(4px);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      border-left: 3px dashed rgba(255,255,255,0.6);
-      border-right: 3px dashed rgba(255,255,255,0.6);
-    }
-
-    .polaroid-img-frame {
+    .flip-card-front img {
       width: 100%;
-      height: 270px;
-      border-radius: 8px;
-      overflow: hidden;
-      margin-top: 10px;
-      border: 1px solid #eee;
-    }
-
-    .polaroid-img-frame img {
-      width: 100%;
-      height: 100%;
+      height: 380px;
       object-fit: cover;
+      border-radius: 8px;
     }
 
-    .polaroid-note-body {
-      margin-top: 16px;
-      text-align: center;
-      width: 100%;
-    }
-
-    .polaroid-date {
-      font-size: 0.75rem;
+    .flip-card-front .flip-hint-tag {
+      font-size: 0.8rem;
       letter-spacing: 2px;
+      color: #ff4d6d;
       text-transform: uppercase;
-      color: #999;
       font-weight: 700;
-      margin-bottom: 6px;
+      margin-top: 18px;
     }
 
-    .polaroid-quote {
+    /* Back side (Romantic Handwritten Love Letter) */
+    .flip-card-back {
+      background: linear-gradient(145deg, #2b040e, #140105);
+      border: 1px solid #ff4d6d;
+      color: #ffe5ec;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 30px;
+    }
+
+    .flip-card-back h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #ff758f;
+      margin-bottom: 15px;
+    }
+
+    .flip-card-back p {
       font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      line-height: 1.5;
-      color: #2b040e;
-      font-weight: 600;
-      margin-bottom: 20px;
-      padding: 0 10px;
+      font-size: 1.2rem;
+      line-height: 1.7;
+      margin-bottom: 30px;
+      color: #ffe5ec;
     }
 
-    .polaroid-close-btn {
+    .flip-close-btn {
       background: linear-gradient(135deg, #ff4d6d, #c9184a);
       color: white;
       border: none;
-      padding: 9px 26px;
+      padding: 10px 32px;
       border-radius: 30px;
       font-weight: 700;
-      font-size: 0.85rem;
-      letter-spacing: 1.5px;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
       cursor: pointer;
-      box-shadow: 0 6px 16px rgba(255, 77, 109, 0.4);
-      transition: transform 0.2s;
-    }
-
-    .polaroid-close-btn:hover {
-      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(255, 77, 109, 0.4);
     }
   </style>
 </head>
@@ -907,7 +810,7 @@
 
     <!-- Middle Envelope with Peeking Photo -->
     <div class="home-mid-envelope-wrapper">
-      <div class="peeking-photo-card" onclick="openCreativePolaroid('https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700', 'You are my happiest thought every single day ❤️')">
+      <div class="peeking-photo-card" onclick="openFlipCard('https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700', 'You are my happiest thought every single day ❤️️')">
         <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400" alt="Us Together">
         <div class="peeking-caption">My Heart ❤️</div>
       </div>
@@ -936,8 +839,8 @@
 
         <div class="bouquet-item" onclick="switchPage('page-rain')">
           <span class="bouquet-flower">🌹</span>
-          <h3>Love Envelope</h3>
-          <p>Vintage reel & memories</p>
+          <h3>Fairy Lights</h3>
+          <p>Hanging sweet memories</p>
         </div>
 
       </div>
@@ -976,14 +879,14 @@
     <div class="page2-layout">
       <div id="hugQuestionBox" class="hug-question-box">
         
-        <!-- Sticker standing / waiting -->
+        <!-- Sticker standing / waiting[cite: 1] -->
         <div class="standing-sticker-card">
           <svg viewBox="0 0 350 350" width="100%" height="100%">
             <path d="M 175 35 Q 185 15 195 30 Q 205 45 175 70 Q 145 45 155 30 Q 165 15 175 35 Z" fill="#ff4d6d"/>
             <path d="M 65 115 Q 75 95 85 110 Q 95 125 65 150 Q 35 125 45 110 Q 55 95 65 115 Z" fill="#ff758f"/>
             <path d="M 285 105 Q 295 85 305 100 Q 315 115 285 140 Q 255 115 265 100 Q 275 85 285 105 Z" fill="#ff758f"/>
 
-            <!-- Bubu Bear -->
+            <!-- Bubu Bear[cite: 1] -->
             <g transform="translate(45, 40) rotate(-10 150 150)">
               <circle cx="80" cy="85" r="22" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
               <circle cx="80" cy="85" r="12" fill="#e8c9b0"/>
@@ -994,7 +897,7 @@
               <path d="M 125 118 Q 130 132 135 118 Z" fill="#ff4d6d" stroke="#3d2314" stroke-width="2"/>
             </g>
 
-            <!-- Dudu Panda waiting with open arms -->
+            <!-- Dudu Panda waiting[cite: 1] -->
             <g transform="translate(10, -5) rotate(15 180 180)">
               <circle cx="160" cy="80" r="22" fill="#2b2d42" stroke="#222" stroke-width="6"/>
               <circle cx="250" cy="100" r="22" fill="#2b2d42" stroke="#222" stroke-width="6"/>
@@ -1020,9 +923,9 @@
     </div>
   </div>
 
-  <!-- GRAND HUG POPUP -->
+  <!-- GRAND HUG POPUP[cite: 1] -->
   <div id="hugPopupModal" class="hug-popup-modal">
-    <div class="hug-celebration-title">HAPPY BOYFRIEND DAY, MY LOVE! 🤗❤️️</div>
+    <div class="hug-celebration-title">HAPPY BOYFRIEND DAY, MY LOVE! 🤗❤️</div>
     
     <div class="hug-popup-content">
       <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWVpOGpuejB0ZzR3dHFpNW5xdm4wbWppMm8xZWVxc205bzJ3cTU5OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/lrr9rHuoJOE0w/giphy.gif" alt="Tight Hug">
@@ -1031,78 +934,74 @@
     <button class="close-hug-popup-btn" onclick="closeHugPopup()">HUG YOU FOREVER 💕</button>
   </div>
 
-  <!-- PAGE 3: SINGLE LEFT-SIDE REEL & TILTED PHOTO ENVELOPE -->
+  <!-- =========================================
+       PAGE 3: AESTHETIC FAIRY LIGHTS & CLOTHESLINE
+  ========================================= -->
   <div id="page-rain" class="screen-page">
-    <button class="back-btn" onclick="resetEnvelopePage(); switchPage('page-home');">← Back to Bouquets</button>
+    <button class="back-btn" onclick="switchPage('page-home')">← Back to Bouquets</button>
 
     <div class="page3-layout">
-      
-      <!-- Single Left Camera Film Reel -->
-      <div class="film-column-single">
-        <div id="filmLeftTrack" class="film-reel-track"></div>
-      </div>
+      <h2 class="lights-title">Our Sweet Little Moments ✨</h2>
+      <div class="lights-hint">✦ Tap any polaroid to flip and read a love secret ✦</div>
 
-      <!-- Right/Center Envelope with Tilted Sticker Picture -->
-      <div id="envelopeStage" class="center-envelope-stage">
-        <div class="envelope-hint">✦ Click the envelope or photo to open memory ✦</div>
+      <div class="clothesline-container">
+        <!-- Curved wire with glowing fairy bulbs -->
+        <svg class="wire-svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
+          <path d="M 0,20 Q 300,75 600,45 Q 900,80 1200,25" fill="none" stroke="rgba(255, 182, 193, 0.45)" stroke-width="2.5"/>
+          <!-- Glowing fairy bulbs -->
+          <circle cx="150" cy="48" r="5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
+          <circle cx="300" cy="65" r="5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
+          <circle cx="450" cy="55" r="5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
+          <circle cx="600" cy="45" r="5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
+          <circle cx="750" cy="65" r="5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
+          <circle cx="900" cy="72" r="5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
+          <circle cx="1050" cy="48" r="5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
+        </svg>
 
-        <div class="envelope-wrapper" onclick="toggleEnvelope()">
-          <div class="envelope-flap"></div>
-          <div class="wax-seal">💌</div>
-          <div class="envelope-pocket"></div>
-
-          <!-- Tilted Bubu Dudu jumping hug sticker on envelope[cite: 1, 2] -->
-          <div class="envelope-tilted-pic" onclick="event.stopPropagation(); openCreativePolaroid('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWVpOGpuejB0ZzR3dHFpNW5xdm4wbWppMm8xZWVxc205bzJ3cTU5OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/lrr9rHuoJOE0w/giphy.gif', 'Whenever I am with you, I feel completely safe, loved, and at home ❤️')">
-            <svg viewBox="0 0 350 350" width="100%" height="100%">
-              <path d="M 175 35 Q 185 15 195 30 Q 205 45 175 70 Q 145 45 155 30 Q 165 15 175 35 Z" fill="#ff4d6d"/>
-              <path d="M 65 115 Q 75 95 85 110 Q 95 125 65 150 Q 35 125 45 110 Q 55 95 65 115 Z" fill="#ff758f"/>
-              <path d="M 285 105 Q 295 85 305 100 Q 315 115 285 140 Q 255 115 265 100 Q 275 85 285 105 Z" fill="#ff758f"/>
-              <path d="M 45 235 Q 55 215 65 230 Q 75 245 45 270 Q 15 245 25 230 Q 35 215 45 235 Z" fill="#ff4d6d"/>
-              <path d="M 305 225 Q 315 205 325 220 Q 335 235 305 260 Q 275 235 285 220 Q 295 205 305 225 Z" fill="#ff4d6d"/>
-
-              <!-- Bubu Bear -->
-              <g transform="translate(45, 40) rotate(-15 150 150)">
-                <circle cx="80" cy="85" r="22" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
-                <circle cx="80" cy="85" r="12" fill="#e8c9b0"/>
-                <ellipse cx="140" cy="170" rx="65" ry="60" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
-                <ellipse cx="130" cy="115" rx="55" ry="50" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
-                <circle cx="95" cy="120" r="10" fill="#fca5a5"/>
-                <path d="M 95 105 Q 105 115 115 105" stroke="#3d2314" stroke-width="5" fill="none" stroke-linecap="round"/>
-                <path d="M 125 118 Q 130 132 135 118 Z" fill="#ff4d6d" stroke="#3d2314" stroke-width="2"/>
-              </g>
-
-              <!-- Dudu Panda Jumping On Bear -->
-              <g transform="translate(10, -5) rotate(18 180 180)">
-                <circle cx="160" cy="80" r="22" fill="#2b2d42" stroke="#222" stroke-width="6"/>
-                <circle cx="250" cy="100" r="22" fill="#2b2d42" stroke="#222" stroke-width="6"/>
-                <ellipse cx="205" cy="175" rx="58" ry="52" fill="#ffffff" stroke="#222" stroke-width="6"/>
-                <ellipse cx="205" cy="120" rx="56" ry="48" fill="#ffffff" stroke="#222" stroke-width="6"/>
-                <circle cx="235" cy="135" r="12" fill="#ff758f"/>
-                <path d="M 180 110 L 195 118 L 180 126" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round"/>
-                <path d="M 230 120 L 215 128 L 230 136" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round"/>
-                <path d="M 160 145 Q 115 145 125 180 Q 150 185 170 170 Z" fill="#ffffff" stroke="#222" stroke-width="6"/>
-                <circle cx="265" cy="190" r="12" fill="#ffffff" stroke="#222" stroke-width="5"/>
-              </g>
-            </svg>
-            <div class="tilted-caption">Tightest Hug ❤️</div>
-          </div>
+        <!-- Hanging Polaroids with clips -->
+        <div class="hanging-polaroid" onclick="openFlipCard('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600', 'I love you more than any words could ever explain. You are my greatest blessing! 🥰')">
+          <div class="wooden-clip"></div>
+          <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400" alt="Memory 1">
+          <div class="card-text">My Heart ❤️</div>
         </div>
-      </div>
 
+        <div class="hanging-polaroid" onclick="openFlipCard('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600', 'Whenever I am with you, I feel completely safe, loved, and peacefully at home. 🫂')">
+          <div class="wooden-clip"></div>
+          <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400" alt="Memory 2">
+          <div class="card-text">Safest Home 🌸</div>
+        </div>
+
+        <div class="hanging-polaroid" onclick="openFlipCard('https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=600', 'Holding your hand is still my favorite feeling in this whole wide world! ✨')">
+          <div class="wooden-clip"></div>
+          <img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=400" alt="Memory 3">
+          <div class="card-text">Best Feeling 💫</div>
+        </div>
+
+        <div class="hanging-polaroid" onclick="openFlipCard('https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600', 'You are the sweetest, handsomest boy ever, and I will choose you in every lifetime! 🌹')">
+          <div class="wooden-clip"></div>
+          <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400" alt="Memory 4">
+          <div class="card-text">Forever Mine 💋</div>
+        </div>
+
+      </div>
     </div>
   </div>
 
-  <!-- CREATIVE POLAROID POP-UP MODAL -->
-  <div id="secretModal" class="modal-overlay">
-    <div class="creative-polaroid-modal">
-      <div class="washi-tape"></div>
-      <div class="polaroid-img-frame">
-        <img id="modalCouplePic" src="" alt="Polaroid Memory">
-      </div>
-      <div class="polaroid-note-body">
-        <div class="polaroid-date">✦ A Sweet Love Moment ✦</div>
-        <div id="secretMsg" class="polaroid-quote">"Whenever I am with you, I feel completely safe ❤️"</div>
-        <button class="polaroid-close-btn" onclick="closeSecretModal()">KEEP IN MY HEART ❤️</button>
+  <!-- 3D FLIP MEMORY MODAL -->
+  <div id="flipModal" class="flip-modal-overlay">
+    <div id="flipCardBox" class="flip-card-wrapper" onclick="toggleFlipCard()">
+      <div class="flip-card-inner">
+        <!-- Front Side -->
+        <div class="flip-card-front">
+          <img id="flipModalImg" src="" alt="Couple Memory">
+          <div class="flip-hint-tag">✦ Click to flip & read ✦</div>
+        </div>
+        <!-- Back Side -->
+        <div class="flip-card-back">
+          <h2>My Heart Whispers...</h2>
+          <p id="flipModalNote">"You are my favourite thought every single day!"</p>
+          <button class="flip-close-btn" onclick="event.stopPropagation(); closeFlipModal();">CLOSE WITH LOVE ❤️</button>
+        </div>
       </div>
     </div>
   </div>
@@ -1111,13 +1010,9 @@
     function switchPage(targetId) {
       document.querySelectorAll('.screen-page').forEach(p => p.classList.remove('active'));
       document.getElementById(targetId).classList.add('active');
-
-      if (targetId === 'page-rain') {
-        initSingleFilmReel();
-      }
     }
 
-    // PAGE 2: INTERACTIVE NO BUTTON & YES POPUP
+    // PAGE 2: INTERACTIVE CAN I HUG YOU?
     function dodgeNoButton() {
       const btn = document.getElementById('noBtn');
       const randomX = (Math.random() - 0.5) * (window.innerWidth * 0.6);
@@ -1153,80 +1048,21 @@
       }
     }
 
-    // PAGE 3: SINGLE FILM REEL
-    const aestheticCoupleMoments = [
-      {
-        pic: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=500',
-        msg: "I love you more than any words could ever explain 🥰"
-      },
-      {
-        pic: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=500',
-        msg: "Whenever I am with you, I feel completely safe and at peace ❤️"
-      },
-      {
-        pic: 'https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=500',
-        msg: "Holding your hand is my absolute favorite feeling in this world ✨"
-      },
-      {
-        pic: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=500',
-        msg: "Thank you for always being my biggest strength and safe space 🫂"
-      },
-      {
-        pic: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500',
-        msg: "You are the sweetest boy in the universe, and I am so lucky you're mine! 💋"
-      },
-      {
-        pic: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500',
-        msg: "Every small moment with you becomes my prettiest memory 🌸"
-      },
-      {
-        pic: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=500',
-        msg: "My smile is always widest whenever I look into your eyes 💫"
-      },
-      {
-        pic: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=500',
-        msg: "I love you endlessly, today, tomorrow, and forever and ever! 🌹"
-      }
-    ];
-
-    let reelBuilt = false;
-    function initSingleFilmReel() {
-      if (reelBuilt) return;
-      const leftTrack = document.getElementById('filmLeftTrack');
-
-      const doubleList = [...aestheticCoupleMoments, ...aestheticCoupleMoments];
-      doubleList.forEach(item => {
-        const frame = document.createElement('div');
-        frame.className = 'film-frame';
-        
-        const img = document.createElement('img');
-        img.src = item.pic;
-        frame.appendChild(img);
-
-        frame.onclick = () => openCreativePolaroid(item.pic, item.msg);
-        leftTrack.appendChild(frame);
-      });
-      reelBuilt = true;
+    // PAGE 3: 3D FLIP MEMORY MODAL LOGIC
+    function openFlipCard(picUrl, noteText) {
+      document.getElementById('flipModalImg').src = picUrl;
+      document.getElementById('flipModalNote').innerText = noteText;
+      const cardBox = document.getElementById('flipCardBox');
+      cardBox.classList.remove('flipped'); // Start from front
+      document.getElementById('flipModal').style.display = 'flex';
     }
 
-    function toggleEnvelope() {
-      const stage = document.getElementById('envelopeStage');
-      stage.classList.toggle('opened');
+    function toggleFlipCard() {
+      document.getElementById('flipCardBox').classList.toggle('flipped');
     }
 
-    function resetEnvelopePage() {
-      const stage = document.getElementById('envelopeStage');
-      if (stage) stage.classList.remove('opened');
-    }
-
-    function openCreativePolaroid(picUrl, text) {
-      document.getElementById('modalCouplePic').src = picUrl;
-      document.getElementById('secretMsg').innerText = text;
-      document.getElementById('secretModal').style.display = 'flex';
-    }
-
-    function closeSecretModal() {
-      document.getElementById('secretModal').style.display = 'none';
+    function closeFlipModal() {
+      document.getElementById('flipModal').style.display = 'none';
     }
   </script>
 </body>
