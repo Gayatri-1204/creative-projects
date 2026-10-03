@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Can We Go Out? 🥺🎒</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Montserrat:wght@600;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #241421 0%, #120914 65%, #080309 100%);
+      min-height: 100vh;
+      width: 100vw;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Ambient Warm Glow */
+    .glow-aura {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.2), transparent 70%);
+      filter: blur(95px);
+      pointer-events: none;
+    }
+
+    .main-box {
+      width: 100%;
+      max-width: 480px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 10;
+    }
+
+    /* Cartoon Stage Card */
+    .character-card {
+      width: clamp(260px, 35vw, 320px);
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(236, 72, 153, 0.35);
+      border-radius: 28px;
+      padding: 24px 20px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(236, 72, 153, 0.25);
+      margin-bottom: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .character-stage {
+      width: 100%;
+      height: 180px;
+      background: #fff0f5;
+      border-radius: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Stage 1: Pleading Girl Emoji Animation */
+    #pleadScene {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .plead-avatar {
+      font-size: 4.8rem;
+      animation: floatCute 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatCute {
+      0% { transform: translateY(0) rotate(-3deg); }
+      100% { transform: translateY(-8px) rotate(3deg); }
+    }
+
+    .avatar-label {
+      font-family: 'Fredoka', cursive;
+      font-size: 0.95rem;
+      color: #9d174d;
+      margin-top: 4px;
+    }
+
+    /* Stage 2: Study + Smirking Boy Scene (Hidden Initially) */
+    #studyScene {
+      display: none;
+      align-items: center;
+      justify-content: space-around;
+      width: 100%;
+      padding: 0 10px;
+      animation: popReaction 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    @keyframes popReaction {
+      0% { transform: scale(0.85); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .study-girl-box, .smug-boy-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .character-emoji {
+      font-size: 3.8rem;
+    }
+
+    .sub-role {
+      font-family: 'Fredoka', cursive;
+      font-size: 0.8rem;
+      color: #831843;
+      margin-top: 4px;
+      font-weight: 700;
+    }
+
+    /* Question & Dialog Area */
+    .dialog-title {
+      font-family: 'Fredoka', cursive;
+      font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+      color: #fbcfe8;
+      text-shadow: 0 4px 15px rgba(236, 72, 153, 0.5);
+      margin-bottom: 25px;
+      line-height: 1.3;
+    }
+
+    /* Buttons Arena */
+    .button-arena {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 80px;
+      position: relative;
+    }
+
+    .btn-study {
+      background: linear-gradient(135deg, #ec4899, #be185d);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(236, 72, 153, 0.45);
+      transition: transform 0.2s ease;
+      z-index: 2;
+    }
+
+    .btn-study:hover {
+      transform: scale(1.08);
+    }
+
+    .btn-trip {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fbcfe8;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 14px 26px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 40px;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: transform 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: absolute;
+      left: 15px;
+      z-index: 100;
+      user-select: none;
+    }
+
+    /* Final Study Motivation Box */
+    .reward-box {
+      display: none;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(236, 72, 153, 0.4);
+      border-radius: 20px;
+      padding: 20px 18px;
+      margin-top: 15px;
+      animation: fadeInText 0.5s ease forwards;
+    }
+
+    @keyframes fadeInText {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reward-box h3 {
+      font-family: 'Fredoka', cursive;
+      font-size: 1.4rem;
+      color: #f472b6;
+      margin-bottom: 6px;
+    }
+
+    .reward-box p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #fce7f3;
+      font-style: italic;
+    }
+
+    /* Floating Book & Heart Particles */
+    .study-particle {
+      position: absolute;
+      pointer-events: none;
+      animation: particleFly 1.8s ease-out forwards;
+      z-index: 1000;
+      user-select: none;
+    }
+
+    @keyframes particleFly {
+      0% { opacity: 1; transform: scale(0.5) translateY(0); }
+      100% { opacity: 0; transform: scale(1.4) translateY(-120px) translateX(var(--dx)); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-aura"></div>
+
+  <div class="main-box">
+
+    <div class="character-card">
+      <div class="character-stage">
+        
+        <!-- Scene 1: Girl Asking Cutey -->
+        <div id="pleadScene">
+          <div class="plead-avatar">🥺👉👈</div>
+          <div class="avatar-label">"Please aapan baher jauya na?"</div>
+        </div>
+
+        <!-- Scene 2: Girl Studying + Boy Smirking -->
+        <div id="studyScene">
+          <div class="study-girl-box">
+            <div class="character-emoji">🙇‍♀️📚</div>
+            <div class="sub-role">Rusun Abhyas 🥺</div>
+          </div>
+          <div style="font-size: 2rem;">⚡</div>
+          <div class="smug-boy-box">
+            <div class="character-emoji">😏☕</div>
+            <div class="sub-role">Proud Boyfriend</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Interactive Dialogue Section -->
+    <div id="questionArea">
+      <h1 class="dialog-title">"Can we please skip study & go on a cute date today? 🎒🍦"</h1>
+
+      <div class="button-arena">
+        <button id="tripBtn" class="btn-trip" onmouseover="dodgeTrip()" onclick="dodgeTrip()">Ho, Chala! 🥰</button>
+        <button class="btn-study" onclick="forceStudy()">Gapp Basun Study Kar! 📚😤</button>
+      </div>
+    </div>
+
+    <!-- Final Cute Message after clicking Study -->
+    <div id="rewardBox" class="reward-box">
+      <h3>Good Girl! Aata Focus! 💻📖</h3>
+      <p>"Chala, 1 tas shant pane study purna kara... nantar me swata tumhala tumchi favourite ice-cream khayla gheun jaen! Promissseee ❤️"</p>
+    </div>
+
+  </div>
+
+  <script>
+    let tripScale = 1;
+
+    function dodgeTrip() {
+      const btn = document.getElementById('tripBtn');
+      const maxRange = window.innerWidth <= 768 ? 120 : 220;
+
+      const x = (Math.random() - 0.5) * maxRange;
+      const y = (Math.random() - 0.5) * (maxRange * 0.7);
+
+      tripScale = Math.max(0.4, tripScale - 0.12);
+      btn.style.transform = `translate(${x}px, ${y}px) scale(${tripScale})`;
+    }
+
+    function forceStudy() {
+      // Switch Scenes
+      document.getElementById('pleadScene').style.display = 'none';
+      const studyStage = document.getElementById('studyScene');
+      studyStage.style.display = 'flex';
+
+      // Hide Questions, Show Reward
+      document.getElementById('questionArea').style.display = 'none';
+      document.getElementById('rewardBox').style.display = 'block';
+
+      burstStudySparks();
+    }
+
+    function burstStudySparks() {
+      const icons = ['📚', '☕', '✨', '💖', '🍦', '📖', '🌸'];
+      for (let i = 0; i < 30; i++) {
+        const item = document.createElement('div');
+        item.className = 'study-particle';
+        item.innerText = icons[Math.floor(Math.random() * icons.length)];
+        item.style.left = (Math.random() * 80 + 10) + 'vw';
+        item.style.top = '60vh';
+        item.style.fontSize = (Math.random() * 16 + 22) + 'px';
+        item.style.setProperty('--dx', (Math.random() - 0.5) * 160 + 'px');
+        document.body.appendChild(item);
+
+        setTimeout(() => item.remove(), 1800);
+      }
+    }
+  </script>
+</body>
+</html>
