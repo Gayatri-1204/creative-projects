@@ -81,7 +81,7 @@
       transform: translateY(0);
     }
 
-    /* सुबक GOLDEN STAR DIVIDER */
+    /* Subak GOLDEN STAR DIVIDER */
     .royal-star-divider {
       display: flex;
       align-items: center;
@@ -154,7 +154,7 @@
     }
 
     /* ========================================================
-       1. OPENING: COMPACT ROYAL PALACE DOOR (अपरिवर्तित)
+       1. OPENING: COMPACT ROYAL PALACE DOOR (Original Compact Size)
        ======================================================== */
     #doorScene {
       position: fixed;
@@ -506,7 +506,7 @@
     }
 
     /* ========================================================
-       MAIN PALACE CONTAINER (मोबाइलसाठी बेस स्टाईल)
+       MAIN PALACE CONTAINER (Mobile Base)
        ======================================================== */
     .palace-container {
       position: relative;
@@ -515,7 +515,7 @@
       max-width: 700px;
       margin: 0 auto;
       padding: 30px 18px 90px 18px;
-      transition: max-width 0.3s ease;
+      transition: max-width 0.3s ease, padding 0.3s ease;
     }
 
     /* GANPATI SECTION */
@@ -1283,143 +1283,228 @@
     }
 
     /* ========================================================
-       ✨ लॅपटॉप व डेस्कटॉपसाठी खास भव्य साईझ (DESKTOP ENHANCEMENTS)
+       ✨ LAPTOP & DESKTOP SAATHI AJUN THODISHI MOTHI SIZE
        ======================================================== */
     @media (min-width: 992px) {
       .palace-container {
-        max-width: 1050px; /* लॅपटॉपवर पूर्ण भव्य पसरेल */
-        padding: 50px 30px 120px 30px;
+        max-width: 1200px; /* Purya screen var bhariv disnyasathi ajun mothe */
+        padding: 60px 40px 140px 40px;
       }
 
-      /* गणेश प्रतिमा व मजकूर */
+      /* Ganesh Pratima & Shlok */
       .ganpati-image-photo {
-        width: 150px;
-        height: 150px;
+        width: 175px;
+        height: 175px;
       }
       .ganpati-glow {
-        width: 180px;
-        height: 180px;
+        width: 210px;
+        height: 210px;
       }
       .shri-ganeshaya {
-        font-size: 36px;
-        margin-bottom: 16px;
+        font-size: 40px;
+        margin-bottom: 18px;
+        letter-spacing: 3px;
       }
       .vakratunda-shloka {
-        font-size: 23px;
-        max-width: 750px;
-        line-height: 2;
+        font-size: 26px;
+        max-width: 880px;
+        line-height: 2.1;
       }
 
-      /* डिव्हायडर */
+      /* Divider */
       .royal-star-divider {
-        margin: 65px auto;
-        max-width: 460px;
+        margin: 75px auto;
+        max-width: 540px;
       }
       .divider-star-icon {
-        width: 28px;
-        height: 28px;
+        width: 32px;
+        height: 32px;
       }
 
-      /* मुख्य लग्न पत्रिका कार्ड */
+      /* Mukhya Wedding Card */
       .royal-card {
-        padding: 70px 60px;
-        border-width: 3px;
-        border-radius: 18px;
+        padding: 85px 80px;
+        border-width: 3.5px;
+        border-radius: 20px;
+        box-shadow: 0 25px 70px rgba(0,0,0,0.8), 0 0 45px rgba(212, 175, 55, 0.25);
       }
       .invitation-header-text {
-        font-size: 15px;
-        letter-spacing: 5px;
-        margin-bottom: 25px;
+        font-size: 17px;
+        letter-spacing: 6px;
+        margin-bottom: 30px;
       }
       .couple-name {
-        font-size: 54px;
-        letter-spacing: 4px;
+        font-size: 64px;
+        letter-spacing: 5px;
       }
       .parentage {
-        font-size: 17px;
-        margin-top: 8px;
+        font-size: 20px;
+        margin-top: 10px;
       }
       .ampersand {
-        font-size: 65px;
-        margin: 12px 0;
+        font-size: 78px;
+        margin: 16px 0;
       }
       .invitation-prose {
-        font-size: 19px;
-        max-width: 720px;
-        line-height: 2;
+        font-size: 22px;
+        max-width: 860px;
+        line-height: 2.1;
+        margin-top: 25px;
       }
       .corner-motif {
-        width: 50px;
-        height: 50px;
+        width: 58px;
+        height: 58px;
       }
 
-      /* स्क्रॅच कार्ड व काउंटडाउन */
+      /* Scratch Card & Countdown */
       .scratch-standalone-section {
-        max-width: 480px;
+        max-width: 540px;
+      }
+      .scratch-card-box {
+        padding: 30px 24px;
+      }
+      .scratch-lead-text {
+        font-size: 14px;
+        letter-spacing: 3.5px;
+        margin-bottom: 18px;
       }
       .scratch-stage {
-        height: 160px;
+        height: 180px;
       }
       .revealed-date {
-        font-size: 26px;
+        font-size: 30px;
       }
       .revealed-venue {
+        font-size: 18px;
+      }
+      .revealed-time {
         font-size: 16px;
       }
       .countdown-standalone-section {
-        max-width: 680px;
+        max-width: 800px;
+      }
+      .countdown-title {
+        font-size: 15px;
+        letter-spacing: 4px;
+        margin-bottom: 28px;
+      }
+      .hearts-row {
+        gap: 26px;
       }
       .heart-unit {
-        width: 110px;
-        height: 110px;
+        width: 125px;
+        height: 125px;
       }
       .heart-number {
-        font-size: 28px;
+        font-size: 34px;
       }
       .heart-label {
-        font-size: 12px;
+        font-size: 13.5px;
       }
       .royal-calendar-btn {
-        font-size: 13px;
-        padding: 13px 30px;
+        font-size: 14px;
+        padding: 15px 34px;
       }
 
-      /* कार्यक्रम (Events) */
+      /* Celebrations (Events) */
+      .section-headline {
+        font-size: 38px;
+        letter-spacing: 4.5px;
+      }
+      .section-subtext {
+        font-size: 18px;
+        margin-bottom: 45px;
+      }
       .events-grid {
-        gap: 30px;
+        gap: 35px;
       }
       .royal-event-box {
-        padding: 35px 25px;
+        padding: 42px 30px;
+      }
+      .event-icon-badge {
+        width: 65px;
+        height: 65px;
+        margin-bottom: 18px;
+      }
+      .event-card-svg {
+        width: 32px;
+        height: 32px;
       }
       .event-card-title {
-        font-size: 24px;
+        font-size: 26px;
+        letter-spacing: 3.5px;
       }
       .event-card-date {
-        font-size: 17px;
+        font-size: 19px;
+      }
+      .event-card-time {
+        font-size: 16px;
+      }
+      .event-card-place {
+        font-size: 15.5px;
       }
 
-      /* फोटो स्लाइडर */
+      /* Photo Slider */
       .slider-stage-wrapper {
-        max-width: 580px;
+        max-width: 680px;
       }
       .slider-viewport {
-        height: 520px;
+        height: 580px;
+        border-width: 3px;
       }
-      .btn-prev { left: -25px; width: 44px; height: 44px; font-size: 18px; }
-      .btn-next { right: -25px; width: 44px; height: 44px; font-size: 18px; }
+      .slide-caption-bar {
+        font-size: 18px;
+        bottom: 20px;
+      }
+      .btn-prev { left: -30px; width: 50px; height: 50px; font-size: 20px; }
+      .btn-next { right: -30px; width: 50px; height: 50px; font-size: 20px; }
+      .slider-counter {
+        font-size: 15px;
+      }
 
-      /* ठिकाण व आशीर्वाद */
+      /* Venue & WhatsApp Blessing Box */
       .venue-box, .blessing-box {
-        max-width: 650px;
+        max-width: 760px;
         margin: 0 auto;
-        padding: 38px 30px;
+        padding: 46px 36px;
       }
       .venue-place-name {
-        font-size: 32px;
+        font-size: 36px;
+      }
+      .venue-city {
+        font-size: 18px;
+        margin-bottom: 28px;
+      }
+      .venue-btn {
+        font-size: 13.5px;
+        padding: 13px 34px;
+      }
+      .blessing-input, .blessing-textarea {
+        font-size: 16px;
+        padding: 15px 18px;
+      }
+      .blessing-textarea {
+        height: 95px;
       }
       .whatsapp-btn {
-        font-size: 14px;
-        padding: 14px 34px;
+        font-size: 15px;
+        padding: 15px 38px;
+        max-width: 340px;
+      }
+
+      /* Footer */
+      .final-quote {
+        font-size: 26px;
+        max-width: 680px;
+        line-height: 2;
+      }
+      .final-couple-names {
+        font-size: 38px;
+        letter-spacing: 5px;
+      }
+      .final-footer-text {
+        font-size: 13px;
+        letter-spacing: 5px;
       }
     }
   </style>
@@ -1441,7 +1526,7 @@
     </defs>
   </svg>
 
-  <!-- Audio Element (येथे audio.mp3 सेट केले आहे) -->
+  <!-- Audio Element -->
   <audio id="weddingMusic" loop preload="auto">
     <source src="audio.mp3" type="audio/mpeg" />
   </audio>
@@ -1450,7 +1535,7 @@
   <div id="musicToggleBtn" class="music-widget" aria-label="Toggle Music">♫</div>
 
   <!-- ========================================================
-       1. OPENING: COMPACT ROYAL PALACE ENTRANCE (दाराची मूळ साईझ)
+       1. OPENING: COMPACT ROYAL PALACE ENTRANCE
        ======================================================== -->
   <div id="doorScene">
     <div class="palace-fog-layer"></div>
@@ -1530,7 +1615,7 @@
   </div>
 
   <!-- ========================================================
-       MAIN INVITATION CONTENT (लॅपटॉपवर भव्य व रुंद)
+       MAIN INVITATION CONTENT (Laptop var Grand & Wide)
        ======================================================== -->
   <div class="palace-container">
 
@@ -1621,7 +1706,7 @@
           <canvas id="scratchCanvas"></canvas>
         </div>
 
-        <!-- Google Calendar Button (स्क्रॅच केल्यावर दिसेल) -->
+        <!-- Google Calendar Button -->
         <div class="calendar-btn-wrap" id="calendarBtnWrap">
           <a class="royal-calendar-btn" 
              href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ashish+%26+Aarti+-+Wedding+Ceremony&dates=20261126T063000Z/20261126T103000Z&details=Bless+the+sacred+union+of+Ashish+%26+Aarti.+We+look+forward+to+welcoming+you!&location=Vadange,+Kolhapur,+Maharashtra" 
@@ -1632,7 +1717,7 @@
       </div>
     </section>
 
-    <!-- 6. LIVE COUNTDOWN (स्क्रॅच झाल्यावर हळूच प्रकट होईल) -->
+    <!-- 6. LIVE COUNTDOWN -->
     <section class="countdown-standalone-section" id="countdownSection">
       <div class="countdown-title">The Auspicious Muhurat Approaches</div>
 
@@ -1971,7 +2056,7 @@
         startAudio();
         doorScene.classList.add("opening");
 
-        // दरवाजा उघडताच गुलाबाच्या पाकळ्यांचा वर्षाव सुरू करणे
+        // Darwaja ughadtach gulabachya paklyancha varshav
         triggerGrandPetalShower();
 
         setTimeout(() => {
@@ -2050,9 +2135,7 @@
         ctx.arc(x, y, 22, 0, Math.PI * 2, false);
         ctx.fill();
 
-        // स्क्रॅच सुरू होताच काउंटडाउन आणि कॅलेंडर बटण दाखवणे
         triggerCountdownShow();
-
         spawnScratchSparkles(x, y);
         checkScratchProgress();
       }
@@ -2316,7 +2399,7 @@
 
     // 7. WHATSAPP BLESSING FUNCTION
     function sendWhatsAppBlessing() {
-      // तुमचा १० अंकी व्हॉट्सॲप नंबर ९१ सह येथे टाका
+      // Tujha 10 anki WhatsApp number ithe tak (uda. 919876543210)
       const hostWhatsAppNumber = "919876543210"; 
 
       const name = document.getElementById("guestName").value.trim() || "Well-wisher";
