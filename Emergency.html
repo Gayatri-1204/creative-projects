@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Emergency Love Kit ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-midnight: #080a14;
+      --bg-deep: #0e1222;
+      --burgundy: #4a1226;
+      --burgundy-glow: #8e1f43;
+      --soft-pink: #f7b7cb;
+      --warm-cream: #faf5ee;
+      --muted-cream: #d8cebe;
+      --gold: #dfb15b;
+      --gold-glow: rgba(223, 177, 91, 0.35);
+      --card-bg: rgba(25, 29, 48, 0.55);
+      --card-border: rgba(247, 183, 203, 0.18);
+      --card-border-hover: rgba(247, 183, 203, 0.45);
+      --glass-blur: blur(24px);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    body {
+      background-color: var(--bg-midnight);
+      color: var(--warm-cream);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow-x: hidden;
+      position: relative;
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(74, 18, 38, 0.5) 0%, transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(142, 31, 67, 0.3) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(14, 18, 34, 0.9) 0%, var(--bg-midnight) 100%);
+      background-attachment: fixed;
+    }
+
+    /* Ambient Canvas */
+    #ambientCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Confetti Canvas */
+    #fxCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    /* App Shell */
+    .app-viewport {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 20px;
+    }
+
+    /* Section Views */
+    .screen {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      display: none;
+      opacity: 0;
+      transform: translateY(18px) scale(0.985);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .screen.active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Typography */
+    .font-display {
+      font-family: var(--font-display);
+    }
+
+    /* =========================================
+       SCREEN 1: WELCOME SCREEN
+       ========================================= */
+    #screenWelcome {
+      text-align: center;
+      justify-content: center;
+      min-height: 82vh;
+    }
+
+    .kit-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 18px;
+      border-radius: 999px;
+      background: rgba(142, 31, 67, 0.25);
+      border: 1px solid rgba(247, 183, 203, 0.3);
+      backdrop-filter: var(--glass-blur);
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--soft-pink);
+      margin-bottom: 24px;
+      box-shadow: 0 0 25px rgba(247, 183, 203, 0.15);
+      animation: pulseBadge 3s ease-in-out infinite;
+    }
+
+    @keyframes pulseBadge {
+      0%, 100% { transform: scale(1); opacity: 0.95; }
+      50% { transform: scale(1.03); opacity: 1; box-shadow: 0 0 35px rgba(247, 183, 203, 0.3); }
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 7vw, 4.8rem);
+      line-height: 1.05;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--warm-cream);
+      margin-bottom: 18px;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.5), 0 0 40px rgba(247, 183, 203, 0.2);
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #fff 20%, var(--soft-pink) 65%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.05rem, 3vw, 1.4rem);
+      color: var(--muted-cream);
+      font-weight: 300;
+      max-width: 580px;
+      margin: 0 auto 12px;
+      line-height: 1.6;
+    }
+
+    .hero-small-notice {
+      font-size: 0.88rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.85;
+      margin-bottom: 44px;
+      font-weight: 500;
+    }
+
+    /* Primary Glowing Button */
+    .glow-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 18px 44px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      background: linear-gradient(135deg, var(--burgundy-glow) 0%, var(--burgundy) 60%, #200812 100%);
+      border: 1px solid rgba(247, 183, 203, 0.4);
+      border-radius: 999px;
+      cursor: pointer;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(142, 31, 67, 0.45), 0 0 50px rgba(247, 183, 203, 0.25);
+      transition: var(--transition-smooth);
+    }
+
+    .glow-btn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent 0deg, rgba(247, 183, 203, 0.4) 60deg, transparent 120deg);
+      animation: rotateGlow 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    .glow-btn span {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    @keyframes rotateGlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .glow-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 15px 50px rgba(142, 31, 67, 0.65), 0 0 70px rgba(247, 183, 203, 0.45);
+      border-color: rgba(247, 183, 203, 0.8);
+    }
+
+    .glow-btn:active {
+      transform: translateY(1px) scale(0.98);
+    }
+
+    /* =========================================
+       SCREEN 2: MAIN DASHBOARD (6 CARDS)
+       ========================================= */
+    #screenMain {
+      padding: 30px 0 60px;
+    }
+
+    .main-header {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .main-subtitle {
+      font-size: 0.82rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--soft-pink);
+      font-weight: 600;
+      margin-bottom: 8px;
+      opacity: 0.9;
+    }
+
+    .main-title {
+      font-size: clamp(2rem, 5.5vw, 3.4rem);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--warm-cream);
+    }
+
+    .progress-pill-wrapper {
+      margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      color: var(--muted-cream);
+    }
+
+    .progress-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .p-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+      transition: var(--transition-smooth);
+    }
+
+    .p-dot.done {
+      background: var(--soft-pink);
+      box-shadow: 0 0 10px var(--soft-pink);
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      width: 100%;
+      max-width: 1020px;
+    }
+
+    .kit-card {
+      position: relative;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 34px 24px 28px;
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      transition: var(--transition-smooth);
+      overflow: hidden;
+    }
+
+    .kit-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      background: radial-gradient(circle at 50% 0%, rgba(247, 183, 203, 0.15), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+    }
+
+    .kit-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: var(--card-border-hover);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45), 0 0 35px rgba(142, 31, 67, 0.25);
+    }
+
+    .kit-card:hover::before {
+      opacity: 1;
+    }
+
+    .kit-card:active {
+      transform: scale(0.97);
+    }
+
+    .card-icon {
+      font-size: 2.8rem;
+      margin-bottom: 14px;
+      filter: drop-shadow(0 4px 14px rgba(0,0,0,0.4));
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .kit-card:hover .card-icon {
+      transform: scale(1.18);
+    }
+
+    .card-label {
+      font-size: 1.12rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--warm-cream);
+      line-height: 1.3;
+    }
+
+    .card-hint {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--soft-pink);
+      opacity: 0.65;
+      margin-top: 10px;
+      transition: opacity 0.3s;
+    }
+
+    .kit-card:hover .card-hint {
+      opacity: 1;
+    }
+
+    .card-opened-tag {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--gold);
+      background: rgba(223, 177, 91, 0.12);
+      border: 1px solid rgba(223, 177, 91, 0.25);
+      border-radius: 999px;
+      padding: 3px 10px;
+      letter-spacing: 0.06em;
+      display: none;
+    }
+
+    .kit-card.opened .card-opened-tag {
+      display: block;
+    }
+
+    /* Secret Unlock Banner / Button */
+    .secret-button-container {
+      margin-top: 44px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .secret-button-container.unlocked {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .secret-btn {
+      padding: 18px 42px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(223, 177, 91, 0.2) 0%, rgba(142, 31, 67, 0.5) 100%);
+      border: 1.5px solid var(--gold);
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      backdrop-filter: var(--glass-blur);
+      box-shadow: 0 0 35px rgba(223, 177, 91, 0.35);
+      animation: secretPulse 2.5s infinite;
+      transition: var(--transition-smooth);
+    }
+
+    @keyframes secretPulse {
+      0%, 100% { box-shadow: 0 0 25px rgba(223, 177, 91, 0.3); transform: scale(1); }
+      50% { box-shadow: 0 0 45px rgba(223, 177, 91, 0.6); transform: scale(1.03); }
+    }
+
+    .secret-btn:hover {
+      background: linear-gradient(135deg, rgba(223, 177, 91, 0.4) 0%, rgba(142, 31, 67, 0.7) 100%);
+      transform: scale(1.06);
+    }
+
+    /* =========================================
+       MODAL: FULL-SCREEN EMOTIONAL EXPERIENCE
+       ========================================= */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(4, 5, 10, 0.88);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-panel {
+      position: relative;
+      width: 100%;
+      max-width: 680px;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: linear-gradient(170deg, rgba(26, 29, 48, 0.95) 0%, rgba(13, 15, 28, 0.98) 100%);
+      border: 1px solid rgba(247, 183, 203, 0.28);
+      border-radius: 32px;
+      padding: 44px 38px 40px;
+      text-align: center;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 60px rgba(142, 31, 67, 0.25);
+      transform: scale(0.9) translateY(20px);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      scrollbar-width: none;
+    }
+
+    .modal-panel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .modal-overlay.open .modal-panel {
+      transform: scale(1) translateY(0);
+    }
+
+    /* Close Floating Pill */
+    .btn-back {
+      margin-top: 36px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 32px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(247, 183, 203, 0.25);
+      border-radius: 999px;
+      color: var(--warm-cream);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-back:hover {
+      background: rgba(247, 183, 203, 0.2);
+      border-color: var(--soft-pink);
+      transform: translateY(-2px);
+    }
+
+    /* Modal Emotional Text Standard */
+    .modal-title {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 500;
+      color: var(--warm-cream);
+      margin-bottom: 24px;
+      line-height: 1.15;
+    }
+
+    .modal-body-text {
+      font-size: clamp(1.05rem, 2.8vw, 1.25rem);
+      color: var(--muted-cream);
+      line-height: 1.75;
+      font-weight: 300;
+      margin: 0 auto 20px;
+      max-width: 540px;
+      white-space: pre-line;
+    }
+
+    .modal-highlight {
+      color: var(--soft-pink);
+      font-weight: 500;
+      font-size: 1.18em;
+    }
+
+    /* =========================================
+       SPECIFIC VISUAL EXPERIENCES PER CARD
+       ========================================= */
+
+    /* CARD 1: HUG VISUAL (Warm Pulsing Embracing Heart Orbs) */
+    .hug-art {
+      width: 170px;
+      height: 170px;
+      margin: 0 auto 24px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hug-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(10px);
+      animation: hugBreathe 4s ease-in-out infinite alternate;
+    }
+
+    .hug-circle-1 {
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, #f7b7cb 0%, #8e1f43 70%, transparent 100%);
+      opacity: 0.75;
+      left: 14px;
+    }
+
+    .hug-circle-2 {
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, #dfb15b 0%, #4a1226 70%, transparent 100%);
+      opacity: 0.75;
+      right: 14px;
+      animation-delay: -2s;
+    }
+
+    .hug-center-glyph {
+      position: relative;
+      z-index: 3;
+      font-size: 4rem;
+      filter: drop-shadow(0 0 25px rgba(247, 183, 203, 0.7));
+      animation: heartbeat 2.2s ease-in-out infinite;
+    }
+
+    @keyframes hugBreathe {
+      0% { transform: scale(0.9) translate(-4px, 0); }
+      100% { transform: scale(1.15) translate(4px, 0); }
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.15); }
+      30% { transform: scale(1.02); }
+      45% { transform: scale(1.12); }
+      60% { transform: scale(1); }
+    }
+
+    /* CARD 2: BAD DAY (Glowing Starlit Sky) */
+    .badday-art {
+      width: 100%;
+      height: 140px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(8, 10, 20, 0.8) 0%, rgba(35, 20, 45, 0.4) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .candle-svg {
+      width: 50px;
+      height: 70px;
+      filter: drop-shadow(0 0 16px rgba(223, 177, 91, 0.8));
+    }
+
+    .flicker {
+      animation: candleFlicker 1.8s ease-in-out infinite alternate;
+      transform-origin: center bottom;
+    }
+
+    @keyframes candleFlicker {
+      0% { transform: scale(0.95) rotate(-2deg); opacity: 0.85; }
+      100% { transform: scale(1.12) rotate(2deg); opacity: 1; }
+    }
+
+    /* CARD 3: MISS YOU (Luminous Moon & Orbit) */
+    .moon-scene {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 24px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .moon-orb {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #fff 0%, #fbe8c5 45%, #dfb15b 80%, #7d5b1e 100%);
+      box-shadow: 0 0 45px rgba(223, 177, 91, 0.6), inset -6px -6px 14px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .moon-halo {
+      position: absolute;
+      inset: -15px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(223, 177, 91, 0.25) 0%, transparent 70%);
+      animation: pulseMoon 4s ease-in-out infinite alternate;
+    }
+
+    .moon-orbit-particle {
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      border: 1px dashed rgba(247, 183, 203, 0.3);
+      border-radius: 50%;
+      animation: spinOrbit 12s linear infinite;
+    }
+
+    .moon-orbit-particle::after {
+      content: '❤️';
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      font-size: 0.95rem;
+      transform: translateX(-50%);
+    }
+
+    @keyframes pulseMoon {
+      0% { transform: scale(0.95); opacity: 0.6; }
+      100% { transform: scale(1.2); opacity: 0.95; }
+    }
+
+    @keyframes spinOrbit {
+      to { transform: rotate(360deg); }
+    }
+
+    /* CARD 4: ANGRY (Calming Breathing Widget) */
+    .breath-box {
+      width: 170px;
+      height: 170px;
+      margin: 18px auto 26px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .breath-circle {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(247, 183, 203, 0.5) 0%, rgba(142, 31, 67, 0.1) 70%);
+      border: 1.5px solid var(--soft-pink);
+      box-shadow: 0 0 30px rgba(247, 183, 203, 0.4);
+      animation: breatheInOut 8s ease-in-out infinite;
+    }
+
+    .breath-text-indicator {
+      position: relative;
+      z-index: 4;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    @keyframes breatheInOut {
+      0%, 100% {
+        transform: scale(0.95);
+        border-color: rgba(247, 183, 203, 0.4);
+        box-shadow: 0 0 20px rgba(247, 183, 203, 0.2);
+      }
+      50% {
+        transform: scale(1.85);
+        border-color: var(--gold);
+        box-shadow: 0 0 45px rgba(223, 177, 91, 0.55);
+      }
+    }
+
+    /* CARD 5: SMILE (Interactive Penguin Protocol) */
+    .penguin-wrap {
+      width: 150px;
+      height: 150px;
+      margin: 10px auto 22px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .penguin-waddle {
+      font-size: 4.8rem;
+      display: inline-block;
+      animation: waddle 0.65s ease-in-out infinite alternate;
+      cursor: pointer;
+    }
+
+    @keyframes waddle {
+      0% { transform: rotate(-14deg) translateY(0); }
+      100% { transform: rotate(14deg) translateY(-8px); }
+    }
+
+    .protocol-step-box {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .protocol-msg {
+      font-size: 1.3rem;
+      color: var(--warm-cream);
+      font-weight: 500;
+      animation: fadeInMsg 0.4s ease forwards;
+    }
+
+    @keyframes fadeInMsg {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* CARD 6: LOVE CONFESSION (Glowing Grand Heart) */
+    .grand-heart-box {
+      width: 140px;
+      height: 130px;
+      margin: 0 auto 20px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .grand-heart-svg {
+      width: 90px;
+      height: 90px;
+      fill: url(#heartGradient);
+      filter: drop-shadow(0 0 30px rgba(247, 183, 203, 0.8));
+      animation: grandBeat 1.8s ease-in-out infinite;
+    }
+
+    @keyframes grandBeat {
+      0%, 100% { transform: scale(1); }
+      18% { transform: scale(1.22); }
+      32% { transform: scale(1.08); }
+      48% { transform: scale(1.18); }
+    }
+
+    /* =========================================
+       SCREEN 3: SECRET SURPRISE OVERLAY
+       ========================================= */
+    #screenSecret {
+      text-align: center;
+      justify-content: center;
+      min-height: 85vh;
+    }
+
+    .secret-scene-title {
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      font-weight: 500;
+      color: var(--warm-cream);
+      margin-bottom: 22px;
+    }
+
+    .secret-story-text {
+      font-size: clamp(1.15rem, 3.2vw, 1.45rem);
+      color: var(--muted-cream);
+      line-height: 1.8;
+      max-width: 580px;
+      margin: 0 auto 30px;
+      min-height: 120px;
+    }
+
+    /* =========================================
+       SCREEN 4: FINAL STATUS RECEIPT SCREEN
+       ========================================= */
+    #screenFinal {
+      padding: 40px 16px 60px;
+      text-align: center;
+    }
+
+    .status-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(223, 177, 91, 0.3);
+      border-radius: 28px;
+      backdrop-filter: var(--glass-blur);
+      width: 100%;
+      max-width: 540px;
+      padding: 38px 28px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(223, 177, 91, 0.15);
+      margin: 0 auto 28px;
+    }
+
+    .status-title {
+      font-size: 1.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
+
+    .receipt-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      text-align: left;
+      margin-bottom: 28px;
+    }
+
+    .receipt-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.98rem;
+    }
+
+    .receipt-item span:first-child {
+      color: var(--warm-cream);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .receipt-status {
+      font-weight: 600;
+      color: var(--soft-pink);
+      font-size: 0.88rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .receipt-status.gold {
+      color: var(--gold);
+    }
+
+    .final-closing {
+      font-size: 1.15rem;
+      color: var(--muted-cream);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    /* =========================================
+       RESPONSIVENESS (MOBILE FRIENDLY)
+       ========================================= */
+    @media (max-width: 900px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .app-viewport {
+        padding: 20px 16px;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .kit-card {
+        min-height: 150px;
+        padding: 24px 20px;
+        flex-direction: row;
+        justify-content: flex-start;
+        text-align: left;
+        gap: 20px;
+      }
+
+      .card-icon {
+        font-size: 2.3rem;
+        margin-bottom: 0;
+      }
+
+      .card-text-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .card-hint {
+        margin-top: 4px;
+      }
+
+      .modal-panel {
+        padding: 34px 22px 30px;
+        border-radius: 26px;
+      }
+
+      .glow-btn {
+        width: 100%;
+        max-width: 320px;
+        padding: 16px 28px;
+        font-size: 0.95rem;
+      }
+
+      .status-card {
+        padding: 26px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Stars & Heart Dust Canvas -->
+  <canvas id="ambientCanvas"></canvas>
+
+  <!-- Special FX / Confetti Canvas -->
+  <canvas id="fxCanvas"></canvas>
+
+  <!-- SVG Gradient Definitions -->
+  <svg width="0" height="0" style="position: absolute;">
+    <defs>
+      <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fff" />
+        <stop offset="40%" stop-color="#f7b7cb" />
+        <stop offset="100%" stop-color="#8e1f43" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <div class="app-viewport">
+
+    <!-- ========================================================
+         SCREEN 1: WELCOME SCREEN
+         ======================================================== -->
+    <section id="screenWelcome" class="screen active">
+      <div class="kit-badge">
+        <span>🚨</span>
+        <span>PRIORITY DISPATCH</span>
+      </div>
+
+      <h1 class="hero-title font-display">
+        EMERGENCY <span>LOVE KIT</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        For the person who needs a little extra love, comfort, and peace today.
+      </p>
+
+      <p class="hero-small-notice">
+        Open only when necessary. ❤️
+      </p>
+
+      <button id="btnOpenKit" class="glow-btn">
+        <span>OPEN THE KIT ❤️</span>
+      </button>
+    </section>
+
+    <!-- ========================================================
+         SCREEN 2: MAIN KIT DASHBOARD
+         ======================================================== -->
+    <section id="screenMain" class="screen">
+      <header class="main-header">
+        <p class="main-subtitle">FIRST AID FOR THE HEART</p>
+        <h2 class="main-title font-display">WHAT DO YOU NEED RIGHT NOW?</h2>
+        <div class="progress-pill-wrapper">
+          <span>Kit Remedies Used:</span>
+          <div class="progress-dots" id="progressDots">
+            <span class="p-dot" data-index="1"></span>
+            <span class="p-dot" data-index="2"></span>
+            <span class="p-dot" data-index="3"></span>
+            <span class="p-dot" data-index="4"></span>
+            <span class="p-dot" data-index="5"></span>
+            <span class="p-dot" data-index="6"></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- 6 Interactive Cards -->
+      <div class="cards-grid">
+        <!-- CARD 1 -->
+        <article class="kit-card" data-card="1">
+          <span class="card-opened-tag">OPENED</span>
+          <div class="card-icon">🫂</div>
+          <div class="card-text-wrapper">
+            <h3 class="card-label">I NEED A HUG</h3>
+            <p class="card-hint">Warm embrace &amp; sanctuary</p>
+          </div>
+        </article>
+
+        <!-- CARD 2 -->
+        <article class="kit-card" data-card="2">
+          <span class="card-opened-tag">OPENED</span>
+          <div class="card-icon">😔</div>
+          <div class="card-text-wrapper">
+            <h3 class="card-label">I'M HAVING A BAD DAY</h3>
+            <p class="card-hint">Quiet comfort &amp; reset</p>
+          </div>
+        </article>
+
+        <!-- CARD 3 -->
+        <article class="kit-card" data-card="3">
+          <span class="card-opened-tag">OPENED</span>
+          <div class="card-icon">💭</div>
+          <div class="card-text-wrapper">
+            <h3 class="card-label">I MISS YOU</h3>
+            <p class="card-hint">Under the same moon</p>
+          </div>
+        </article>
+
+        <!-- CARD 4 -->
+        <article class="kit-card" data-card="4">
+          <span class="card-opened-tag">OPENED</span>
+          <div class="card-icon">😤</div>
+          <div class="card-text-wrapper">
+            <h3 class="card-label">I'M ANGRY</h3>
+            <p class="card-hint">Release, breathe &amp; exhale</p>
+          </div>
+        </article>
+
+        <!-- CARD 5 -->
+        <article class="kit-card" data-card="5">
+          <span class="card-opened-tag">OPENED</span>
+          <div class="card-icon">😂</div>
+          <div class="card-text-wrapper">
+            <h3 class="card-label">MAKE ME SMILE</h3>
+            <p class="card-hint">Emergency laughter protocol</p>
+          </div>
+        </article>
+
+        <!-- CARD 6 -->
+        <article class="kit-card" data-card="6">
+          <span class="card-opened-tag">OPENED</span>
+          <div class="card-icon">❤️</div>
+          <div class="card-text-wrapper">
+            <h3 class="card-label">TELL ME YOU LOVE ME</h3>
+            <p class="card-hint">Unconditional reminder</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Secret Unlock Button Container (revealed when all 6 cards opened) -->
+      <div id="secretButtonBox" class="secret-button-container">
+        <button id="btnSecretUnlock" class="secret-btn">
+          🔓 ONE LAST THING...
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SCREEN 3: SECRET SURPRISE EXPERIENCE
+         ======================================================== -->
+    <section id="screenSecret" class="screen">
+      <div class="grand-heart-box">
+        <svg class="grand-heart-svg" viewBox="0 0 24 24">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      </div>
+
+      <h2 class="secret-scene-title font-display">Emergency Kit Complete.</h2>
+      
+      <p id="secretText" class="secret-story-text">
+        Preparing final message...
+      </p>
+
+      <button id="btnGoToFinalStatus" class="glow-btn" style="opacity: 0; pointer-events: none; transition: opacity 0.8s ease;">
+        <span>VIEW KIT DISPATCH STATUS 📜</span>
+      </button>
+    </section>
+
+    <!-- ========================================================
+         SCREEN 4: FINAL STATUS RECEIPT SCREEN
+         ======================================================== -->
+    <section id="screenFinal" class="screen">
+      <div class="status-card">
+        <h2 class="status-title font-display">EMERGENCY KIT STATUS</h2>
+
+        <ul class="receipt-list">
+          <li class="receipt-item">
+            <span>🫂 Hug</span>
+            <span class="receipt-status">Delivered</span>
+          </li>
+          <li class="receipt-item">
+            <span>❤️ Love</span>
+            <span class="receipt-status">Delivered</span>
+          </li>
+          <li class="receipt-item">
+            <span>😂 Smile</span>
+            <span class="receipt-status">Detected</span>
+          </li>
+          <li class="receipt-item">
+            <span>🌙 Comfort</span>
+            <span class="receipt-status">Delivered</span>
+          </li>
+          <li class="receipt-item">
+            <span>💭 Missing You</span>
+            <span class="receipt-status">Confirmed</span>
+          </li>
+          <li class="receipt-item">
+            <span>✨ Special Person</span>
+            <span class="receipt-status gold">Confirmed</span>
+          </li>
+        </ul>
+
+        <p class="final-closing">
+          That's all for today.<br>
+          <strong style="color: var(--soft-pink); font-size: 1.15em;">Until the next emergency... ❤️</strong>
+        </p>
+
+        <button id="btnRestartKit" class="glow-btn" style="width: 100%;">
+          <span>OPEN THE KIT AGAIN 🔄</span>
+        </button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ========================================================
+       MODAL POPUPS FOR EACH INDIVIDUAL CARD
+       ======================================================== -->
+  <div id="modalOverlay" class="modal-overlay">
+    <div class="modal-panel" id="modalPanel">
+      
+      <!-- DYNAMIC CONTENT WILL BE INJECTED HERE -->
+      <div id="modalDynamicArea"></div>
+
+      <button id="btnCloseModal" class="btn-back">
+        <span>← BACK TO THE KIT</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       VANILLA JAVASCRIPT ENGINE
+       ======================================================== -->
+  <script>
+    /* ==========================================================
+       1. AMBIENT BACKGROUND CANVAS (Stars + Slow Hearts)
+       ========================================================== */
+    const ambientCanvas = document.getElementById('ambientCanvas');
+    const actx = ambientCanvas.getContext('2d');
+    let width = ambientCanvas.width = window.innerWidth;
+    let height = ambientCanvas.height = window.innerHeight;
+
+    const stars = [];
+    const numStars = 65;
+
+    for (let i = 0; i < numStars; i++) {
+      stars.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: Math.random() * 1.5 + 0.5,
+        alpha: Math.random() * 0.7 + 0.2,
+        speed: Math.random() * 0.015 + 0.005,
+        phase: Math.random() * Math.PI * 2
+      });
+    }
+
+    const floatingHearts = [];
+    const numAmbientHearts = 14;
+
+    for (let i = 0; i < numAmbientHearts; i++) {
+      floatingHearts.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        size: Math.random() * 12 + 8,
+        speedY: Math.random() * 0.4 + 0.2,
+        swing: Math.random() * 0.02 + 0.01,
+        swingOffset: Math.random() * Math.PI * 2,
+        alpha: Math.random() * 0.35 + 0.12
+      });
+    }
+
+    function drawAmbient() {
+      actx.clearRect(0, 0, width, height);
+
+      // Draw Twinkling Stars
+      for (let s of stars) {
+        s.phase += s.speed;
+        const currentAlpha = s.alpha + Math.sin(s.phase) * 0.25;
+        actx.fillStyle = `rgba(250, 245, 238, ${Math.max(0.1, Math.min(0.9, currentAlpha))})`;
+        actx.beginPath();
+        actx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        actx.fill();
+      }
+
+      // Draw Ambient Drifting Hearts
+      for (let h of floatingHearts) {
+        h.y -= h.speedY;
+        h.swingOffset += h.swing;
+        const currentX = h.x + Math.sin(h.swingOffset) * 20;
+
+        if (h.y < -30) {
+          h.y = height + 30;
+          h.x = Math.random() * width;
+        }
+
+        drawHeart(actx, currentX, h.y, h.size, `rgba(247, 183, 203, ${h.alpha})`);
+      }
+
+      requestAnimationFrame(drawAmbient);
+    }
+
+    function drawHeart(ctx, x, y, size, color) {
+      ctx.save();
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      const topCurveHeight = size * 0.3;
+      ctx.moveTo(x, y + topCurveHeight);
+      ctx.bezierCurveTo(x, y, x - size / 2, y, x - size / 2, y + topCurveHeight);
+      ctx.bezierCurveTo(x - size / 2, y + (size + topCurveHeight) / 2, x, y + (size + topCurveHeight) / 1.3, x, y + size);
+      ctx.bezierCurveTo(x, y + (size + topCurveHeight) / 1.3, x + size / 2, y + (size + topCurveHeight) / 2, x + size / 2, y + topCurveHeight);
+      ctx.bezierCurveTo(x + size / 2, y, x, y, x, y + topCurveHeight);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    }
+
+    drawAmbient();
+
+    window.addEventListener('resize', () => {
+      width = ambientCanvas.width = fxCanvas.width = window.innerWidth;
+      height = ambientCanvas.height = fxCanvas.height = window.innerHeight;
+    });
+
+    /* ==========================================================
+       2. BURST & CONFETTI CANVAS ENGINE
+       ========================================================== */
+    const fxCanvas = document.getElementById('fxCanvas');
+    const fctx = fxCanvas.getContext('2d');
+    fxCanvas.width = width;
+    fxCanvas.height = height;
+
+    let particles = [];
+
+    function triggerHeartBurst(originX, originY, count = 28) {
+      for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = Math.random() * 6 + 2;
+        particles.push({
+          type: 'heart',
+          x: originX || width / 2,
+          y: originY || height / 2,
+          vx: Math.cos(angle) * velocity,
+          vy: Math.sin(angle) * velocity - 2,
+          size: Math.random() * 14 + 10,
+          alpha: 1,
+          decay: Math.random() * 0.015 + 0.01,
+          color: ['#f7b7cb', '#dfb15b', '#ffffff', '#8e1f43'][Math.floor(Math.random() * 4)]
+        });
+      }
+    }
+
+    function triggerConfettiBurst(originX, originY, count = 70) {
+      for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = Math.random() * 8 + 3;
+        particles.push({
+          type: 'confetti',
+          x: originX || width / 2,
+          y: originY || height / 2,
+          vx: Math.cos(angle) * velocity,
+          vy: Math.sin(angle) * velocity - 3,
+          size: Math.random() * 8 + 4,
+          w: Math.random() * 10 + 6,
+          h: Math.random() * 6 + 4,
+          rot: Math.random() * 360,
+          rotSpeed: Math.random() * 10 - 5,
+          alpha: 1,
+          decay: Math.random() * 0.012 + 0.008,
+          color: ['#f7b7cb', '#dfb15b', '#ffffff', '#ff6b8b', '#7ae7c7'][Math.floor(Math.random() * 5)]
+        });
+      }
+    }
+
+    function updateFX() {
+      fctx.clearRect(0, 0, width, height);
+
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.12; // gravity
+        p.alpha -= p.decay;
+
+        if (p.alpha <= 0) {
+          particles.splice(i, 1);
+          continue;
+        }
+
+        if (p.type === 'heart') {
+          drawHeart(fctx, p.x, p.y, p.size, hexToRgba(p.color, p.alpha));
+        } else if (p.type === 'confetti') {
+          fctx.save();
+          fctx.translate(p.x, p.y);
+          p.rot += p.rotSpeed;
+          fctx.rotate((p.rot * Math.PI) / 180);
+          fctx.fillStyle = hexToRgba(p.color, p.alpha);
+          fctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          fctx.restore();
+        }
+      }
+
+      requestAnimationFrame(updateFX);
+    }
+
+    function hexToRgba(hex, a) {
+      if (hex.startsWith('#')) {
+        let c = hex.substring(1);
+        if (c.length === 3) c = c.split('').map(x => x + x).join('');
+        const num = parseInt(c, 16);
+        return `rgba(${(num >> 16) & 255}, ${(num >> 8) & 255}, ${num & 255}, ${a})`;
+      }
+      return hex;
+    }
+
+    updateFX();
+
+    /* ==========================================================
+       3. SCREEN NAVIGATION & STATE MANAGEMENT
+       ========================================================== */
+    const screens = {
+      welcome: document.getElementById('screenWelcome'),
+      main: document.getElementById('screenMain'),
+      secret: document.getElementById('screenSecret'),
+      final: document.getElementById('screenFinal')
+    };
+
+    function switchScreen(targetScreenKey) {
+      Object.values(screens).forEach(screen => {
+        screen.classList.remove('active');
+        screen.style.display = 'none';
+      });
+
+      const next = screens[targetScreenKey];
+      next.style.display = 'flex';
+      setTimeout(() => {
+        next.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 30);
+    }
+
+    // "OPEN THE KIT" button transition
+    document.getElementById('btnOpenKit').addEventListener('click', (e) => {
+      triggerHeartBurst(e.clientX, e.clientY, 35);
+      setTimeout(() => {
+        switchScreen('main');
+      }, 450);
+    });
+
+    /* ==========================================================
+       4. CARDS & TRACKING SYSTEM
+       ========================================================= */
+    const openedCards = new Set();
+    const totalCards = 6;
+    const progressDots = document.querySelectorAll('.p-dot');
+    const secretButtonBox = document.getElementById('secretButtonBox');
+
+    function markCardOpened(cardNumber) {
+      openedCards.add(cardNumber);
+
+      // Highlight card visually
+      const cardEl = document.querySelector(`.kit-card[data-card="${cardNumber}"]`);
+      if (cardEl) cardEl.classList.add('opened');
+
+      // Update dots
+      progressDots.forEach(dot => {
+        const idx = parseInt(dot.getAttribute('data-index'));
+        if (openedCards.has(idx)) {
+          dot.classList.add('done');
+        }
+      });
+
+      // Check unlock condition
+      if (openedCards.size >= totalCards) {
+        setTimeout(() => {
+          secretButtonBox.classList.add('unlocked');
+          secretButtonBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 500);
+      }
+    }
+
+    /* ==========================================================
+       5. MODAL DATA & DYNAMIC INJECTION
+       ========================================================== */
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalDynamicArea = document.getElementById('modalDynamicArea');
+    const btnCloseModal = document.getElementById('btnCloseModal');
+
+    const cardContentMap = {
+      1: {
+        render: () => `
+          <div class="hug-art">
+            <div class="hug-circle hug-circle-1"></div>
+            <div class="hug-circle hug-circle-2"></div>
+            <div class="hug-center-glyph">🫂</div>
+          </div>
+          <h2 class="modal-title font-display">Come here. 🫂</h2>
+          <p class="modal-body-text">
+            If I could be there right now,
+            I'd give you the longest hug
+            and refuse to let go for a while.
+          </p>
+          <p class="modal-body-text modal-highlight">
+            You don't have to say anything.
+            Just stay here for a moment. ❤️
+          </p>
+        `,
+        onOpen: () => triggerHeartBurst(width / 2, height / 2, 22)
+      },
+
+      2: {
+        render: () => `
+          <div class="badday-art">
+            <svg class="candle-svg" viewBox="0 0 40 60">
+              <path class="flicker" d="M20 5 C22 15, 26 18, 20 28 C14 18, 18 15, 20 5" fill="#dfb15b"/>
+              <rect x="17" y="27" width="6" height="5" fill="#faf5ee" opacity="0.6"/>
+              <rect x="12" y="32" width="16" height="26" rx="3" fill="#f7b7cb" opacity="0.85"/>
+            </svg>
+          </div>
+          <h2 class="modal-title font-display">Hey... it's okay. ❤️</h2>
+          <p class="modal-body-text">
+            Not every day has to be a good day.
+          </p>
+          <p class="modal-body-text">
+            Take a breath. Forget everything for a minute.
+            You've survived every difficult day before this one.
+          </p>
+          <p class="modal-body-text modal-highlight">
+            And tomorrow gets another chance. ✨
+          </p>
+        `,
+        onOpen: () => {}
+      },
+
+      3: {
+        render: () => `
+          <div class="moon-scene">
+            <div class="moon-halo"></div>
+            <div class="moon-orb"></div>
+            <div class="moon-orbit-particle"></div>
+          </div>
+          <h2 class="modal-title font-display">Look at the moon tonight 🌙</h2>
+          <p class="modal-body-text">
+            Missing someone is just love
+            with nowhere to go. 💭
+          </p>
+          <p class="modal-body-text">
+            So until I can see you again...
+            look at the moon tonight.
+            Maybe we're looking at the same one.
+          </p>
+          <p class="modal-body-text modal-highlight">
+            Consider this your virtual hug. 🌙❤️
+          </p>
+        `,
+        onOpen: () => triggerHeartBurst(width / 2, height * 0.45, 18)
+      },
+
+      4: {
+        render: () => `
+          <h2 class="modal-title font-display">Okay. You're allowed to be angry. 😤</h2>
+          <p class="modal-body-text">
+            Take a deep breath with me.
+          </p>
+          
+          <div class="breath-box">
+            <div class="breath-circle"></div>
+            <div class="breath-text-indicator" id="breathIndicatorText">BREATHE IN</div>
+          </div>
+
+          <div id="angryFollowup" style="opacity: 0; transition: opacity 0.8s ease;">
+            <p class="modal-body-text" style="font-size: 1.3rem; color: var(--gold); font-weight: 600;">
+              Better?
+            </p>
+            <p class="modal-body-text modal-highlight">
+              Now come here.
+              We can talk about it. ❤️
+            </p>
+          </div>
+        `,
+        onOpen: () => {
+          let isInhale = true;
+          const indicator = document.getElementById('breathIndicatorText');
+          const followup = document.getElementById('angryFollowup');
+
+          const breathInterval = setInterval(() => {
+            if (!indicator) return;
+            isInhale = !isInhale;
+            indicator.textContent = isInhale ? "BREATHE IN" : "BREATHE OUT";
+          }, 4000);
+
+          setTimeout(() => {
+            if (followup) followup.style.opacity = '1';
+          }, 4500);
+
+          return () => clearInterval(breathInterval);
+        }
+      },
+
+      5: {
+        render: () => `
+          <div class="penguin-wrap">
+            <div class="penguin-waddle" id="penguinEmoji">🐧</div>
+          </div>
+          
+          <div class="protocol-step-box">
+            <div id="smileProtocolMsg" class="protocol-msg font-display">
+              Okay. Emergency smile protocol activated. 🚨😂
+            </div>
+          </div>
+
+          <p id="smileStatusNotice" class="modal-body-text modal-highlight" style="opacity: 0; transition: opacity 0.6s ease;">
+            MISSION STATUS:<br>SMILE DETECTED. 😎❤️
+          </p>
+        `,
+        onOpen: () => {
+          const msgEl = document.getElementById('smileProtocolMsg');
+          const noticeEl = document.getElementById('smileStatusNotice');
+          const penguin = document.getElementById('penguinEmoji');
+
+          const steps = [
+            { text: "Okay. Emergency smile protocol activated. 🚨😂", time: 700 },
+            { text: "Did you smile yet?", time: 2300 },
+            { text: "No? Okay...", time: 3900 },
+            { text: "Imagine a penguin trying to run on slippery ice... 🐧💨", time: 5400 },
+            { text: "Still nothing?", time: 7200 }
+          ];
+
+          let timers = [];
+
+          steps.forEach(s => {
+            timers.push(setTimeout(() => {
+              if (msgEl) msgEl.textContent = s.text;
+            }, s.time));
+          });
+
+          // Final smile detected & confetti
+          timers.push(setTimeout(() => {
+            if (msgEl) msgEl.textContent = "There it is! 🥰";
+            if (noticeEl) noticeEl.style.opacity = '1';
+            triggerConfettiBurst(width / 2, height / 2, 80);
+          }, 8600));
+
+          if (penguin) {
+            penguin.addEventListener('click', () => {
+              triggerConfettiBurst(width / 2, height / 2, 45);
+            });
+          }
+
+          return () => timers.forEach(t => clearTimeout(t));
+        }
+      },
+
+      6: {
+        render: () => `
+          <div class="grand-heart-box">
+            <svg class="grand-heart-svg" viewBox="0 0 24 24">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </div>
+          <h2 class="modal-title font-display">Do you really need me to say it?</h2>
+          
+          <div id="loveRevealBox" style="opacity: 0; transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);">
+            <p class="modal-body-text" style="font-size: 1.6rem; color: #fff; font-weight: 600; margin-bottom: 16px;">
+              I LOVE YOU. ❤️
+            </p>
+            <p class="modal-body-text">
+              On the good days.<br>
+              On the bad days.<br>
+              When we're laughing.<br>
+              When we're annoyed.<br>
+              When we're far apart.<br>
+              And especially when you need to hear it.
+            </p>
+            <p class="modal-body-text modal-highlight">
+              You are loved.<br>More than you probably realize.
+            </p>
+          </div>
+        `,
+        onOpen: () => {
+          let t = setTimeout(() => {
+            const el = document.getElementById('loveRevealBox');
+            if (el) el.style.opacity = '1';
+            triggerHeartBurst(width / 2, height / 2, 40);
+          }, 1400);
+
+          return () => clearTimeout(t);
+        }
+      }
+    };
+
+    let activeModalCleanup = null;
+
+    // Attach click listeners to cards
+    document.querySelectorAll('.kit-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        const cardNumber = parseInt(card.getAttribute('data-card'));
+        openCardModal(cardNumber);
+      });
+    });
+
+    function openCardModal(cardNumber) {
+      if (activeModalCleanup) activeModalCleanup();
+
+      const config = cardContentMap[cardNumber];
+      if (!config) return;
+
+      modalDynamicArea.innerHTML = config.render();
+      modalOverlay.classList.add('open');
+
+      if (config.onOpen) {
+        activeModalCleanup = config.onOpen();
+      }
+
+      markCardOpened(cardNumber);
+    }
+
+    function closeModal() {
+      modalOverlay.classList.remove('open');
+      if (activeModalCleanup) {
+        activeModalCleanup();
+        activeModalCleanup = null;
+      }
+      triggerHeartBurst(width / 2, height / 2, 16);
+    }
+
+    btnCloseModal.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) closeModal();
+    });
+
+    /* ==========================================================
+       6. SECRET SURPRISE EXPERIENCE
+       ========================================================== */
+    const btnSecretUnlock = document.getElementById('btnSecretUnlock');
+    const secretText = document.getElementById('secretText');
+    const btnGoToFinalStatus = document.getElementById('btnGoToFinalStatus');
+
+    btnSecretUnlock.addEventListener('click', () => {
+      switchScreen('secret');
+      triggerHeartBurst(width / 2, height / 2, 50);
+
+      const secretScript = [
+        { text: "Emergency Kit Complete.", delay: 600 },
+        { text: "But there's one thing this kit can't fix...", delay: 2800 },
+        { text: "Being away from you.", delay: 5200 },
+        { text: "Come back soon. ❤️", delay: 7600 }
+      ];
+
+      secretScript.forEach(item => {
+        setTimeout(() => {
+          secretText.style.opacity = '0';
+          setTimeout(() => {
+            secretText.innerHTML = `<span style="color: var(--soft-pink); font-size: 1.25em;">${item.text}</span>`;
+            secretText.style.opacity = '1';
+          }, 300);
+        }, item.delay);
+      });
+
+      setTimeout(() => {
+        btnGoToFinalStatus.style.opacity = '1';
+        btnGoToFinalStatus.style.pointerEvents = 'auto';
+        triggerHeartBurst(width / 2, height * 0.4, 30);
+      }, 9800);
+    });
+
+    btnGoToFinalStatus.addEventListener('click', () => {
+      switchScreen('final');
+      triggerConfettiBurst(width / 2, height / 2, 60);
+    });
+
+    /* ==========================================================
+       7. RESTART KIT LOGIC
+       ========================================================== */
+    document.getElementById('btnRestartKit').addEventListener('click', () => {
+      switchScreen('welcome');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
