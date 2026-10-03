@@ -92,9 +92,7 @@
       transform: translateX(-5px);
     }
 
-    /* =========================================
-       PAGE 0: HOME SCREEN WITH PEEKING PHOTO ENVELOPE
-    ========================================= */
+    /* HOME SCREEN */
     .home-header {
       margin-top: 1vh;
       text-align: center;
@@ -120,7 +118,6 @@
       text-shadow: 0 5px 30px rgba(255, 45, 85, 0.4);
     }
 
-    /* Middle Envelope with Peeking Photo */
     .home-mid-envelope-wrapper {
       position: relative;
       width: clamp(220px, 20vw, 300px);
@@ -277,9 +274,7 @@
       letter-spacing: 1px;
     }
 
-    /* =========================================
-       PAGE 1: SIDE PHOTO & AUTO-SCROLLING LETTER
-    ========================================= */
+    /* PAGE 1 */
     .page1-layout {
       width: 100%;
       height: 100%;
@@ -373,9 +368,7 @@
       font-weight: 600;
     }
 
-    /* =========================================
-       PAGE 2: ORIGINAL ANIMATED HUG GIF (BIG & CENTERED)
-    ========================================= */
+    /* PAGE 2: REAL JUMP HUG */
     .page2-layout {
       width: 100%;
       height: 100%;
@@ -420,19 +413,17 @@
       cursor: pointer;
     }
 
-    /* Original Hug GIF from early turn, grand scale */
     .hug-gif-image {
-      width: clamp(280px, 32vw, 440px);
-      height: clamp(280px, 32vw, 440px);
+      width: clamp(300px, 34vw, 460px);
+      height: clamp(300px, 34vw, 460px);
       object-fit: contain;
       filter: drop-shadow(0 20px 45px rgba(255, 77, 109, 0.55));
       animation: hugGentlePulse 3s ease-in-out infinite alternate;
-      border-radius: 20px;
     }
 
     @keyframes hugGentlePulse {
       0% { transform: scale(1) rotate(-1deg); }
-      100% { transform: scale(1.06) rotate(1.5deg); }
+      100% { transform: scale(1.05) rotate(1.5deg); }
     }
 
     .hug-subtext {
@@ -461,21 +452,22 @@
     }
 
     /* =========================================
-       PAGE 3: RESPONSIVE ENVELOPE & FILM REEL
+       PAGE 3: SINGLE LEFT-SIDE REEL & PHOTO CARDS
     ========================================= */
     .page3-layout {
       width: 100%;
       height: 100%;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
       position: relative;
-      padding: 10px clamp(10px, 2vw, 30px);
-      gap: clamp(15px, 2vw, 35px);
+      padding: 10px clamp(15px, 3vw, 40px);
+      gap: clamp(20px, 4vw, 60px);
     }
 
-    .film-column {
-      width: clamp(160px, 14vw, 220px);
+    /* Single Left Side Film Column */
+    .film-column-single {
+      width: clamp(170px, 15vw, 240px);
       height: 85vh;
       overflow: hidden;
       position: relative;
@@ -494,10 +486,6 @@
       gap: 22px;
       padding: 15px 0;
       animation: filmScroll 22s linear infinite;
-    }
-
-    .film-column-right .film-reel-track {
-      animation-duration: 26s;
     }
 
     .film-reel-track:hover {
@@ -551,6 +539,7 @@
       margin: 5px 0;
     }
 
+    /* Right/Center Main Envelope & Photo Stage */
     .center-envelope-stage {
       flex: 1;
       display: flex;
@@ -559,7 +548,7 @@
       justify-content: center;
       height: 100%;
       position: relative;
-      padding: 0 15px;
+      padding-left: 2vw;
     }
 
     .envelope-hint {
@@ -568,7 +557,7 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       font-weight: 700;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       text-shadow: 0 0 12px rgba(255, 77, 109, 0.6);
       text-align: center;
     }
@@ -635,6 +624,7 @@
       transition: all 0.5s ease;
     }
 
+    /* Main Cute Center Card (Tumhi pathavlelya photo nusar) */
     .stable-center-card {
       position: absolute;
       width: clamp(330px, 30vw, 440px);
@@ -686,7 +676,9 @@
       z-index: 10;
     }
 
-    /* POP-UP MODAL */
+    /* =========================================
+       CREATIVE POLAROID POP-UP MODAL
+    ========================================= */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -698,72 +690,94 @@
       z-index: 999;
     }
 
-    .modal-card {
-      background: linear-gradient(145deg, #2b040e, #140105);
-      border: 1px solid #ff4d6d;
-      box-shadow: 0 25px 60px rgba(255, 75, 110, 0.4);
-      padding: 24px 24px 28px 24px;
-      border-radius: 28px;
+    .creative-polaroid-modal {
+      background: #ffffff;
+      padding: 16px 16px 28px 16px;
+      border-radius: 12px;
       width: 90%;
-      max-width: 440px;
-      text-align: center;
-      animation: modalPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      max-width: 420px;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.8), 0 0 35px rgba(255, 77, 109, 0.5);
+      animation: polaroidPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
+      transform: rotate(-1.5deg);
     }
 
-    @keyframes modalPop {
-      from { transform: scale(0.75); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+    @keyframes polaroidPop {
+      from { transform: scale(0.7) rotate(6deg); opacity: 0; }
+      to { transform: scale(1) rotate(-1.5deg); opacity: 1; }
     }
 
-    .modal-img-frame {
+    /* Washi tape on top of polaroid */
+    .washi-tape {
+      position: absolute;
+      top: -12px;
+      width: 120px;
+      height: 26px;
+      background: rgba(255, 77, 109, 0.7);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      border-left: 3px dashed rgba(255,255,255,0.6);
+      border-right: 3px dashed rgba(255,255,255,0.6);
+    }
+
+    .polaroid-img-frame {
       width: 100%;
-      height: 250px;
-      border-radius: 18px;
+      height: 270px;
+      border-radius: 8px;
       overflow: hidden;
-      margin-bottom: 18px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-      border: 2px solid rgba(255, 117, 143, 0.4);
+      margin-top: 10px;
+      border: 1px solid #eee;
     }
 
-    .modal-img-frame img {
+    .polaroid-img-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .modal-card h2 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 2.5rem;
-      color: #ff758f;
+    .polaroid-note-body {
+      margin-top: 16px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .polaroid-date {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+      font-weight: 700;
       margin-bottom: 6px;
     }
 
-    .modal-card p {
+    .polaroid-quote {
+      font-family: 'Playfair Display', serif;
       font-size: 1.15rem;
-      line-height: 1.6;
-      color: #ffe5ec;
-      margin-bottom: 22px;
-      font-weight: 500;
+      line-height: 1.5;
+      color: #2b040e;
+      font-weight: 600;
+      margin-bottom: 20px;
+      padding: 0 10px;
     }
 
-    .modal-btn {
+    .polaroid-close-btn {
       background: linear-gradient(135deg, #ff4d6d, #c9184a);
       color: white;
       border: none;
-      padding: 10px 28px;
+      padding: 9px 26px;
       border-radius: 30px;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       letter-spacing: 1.5px;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4);
+      box-shadow: 0 6px 16px rgba(255, 77, 109, 0.4);
       transition: transform 0.2s;
     }
 
-    .modal-btn:hover {
+    .polaroid-close-btn:hover {
       transform: scale(1.05);
     }
   </style>
@@ -773,9 +787,7 @@
   <div class="bg-light-1"></div>
   <div class="bg-light-2"></div>
 
-  <!-- =========================================
-       PAGE 0: HOME SCREEN
-  ========================================= -->
+  <!-- PAGE 0: HOME SCREEN -->
   <div id="page-home" class="screen-page active">
     
     <div class="home-header">
@@ -785,9 +797,9 @@
 
     <!-- Middle Envelope with Peeking Photo -->
     <div class="home-mid-envelope-wrapper">
-      <div class="peeking-photo-card" onclick="openSecretModal('https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700', 'You are my happiest thought every single day ❤️')">
+      <div class="peeking-photo-card" onclick="openCreativePolaroid('https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700', 'You are my happiest thought every single day ❤️')">
         <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400" alt="Us Together">
-        <div class="peeking-caption">My Heart ❤️</div>
+        <div class="peeking-caption">My Heart ❤️️</div>
       </div>
       <div class="mini-envelope-body">
         <div class="mini-wax-seal">💌</div>
@@ -795,7 +807,7 @@
       </div>
     </div>
 
-    <!-- Bouquets at the bottom -->
+    <!-- Bouquets at bottom -->
     <div class="bouquet-grid-wrapper">
       <div class="bouquet-tagline">✦ Pick a bouquet to unlock surprises ✦</div>
       <div class="bouquet-row">
@@ -822,9 +834,7 @@
     </div>
   </div>
 
-  <!-- =========================================
-       PAGE 1: SIDE PHOTO & AUTO-FLOWING MESSAGE
-  ========================================= -->
+  <!-- PAGE 1: SIDE PHOTO & AUTO-FLOWING MESSAGE -->
   <div id="page-photo" class="screen-page">
     <button class="back-btn" onclick="switchPage('page-home')">← Back to Bouquets</button>
     
@@ -849,9 +859,7 @@
     </div>
   </div>
 
-  <!-- =========================================
-       PAGE 2: ORIGINAL ANIMATED HUG GIF (BIG & CENTERED)
-  ========================================= -->
+  <!-- PAGE 2: EXACT JUMPING HUG STICKER -->
   <div id="page-hug" class="screen-page">
     <button class="back-btn" onclick="switchPage('page-home')">← Back to Bouquets</button>
 
@@ -859,30 +867,27 @@
       <div id="hugBigTitle" class="hug-celebration-title">HAPPY BOYFRIEND DAY, MY LOVE! 🤗❤️</div>
 
       <div class="hug-center-stage" onclick="blastHearts()">
-        <!-- Original Bear Hug Animated GIF, prominent & grand -->
         <img class="hug-gif-image" 
-             src="https://media.tenor.com/9n9s1-ZtJ84AAAAi/bear-hug.gif" 
-             alt="Warm Tight Hug">
+             src="https://media1.tenor.com/m/7rXqX3Z3r3AAAAAC/peach-goma.gif" 
+             alt="Girl Jumping Hug">
       </div>
 
       <p class="hug-subtext">A tight warm hug to remind you how much you mean to me ❤️</p>
     </div>
   </div>
 
-  <!-- =========================================
-       PAGE 3: AESTHETIC ENVELOPE & FILM REEL SCROLL
-  ========================================= -->
+  <!-- PAGE 3: SINGLE LEFT-SIDE REEL & PHOTO CARDS -->
   <div id="page-rain" class="screen-page">
     <button class="back-btn" onclick="resetEnvelopePage(); switchPage('page-home');">← Back to Bouquets</button>
 
     <div class="page3-layout">
       
-      <!-- Left Film Reel -->
-      <div class="film-column film-column-left">
+      <!-- Single Left Camera Film Reel -->
+      <div class="film-column-single">
         <div id="filmLeftTrack" class="film-reel-track"></div>
       </div>
 
-      <!-- Center Interactive Envelope -->
+      <!-- Right/Center Main Envelope & Cute Bubu-Dudu Style Card -->
       <div id="envelopeStage" class="center-envelope-stage">
         <div class="envelope-hint">✦ Click the envelope to open our love memory ✦</div>
 
@@ -892,30 +897,28 @@
           <div class="envelope-pocket"></div>
         </div>
 
-        <!-- Stable Center Photo -->
-        <div id="mainStableCard" class="stable-center-card" onclick="openSecretModal('https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700', 'Whenever I am with you, I feel completely safe, loved, and at home ❤️')">
+        <!-- Stable Center Photo Card (Tumhi pathavlelya Bubu Dudu hugging photo style) -->
+        <div id="mainStableCard" class="stable-center-card" onclick="openCreativePolaroid('https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700', 'Whenever I am with you, I feel completely safe, loved, and at home ❤️')">
           <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700" alt="Main Couple Photo">
           <div class="card-caption">Our Safest Place ❤️</div>
         </div>
       </div>
 
-      <!-- Right Film Reel -->
-      <div class="film-column film-column-right">
-        <div id="filmRightTrack" class="film-reel-track"></div>
-      </div>
-
     </div>
   </div>
 
-  <!-- POP-UP MODAL -->
+  <!-- CREATIVE POLAROID POP-UP MODAL -->
   <div id="secretModal" class="modal-overlay">
-    <div class="modal-card">
-      <div class="modal-img-frame">
-        <img id="modalCouplePic" src="" alt="Couple Memory">
+    <div class="creative-polaroid-modal">
+      <div class="washi-tape"></div>
+      <div class="polaroid-img-frame">
+        <img id="modalCouplePic" src="" alt="Polaroid Memory">
       </div>
-      <h2>My Heart Whispers...</h2>
-      <p id="secretMsg">"Whenever I am with you, I feel completely safe ❤️️"</p>
-      <button class="modal-btn" onclick="closeSecretModal()">KEEP CLOSE TO HEART ❤</button>
+      <div class="polaroid-note-body">
+        <div class="polaroid-date">✦ A Sweet Love Moment ✦</div>
+        <div id="secretMsg" class="polaroid-quote">"Whenever I am with you, I feel completely safe ❤️️"</div>
+        <button class="polaroid-close-btn" onclick="closeSecretModal()">KEEP IN MY HEART ❤</button>
+      </div>
     </div>
   </div>
 
@@ -927,7 +930,7 @@
       if (targetId === 'page-hug') {
         executeFullHug();
       } else if (targetId === 'page-rain') {
-        initFilmReels();
+        initSingleFilmReel();
       }
     }
 
@@ -959,7 +962,7 @@
       }
     }
 
-    // PAGE 3 LOGIC
+    // PAGE 3 LOGIC - SINGLE FILM REEL
     const aestheticCoupleMoments = [
       {
         pic: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=500',
@@ -995,30 +998,25 @@
       }
     ];
 
-    let reelsBuilt = false;
-    function initFilmReels() {
-      if (reelsBuilt) return;
+    let reelBuilt = false;
+    function initSingleFilmReel() {
+      if (reelBuilt) return;
       const leftTrack = document.getElementById('filmLeftTrack');
-      const rightTrack = document.getElementById('filmRightTrack');
 
-      const populate = (track, list) => {
-        const doubleList = [...list, ...list];
-        doubleList.forEach(item => {
-          const frame = document.createElement('div');
-          frame.className = 'film-frame';
-          
-          const img = document.createElement('img');
-          img.src = item.pic;
-          frame.appendChild(img);
+      // Duplicate list for seamless infinite loop
+      const doubleList = [...aestheticCoupleMoments, ...aestheticCoupleMoments];
+      doubleList.forEach(item => {
+        const frame = document.createElement('div');
+        frame.className = 'film-frame';
+        
+        const img = document.createElement('img');
+        img.src = item.pic;
+        frame.appendChild(img);
 
-          frame.onclick = () => openSecretModal(item.pic, item.msg);
-          track.appendChild(frame);
-        });
-      };
-
-      populate(leftTrack, aestheticCoupleMoments.slice(0, 4));
-      populate(rightTrack, aestheticCoupleMoments.slice(4));
-      reelsBuilt = true;
+        frame.onclick = () => openCreativePolaroid(item.pic, item.msg);
+        leftTrack.appendChild(frame);
+      });
+      reelBuilt = true;
     }
 
     function toggleEnvelope() {
@@ -1031,7 +1029,7 @@
       if (stage) stage.classList.remove('opened');
     }
 
-    function openSecretModal(picUrl, text) {
+    function openCreativePolaroid(picUrl, text) {
       document.getElementById('modalCouplePic').src = picUrl;
       document.getElementById('secretMsg').innerText = text;
       document.getElementById('secretModal').style.display = 'flex';
