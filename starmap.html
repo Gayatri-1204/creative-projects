@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Star Named After You 🌌✨</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Great+Vibes&family=Montserrat:wght@300;500;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #0b112c 0%, #050819 60%, #01030b 100%);
+      min-height: 100vh;
+      width: 100vw;
+      color: #e2e8f0;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Nebulas */
+    .nebula-glow-1 {
+      position: absolute;
+      top: -10%;
+      left: 20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(147, 51, 234, 0.18), transparent 70%);
+      filter: blur(100px);
+      pointer-events: none;
+    }
+
+    .nebula-glow-2 {
+      position: absolute;
+      bottom: -15%;
+      right: 15%;
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.16), transparent 70%);
+      filter: blur(110px);
+      pointer-events: none;
+    }
+
+    #spaceCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: auto;
+    }
+
+    .main-wrapper {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(25px, 4vh, 45px) 20px;
+      text-align: center;
+    }
+
+    .space-header {
+      margin-bottom: 25px;
+    }
+
+    .star-tagline {
+      font-size: 0.8rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #38bdf8;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .space-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 3.6vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: 3px;
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 50%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Starlight Central Orb (Clickable Star) */
+    .celestial-stage {
+      position: relative;
+      width: 240px;
+      height: 240px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 25px 0 35px 0;
+      cursor: pointer;
+    }
+
+    .pulsing-star {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, #ffffff 0%, #38bdf8 45%, #6366f1 85%, transparent 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 50px #38bdf8, 0 0 90px #6366f1, 0 0 120px rgba(56, 189, 248, 0.5);
+      animation: starBreathe 3s ease-in-out infinite alternate;
+      position: relative;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .celestial-stage:hover .pulsing-star {
+      transform: scale(1.25);
+      box-shadow: 0 0 70px #ffffff, 0 0 120px #38bdf8;
+    }
+
+    @keyframes starBreathe {
+      0% { transform: scale(0.95); opacity: 0.85; }
+      100% { transform: scale(1.1); opacity: 1; }
+    }
+
+    /* Orbit Rings with Floating Memory Badges */
+    .orbit-ring {
+      position: absolute;
+      border: 1px dashed rgba(56, 189, 248, 0.3);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .orbit-1 { width: 170px; height: 170px; animation: spinOrbit 14s linear infinite; }
+    .orbit-2 { width: 235px; height: 235px; animation: spinOrbit 22s linear infinite reverse; }
+
+    @keyframes spinOrbit {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .orbit-planet {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #f472b6, #db2777);
+      box-shadow: 0 0 15px #f472b6;
+    }
+
+    .star-instruction {
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      color: #94a3b8;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .btn-cosmic {
+      background: linear-gradient(135deg, #38bdf8, #6366f1);
+      color: #030712;
+      border: none;
+      padding: 14px 38px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(56, 189, 248, 0.4);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    .btn-cosmic:hover {
+      transform: scale(1.06);
+      box-shadow: 0 12px 40px rgba(99, 102, 241, 0.65);
+    }
+
+    /* Star Registration Certificate Modal */
+    .star-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(1, 4, 15, 0.92);
+      backdrop-filter: blur(20px);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      padding: 20px;
+    }
+
+    .star-registry-card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: 28px;
+      padding: 35px 28px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 35px 85px rgba(0, 0, 0, 0.95), 0 0 45px rgba(56, 189, 248, 0.25);
+      text-align: center;
+      position: relative;
+      animation: modalFlyIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes modalFlyIn {
+      from { transform: scale(0.85) translateY(30px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+
+    .registry-seal {
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle, #38bdf8, #3b82f6);
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      margin: -60px auto 15px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 26px;
+      box-shadow: 0 0 25px #38bdf8;
+    }
+
+    .registry-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: #ffffff;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+
+    .star-name-badge {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem;
+      color: #38bdf8;
+      text-shadow: 0 0 20px rgba(56, 189, 248, 0.7);
+      margin: 10px 0;
+      line-height: 1;
+    }
+
+    .coordinate-table {
+      width: 100%;
+      border-top: 1px dashed rgba(56, 189, 248, 0.3);
+      border-bottom: 1px dashed rgba(56, 189, 248, 0.3);
+      padding: 12px 0;
+      margin: 18px 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      font-size: 0.8rem;
+      color: #94a3b8;
+      letter-spacing: 1px;
+    }
+
+    .coordinate-table span {
+      display: block;
+      color: #e2e8f0;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+
+    .registry-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+      margin-bottom: 25px;
+    }
+
+    .btn-close-modal {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      color: #e2e8f0;
+      padding: 10px 30px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .btn-close-modal:hover {
+      background: #38bdf8;
+      color: #030712;
+      box-shadow: 0 0 20px #38bdf8;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="spaceCanvas"></canvas>
+
+  <div class="nebula-glow-1"></div>
+  <div class="nebula-glow-2"></div>
+
+  <div class="main-wrapper">
+    
+    <div class="space-header">
+      <div class="star-tagline">✦ Universal Coordinate Registry ✦</div>
+      <h1 class="space-title">The Star Named After You</h1>
+    </div>
+
+    <!-- Pulsing Clickable Celestial Star -->
+    <div class="celestial-stage" onclick="openStarRegistry()">
+      <div class="orbit-ring orbit-1">
+        <div class="orbit-planet"></div>
+      </div>
+      <div class="orbit-ring orbit-2"></div>
+      <div class="pulsing-star"></div>
+    </div>
+
+    <div class="star-instruction">✦ Tap the radiant star to view official registry ✦</div>
+
+    <button class="btn-cosmic" onclick="openStarRegistry()">View Star Certificate 📜</button>
+
+  </div>
+
+  <!-- Official Star Registry Modal -->
+  <div id="starModal" class="star-modal">
+    <div class="star-registry-card">
+      <div class="registry-seal">⭐</div>
+      <div class="registry-title">Celestial Certificate</div>
+      
+      <div class="star-name-badge">The Heart of My Universe</div>
+
+      <div class="coordinate-table">
+        <div>COORDINATE<span>RA 14h 29m</span></div>
+        <div>MAGNITUDE<span>Infinite ✨</span></div>
+        <div>CONSTELLATION<span>Love Forever</span></div>
+      </div>
+
+      <p class="registry-quote">
+        "Even if the universe expands for billions of years and every star fades out, you will always remain the brightest, warmest light in my life."
+      </p>
+
+      <button class="btn-close-modal" onclick="closeStarRegistry()">HOLD CLOSE TO HEART ✨</button>
+    </div>
+  </div>
+
+  <script>
+    // Canvas Interactive Starfield Simulation
+    const canvas = document.getElementById('spaceCanvas');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    const numStars = 140;
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    for (let i = 0; i < numStars; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.6 + 0.5,
+        alpha: Math.random(),
+        speed: Math.random() * 0.02 + 0.005
+      });
+    }
+
+    function animateStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw gentle starry night
+      for (let s of stars) {
+        s.alpha += s.speed;
+        if (s.alpha > 1 || s.alpha < 0.2) s.speed = -s.speed;
+
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${Math.abs(s.alpha)})`;
+        ctx.fill();
+      }
+
+      requestAnimationFrame(animateStars);
+    }
+    animateStars();
+
+    // Modal Triggers
+    function openStarRegistry() {
+      document.getElementById('starModal').style.display = 'flex';
+    }
+
+    function closeStarRegistry() {
+      document.getElementById('starModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
