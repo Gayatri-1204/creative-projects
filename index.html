@@ -48,7 +48,7 @@
       display: none;
       width: 100vw;
       height: 100vh;
-      padding: 30px 50px;
+      padding: 25px 45px;
       position: relative;
       flex-direction: column;
       justify-content: space-between;
@@ -68,14 +68,14 @@
 
     .back-btn {
       position: absolute;
-      top: 30px;
-      left: 45px;
+      top: 25px;
+      left: 40px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 117, 143, 0.3);
       color: #ffccd5;
       font-size: 0.95rem;
       cursor: pointer;
-      padding: 9px 20px;
+      padding: 8px 18px;
       border-radius: 40px;
       backdrop-filter: blur(15px);
       transition: all 0.3s ease;
@@ -92,59 +92,157 @@
       transform: translateX(-5px);
     }
 
-    /* HOME SCREEN */
+    /* =========================================
+       PAGE 0: HOME SCREEN WITH PEEKING PHOTO ENVELOPE
+    ========================================= */
     .home-header {
-      margin-top: 5vh;
+      margin-top: 1.5vh;
       text-align: center;
     }
 
     .home-cursive {
       font-family: 'Great Vibes', cursive;
-      font-size: 3.5rem;
+      font-size: 3rem;
       color: #ff758f;
       text-shadow: 0 0 25px rgba(255, 117, 143, 0.6);
     }
 
     .home-main-title {
       font-family: 'Cinzel', serif;
-      font-size: 3.8rem;
+      font-size: 3.4rem;
       font-weight: 900;
-      letter-spacing: 6px;
+      letter-spacing: 5px;
       text-transform: uppercase;
       background: linear-gradient(180deg, #ffffff 0%, #ff8fa3 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-top: -10px;
+      margin-top: -8px;
       text-shadow: 0 5px 30px rgba(255, 45, 85, 0.4);
+    }
+
+    /* Middle Envelope with Peeking Photo */
+    .home-mid-envelope-wrapper {
+      position: relative;
+      width: 250px;
+      height: 155px;
+      margin: 10px 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6));
+      animation: floatMidEnvelope 3.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatMidEnvelope {
+      0% { transform: translateY(0px) rotate(-1deg); }
+      100% { transform: translateY(-8px) rotate(1deg); }
+    }
+
+    .peeking-photo-card {
+      position: absolute;
+      bottom: 25px;
+      width: 175px;
+      background: #ffffff;
+      padding: 7px 7px 20px 7px;
+      border-radius: 6px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      transform: translateY(-40px) rotate(-4deg);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .peeking-photo-card:hover {
+      transform: translateY(-60px) rotate(0deg) scale(1.08);
+      z-index: 10;
+    }
+
+    .peeking-photo-card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .peeking-photo-card .peeking-caption {
+      font-family: 'Great Vibes', cursive;
+      color: #333;
+      font-size: 1.1rem;
+      text-align: center;
+      margin-top: 4px;
+      line-height: 1;
+    }
+
+    .mini-envelope-body {
+      position: relative;
+      width: 100%;
+      height: 125px;
+      background: #7a0c2b;
+      border-radius: 10px;
+      overflow: hidden;
+      z-index: 3;
+      border: 1px solid rgba(255, 77, 109, 0.3);
+      box-shadow: inset 0 0 15px rgba(0,0,0,0.4);
+    }
+
+    .mini-envelope-pocket {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 125px solid #54081e;
+      border-right: 125px solid #54081e;
+      border-bottom: 95px solid #8f0e33;
+      border-top: 60px solid transparent;
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .mini-wax-seal {
+      position: absolute;
+      top: 55px;
+      left: calc(50% - 16px);
+      width: 32px;
+      height: 32px;
+      background: radial-gradient(circle, #ff4d6d, #c9184a);
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      z-index: 5;
     }
 
     .bouquet-grid-wrapper {
       width: 100%;
-      max-width: 1100px;
-      margin-bottom: 7vh;
+      max-width: 1050px;
+      margin-bottom: 2.5vh;
       text-align: center;
     }
 
     .bouquet-tagline {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       letter-spacing: 3px;
       color: #c9184a;
       text-transform: uppercase;
-      margin-bottom: 25px;
+      margin-bottom: 15px;
       font-weight: 700;
     }
 
     .bouquet-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
+      gap: 25px;
     }
 
     .bouquet-item {
       background: rgba(25, 2, 7, 0.75);
       border: 1px solid rgba(255, 77, 109, 0.3);
-      border-radius: 24px;
-      padding: 35px 20px;
+      border-radius: 20px;
+      padding: 24px 15px;
       cursor: pointer;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(255, 77, 109, 0.1);
@@ -153,21 +251,21 @@
     }
 
     .bouquet-item:hover {
-      transform: translateY(-12px) scale(1.03);
+      transform: translateY(-8px) scale(1.02);
       border-color: #ff4d6d;
       box-shadow: 0 20px 45px rgba(255, 77, 109, 0.35), inset 0 0 25px rgba(255, 77, 109, 0.2);
     }
 
     .bouquet-flower {
-      font-size: 4rem;
+      font-size: 3.2rem;
       display: block;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       filter: drop-shadow(0 5px 15px rgba(255, 77, 109, 0.4));
     }
 
     .bouquet-item h3 {
       font-family: 'Cinzel', serif;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       letter-spacing: 2px;
       color: #ffccd5;
       text-transform: uppercase;
@@ -176,11 +274,13 @@
     .bouquet-item p {
       font-size: 0.8rem;
       color: #ff8fa3;
-      margin-top: 6px;
+      margin-top: 5px;
       letter-spacing: 1px;
     }
 
-    /* PAGE 1: SIDE PHOTO & AUTO-FLOWING LETTER */
+    /* =========================================
+       PAGE 1: SIDE PHOTO & AUTO-SCROLLING LETTER
+    ========================================= */
     .page1-layout {
       width: 100%;
       height: 100%;
@@ -190,7 +290,7 @@
       gap: 60px;
       max-width: 1280px;
       margin: auto;
-      padding-top: 40px;
+      padding-top: 30px;
     }
 
     .side-photo-pane {
@@ -202,12 +302,12 @@
 
     .polaroid-grand {
       background: #ffffff;
-      padding: 18px 18px 50px 18px;
+      padding: 16px 16px 45px 16px;
       border-radius: 12px;
       box-shadow: 0 30px 60px rgba(0,0,0,0.7), 0 0 30px rgba(255, 75, 110, 0.25);
       transform: rotate(-3deg);
       transition: all 0.4s ease;
-      width: 360px;
+      width: 350px;
     }
 
     .polaroid-grand:hover {
@@ -226,7 +326,7 @@
       font-family: 'Great Vibes', cursive;
       font-size: 2.2rem;
       text-align: center;
-      margin-top: 15px;
+      margin-top: 12px;
     }
 
     .side-text-pane {
@@ -274,7 +374,9 @@
       font-weight: 600;
     }
 
-    /* PAGE 2: BUBU & DUDU JUMP HUG */
+    /* =========================================
+       PAGE 2: EXACT PHOTO REAL HUG (LARGE SCALE)
+    ========================================= */
     .page2-layout {
       width: 100%;
       height: 100%;
@@ -287,19 +389,18 @@
 
     .hug-celebration-title {
       opacity: 0;
-      transform: translateY(-30px) scale(0.7);
+      transform: translateY(-20px) scale(0.8);
       background: linear-gradient(135deg, #ff4d6d, #c9184a);
       color: white;
       font-family: 'Cinzel', serif;
       font-weight: 800;
       font-size: 2.2rem;
-      padding: 16px 45px;
+      padding: 14px 42px;
       border-radius: 50px;
       letter-spacing: 2px;
       box-shadow: 0 15px 40px rgba(255, 77, 109, 0.6);
       transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: absolute;
-      top: 12%;
+      margin-bottom: 20px;
       z-index: 20;
     }
 
@@ -308,58 +409,38 @@
       transform: translateY(0) scale(1);
     }
 
-    .hug-stage-full {
-      width: 100%;
-      height: 440px;
+    .hug-center-stage {
       position: relative;
+      width: 100%;
+      max-width: 550px;
+      height: 480px;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .runner {
-      position: absolute;
-      bottom: 40px;
-      width: 220px;
-      height: 220px;
-      transition: all 2.2s cubic-bezier(0.25, 1, 0.5, 1);
+    .hug-big-illustration {
+      width: 440px;
+      height: 440px;
+      filter: drop-shadow(0 20px 45px rgba(255, 77, 109, 0.55));
+      animation: gentleHugPulse 2.8s ease-in-out infinite alternate;
+      transform-origin: center;
+      cursor: pointer;
     }
 
-    .runner-left {
-      left: 8vw;
-      animation: runBob 0.35s infinite alternate ease-in-out;
+    @keyframes gentleHugPulse {
+      0% { transform: scale(1) rotate(-1deg); }
+      100% { transform: scale(1.06) rotate(1.5deg); }
     }
 
-    .runner-right {
-      right: 8vw;
-      animation: runBob 0.35s infinite alternate ease-in-out;
-    }
-
-    @keyframes runBob {
-      0% { transform: translateY(0px) rotate(-3deg); }
-      100% { transform: translateY(-16px) rotate(3deg); }
-    }
-
-    .hug-stage-full.running .runner-left {
-      left: calc(50% - 190px);
-    }
-
-    .hug-stage-full.running .runner-right {
-      right: calc(50% - 190px);
-    }
-
-    .hug-final-scene {
-      display: none;
-      position: absolute;
-      width: 360px;
-      height: 360px;
-      animation: jumpInHug 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    }
-
-    @keyframes jumpInHug {
-      0% { transform: scale(0.6) translateY(50px); opacity: 0; }
-      50% { transform: scale(1.15) translateY(-20px); opacity: 1; }
-      100% { transform: scale(1) translateY(0); opacity: 1; }
+    .hug-subtext {
+      color: #ffccd5;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      margin-top: 10px;
+      text-transform: uppercase;
+      font-weight: 600;
+      text-shadow: 0 0 10px rgba(255, 77, 109, 0.4);
     }
 
     .hug-heart-burst {
@@ -389,7 +470,6 @@
       padding: 10px 0;
     }
 
-    /* Vintage Camera Film Strips on Both Sides */
     .film-column {
       width: 160px;
       height: 82vh;
@@ -412,7 +492,7 @@
     }
 
     .film-column-right .film-reel-track {
-      animation-duration: 25s; /* Subtly different speed for elegance */
+      animation-duration: 25s;
     }
 
     .film-reel-track:hover {
@@ -443,7 +523,6 @@
       box-shadow: 0 8px 25px rgba(255, 77, 109, 0.4);
     }
 
-    /* Camera Sprocket Holes */
     .film-frame::before, .film-frame::after {
       content: '••••••••';
       position: absolute;
@@ -467,7 +546,6 @@
       margin: 4px 0;
     }
 
-    /* Center Stage with Interactive Envelope */
     .center-envelope-stage {
       flex: 1;
       display: flex;
@@ -490,7 +568,6 @@
       transition: opacity 0.4s;
     }
 
-    /* 3D Romantic Envelope */
     .envelope-wrapper {
       position: relative;
       width: 320px;
@@ -509,7 +586,6 @@
       transform: translateY(-5px) scale(1.02);
     }
 
-    /* Flap & Wax Seal */
     .envelope-flap {
       position: absolute;
       top: 0;
@@ -556,7 +632,6 @@
       transition: all 0.5s ease;
     }
 
-    /* Stable Center Card emerging from Envelope */
     .stable-center-card {
       position: absolute;
       width: 320px;
@@ -587,7 +662,6 @@
       margin-top: 10px;
     }
 
-    /* Envelope Opened State */
     .center-envelope-stage.opened .envelope-flap {
       transform: rotateX(180deg);
       z-index: 1;
@@ -609,7 +683,7 @@
       z-index: 10;
     }
 
-    /* POP-UP MODAL WITH PIC & CUTE MSG */
+    /* POP-UP MODAL */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -696,13 +770,29 @@
   <div class="bg-light-1"></div>
   <div class="bg-light-2"></div>
 
-  <!-- PAGE 0: HOME SCREEN -->
+  <!-- =========================================
+       PAGE 0: HOME SCREEN
+  ========================================= -->
   <div id="page-home" class="screen-page active">
+    
     <div class="home-header">
       <div class="home-cursive">For the love of my life</div>
       <h1 class="home-main-title">Happy Boyfriend Day</h1>
     </div>
 
+    <!-- Middle Envelope with Peeking Photo -->
+    <div class="home-mid-envelope-wrapper">
+      <div class="peeking-photo-card" onclick="openSecretModal('https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700', 'You are my happiest thought every single day ❤️')">
+        <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400" alt="Us Together">
+        <div class="peeking-caption">My Heart ❤️</div>
+      </div>
+      <div class="mini-envelope-body">
+        <div class="mini-wax-seal">💌</div>
+        <div class="mini-envelope-pocket"></div>
+      </div>
+    </div>
+
+    <!-- Bouquets at the bottom -->
     <div class="bouquet-grid-wrapper">
       <div class="bouquet-tagline">✦ Pick a bouquet to unlock surprises ✦</div>
       <div class="bouquet-row">
@@ -729,7 +819,9 @@
     </div>
   </div>
 
-  <!-- PAGE 1: SIDE PHOTO & AUTO-FLOWING MESSAGE -->
+  <!-- =========================================
+       PAGE 1: SIDE PHOTO & AUTO-FLOWING MESSAGE
+  ========================================= -->
   <div id="page-photo" class="screen-page">
     <button class="back-btn" onclick="switchPage('page-home')">← Back to Bouquets</button>
     
@@ -754,62 +846,26 @@
     </div>
   </div>
 
-  <!-- PAGE 2: BUBU & DUDU JUMP HUG -->
+  <!-- =========================================
+       PAGE 2: EXACT PHOTO REAL HUG (LARGE SCALE)
+  ========================================= -->
   <div id="page-hug" class="screen-page">
     <button class="back-btn" onclick="switchPage('page-home')">← Back to Bouquets</button>
 
     <div class="page2-layout">
       <div id="hugBigTitle" class="hug-celebration-title">HAPPY BOYFRIEND DAY, MY LOVE! 🤗❤️</div>
 
-      <div id="hugFullStage" class="hug-stage-full">
-        <!-- Bubu (Brown Bear) -->
-        <div id="bubuRunner" class="runner runner-left">
-          <svg viewBox="0 0 200 200" width="100%" height="100%">
-            <ellipse cx="100" cy="120" rx="60" ry="55" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
-            <circle cx="55" cy="65" r="22" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
-            <circle cx="55" cy="65" r="12" fill="#e8c9b0"/>
-            <circle cx="145" cy="65" r="22" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
-            <circle cx="145" cy="65" r="12" fill="#e8c9b0"/>
-            <ellipse cx="100" cy="90" rx="55" ry="48" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
-            <circle cx="65" cy="100" r="10" fill="#fca5a5" opacity="0.8"/>
-            <circle cx="135" cy="100" r="10" fill="#fca5a5" opacity="0.8"/>
-            <path d="M 75 88 Q 82 80 89 88" stroke="#3d2314" stroke-width="5" fill="none" stroke-linecap="round"/>
-            <path d="M 111 88 Q 118 80 125 88" stroke="#3d2314" stroke-width="5" fill="none" stroke-linecap="round"/>
-            <ellipse cx="100" cy="98" rx="14" ry="10" fill="#fef08a"/>
-            <ellipse cx="100" cy="95" rx="5" ry="3.5" fill="#3d2314"/>
-            <path d="M 100 98 Q 100 106 104 105" stroke="#3d2314" stroke-width="3" fill="none"/>
-            <path d="M 145 105 Q 175 90 165 125" stroke="#3d2314" stroke-width="6" fill="#c49a75" stroke-linecap="round"/>
-            <path d="M 55 105 Q 35 125 60 135" stroke="#3d2314" stroke-width="6" fill="#c49a75" stroke-linecap="round"/>
-          </svg>
-        </div>
-
-        <!-- Dudu (White Panda) -->
-        <div id="duduRunner" class="runner runner-right">
-          <svg viewBox="0 0 200 200" width="100%" height="100%">
-            <ellipse cx="100" cy="120" rx="58" ry="52" fill="#ffffff" stroke="#222" stroke-width="6"/>
-            <circle cx="55" cy="65" r="20" fill="#2b2d42" stroke="#222" stroke-width="6"/>
-            <circle cx="145" cy="65" r="20" fill="#2b2d42" stroke="#222" stroke-width="6"/>
-            <ellipse cx="100" cy="90" rx="54" ry="46" fill="#ffffff" stroke="#222" stroke-width="6"/>
-            <circle cx="65" cy="100" r="10" fill="#ff758f" opacity="0.8"/>
-            <circle cx="135" cy="100" r="10" fill="#ff758f" opacity="0.8"/>
-            <path d="M 75 88 Q 82 80 89 88" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round"/>
-            <path d="M 111 88 Q 118 80 125 88" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round"/>
-            <ellipse cx="100" cy="95" rx="5" ry="3.5" fill="#222"/>
-            <path d="M 94 98 Q 100 112 106 98 Z" fill="#ff4d6d" stroke="#222" stroke-width="2"/>
-            <path d="M 55 105 Q 25 90 35 125" stroke="#222" stroke-width="6" fill="#ffffff" stroke-linecap="round"/>
-            <path d="M 145 105 Q 165 125 140 135" stroke="#222" stroke-width="6" fill="#ffffff" stroke-linecap="round"/>
-          </svg>
-        </div>
-
-        <!-- Final Real Tight Hug Scene -->
-        <div id="hugFinalScene" class="hug-final-scene">
+      <div class="hug-center-stage" onclick="blastHearts()">
+        <div class="hug-big-illustration">
           <svg viewBox="0 0 350 350" width="100%" height="100%">
-            <path d="M 175 40 Q 185 20 195 35 Q 205 50 175 75 Q 145 50 155 35 Q 165 20 175 40 Z" fill="#ff4d6d"/>
-            <path d="M 70 120 Q 80 100 90 115 Q 100 130 70 155 Q 40 130 50 115 Q 60 100 70 120 Z" fill="#ff758f"/>
-            <path d="M 280 110 Q 290 90 300 105 Q 310 120 280 145 Q 250 120 260 105 Q 270 90 280 110 Z" fill="#ff758f"/>
-            <path d="M 50 240 Q 60 220 70 235 Q 80 250 50 275 Q 20 250 30 235 Q 40 220 50 240 Z" fill="#ff4d6d"/>
-            <path d="M 300 230 Q 310 210 320 225 Q 330 240 300 265 Q 270 240 280 225 Q 290 210 300 230 Z" fill="#ff4d6d"/>
+            <!-- Floating Glowing Hearts Around -->
+            <path d="M 175 35 Q 185 15 195 30 Q 205 45 175 70 Q 145 45 155 30 Q 165 15 175 35 Z" fill="#ff4d6d"/>
+            <path d="M 65 115 Q 75 95 85 110 Q 95 125 65 150 Q 35 125 45 110 Q 55 95 65 115 Z" fill="#ff758f"/>
+            <path d="M 285 105 Q 295 85 305 100 Q 315 115 285 140 Q 255 115 265 100 Q 275 85 285 105 Z" fill="#ff758f"/>
+            <path d="M 45 235 Q 55 215 65 230 Q 75 245 45 270 Q 15 245 25 230 Q 35 215 45 235 Z" fill="#ff4d6d"/>
+            <path d="M 305 225 Q 315 205 325 220 Q 335 235 305 260 Q 275 235 285 220 Q 295 205 305 225 Z" fill="#ff4d6d"/>
 
+            <!-- Bubu Bear (Tilted Back in Hug) -->
             <g transform="translate(45, 40) rotate(-15 150 150)">
               <circle cx="80" cy="85" r="22" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
               <circle cx="80" cy="85" r="12" fill="#e8c9b0"/>
@@ -820,6 +876,7 @@
               <path d="M 125 118 Q 130 132 135 118 Z" fill="#ff4d6d" stroke="#3d2314" stroke-width="2"/>
             </g>
 
+            <!-- Dudu Panda (Jumping On Top & Wrapping Arms Around) -->
             <g transform="translate(10, -5) rotate(18 180 180)">
               <circle cx="160" cy="80" r="22" fill="#2b2d42" stroke="#222" stroke-width="6"/>
               <circle cx="250" cy="100" r="22" fill="#2b2d42" stroke="#222" stroke-width="6"/>
@@ -834,6 +891,8 @@
           </svg>
         </div>
       </div>
+
+      <p class="hug-subtext">A tight warm hug to remind you how much you mean to me ❤️</p>
     </div>
   </div>
 
@@ -845,12 +904,12 @@
 
     <div class="page3-layout">
       
-      <!-- Left Camera Film Reel -->
+      <!-- Left Film Reel -->
       <div class="film-column film-column-left">
         <div id="filmLeftTrack" class="film-reel-track"></div>
       </div>
 
-      <!-- Center Interactive Romantic Envelope -->
+      <!-- Center Interactive Envelope -->
       <div id="envelopeStage" class="center-envelope-stage">
         <div class="envelope-hint">✦ Click the envelope to open our love memory ✦</div>
 
@@ -860,14 +919,14 @@
           <div class="envelope-pocket"></div>
         </div>
 
-        <!-- Stable Main Couple Memory Card -->
+        <!-- Stable Center Photo -->
         <div id="mainStableCard" class="stable-center-card" onclick="openSecretModal('https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700', 'Whenever I am with you, I feel completely safe, loved, and at home ❤️')">
           <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700" alt="Main Couple Photo">
           <div class="card-caption">Our Safest Place ❤️</div>
         </div>
       </div>
 
-      <!-- Right Camera Film Reel -->
+      <!-- Right Film Reel -->
       <div class="film-column film-column-right">
         <div id="filmRightTrack" class="film-reel-track"></div>
       </div>
@@ -875,7 +934,7 @@
     </div>
   </div>
 
-  <!-- POP-UP COUPLE PHOTO + CUTE NOTE MODAL -->
+  <!-- POP-UP MODAL -->
   <div id="secretModal" class="modal-overlay">
     <div class="modal-card">
       <div class="modal-img-frame">
@@ -899,37 +958,19 @@
       }
     }
 
-    // =========================================
-    // PAGE 2: BUBU & DUDU REAL HUG LOGIC
-    // =========================================
+    // PAGE 2 LOGIC
     function executeFullHug() {
-      const stage = document.getElementById('hugFullStage');
       const title = document.getElementById('hugBigTitle');
-      const bubu = document.getElementById('bubuRunner');
-      const dudu = document.getElementById('duduRunner');
-      const finalScene = document.getElementById('hugFinalScene');
-
-      stage.classList.remove('running');
       title.classList.remove('show');
-      finalScene.style.display = 'none';
-      bubu.style.display = 'block';
-      dudu.style.display = 'block';
-
+      
       setTimeout(() => {
-        stage.classList.add('running');
-      }, 150);
-
-      setTimeout(() => {
-        bubu.style.display = 'none';
-        dudu.style.display = 'none';
-        finalScene.style.display = 'block';
         title.classList.add('show');
         blastHearts();
-      }, 2100);
+      }, 300);
     }
 
     function blastHearts() {
-      const stage = document.getElementById('hugFullStage');
+      const stage = document.querySelector('.hug-center-stage');
       for (let i = 0; i < 30; i++) {
         const h = document.createElement('div');
         h.className = 'hug-heart-burst';
@@ -945,9 +986,7 @@
       }
     }
 
-    // =========================================
-    // PAGE 3: ENVELOPE & CAMERA FILM STRIPS
-    // =========================================
+    // PAGE 3 LOGIC
     const aestheticCoupleMoments = [
       {
         pic: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=500',
@@ -955,7 +994,7 @@
       },
       {
         pic: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=500',
-        msg: "Whenever I am with you, I feel completely safe and at peace ❤️️"
+        msg: "Whenever I am with you, I feel completely safe and at peace ❤"
       },
       {
         pic: 'https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=500',
@@ -989,7 +1028,6 @@
       const leftTrack = document.getElementById('filmLeftTrack');
       const rightTrack = document.getElementById('filmRightTrack');
 
-      // Populate left and right reels with seamless loop (duplicated list)
       const populate = (track, list) => {
         const doubleList = [...list, ...list];
         doubleList.forEach(item => {
