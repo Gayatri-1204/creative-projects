@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Royal Invitation 💌💍</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Great+Vibes&family=Montserrat:wght@400;600&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #260a12 0%, #15050a 65%, #050103 100%);
+      min-height: 100vh;
+      width: 100vw;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .ambient-gold {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.18), transparent 70%);
+      filter: blur(110px);
+      pointer-events: none;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 520px;
+      padding: 25px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .invitation-badge {
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #d4af37;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .page-heading {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 3.6vw, 2.5rem);
+      letter-spacing: 2px;
+      background: linear-gradient(180deg, #ffffff 0%, #fef08a 60%, #d4af37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 25px;
+    }
+
+    /* 3D Envelope Container */
+    .envelope-box {
+      width: 100%;
+      max-width: 380px;
+      height: 250px;
+      background: linear-gradient(145deg, #3d101a, #23080e);
+      border: 2px solid rgba(212, 175, 55, 0.4);
+      border-radius: 18px;
+      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.9), inset 0 0 25px rgba(212, 175, 55, 0.15);
+      position: relative;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .envelope-box:hover {
+      transform: scale(1.03);
+    }
+
+    /* Envelope Flap Lines */
+    .envelope-flap {
+      position: absolute;
+      inset: 0;
+      border: 1px dashed rgba(212, 175, 55, 0.3);
+      border-radius: 16px;
+      pointer-events: none;
+    }
+
+    /* Wax Seal Stamp */
+    .wax-seal {
+      width: 82px;
+      height: 82px;
+      background: radial-gradient(circle at 35% 35%, #e11d48, #881337);
+      border-radius: 50%;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      border: 3px solid #d4af37;
+      transition: all 0.3s ease;
+      animation: pulseSeal 2.5s infinite alternate;
+    }
+
+    @keyframes pulseSeal {
+      0% { transform: scale(0.96); box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
+      100% { transform: scale(1.04); box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); }
+    }
+
+    .seal-hint {
+      margin-top: 18px;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #cbd5e1;
+    }
+
+    /* Revealed Royal Wedding / Love Letter Modal */
+    .card-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 1, 3, 0.94);
+      backdrop-filter: blur(18px);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      padding: 20px;
+    }
+
+    .scroll-card {
+      background: #fbf7ee;
+      color: #2b1117;
+      border: 4px double #d4af37;
+      border-radius: 20px;
+      padding: clamp(26px, 5vh, 40px) 26px;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: 0 30px 85px rgba(0, 0, 0, 0.95), 0 0 45px rgba(212, 175, 55, 0.3);
+      position: relative;
+      animation: openScroll 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      text-align: center;
+    }
+
+    @keyframes openScroll {
+      from { transform: scale(0.8) translateY(40px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+
+    .gold-crest {
+      font-size: 2.8rem;
+      margin-bottom: 6px;
+    }
+
+    .card-sub {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #9f7d23;
+      margin-bottom: 10px;
+    }
+
+    .card-names {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #881337;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .card-divider {
+      width: 60%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      margin: 0 auto 16px auto;
+    }
+
+    .card-message {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #4a212b;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .vow-badge {
+      display: inline-block;
+      border: 1px solid #d4af37;
+      background: rgba(212, 175, 55, 0.1);
+      padding: 6px 18px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #881337;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    .btn-accept {
+      background: linear-gradient(135deg, #881337, #4c0519);
+      color: #fef08a;
+      border: 1px solid #d4af37;
+      padding: 12px 34px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(136, 19, 55, 0.4);
+      transition: all 0.25s ease;
+      text-transform: uppercase;
+    }
+
+    .btn-accept:hover {
+      transform: scale(1.06);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
+    }
+
+    /* Rose Petal Particles */
+    .petal {
+      position: absolute;
+      pointer-events: none;
+      animation: floatPetal 2.2s ease-out forwards;
+      z-index: 1000;
+    }
+
+    @keyframes floatPetal {
+      0% { opacity: 1; transform: translate(0, 0) scale(0.6) rotate(0deg); }
+      100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(180deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-gold"></div>
+
+  <div class="wrapper">
+    <div class="invitation-badge">✦ Official Lifetime Decree ✦</div>
+    <h1 class="page-heading">A Royal Invitation</h1>
+
+    <!-- Interactive Envelope with Wax Seal -->
+    <div class="envelope-box" onclick="breakSeal(event)">
+      <div class="envelope-flap"></div>
+      <div class="wax-seal">👑</div>
+    </div>
+
+    <div class="seal-hint">✦ Tap the golden wax seal to unseal ✦</div>
+  </div>
+
+  <!-- Revealed Scroll Card -->
+  <div id="cardModal" class="card-modal">
+    <div class="scroll-card">
+      <div class="gold-crest">💍✨</div>
+      <div class="card-sub">The Cordial Invitation of a Lifetime</div>
+
+      <div class="card-names">You & Me</div>
+
+      <div class="card-divider"></div>
+
+      <p class="card-message">
+        "You are formally and irrevocably invited to be my favourite person, my safe place, my best friend, and my partner for all the years to come."
+      </p>
+
+      <div class="vow-badge">✦ Vow: Always & Forever ✦</div><br>
+
+      <button class="btn-accept" onclick="closeCard()">RSVP: Accepted Forever ❤️</button>
+    </div>
+  </div>
+
+  <script>
+    function breakSeal(e) {
+      spawnPetals(e.clientX, e.clientY);
+      setTimeout(() => {
+        document.getElementById('cardModal').style.display = 'flex';
+      }, 350);
+    }
+
+    function closeCard() {
+      document.getElementById('cardModal').style.display = 'none';
+    }
+
+    function spawnPetals(x, y) {
+      const items = ['🌸', '✨', '💍', '🌹', '💖', '👑'];
+      for (let i = 0; i < 28; i++) {
+        const p = document.createElement('div');
+        p.className = 'petal';
+        p.innerText = items[Math.floor(Math.random() * items.length)];
+        p.style.left = (x || window.innerWidth / 2) + 'px';
+        p.style.top = (y || window.innerHeight / 2) + 'px';
+        p.style.fontSize = (Math.random() * 16 + 20) + 'px';
+
+        const dx = (Math.random() - 0.5) * 350 + 'px';
+        const dy = (Math.random() - 0.5) * 320 + 'px';
+        p.style.setProperty('--dx', dx);
+        p.style.setProperty('--dy', dy);
+
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 2200);
+      }
+    }
+  </script>
+</body>
+</html>
