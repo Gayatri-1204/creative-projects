@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aarti & Ashish | The Royal Wedding 💍✨</title>
+  <title> Ashish & Aarti| The Royal Wedding 💍✨</title>
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400;1,600&family=Rozha+One&display=swap" rel="stylesheet">
   <style>
     * {
@@ -13,53 +13,173 @@
     }
 
     body {
-      background: #0f090d;
+      background: radial-gradient(circle at 50% 20%, #200a16 0%, #0d0309 60%, #050104 100%);
       font-family: 'Montserrat', sans-serif;
       color: #3b2027;
       display: flex;
       justify-content: center;
       min-height: 100vh;
       overflow-x: hidden;
+      position: relative;
     }
 
-    /* Main Responsive Viewport (Mobile & Laptop Tablet Mockup) */
+    /* Ambient Glowing Fairy Lights Background */
+    .glow-bulb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(40px);
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.65;
+      animation: bulbBlink 4s infinite alternate ease-in-out;
+    }
+
+    .bulb-1 { top: 5%; left: 10%; width: 140px; height: 140px; background: rgba(254, 240, 138, 0.45); }
+    .bulb-2 { top: 30%; right: 8%; width: 180px; height: 180px; background: rgba(251, 146, 60, 0.35); }
+    .bulb-3 { bottom: 15%; left: 12%; width: 220px; height: 220px; background: rgba(244, 63, 94, 0.3); }
+
+    @keyframes bulbBlink {
+      0% { transform: scale(0.9) translateY(0); opacity: 0.45; }
+      100% { transform: scale(1.15) translateY(-15px); opacity: 0.85; filter: blur(55px); }
+    }
+
+    /* Main Responsive Viewport */
     .wedding-viewport {
       width: 100%;
       max-width: 520px;
       min-height: 100vh;
       background: #faf6f0;
-      box-shadow: 0 0 90px rgba(0, 0, 0, 0.9);
+      box-shadow: 0 0 100px rgba(0, 0, 0, 0.95), 0 0 40px rgba(212, 175, 55, 0.2);
       position: relative;
       display: flex;
       flex-direction: column;
+      z-index: 10;
     }
 
-    /* Top Floating Music Controller */
-    .audio-player-tag {
+    /* -----------------------------------------------------------
+       1. FIRST COVER PAGE (SLIDE-UP HERO HOME ENTRY)
+    ----------------------------------------------------------- */
+    #heroCover {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      padding-bottom: 60px;
+      transition: transform 1.3s cubic-bezier(0.77, 0, 0.175, 1), opacity 1s ease;
+      overflow: hidden;
+    }
+
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      background: 
+        linear-gradient(180deg, rgba(14, 4, 10, 0.2) 0%, rgba(20, 6, 15, 0.65) 60%, rgba(10, 2, 8, 0.98) 100%),
+        url('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200') center/cover no-repeat;
+      filter: contrast(105%);
+      transform: scale(1.02);
+      transition: transform 4s ease-out;
+    }
+
+    #heroCover:hover .hero-bg-img {
+      transform: scale(1.06);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 440px;
+      padding: 0 20px;
+    }
+
+    .hero-tag {
+      font-size: 0.72rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #fef08a;
+      margin-bottom: 12px;
+      text-shadow: 0 0 15px rgba(254, 240, 138, 0.7);
+    }
+
+    .hero-title {
+      font-family: 'Alex Brush', cursive;
+      font-size: clamp(3.8rem, 11vw, 5.4rem);
+      color: #fff;
+      line-height: 1.05;
+      text-shadow: 0 4px 25px rgba(0, 0, 0, 0.9), 0 0 20px rgba(254, 240, 138, 0.4);
+      margin-bottom: 10px;
+    }
+
+    .hero-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: #fce7f3;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+    }
+
+    .btn-slide-open {
+      background: linear-gradient(135deg, #fef08a, #d4af37, #b45309);
+      color: #1f040d;
+      border: 1px solid #ffffff;
+      padding: 15px 36px;
+      border-radius: 40px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.9), 0 0 30px rgba(254, 240, 138, 0.8);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-slide-open:hover {
+      transform: scale(1.06);
+      box-shadow: 0 15px 45px rgba(254, 240, 138, 1);
+    }
+
+    .cover-slide-away {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Floating Music Toggle */
+    .audio-tag {
       position: fixed;
       top: 18px;
       right: 18px;
-      z-index: 9999;
-      width: 42px;
-      height: 42px;
+      z-index: 999999;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid #d4af37;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1.5px solid #d4af37;
       backdrop-filter: blur(10px);
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-      font-size: 1.1rem;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+      font-size: 1.15rem;
     }
 
     /* -----------------------------------------------------------
-       SECTION 1: PURE IVORY ROYAL MAIN CARD (SCREENSHOT 1)
+       SECTION 1: PURE IVORY ROYAL CARD (HOME PAGE)
     ----------------------------------------------------------- */
     .sec-home {
-      background: radial-gradient(circle at 50% 30%, #ffffff 0%, #faf3eb 100%);
-      padding: 55px 24px 60px 24px;
+      background: radial-gradient(circle at 50% 25%, #ffffff 0%, #fdf8f2 60%, #f7eedf 100%);
+      padding: 60px 24px 65px 24px;
       text-align: center;
       position: relative;
       border-bottom: 3px double #e8d5be;
@@ -67,10 +187,11 @@
 
     .shlok-text {
       font-family: 'Rozha One', serif;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: #9c6e3b;
       line-height: 1.8;
       margin-bottom: 25px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.05);
     }
 
     .together-tag {
@@ -78,22 +199,22 @@
       letter-spacing: 4px;
       text-transform: uppercase;
       color: #8c7265;
-      font-weight: 600;
-      margin-bottom: 20px;
+      font-weight: 700;
+      margin-bottom: 18px;
       display: block;
     }
 
     .bride-cursive {
       font-family: 'Alex Brush', cursive;
-      font-size: clamp(4.2rem, 12vw, 5.2rem);
+      font-size: clamp(4.5rem, 12vw, 5.5rem);
       color: #b3734a;
       line-height: 1;
-      margin-bottom: 8px;
-      text-shadow: 0 2px 10px rgba(179, 115, 74, 0.15);
+      margin-bottom: 6px;
+      text-shadow: 0 2px 15px rgba(179, 115, 74, 0.2);
     }
 
     .family-parents {
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       color: #8f7467;
       margin-bottom: 12px;
     }
@@ -101,131 +222,138 @@
     .knot-with {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       color: #8c7265;
       margin: 10px 0;
     }
 
     .groom-cursive {
       font-family: 'Alex Brush', cursive;
-      font-size: clamp(4.2rem, 12vw, 5.2rem);
+      font-size: clamp(4.5rem, 12vw, 5.5rem);
       color: #9c5c3b;
       line-height: 1;
-      margin-bottom: 8px;
-      text-shadow: 0 2px 10px rgba(156, 92, 59, 0.15);
+      margin-bottom: 6px;
+      text-shadow: 0 2px 15px rgba(156, 92, 59, 0.2);
     }
 
     .quote-lead {
       font-family: 'Playfair Display', serif;
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       font-style: italic;
       color: #6e554b;
-      line-height: 1.7;
-      margin: 28px 0 15px 0;
+      line-height: 1.8;
+      margin: 28px 0 18px 0;
     }
 
     .location-pill {
       display: inline-block;
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: #9c6e3b;
-      border: 1px solid rgba(156, 110, 59, 0.4);
-      padding: 6px 18px;
+      border: 1px solid rgba(156, 110, 59, 0.45);
+      padding: 7px 22px;
       border-radius: 30px;
-      background: rgba(255, 255, 255, 0.6);
-      font-weight: 600;
+      background: rgba(255, 255, 255, 0.8);
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(156, 110, 59, 0.1);
     }
 
     /* -----------------------------------------------------------
-       SECTION 2: RICH RUBY RED COUNTDOWN & SCRATCH (SCREENSHOT 2 & 3)
+       SECTION 2: GLOWING CRIMSON COUNTDOWN & SCRATCH CARD
     ----------------------------------------------------------- */
     .sec-countdown {
-      background: radial-gradient(circle at 50% 20%, #8a0c28 0%, #5e051a 60%, #420211 100%);
+      background: radial-gradient(circle at 50% 20%, #9e0e31 0%, #68051c 65%, #420211 100%);
       color: #fff;
-      padding: 55px 22px 65px 22px;
+      padding: 60px 22px 70px 22px;
       text-align: center;
       position: relative;
+      box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.6);
     }
 
     .counting-heading {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 2.5rem;
-      color: #f7eed7;
+      font-size: 2.6rem;
+      color: #fef08a;
       line-height: 1.2;
       margin-bottom: 25px;
-      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 25px rgba(254, 240, 138, 0.4);
     }
 
     .timer-cards {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
-      margin-bottom: 30px;
+      margin-bottom: 32px;
     }
 
     .t-card {
       background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(247, 238, 215, 0.4);
-      border-radius: 8px;
-      padding: 14px 4px;
-      backdrop-filter: blur(10px);
+      border: 1px solid rgba(254, 240, 138, 0.45);
+      border-radius: 12px;
+      padding: 16px 4px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
     }
 
     .t-val {
       font-family: 'Playfair Display', serif;
-      font-size: 2.1rem;
-      color: #f7eed7;
+      font-size: 2.2rem;
+      color: #fef08a;
       font-style: italic;
       display: block;
+      text-shadow: 0 0 10px rgba(254, 240, 138, 0.5);
     }
 
     .t-lbl {
-      font-size: 0.6rem;
+      font-size: 0.62rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #f5c4b3;
+      color: #fecdd3;
       margin-top: 4px;
       display: block;
+      font-weight: 600;
     }
 
     .scratch-pod {
       position: relative;
       width: 100%;
-      height: 160px;
-      border-radius: 8px;
+      height: 170px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(247, 238, 215, 0.4);
-      margin-bottom: 12px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 30px rgba(254, 240, 138, 0.25);
+      border: 1.5px solid rgba(254, 240, 138, 0.5);
+      margin-bottom: 14px;
     }
 
     .scratch-unveiled {
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+      background: linear-gradient(135deg, #fffbeb 0%, #fde68a 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      color: #7c2d12;
+      color: #78350f;
     }
 
     .unveil-tag {
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       letter-spacing: 3px;
       text-transform: uppercase;
       font-weight: 700;
+      color: #b45309;
     }
 
     .unveil-date {
       font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       font-weight: 700;
       letter-spacing: 2px;
       margin: 4px 0;
+      color: #78350f;
     }
 
     #scratchCanvas {
@@ -238,25 +366,26 @@
     }
 
     .scratch-hint-text {
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #f7eed7;
-      opacity: 0.85;
+      color: #fef08a;
+      text-shadow: 0 0 10px rgba(254, 240, 138, 0.6);
     }
 
     /* -----------------------------------------------------------
-       SECTION 3: TIMELINE LOVE STORY (SCREENSHOT 4)
+       SECTION 3: TIMELINE LOVE STORY
     ----------------------------------------------------------- */
     .sec-story {
       background: #fbf7f2;
-      padding: 55px 24px;
+      padding: 60px 24px;
       text-align: center;
+      border-bottom: 2px dashed #ebd9cc;
     }
 
     .story-heading {
       font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
+      font-size: 2.5rem;
       color: #4a2831;
       margin-bottom: 30px;
     }
@@ -286,33 +415,33 @@
     }
 
     .node-pin {
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
-      background: #8a0c28;
+      background: #9e0e31;
       border: 3px solid #fff;
       display: flex;
       justify-content: center;
       align-items: center;
       color: #fff;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       z-index: 2;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 12px rgba(158, 14, 49, 0.3);
       margin-bottom: 12px;
     }
 
     .node-card {
-      width: 85%;
+      width: 88%;
       background: #ffffff;
       border: 1px solid #ebd9cc;
-      border-radius: 12px;
-      padding: 18px 16px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+      border-radius: 16px;
+      padding: 20px 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
       text-align: center;
     }
 
     .node-date {
-      font-size: 0.65rem;
+      font-size: 0.68rem;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: #a87965;
@@ -323,36 +452,37 @@
     .node-title {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 1.35rem;
-      color: #8a0c28;
+      font-size: 1.4rem;
+      color: #9e0e31;
       margin-bottom: 6px;
     }
 
     .node-desc {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       color: #6e554b;
       line-height: 1.6;
     }
 
     /* -----------------------------------------------------------
-       SECTION 4: WEDDING WARDROBE / ITINERARY (SCREENSHOT 5)
+       SECTION 4: WEDDING WARDROBE / DRESS CODE
     ----------------------------------------------------------- */
     .sec-wardrobe {
       background: #f4ede4;
-      padding: 55px 22px;
+      padding: 60px 22px;
       text-align: center;
+      border-bottom: 3px double #e5d5c5;
     }
 
     .wardrobe-heading {
       font-family: 'Playfair Display', serif;
-      font-size: 2.6rem;
+      font-size: 2.7rem;
       font-style: italic;
-      color: #8a0c28;
+      color: #9e0e31;
       margin-bottom: 6px;
     }
 
     .wardrobe-sub {
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       letter-spacing: 1px;
       color: #8c7265;
       margin-bottom: 30px;
@@ -367,21 +497,21 @@
     .event-tile {
       background: #ffffff;
       border: 1px solid #e5d5c5;
-      border-radius: 16px;
-      padding: 18px 14px;
+      border-radius: 18px;
+      padding: 20px 14px;
       text-align: left;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.04);
     }
 
     .ev-icon {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       margin-bottom: 6px;
     }
 
     .ev-day {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       color: #4a2831;
       margin-bottom: 6px;
     }
@@ -393,14 +523,14 @@
     }
 
     .color-dot {
-      width: 14px;
-      height: 14px;
+      width: 15px;
+      height: 15px;
       border-radius: 50%;
       border: 1px solid rgba(0,0,0,0.1);
     }
 
     .ev-info {
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       color: #8c7265;
       line-height: 1.5;
     }
@@ -410,13 +540,14 @@
     ----------------------------------------------------------- */
     .sec-gallery {
       background: #ffffff;
-      padding: 55px 24px;
+      padding: 60px 24px;
       text-align: center;
+      border-bottom: 3px double #e8d5be;
     }
 
     .gallery-heading {
       font-family: 'Playfair Display', serif;
-      font-size: 2.3rem;
+      font-size: 2.4rem;
       color: #4a2831;
       margin-bottom: 25px;
     }
@@ -424,10 +555,10 @@
     .slider-box {
       width: 100%;
       height: 380px;
-      border-radius: 18px;
+      border-radius: 20px;
       overflow: hidden;
       position: relative;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+      box-shadow: 0 15px 45px rgba(0,0,0,0.15);
       border: 1px solid #ebd9cc;
     }
 
@@ -438,7 +569,7 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      transition: opacity 1s ease-in-out;
+      transition: opacity 1.2s ease-in-out;
     }
 
     .slide-img.active {
@@ -446,39 +577,40 @@
     }
 
     /* -----------------------------------------------------------
-       SECTION 6: THANK YOU ROYAL CARD (SCREENSHOT 6)
+       SECTION 6: THANK YOU ROYAL CARD
     ----------------------------------------------------------- */
     .sec-thankyou {
-      background: radial-gradient(circle at 50% 20%, #8a0c28 0%, #520415 75%, #38010d 100%);
+      background: radial-gradient(circle at 50% 20%, #9e0e31 0%, #5e051a 75%, #3d010e 100%);
       color: #fff;
-      padding: 65px 24px 85px 24px;
+      padding: 70px 24px 90px 24px;
       text-align: center;
       position: relative;
+      box-shadow: inset 0 0 60px rgba(0,0,0,0.6);
     }
 
     .ty-pre {
-      font-size: 0.65rem;
+      font-size: 0.68rem;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: #f7eed7;
-      opacity: 0.85;
+      color: #fef08a;
+      opacity: 0.9;
       margin-bottom: 12px;
       display: block;
     }
 
     .ty-heading {
       font-family: 'Alex Brush', cursive;
-      font-size: clamp(3.8rem, 11vw, 4.8rem);
-      color: #fce7b2;
+      font-size: clamp(4rem, 12vw, 5.2rem);
+      color: #fef08a;
       line-height: 1.1;
       margin-bottom: 25px;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      text-shadow: 0 4px 25px rgba(0,0,0,0.6), 0 0 25px rgba(254, 240, 138, 0.4);
     }
 
     .ty-body {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       line-height: 1.8;
       color: #fde8e8;
       max-width: 420px;
@@ -487,45 +619,67 @@
 
     .ty-signature {
       font-family: 'Alex Brush', cursive;
-      font-size: 3.2rem;
-      color: #fce7b2;
+      font-size: 3.4rem;
+      color: #fef08a;
       margin-bottom: 10px;
+      text-shadow: 0 0 15px rgba(254, 240, 138, 0.4);
     }
 
     .ty-date {
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: #f5c4b3;
+      color: #fecdd3;
     }
 
-    /* Floating Hearts Animation */
+    /* Floating Hearts on Scratch */
     .floating-heart {
       position: absolute;
       pointer-events: none;
       animation: floatHeart 2.5s ease-out forwards;
-      z-index: 9999;
+      z-index: 99999;
     }
 
     @keyframes floatHeart {
-      0% { opacity: 1; transform: scale(0.5) translateY(0); }
-      100% { opacity: 0; transform: scale(1.6) translateY(-160px) translateX(var(--dx)); }
+      0% { opacity: 1; transform: scale(0.6) translateY(0); }
+      100% { opacity: 0; transform: scale(1.6) translateY(-170px) translateX(var(--dx)); }
     }
   </style>
 </head>
 <body>
 
+  <!-- Floating Fairy Glow Bulbs -->
+  <div class="glow-bulb bulb-1"></div>
+  <div class="glow-bulb bulb-2"></div>
+  <div class="glow-bulb bulb-3"></div>
+
   <!-- Floating Audio Player -->
-  <div class="audio-player-tag" onclick="toggleAudio()" title="Play Wedding Music">
+  <div class="audio-tag" onclick="toggleAudio()" title="Play Wedding Music">
     🎵
   </div>
   <audio id="weddingTrack" loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=indian-flute-ambient-112199.mp3" type="audio/mp3">
   </audio>
 
+  <!-- 1. FULLSCREEN FIRST HERO PAGE (COUPLE PHOTO + SLIDE UP) -->
+  <div id="heroCover">
+    <div class="hero-bg-img"></div>
+    <div class="hero-content">
+      <div class="hero-tag">✦ The Royal Wedding Celebration ✦</div>
+      <h1 class="hero-title">Aarti & Ashish</h1>
+      <p class="hero-quote">
+        "We joyfully invite you to celebrate the union of our hearts as we step into our forever."
+      </p>
+      <button class="btn-slide-open" onclick="openWeddingInvitation()">
+        Open Royal Invitation 💌
+      </button>
+    </div>
+  </div>
+
+  <!-- 2. MAIN WEDDING PORTAL (REVEALED IN SHINE) -->
   <div class="wedding-viewport">
 
-    <!-- 1. PURE IVORY ROYAL MAIN CARD -->
+    <!-- Section 1: Pure Ivory Home Card -->
     <div class="sec-home">
       <div class="shlok-text">
         ॥ श्री गणेशाय नमः ॥<br>
@@ -535,22 +689,22 @@
 
       <span class="together-tag">• TOGETHER WITH THEIR FAMILIES •</span>
 
-      <div class="bride-cursive">Aarti</div>
-      <div class="family-parents">( D/o Smt. & Shri Dattatray Kadam )</div>
+      <div class="bride-cursive">Ashish</div>
+      <div class="family-parents">( D/o Smt. & Shri Arun Jadav )</div>
 
       <div class="knot-with">with</div>
 
-      <div class="groom-cursive">Ashish</div>
-      <div class="family-parents">( S/o Smt. & Shri Ashokrao Patil )</div>
+      <div class="groom-cursive">Aarti</div>
+      <div class="family-parents">( S/o Smt. & Shri chougule )</div>
 
       <p class="quote-lead">
         "Two souls, one heart, woven by destiny — request the joy of your presence as we begin our forever."
       </p>
 
-      <div class="location-pill">📍 PUNE, MAHARASHTRA</div>
+      <div class="location-pill">📍 Kolhapur, MAHARASHTRA</div>
     </div>
 
-    <!-- 2. RICH RUBY RED COUNTDOWN & SCRATCH CARD -->
+    <!-- Section 2: Crimson Red Glow Countdown & Scratch Card -->
     <div class="sec-countdown">
       <h2 class="counting-heading">Counting the Moments</h2>
 
@@ -577,19 +731,18 @@
         <div class="scratch-unveiled">
           <span class="unveil-tag">Save The Auspicious Date</span>
           <span class="unveil-date">26 • 11 • 2026</span>
-          <span style="font-size: 0.8rem; font-weight: 600;">Thursday • Shubh Muhurat 12:35 PM</span>
+          <span style="font-size: 0.82rem; font-weight: 600; color: #b45309;">Thursday • Shubh Muhurat 12:35 PM</span>
         </div>
-        <canvas id="scratchCanvas" width="460" height="160"></canvas>
+        <canvas id="scratchCanvas" width="460" height="170"></canvas>
       </div>
       <span class="scratch-hint-text">✦ Scratch The Golden Foil ✦</span>
     </div>
 
-    <!-- 3. TIMELINE LOVE STORY -->
+    <!-- Section 3: Timeline Love Story -->
     <div class="sec-story">
       <h2 class="story-heading">How It All Began</h2>
 
       <div class="timeline-chain">
-        
         <div class="timeline-node">
           <div class="node-pin">1</div>
           <div class="node-card">
@@ -616,11 +769,10 @@
             <p class="node-desc">With families cheering and hearts aligned, forever officially began.</p>
           </div>
         </div>
-
       </div>
     </div>
 
-    <!-- 4. WEDDING WARDROBE / ITINERARY -->
+    <!-- Section 4: Wedding Wardrobe / Dress Code -->
     <div class="sec-wardrobe">
       <h2 class="wardrobe-heading">Wedding Wardrobe</h2>
       <div class="wardrobe-sub">A little something to inspire your look for each celebration</div>
@@ -684,7 +836,7 @@
       </div>
     </div>
 
-    <!-- 5. OUR GALLERY (AUTO SLIDESHOW) -->
+    <!-- Section 5: Our Gallery (Auto Slideshow) -->
     <div class="sec-gallery">
       <h2 class="gallery-heading">Our Gallery</h2>
       
@@ -695,7 +847,7 @@
       </div>
     </div>
 
-    <!-- 6. ROYAL THANK YOU CARD -->
+    <!-- Section 6: Royal Thank You Card -->
     <div class="sec-thankyou">
       <span class="ty-pre">FROM THE BOTTOM OF OUR HEARTS</span>
       <h2 class="ty-heading">Thank You</h2>
@@ -711,7 +863,14 @@
   </div>
 
   <script>
-    // 1. COUNTDOWN TIMER TO 26 NOV 2026
+    // 1. OPEN SLIDE-UP HERO COVER
+    function openWeddingInvitation() {
+      const cover = document.getElementById('heroCover');
+      cover.classList.add('cover-slide-away');
+      toggleAudio(true);
+    }
+
+    // 2. LIVE COUNTDOWN TO 26 NOV 2026
     const targetDate = new Date("November 26, 2026 12:35:00").getTime();
 
     function updateTimer() {
@@ -733,14 +892,14 @@
     setInterval(updateTimer, 1000);
     updateTimer();
 
-    // 2. SCRATCH CARD WITH HEART BURST
+    // 3. GLOWING GOLD FOIL SCRATCH CARD WITH HEARTS
     const canvas = document.getElementById('scratchCanvas');
     const ctx = canvas.getContext('2d');
 
     const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-    grad.addColorStop(0, '#eab308');
-    grad.addColorStop(0.5, '#fde047');
-    grad.addColorStop(1, '#ca8a04');
+    grad.addColorStop(0, '#f59e0b');
+    grad.addColorStop(0.5, '#fef08a');
+    grad.addColorStop(1, '#d97706');
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -763,10 +922,9 @@
 
       ctx.globalCompositeOperation = 'destination-out';
       ctx.beginPath();
-      ctx.arc(x, y, 22, 0, Math.PI * 2);
+      ctx.arc(x, y, 24, 0, Math.PI * 2);
       ctx.fill();
 
-      // Spawn Floating Hearts
       spawnHearts(clientX, clientY);
     }
 
@@ -779,41 +937,40 @@
     canvas.addEventListener('touchmove', scratchAction);
 
     function spawnHearts(x, y) {
-      if (Math.random() > 0.4) return;
-      const icons = ['❤️', '💖', '✨', '🌸', '💍'];
+      if (Math.random() > 0.45) return;
+      const icons = ['❤️', '💖', '✨', '🌸', '💍', '💛'];
       const p = document.createElement('div');
       p.className = 'floating-heart';
       p.innerText = icons[Math.floor(Math.random() * icons.length)];
       p.style.left = (x - 10) + 'px';
       p.style.top = (y - 10) + 'px';
       p.style.fontSize = (Math.random() * 12 + 18) + 'px';
-      p.style.setProperty('--dx', (Math.random() - 0.5) * 120 + 'px');
+      p.style.setProperty('--dx', (Math.random() - 0.5) * 140 + 'px');
       document.body.appendChild(p);
 
       setTimeout(() => p.remove(), 2500);
     }
 
-    // 3. AUTO SLIDESHOW FOR GALLERY
+    // 4. AUTO SLIDESHOW GALLERY
     const slides = document.querySelectorAll('.slide-img');
-    let currentSlide = 0;
+    let curSlide = 0;
 
     setInterval(() => {
-      slides[currentSlide].classList.remove('active');
-      currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].classList.add('active');
+      slides[curSlide].classList.remove('active');
+      curSlide = (curSlide + 1) % slides.length;
+      slides[curSlide].classList.add('active');
     }, 3000);
 
-    // 4. AUDIO TOGGLE
+    // 5. AUDIO CONTROL
     const audio = document.getElementById('weddingTrack');
     let isPlaying = false;
 
-    function toggleAudio() {
-      if (isPlaying) {
+    function toggleAudio(forcePlay = false) {
+      if (forcePlay || !isPlaying) {
+        audio.play().then(() => { isPlaying = true; }).catch(() => {});
+      } else {
         audio.pause();
         isPlaying = false;
-      } else {
-        audio.play().catch(() => {});
-        isPlaying = true;
       }
     }
   </script>
