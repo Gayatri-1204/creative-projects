@@ -1,459 +1,769 @@
 <!DOCTYPE html>
-<html lang="mr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Boyfriend Day My Love ❤️</title>
+  <title>Happy Boyfriend Day My Everything ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;1,400&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     body {
-      background: linear-gradient(135deg, #ffe6ea 0%, #ffccd5 50%, #ffb3c1 100%);
+      background: radial-gradient(ellipse at bottom, #2b040e 0%, #150005 50%, #050002 100%);
       min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow-x: hidden;
-      color: #590d22;
+      width: 100vw;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      overflow: hidden;
+      position: relative;
     }
 
-    .container {
-      width: 100%;
-      max-width: 480px;
-      min-height: 100vh;
-      display: flex;
+    /* Ambient Romantic Lighting */
+    .bg-light-1 {
+      position: absolute;
+      top: -10%;
+      left: 10%;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(255, 45, 85, 0.22), transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    .bg-light-2 {
+      position: absolute;
+      bottom: -10%;
+      right: 10%;
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, rgba(201, 24, 74, 0.25), transparent 70%);
+      filter: blur(90px);
+      pointer-events: none;
+    }
+
+    /* Fullscreen Page Framework */
+    .screen-page {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      padding: 40px 60px;
+      position: relative;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      padding: 30px 20px;
-      position: relative;
+      box-sizing: border-box;
+    }
+
+    .screen-page.active {
+      display: flex;
+      animation: pageReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes pageReveal {
+      from { opacity: 0; transform: scale(0.97); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Elegant Back Button */
+    .back-btn {
+      position: absolute;
+      top: 35px;
+      left: 45px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 117, 143, 0.3);
+      color: #ffccd5;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 10px 22px;
+      border-radius: 40px;
+      backdrop-filter: blur(15px);
+      transition: all 0.3s ease;
+      z-index: 100;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 75, 110, 0.3);
+      border-color: #ff4d6d;
+      transform: translateX(-5px);
+    }
+
+    /* =========================================
+       PAGE 0: HOME SCREEN (WIDE LUXURY)
+    ========================================= */
+    .home-header {
+      margin-top: 5vh;
       text-align: center;
     }
 
-    /* Page Navigation Logic */
-    .page {
-      display: none;
+    .home-cursive {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      color: #ff758f;
+      text-shadow: 0 0 25px rgba(255, 117, 143, 0.6);
+    }
+
+    .home-main-title {
+      font-family: 'Cinzel', serif;
+      font-size: 3.8rem;
+      font-weight: 900;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      background: linear-gradient(180deg, #ffffff 0%, #ff8fa3 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-top: -10px;
+      text-shadow: 0 5px 30px rgba(255, 45, 85, 0.4);
+    }
+
+    .bouquet-grid-wrapper {
+      width: 100%;
+      max-width: 1100px;
+      margin-bottom: 7vh;
+      text-align: center;
+    }
+
+    .bouquet-tagline {
+      font-size: 0.95rem;
+      letter-spacing: 3px;
+      color: #c9184a;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+
+    .bouquet-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .bouquet-item {
+      background: rgba(25, 2, 7, 0.75);
+      border: 1px solid rgba(255, 77, 109, 0.3);
+      border-radius: 24px;
+      padding: 35px 20px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(255, 77, 109, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bouquet-item:hover {
+      transform: translateY(-12px) scale(1.03);
+      border-color: #ff4d6d;
+      box-shadow: 0 20px 45px rgba(255, 77, 109, 0.35), inset 0 0 25px rgba(255, 77, 109, 0.2);
+    }
+
+    .bouquet-flower {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 15px;
+      filter: drop-shadow(0 5px 15px rgba(255, 77, 109, 0.4));
+    }
+
+    .bouquet-item h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      letter-spacing: 2px;
+      color: #ffccd5;
+      text-transform: uppercase;
+    }
+
+    .bouquet-item p {
+      font-size: 0.8rem;
+      color: #ff8fa3;
+      margin-top: 6px;
+      letter-spacing: 1px;
+    }
+
+    /* =========================================
+       PAGE 1: SIDE PHOTO & AUTO-SCROLLING TEXT
+    ========================================= */
+    .page1-layout {
       width: 100%;
       height: 100%;
-      flex-direction: column;
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      animation: fadeIn 0.6s ease-in-out forwards;
+      gap: 60px;
+      max-width: 1280px;
+      margin: auto;
+      padding-top: 40px;
     }
 
-    .page.active {
-      display: flex;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Back Button */
-    .back-btn {
-      align-self: flex-start;
-      background: rgba(255, 255, 255, 0.8);
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-      padding: 8px 14px;
-      border-radius: 50%;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
-      transition: transform 0.2s;
-    }
-    .back-btn:hover { transform: scale(1.1); }
-
-    /* Home Page */
-    .title {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: #c9184a;
-      text-shadow: 2px 2px 8px rgba(255, 75, 110, 0.25);
-      margin-top: 40px;
-      line-height: 1.3;
-    }
-
-    .subtitle {
-      font-size: 1.1rem;
-      color: #800f2f;
-      margin-top: 10px;
-    }
-
-    .bouquet-section {
-      width: 100%;
-      margin-bottom: 20px;
-    }
-
-    .bouquet-instruction {
-      font-size: 0.95rem;
-      color: #a4133c;
-      margin-bottom: 15px;
-      font-weight: 600;
-    }
-
-    .bouquets {
-      display: flex;
-      justify-content: space-around;
-      gap: 15px;
-    }
-
-    .bouquet-card {
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(8px);
-      border: 2px solid #ff758f;
-      border-radius: 20px;
-      padding: 15px 10px;
-      cursor: pointer;
+    .side-photo-pane {
       flex: 1;
-      box-shadow: 0 8px 15px rgba(201, 24, 74, 0.15);
-      transition: all 0.3s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    .bouquet-card:hover {
-      transform: translateY(-8px) scale(1.05);
+    .polaroid-grand {
       background: #ffffff;
-      box-shadow: 0 12px 20px rgba(201, 24, 74, 0.25);
+      padding: 18px 18px 50px 18px;
+      border-radius: 12px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.7), 0 0 30px rgba(255, 75, 110, 0.25);
+      transform: rotate(-3deg);
+      transition: all 0.4s ease;
+      width: 360px;
     }
 
-    .bouquet-card .icon {
-      font-size: 42px;
-      display: block;
+    .polaroid-grand:hover {
+      transform: rotate(0deg) scale(1.03);
     }
 
-    .bouquet-card span {
-      display: block;
-      margin-top: 8px;
-      font-weight: 700;
-      font-size: 0.85rem;
-      color: #800f2f;
-    }
-
-    /* Page 1: Photo Side Card */
-    .photo-card {
-      background: white;
-      padding: 15px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    .polaroid-grand img {
       width: 100%;
-      max-width: 320px;
-      margin-top: 20px;
-    }
-
-    .photo-card img {
-      width: 100%;
-      height: 320px;
+      height: 380px;
       object-fit: cover;
-      border-radius: 15px;
+      border-radius: 6px;
     }
 
-    .card-text {
+    .polaroid-grand-caption {
+      color: #222;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.2rem;
+      text-align: center;
       margin-top: 15px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #a4133c;
     }
 
-    /* Page 2: Cute Hug Animation */
-    .hug-stage {
-      height: 250px;
+    .side-text-pane {
+      flex: 1.3;
+      height: 480px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 117, 143, 0.2);
+      backdrop-filter: blur(12px);
+      padding: 20px 35px;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    }
+
+    .scrolling-letter {
+      position: absolute;
+      width: calc(100% - 70px);
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      animation: verticalScrollText 24s linear infinite;
+    }
+
+    .scrolling-letter:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes verticalScrollText {
+      0% { top: 100%; }
+      100% { top: -140%; }
+    }
+
+    .scroll-para {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      line-height: 1.8;
+      color: #ffe5ec;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .scroll-para span {
+      color: #ff4d6d;
+      font-weight: 600;
+    }
+
+    /* =========================================
+       PAGE 2: FULL BODY CARTOON REAL HUG
+    ========================================= */
+    .page2-layout {
       width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .hug-celebration-title {
+      opacity: 0;
+      transform: translateY(-30px) scale(0.7);
+      background: linear-gradient(135deg, #ff4d6d, #c9184a);
+      color: white;
+      font-family: 'Cinzel', serif;
+      font-weight: 800;
+      font-size: 2.2rem;
+      padding: 16px 45px;
+      border-radius: 50px;
+      letter-spacing: 2px;
+      box-shadow: 0 15px 40px rgba(255, 77, 109, 0.6);
+      transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: absolute;
+      top: 14%;
+    }
+
+    .hug-celebration-title.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .hug-stage-full {
+      width: 100%;
+      height: 400px;
       position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 40px 0;
     }
 
-    .cat {
-      font-size: 70px;
+    /* Full-body Cute Animated Characters */
+    .char-figure {
       position: absolute;
-      transition: all 1.8s cubic-bezier(0.25, 1, 0.5, 1);
+      bottom: 20px;
+      width: 250px;
+      height: 250px;
+      transition: all 2.2s cubic-bezier(0.25, 1, 0.5, 1);
+      filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6));
     }
 
-    .cat-left {
-      left: 10%;
+    .char-left-guy {
+      left: 5vw;
     }
 
-    .cat-right {
-      right: 10%;
-      transform: scaleX(-1);
+    .char-right-girl {
+      right: 5vw;
     }
 
-    /* Hugging Animation Trigger */
-    .page.active .cat-left.hug-active {
-      left: 35%;
-      transform: rotate(10deg);
+    /* Final Hug Position - Full Bodied Tight Embrace */
+    .hug-stage-full.hugging .char-left-guy {
+      left: calc(50% - 190px);
+      transform: scale(1.05) rotate(5deg);
     }
 
-    .page.active .cat-right.hug-active {
-      right: 35%;
-      transform: scaleX(-1) rotate(10deg);
+    .hug-stage-full.hugging .char-right-girl {
+      right: calc(50% - 190px);
+      transform: scale(1.05) rotate(-5deg);
     }
 
-    .hug-msg {
-      opacity: 0;
-      transform: scale(0.5);
-      transition: all 0.6s ease;
-      color: #c9184a;
-      font-size: 1.6rem;
-      font-weight: 800;
-      background: #fff;
-      padding: 12px 20px;
-      border-radius: 30px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      margin-top: 20px;
-    }
-
-    .hug-msg.show {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    /* Page 3: Photo Rain */
-    .rain-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+    /* Hearts blasting upon hug */
+    .hug-heart-burst {
+      position: absolute;
+      font-size: 2.5rem;
       pointer-events: none;
-      overflow: hidden;
+      opacity: 0;
+      animation: heartFly 1.5s ease-out forwards;
+    }
+
+    @keyframes heartFly {
+      0% { opacity: 1; transform: scale(0.5) translate(0, 0); }
+      100% { opacity: 0; transform: scale(1.8) translate(var(--dx), var(--dy)); }
+    }
+
+    /* =========================================
+       PAGE 3: MYSTERY BOX & EMERGING PHOTO GRID
+    ========================================= */
+    .page3-layout {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      padding-top: 30px;
+    }
+
+    .chest-box-container {
+      margin-top: 15px;
+      cursor: pointer;
+      text-align: center;
       z-index: 10;
     }
 
-    .falling-photo {
-      position: absolute;
-      top: -120px;
-      width: 65px;
-      height: 65px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid #ff4d6d;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      pointer-events: auto;
+    .magic-chest {
+      font-size: 5rem;
+      filter: drop-shadow(0 10px 25px rgba(255, 77, 109, 0.5));
+      transition: transform 0.3s;
+      display: inline-block;
+    }
+
+    .magic-chest:hover {
+      transform: scale(1.15) rotate(4deg);
+    }
+
+    .chest-hint {
+      color: #ff8fa3;
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      margin-top: 8px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* Clean Auto-Arranging Gallery Grid */
+    .photo-stage-grid {
+      width: 100%;
+      max-width: 1100px;
+      height: 480px;
+      position: relative;
+      margin-top: 25px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 25px;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .flying-card {
+      width: 200px;
+      height: 250px;
+      background: white;
+      padding: 10px 10px 35px 10px;
+      border-radius: 8px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
       cursor: pointer;
-      animation: fall linear forwards;
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.1);
+      opacity: 0;
+      transition: all 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    @keyframes fall {
-      to {
-        transform: translateY(115vh) rotate(360deg);
-      }
+    .flying-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 4px;
     }
 
-    /* Popup Modal */
-    .modal {
+    .flying-card:hover {
+      transform: scale(1.1) !important;
+      box-shadow: 0 20px 45px rgba(255, 77, 109, 0.5);
+      z-index: 50;
+    }
+
+    /* Modal Styling */
+    .modal-overlay {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(4px);
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(12px);
       justify-content: center;
       align-items: center;
-      z-index: 100;
+      z-index: 999;
     }
 
-    .modal-content {
-      background: white;
-      padding: 25px;
-      border-radius: 20px;
-      max-width: 300px;
+    .modal-card {
+      background: linear-gradient(145deg, #2b040e, #140105);
+      border: 1px solid #ff4d6d;
+      box-shadow: 0 25px 60px rgba(255, 75, 110, 0.4);
+      padding: 40px 35px;
+      border-radius: 28px;
+      width: 90%;
+      max-width: 440px;
       text-align: center;
-      animation: popIn 0.3s ease-out;
-      border: 2px solid #ff758f;
-      box-shadow: 0 10px 30px rgba(201, 24, 74, 0.3);
+      animation: modalPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    @keyframes popIn {
-      from { transform: scale(0.7); opacity: 0; }
+    @keyframes modalPop {
+      from { transform: scale(0.75); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
     }
 
-    .modal-content h3 {
-      color: #c9184a;
-      margin-bottom: 10px;
+    .modal-card h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem;
+      color: #ff758f;
+      margin-bottom: 15px;
     }
 
-    .close-modal {
-      background: #ff4d6d;
+    .modal-card p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #ffe5ec;
+      margin-bottom: 30px;
+    }
+
+    .modal-btn {
+      background: linear-gradient(135deg, #ff4d6d, #c9184a);
       color: white;
       border: none;
-      padding: 8px 18px;
-      border-radius: 20px;
-      margin-top: 15px;
+      padding: 12px 32px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 2px;
       cursor: pointer;
-      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4);
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <div class="bg-light-1"></div>
+  <div class="bg-light-2"></div>
 
-    <!-- HOME PAGE -->
-    <div id="page-home" class="page active">
-      <div>
-        <h1 class="title">Happy Boyfriend Day! ❤️</h1>
-        <p class="subtitle">You make every single day special ✨</p>
-      </div>
+  <!-- =========================================
+       PAGE 0: HOME SCREEN
+  ========================================= -->
+  <div id="page-home" class="screen-page active">
+    <div class="home-header">
+      <div class="home-cursive">For the love of my life</div>
+      <h1 class="home-main-title">Happy Boyfriend Day</h1>
+    </div>
 
-      <div class="bouquet-section">
-        <p class="bouquet-instruction">Pick a bouquet for a surprise 💐</p>
-        <div class="bouquets">
-          <div class="bouquet-card" onclick="goToPage('page-photo')">
-            <span class="icon">💐</span>
-            <span>Memories</span>
-          </div>
-          <div class="bouquet-card" onclick="goToPage('page-hug')">
-            <span class="icon">🌸</span>
-            <span>Warm Hug</span>
-          </div>
-          <div class="bouquet-card" onclick="goToPage('page-rain')">
-            <span class="icon">🌷</span>
-            <span>Shower Love</span>
-          </div>
+    <div class="bouquet-grid-wrapper">
+      <div class="bouquet-tagline">✦ Pick a bouquet to unlock surprises ✦</div>
+      <div class="bouquet-row">
+        
+        <div class="bouquet-item" onclick="switchPage('page-photo')">
+          <span class="bouquet-flower">🥀</span>
+          <h3>Love Letter</h3>
+          <p>Our unforgettable story</p>
         </div>
-      </div>
-    </div>
 
-    <!-- PAGE 1: PHOTO & MESSAGE -->
-    <div id="page-photo" class="page">
-      <button class="back-btn" onclick="goToPage('page-home')">⬅️</button>
-      <h2 style="color: #a4133c;">My Favorite Person 💕</h2>
-      <div class="photo-card">
-        <!-- Replace with your actual photo URL or file name -->
-        <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=500" alt="Special Photo">
-        <div class="card-text">
-          "Having you in my life is the best gift ever. I love you! ❤️"
+        <div class="bouquet-item" onclick="switchPage('page-hug')">
+          <span class="bouquet-flower">💐</span>
+          <h3>Warm Hug</h3>
+          <p>A tight embrace for you</p>
         </div>
+
+        <div class="bouquet-item" onclick="switchPage('page-rain')">
+          <span class="bouquet-flower">🌹</span>
+          <h3>Memory Chest</h3>
+          <p>Unfold special moments</p>
+        </div>
+
       </div>
     </div>
-
-    <!-- PAGE 2: HUG ANIMATION -->
-    <div id="page-hug" class="page">
-      <button class="back-btn" onclick="goToPage('page-home')">⬅️</button>
-      <div id="hugMsg" class="hug-msg">Happy Boyfriend Day! 🤗❤️</div>
-      <div class="hug-stage">
-        <div id="cat1" class="cat cat-left">🐱</div>
-        <div id="cat2" class="cat cat-right">🐻</div>
-      </div>
-      <p style="color: #800f2f; font-weight: 500;">A tight hug just for you!</p>
-    </div>
-
-    <!-- PAGE 3: PHOTO RAIN -->
-    <div id="page-rain" class="page">
-      <button class="back-btn" onclick="stopRain(); goToPage('page-home');">⬅️</button>
-      <h2 style="color: #a4133c;">Raining Love 🌧️📸</h2>
-      <p style="color: #800f2f; margin-top: 8px;">Click on any falling photo!</p>
-      <div id="rainContainer" class="rain-container"></div>
-    </div>
-
   </div>
 
-  <!-- Popup Modal for Page 3 -->
-  <div id="loveModal" class="modal">
-    <div class="modal-content">
-      <h3>Surprise Note! 💌</h3>
-      <p id="modalText">You are the cutest! I love you endlessly ❤️</p>
-      <button class="close-modal" onclick="closeModal()">Close 💕</button>
+  <!-- =========================================
+       PAGE 1: SIDE PHOTO & AUTO-FLOWING MESSAGE
+  ========================================= -->
+  <div id="page-photo" class="screen-page">
+    <button class="back-btn" onclick="switchPage('page-home')">← Back to Bouquets</button>
+    
+    <div class="page1-layout">
+      <!-- Left: Big Polaroid -->
+      <div class="side-photo-pane">
+        <div class="polaroid-grand">
+          <!-- Replace this URL with your favorite photo together -->
+          <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800" alt="Us Together">
+          <div class="polaroid-grand-caption">Forever with You ❤️</div>
+        </div>
+      </div>
+
+      <!-- Right: Continuous Flowing Romantic Note -->
+      <div class="side-text-pane">
+        <div class="scrolling-letter">
+          <p class="scroll-para">To the most special boy in this universe,</p>
+          <p class="scroll-para">From the very day you walked into my life, <span>everything turned brighter, warmer, and so much more meaningful.</span></p>
+          <p class="scroll-para">Thank you for being my strongest pillar, my calm in every storm, and the reason behind my happiest smiles.</p>
+          <p class="scroll-para">Your laugh is my favourite soundtrack, and <span>your arms are the safest home</span> I could ever ask for.</p>
+          <p class="scroll-para">No matter how many days or years pass, loving you will always be the easiest and most beautiful choice I ever make.</p>
+          <p class="scroll-para">Happy Boyfriend Day to my best friend, my soulmate, and my forever love! ❤️✨</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================
+       PAGE 2: FULL-BODY CARTOON REAL HUG
+  ========================================= -->
+  <div id="page-hug" class="screen-page">
+    <button class="back-btn" onclick="switchPage('page-home')">← Back to Bouquets</button>
+
+    <div class="page2-layout">
+      <div id="hugBigTitle" class="hug-celebration-title">HAPPY BOYFRIEND DAY, MY LOVE! 🤗❤️</div>
+
+      <div id="hugFullStage" class="hug-stage-full">
+        <!-- Full-bodied cute Milk & Mocha Hug Animations -->
+        <img id="charLeft" class="char-figure char-left-guy" src="https://media.tenor.com/2s-Z3Yp81q0AAAAi/milk-and-mocha-running.gif" alt="Running to hug">
+        <img id="charRight" class="char-figure char-right-girl" src="https://media.tenor.com/Fw57t0pW9Q0AAAAi/mocha-running.gif" alt="Running to hug">
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================
+       PAGE 3: MYSTERY BOX & SPREADING PHOTOS
+  ========================================= -->
+  <div id="page-rain" class="screen-page">
+    <button class="back-btn" onclick="resetAndBack()">← Back to Bouquets</button>
+
+    <div class="page3-layout">
+      <div class="chest-box-container" onclick="openMagicChest()">
+        <div id="chestIcon" class="magic-chest">🎁</div>
+        <div id="chestPrompt" class="chest-hint">Click the gift box to reveal memories ✨</div>
+      </div>
+
+      <!-- Arranged Photo Grid Container -->
+      <div id="gridStage" class="photo-stage-grid"></div>
+    </div>
+  </div>
+
+  <!-- POP-UP SECRET LOVE NOTE -->
+  <div id="secretModal" class="modal-overlay">
+    <div class="modal-card">
+      <h2>Secret Note 💌</h2>
+      <p id="secretMsg">"You are my favourite person in the entire world!"</p>
+      <button class="modal-btn" onclick="closeSecretModal()">KEEP CLOSE TO HEART ❤️</button>
     </div>
   </div>
 
   <script>
-    // Navigation function
-    function goToPage(pageId) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      const target = document.getElementById(pageId);
-      target.classList.add('active');
+    // Navigation
+    function switchPage(targetId) {
+      document.querySelectorAll('.screen-page').forEach(p => p.classList.remove('active'));
+      document.getElementById(targetId).classList.add('active');
 
-      if (pageId === 'page-hug') {
-        startHugAnimation();
-      } else if (pageId === 'page-rain') {
-        startRain();
+      if (targetId === 'page-hug') {
+        executeFullHug();
       }
     }
 
-    // Page 2 Hug Logic
-    function startHugAnimation() {
-      const c1 = document.getElementById('cat1');
-      const c2 = document.getElementById('cat2');
-      const msg = document.getElementById('hugMsg');
+    function resetAndBack() {
+      switchPage('page-home');
+      const stage = document.getElementById('gridStage');
+      stage.innerHTML = '';
+      document.getElementById('chestIcon').innerText = '🎁';
+      document.getElementById('chestPrompt').innerText = 'Click the gift box to reveal memories ✨';
+    }
+
+    // =========================================
+    // PAGE 2: REAL FULL BODY HUG LOGIC
+    // =========================================
+    function executeFullHug() {
+      const stage = document.getElementById('hugFullStage');
+      const title = document.getElementById('hugBigTitle');
+      const leftChar = document.getElementById('charLeft');
+      const rightChar = document.getElementById('charRight');
 
       // Reset
-      c1.classList.remove('hug-active');
-      c2.classList.remove('hug-active');
-      msg.classList.remove('show');
+      stage.classList.remove('hugging');
+      title.classList.remove('show');
+      leftChar.src = "https://media.tenor.com/2s-Z3Yp81q0AAAAi/milk-and-mocha-running.gif";
+      rightChar.src = "https://media.tenor.com/Fw57t0pW9Q0AAAAi/mocha-running.gif";
 
-      // Animate together
+      // Characters run and meet in the center
       setTimeout(() => {
-        c1.classList.add('hug-active');
-        c2.classList.add('hug-active');
-      }, 200);
+        stage.classList.add('hugging');
+      }, 300);
 
-      // Show message after hug
+      // Once they meet: switch into a tight full-body hug GIF and explode confetti
       setTimeout(() => {
-        msg.classList.add('show');
-      }, 1800);
+        leftChar.src = "https://media.tenor.com/9n9s1-ZtJ84AAAAi/bear-hug.gif";
+        rightChar.style.display = "none"; // Both merge into the single tight hug GIF
+        title.classList.add('show');
+        blastHearts();
+      }, 2300);
     }
 
-    // Page 3 Photo Rain Logic
-    let rainInterval;
-    const samplePhotos = [
-      'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=150',
-      'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=150',
-      'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=150'
+    function blastHearts() {
+      const stage = document.getElementById('hugFullStage');
+      for (let i = 0; i < 25; i++) {
+        const h = document.createElement('div');
+        h.className = 'hug-heart-burst';
+        h.innerText = ['❤️', '💖', '✨', '🌹', '🥰'][Math.floor(Math.random() * 5)];
+        const dx = (Math.random() - 0.5) * 600 + 'px';
+        const dy = (Math.random() - 0.5) * 450 - 50 + 'px';
+        h.style.setProperty('--dx', dx);
+        h.style.setProperty('--dy', dy);
+        h.style.left = 'calc(50% - 20px)';
+        h.style.top = '40%';
+        stage.appendChild(h);
+        setTimeout(() => h.remove(), 1600);
+      }
+    }
+
+    // =========================================
+    // PAGE 3: MAGIC CHEST & UNPACKING PHOTOS
+    // =========================================
+    const memoryPhotos = [
+      'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400',
+      'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400',
+      'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400',
+      'https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=400',
+      'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400',
+      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400',
+      'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400',
+      'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400'
     ];
 
-    const cuteMessages = [
-      "You are my whole heart! ❤️",
-      "Thank you for being you! 🥰",
-      "Cutest boyfriend award goes to you! 🏆",
-      "Always smiling because of you! ✨",
-      "Love you to the moon and back! 🌙"
+    const secretLoveNotes = [
+      "You are the most handsome and caring person I've ever known! 💋",
+      "My favourite place in the world is right inside your arms. 🫂",
+      "I smile every single time your name pops up on my phone. ✨",
+      "Thank you for loving me even on my hardest days. ❤️",
+      "Every love song makes total sense ever since I met you. 🎶",
+      "You make my heart skip a beat even after all this time! 💓",
+      "You're not just my boyfriend; you're my best friend and home. 🏡",
+      "I love you more than words, actions, or anything could ever show! 🌹"
     ];
 
-    function startRain() {
-      const container = document.getElementById('rainContainer');
-      container.innerHTML = '';
+    function openMagicChest() {
+      const chest = document.getElementById('chestIcon');
+      chest.innerText = '✨📦✨';
+      document.getElementById('chestPrompt').innerText = 'Tap any photo to read a secret note 💌';
 
-      rainInterval = setInterval(() => {
-        const photo = document.createElement('img');
-        photo.className = 'falling-photo';
-        photo.src = samplePhotos[Math.floor(Math.random() * samplePhotos.length)];
-        photo.style.left = Math.random() * 85 + 'vw';
-        photo.style.animationDuration = (Math.random() * 2.5 + 3) + 's';
+      const stage = document.getElementById('gridStage');
+      stage.innerHTML = '';
 
-        photo.onclick = function() {
-          const randomMsg = cuteMessages[Math.floor(Math.random() * cuteMessages.length)];
-          showModal(randomMsg);
-        };
+      // Grid positions for 8 photos (4 columns x 2 rows)
+      const positions = [
+        { row: 1, col: 1 }, { row: 1, col: 2 }, { row: 1, col: 3 }, { row: 1, col: 4 },
+        { row: 2, col: 1 }, { row: 2, col: 2 }, { row: 2, col: 3 }, { row: 2, col: 4 }
+      ];
 
-        container.appendChild(photo);
+      memoryPhotos.forEach((src, idx) => {
+        setTimeout(() => {
+          const card = document.createElement('div');
+          card.className = 'flying-card';
+          
+          const img = document.createElement('img');
+          img.src = src;
+          card.appendChild(img);
 
-        // Remove element after it drops
-        setTimeout(() => photo.remove(), 5500);
-      }, 500);
+          // Click on photo for popup message
+          card.onclick = () => {
+            openSecretModal(secretLoveNotes[idx % secretLoveNotes.length]);
+          };
+
+          stage.appendChild(card);
+
+          // Fly smoothly from the chest into their clean grid slots
+          setTimeout(() => {
+            const rot = (Math.random() - 0.5) * 8;
+            const leftPerc = 12.5 + (idx % 4) * 25;
+            const topPerc = idx < 4 ? 25 : 75;
+
+            card.style.opacity = '1';
+            card.style.top = topPerc + '%';
+            card.style.left = leftPerc + '%';
+            card.style.transform = `translate(-50%, -50%) scale(1) rotate(${rot}deg)`;
+          }, 50);
+        }, idx * 280);
+      });
     }
 
-    function stopRain() {
-      clearInterval(rainInterval);
-      const container = document.getElementById('rainContainer');
-      if (container) container.innerHTML = '';
+    // Modal triggers
+    function openSecretModal(text) {
+      document.getElementById('secretMsg').innerText = text;
+      document.getElementById('secretModal').style.display = 'flex';
     }
 
-    function showModal(msg) {
-      document.getElementById('modalText').innerText = msg;
-      document.getElementById('loveModal').style.display = 'flex';
-    }
-
-    function closeModal() {
-      document.getElementById('loveModal').style.display = 'none';
+    function closeSecretModal() {
+      document.getElementById('secretModal').style.display = 'none';
     }
   </script>
 </body>
