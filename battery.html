@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Battery Charger ⚡🔋</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Montserrat:wght@500;700;800&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(ellipse at center, #07192f 0%, #030d1a 60%, #01050a 100%);
+      min-height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Montserrat', sans-serif;
+      overflow: hidden;
+      color: #fff;
+      position: relative;
+    }
+
+    /* Electric Neon Ambient Glows */
+    .glow-cyan {
+      position: absolute;
+      top: -10%;
+      left: 20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0, 245, 212, 0.18), transparent 70%);
+      filter: blur(95px);
+      pointer-events: none;
+    }
+
+    .glow-pink {
+      position: absolute;
+      bottom: -10%;
+      right: 20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255, 77, 109, 0.2), transparent 70%);
+      filter: blur(95px);
+      pointer-events: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .status-tag {
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #00f5d4;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .main-title {
+      font-family: 'Fredoka', cursive;
+      font-size: clamp(2rem, 3.5vw, 2.7rem);
+      color: #ffffff;
+      text-shadow: 0 4px 20px rgba(0, 245, 212, 0.4);
+      margin-bottom: 30px;
+    }
+
+    /* Big 3D Battery */
+    .battery-shell {
+      position: relative;
+      width: clamp(240px, 35vw, 300px);
+      height: 120px;
+      border: 5px solid rgba(255, 255, 255, 0.85);
+      border-radius: 26px;
+      padding: 7px;
+      background: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 245, 212, 0.25);
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Battery Positive Terminal Tip */
+    .battery-shell::after {
+      content: '';
+      position: absolute;
+      right: -18px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 12px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 0 8px 8px 0;
+      box-shadow: 4px 0 12px rgba(0, 245, 212, 0.3);
+    }
+
+    /* Dynamic Battery Liquid Fill */
+    .battery-fill {
+      width: 10%;
+      height: 100%;
+      border-radius: 16px;
+      background: linear-gradient(90deg, #ff4d6d, #ff758f);
+      box-shadow: 0 0 20px #ff4d6d;
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease;
+      position: relative;
+    }
+
+    /* Percentage Text Inside Battery */
+    .battery-percentage {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Fredoka', cursive;
+      font-size: 2.2rem;
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    /* Status Text Under Battery */
+    .battery-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffccd5;
+      min-height: 32px;
+      margin-bottom: 30px;
+      transition: color 0.3s;
+    }
+
+    /* Charge Button */
+    .btn-charge {
+      background: linear-gradient(135deg, #00f5d4, #00bbf9);
+      color: #011627;
+      border: none;
+      padding: 14px 38px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0, 245, 212, 0.45);
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-transform: uppercase;
+    }
+
+    .btn-charge:hover {
+      transform: scale(1.08);
+      box-shadow: 0 12px 35px rgba(0, 245, 212, 0.7);
+    }
+
+    /* Celebration Card on 100% */
+    .completion-card {
+      display: none;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 245, 212, 0.4);
+      backdrop-filter: blur(16px);
+      border-radius: 24px;
+      padding: 24px 20px;
+      margin-top: 15px;
+      animation: popFade 0.5s ease forwards;
+    }
+
+    @keyframes popFade {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .completion-card h3 {
+      font-family: 'Fredoka', cursive;
+      font-size: 1.8rem;
+      color: #00f5d4;
+      margin-bottom: 6px;
+    }
+
+    .completion-card p {
+      font-size: 0.95rem;
+      color: #e0fbfc;
+      line-height: 1.6;
+    }
+
+    /* Floating Energy Sparkles */
+    .spark-icon {
+      position: absolute;
+      pointer-events: none;
+      animation: flySpark 1.4s ease-out forwards;
+      z-index: 1000;
+      user-select: none;
+    }
+
+    @keyframes flySpark {
+      0% { opacity: 1; transform: scale(0.4) translate(0, 0); }
+      100% { opacity: 0; transform: scale(1.6) translate(var(--dx), var(--dy)); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-cyan"></div>
+  <div class="glow-pink"></div>
+
+  <div class="container">
+    <div class="status-tag">✦ Battery Status: Need Attention ✦</div>
+    <h1 class="main-title">My Love Battery 🔋</h1>
+
+    <!-- 3D Battery Widget -->
+    <div class="battery-shell">
+      <div id="batteryFill" class="battery-fill"></div>
+      <div id="percentageText" class="battery-percentage">10%</div>
+    </div>
+
+    <div id="batteryLabel" class="battery-label">⚠️ Low Energy: Send Love Immediately! 🥺</div>
+
+    <button id="chargeBtn" class="btn-charge" onclick="chargeBattery()">Send Love to Charge ⚡</button>
+
+    <!-- Appears at 100% -->
+    <div id="completionBox" class="completion-card">
+      <h3>Fully Charged with Love! 🥰⚡</h3>
+      <p>"My heart is officially running at 100% efficiency thanks to your sweetest love! ❤️"</p>
+    </div>
+  </div>
+
+  <script>
+    let currentLevel = 10;
+    const stages = [
+      { level: 35, label: "Receiving your warm thoughts... 🥰", color: "linear-gradient(90deg, #ff758f, #ffb703)" },
+      { level: 65, label: "Feeling so much better now! 💖✨", color: "linear-gradient(90deg, #ffb703, #00f5d4)" },
+      { level: 100, label: "⚡ OVERLOAD: 100% Maximum Happiness! ⚡", color: "linear-gradient(90deg, #00f5d4, #00bbf9)" }
+    ];
+    let stageIndex = 0;
+
+    function chargeBattery() {
+      if (currentLevel >= 100) return;
+
+      const fill = document.getElementById('batteryFill');
+      const text = document.getElementById('percentageText');
+      const label = document.getElementById('batteryLabel');
+
+      const nextStage = stages[stageIndex];
+      currentLevel = nextStage.level;
+      stageIndex++;
+
+      // Update UI
+      fill.style.width = currentLevel + '%';
+      fill.style.background = nextStage.color;
+      text.innerText = currentLevel + '%';
+      label.innerText = nextStage.label;
+
+      burstEnergySparks();
+
+      // Check for 100% completion
+      if (currentLevel >= 100) {
+        document.getElementById('chargeBtn').style.display = 'none';
+        document.getElementById('completionBox').style.display = 'block';
+        label.style.color = '#00f5d4';
+        fill.style.boxShadow = '0 0 25px #00f5d4';
+      }
+    }
+
+    function burstEnergySparks() {
+      const items = ['⚡', '💖', '✨', '🔋', '🥰', '💫'];
+      for (let i = 0; i < 25; i++) {
+        const span = document.createElement('div');
+        span.className = 'spark-icon';
+        span.innerText = items[Math.floor(Math.random() * items.length)];
+        span.style.left = '50%';
+        span.style.top = '45%';
+        span.style.fontSize = (Math.random() * 16 + 22) + 'px';
+
+        const dx = (Math.random() - 0.5) * 450 + 'px';
+        const dy = (Math.random() - 0.5) * 350 + 'px';
+        span.style.setProperty('--dx', dx);
+        span.style.setProperty('--dy', dy);
+
+        document.body.appendChild(span);
+        setTimeout(() => span.remove(), 1400);
+      }
+    }
+  </script>
+</body>
+</html>
