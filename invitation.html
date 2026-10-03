@@ -13,7 +13,6 @@
     :root {
       --maroon-deep: #140205;
       --maroon-rich: #2c050c;
-      --maroon-velvet: #450814;
       --gold-antique: #d4af37;
       --gold-light: #f7e7a9;
       --gold-gradient: linear-gradient(135deg, #d4af37 0%, #fff2b2 45%, #aa7c11 80%, #ffd700 100%);
@@ -39,7 +38,6 @@
       color: var(--ivory);
       font-family: var(--font-body);
       overflow-x: hidden;
-      scroll-snap-type: y mandatory;
     }
 
     body {
@@ -69,26 +67,45 @@
       text-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
     }
 
-    /* ========================================================
-       MUSIC FLOATING BUTTON
-       ======================================================== */
+    .ornament-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 22px 0;
+      opacity: 0.9;
+    }
+
+    .ornament-line {
+      height: 1px;
+      width: 50px;
+      background: linear-gradient(90deg, transparent, var(--gold-antique), transparent);
+    }
+
+    .ornament-mandala {
+      width: 18px;
+      height: 18px;
+      fill: var(--gold-antique);
+    }
+
+    /* Music Toggle */
     .music-widget {
       position: fixed;
-      top: 18px;
-      right: 18px;
+      top: 16px;
+      right: 16px;
       z-index: 999;
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: radial-gradient(circle, var(--maroon-rich), var(--maroon-deep));
       border: 1px solid var(--gold-antique);
-      box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+      box-shadow: 0 0 14px rgba(212, 175, 55, 0.4);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--gold-light);
-      font-size: 18px;
+      font-size: 17px;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.8s ease;
@@ -109,7 +126,7 @@
     }
 
     /* ========================================================
-       1. ROYAL DOOR (SLIM & BALANCED FOR MOBILE)
+       1. COMPACT ROYAL INWARD-OPENING DOOR
        ======================================================== */
     #doorScene {
       position: fixed;
@@ -117,13 +134,14 @@
       width: 100vw;
       height: 100vh;
       z-index: 1000;
-      perspective: 1800px;
+      perspective: 1500px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(circle at 50% 35%, #2a040b 0%, #0d0103 65%, #050001 100%);
+      background: radial-gradient(circle at 50% 35%, #220308 0%, #0c0102 65%, #050001 100%);
       overflow: hidden;
+      cursor: pointer;
       transition: opacity 1.8s cubic-bezier(0.7, 0, 0.3, 1), visibility 1.8s;
     }
 
@@ -131,14 +149,6 @@
       pointer-events: none;
       opacity: 0;
       visibility: hidden;
-    }
-
-    .palace-fog-layer {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, rgba(20, 2, 5, 0.5) 60%, transparent 90%);
-      z-index: 2;
     }
 
     .portal-camera-rig {
@@ -150,20 +160,20 @@
       align-items: center;
       justify-content: center;
       transform-style: preserve-3d;
-      transition: transform 2.6s cubic-bezier(0.2, 0.85, 0.35, 1);
+      transition: transform 2.4s cubic-bezier(0.2, 0.85, 0.35, 1);
     }
 
     #doorScene.opening .portal-camera-rig {
-      transform: translateZ(360px);
+      transform: translateZ(280px);
     }
 
     .sanctum-backlight {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at center 45%, #fffdf2 0%, #ffeaa7 25%, #d4af37 48%, #5a0916 75%, #0d0103 100%);
+      background: radial-gradient(ellipse at center 45%, #fffdf2 0%, #ffeaa7 25%, #d4af37 45%, #5a0916 75%, #0d0103 100%);
       opacity: 0;
       z-index: 1;
-      filter: blur(14px);
+      filter: blur(12px);
       transition: opacity 2s ease;
     }
 
@@ -171,31 +181,30 @@
       opacity: 1;
     }
 
+    /* Chota aani slender wada arch portal */
     .royal-arch-portal {
       position: relative;
-      width: min(310px, 80vw);
-      height: min(520px, 68vh);
-      margin-top: -35px;
+      width: min(270px, 74vw);
+      height: min(440px, 60vh);
       display: flex;
       justify-content: center;
       align-items: stretch;
       z-index: 4;
-      padding: 10px 10px 0 10px;
-      background: linear-gradient(180deg, #2b060d 0%, #150204 100%);
+      padding: 8px 8px 0 8px;
+      background: linear-gradient(180deg, #2a050c 0%, #150204 100%);
       border: 1.5px solid var(--gold-antique);
       border-bottom: none;
-      border-radius: 155px 155px 0 0;
+      border-radius: 135px 135px 0 0;
       box-shadow: 
-        0 15px 45px rgba(0, 0, 0, 0.95),
-        0 0 25px rgba(212, 175, 55, 0.2),
-        inset 0 0 20px rgba(0,0,0,0.85);
+        0 14px 40px rgba(0, 0, 0, 0.95),
+        0 0 20px rgba(212, 175, 55, 0.2);
     }
 
     .arch-ornament-top {
       position: absolute;
-      top: -18px;
-      width: 44px;
-      height: 24px;
+      top: -16px;
+      width: 40px;
+      height: 20px;
       fill: var(--gold-antique);
       z-index: 10;
     }
@@ -206,10 +215,10 @@
       height: 100%;
       display: flex;
       transform-style: preserve-3d;
-      perspective: 1400px;
-      border-radius: 145px 145px 0 0;
+      perspective: 1200px;
+      border-radius: 125px 125px 0 0;
       overflow: hidden;
-      border: 1px solid rgba(212, 175, 55, 0.4);
+      border: 1px solid rgba(212, 175, 55, 0.35);
       border-bottom: none;
       background: #090102;
     }
@@ -221,25 +230,26 @@
       left: calc(50% - 1px);
       width: 2px;
       background: linear-gradient(180deg, transparent 5%, #fff9d6 25%, #ffd700 70%, transparent 95%);
-      box-shadow: 0 0 10px #ffcf40;
+      box-shadow: 0 0 8px #ffcf40;
       z-index: 12;
       pointer-events: none;
     }
 
+    /* Aatlyabaajula ughadnare doors (Inward opening) */
     .grand-door-leaf {
       width: 50%;
       height: 100%;
       position: relative;
       transform-style: preserve-3d;
-      transition: transform 2.6s cubic-bezier(0.65, 0, 0.2, 1);
+      transition: transform 2.4s cubic-bezier(0.65, 0, 0.2, 1);
       display: flex;
       flex-direction: column;
       background-color: #24050a;
       background-image: 
         radial-gradient(ellipse at 50% 25%, rgba(95, 15, 28, 0.5) 0%, rgba(16, 2, 4, 0.98) 100%),
-        repeating-linear-gradient(90deg, rgba(0,0,0,0.3) 0px, rgba(0,0,0,0.3) 2px, transparent 2px, transparent 8px);
-      box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.95);
-      padding: 50px 8px 16px 8px;
+        repeating-linear-gradient(90deg, rgba(0,0,0,0.25) 0px, rgba(0,0,0,0.25) 2px, transparent 2px, transparent 8px);
+      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.95);
+      padding: 44px 6px 14px 6px;
     }
 
     .leaf-left {
@@ -252,15 +262,20 @@
       border-left: 1px solid #080102;
     }
 
-    #doorScene.opening .leaf-left { transform: rotateY(-115deg); }
-    #doorScene.opening .leaf-right { transform: rotateY(115deg); }
+    /* INWARD 3D OPENING ROTATION */
+    #doorScene.opening .leaf-left { 
+      transform: rotateY(-110deg); 
+    }
+    #doorScene.opening .leaf-right { 
+      transform: rotateY(110deg); 
+    }
 
     .door-carved-core {
       width: 100%;
       height: 100%;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
       position: relative;
       z-index: 2;
     }
@@ -271,46 +286,44 @@
       background: radial-gradient(circle at 50% 45%, #34070e 0%, #150204 85%);
       border: 1px solid #5a121e;
       border-radius: 4px;
-      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(212, 175, 55, 0.3);
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(212, 175, 55, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 4px;
+      padding: 2px;
     }
 
     .teak-panel-arch {
-      border-radius: 75px 75px 4px 4px;
-      flex: 1.35;
+      border-radius: 65px 65px 4px 4px;
+      flex: 1.3;
     }
 
     .teak-carving-svg {
-      width: 72%;
-      height: 72%;
-      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.9));
+      width: 68%;
+      height: 68%;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.85));
     }
 
     .brass-stud-cluster {
       position: absolute;
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: radial-gradient(circle at 35% 35%, #fff2b2 0%, #c6962f 60%, #4a2800 100%);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.95);
     }
-    .stud-tl { top: 6px; left: 6px; }
-    .stud-tr { top: 6px; right: 6px; }
-    .stud-bl { bottom: 6px; left: 6px; }
-    .stud-br { bottom: 6px; right: 6px; }
+    .stud-tl { top: 5px; left: 5px; }
+    .stud-tr { top: 5px; right: 5px; }
+    .stud-bl { bottom: 5px; left: 5px; }
+    .stud-br { bottom: 5px; right: 5px; }
 
     .central-meeting-stile {
       position: absolute;
       top: 0;
       bottom: 0;
-      right: -5px;
-      width: 10px;
+      right: -4px;
+      width: 8px;
       background: linear-gradient(90deg, #180204 0%, #4b0d18 45%, #b18525 50%, #4b0d18 55%, #180204 100%);
-      border-left: 1px solid rgba(212, 175, 55, 0.5);
-      border-right: 1px solid #000;
+      border-left: 1px solid rgba(212, 175, 55, 0.4);
       z-index: 10;
       pointer-events: none;
     }
@@ -318,63 +331,38 @@
     .palace-knocker {
       position: absolute;
       top: 54%;
-      width: 32px;
-      height: 48px;
+      width: 28px;
+      height: 42px;
       z-index: 11;
       transform: translateY(-50%);
-      filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.95));
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.95));
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-    .leaf-left .palace-knocker { right: 6px; }
-    .leaf-right .palace-knocker { left: 6px; }
-
-    .knocker-backplate { width: 100%; height: 100%; }
-
-    .door-action-pod {
-      position: absolute;
-      bottom: clamp(18px, 4vh, 32px);
-      z-index: 20;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      transition: opacity 0.5s ease;
-    }
-
-    #doorScene.opening .door-action-pod {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .door-enter-btn {
-      background: radial-gradient(circle at center, #fff0a8 0%, #caa030 65%, #7e5c0e 100%);
-      color: #1a0206;
-      border: 1px solid #fff6ce;
-      border-radius: 50px;
-      padding: 11px 26px;
-      font-family: var(--font-display);
-      font-size: 11.5px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      cursor: pointer;
-      box-shadow: 0 4px 18px rgba(212, 175, 55, 0.45);
-    }
+    .leaf-left .palace-knocker { right: 5px; }
+    .leaf-right .palace-knocker { left: 5px; }
 
     .door-tap-subtext {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: 11.5px;
+      font-size: 13px;
+      letter-spacing: 2px;
       color: var(--gold-light);
-      margin-top: 6px;
-      opacity: 0.85;
+      margin-top: 18px;
+      opacity: 0.9;
+      animation: pulseSubtle 2s infinite ease-in-out;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    }
+
+    @keyframes pulseSubtle {
+      0%, 100% { opacity: 0.45; transform: scale(0.98); }
+      50% { opacity: 1; transform: scale(1.02); }
     }
 
     .portal-base-diyas {
-      position: absolute;
-      bottom: 8px;
-      width: min(290px, 76vw);
+      margin-top: 14px;
+      width: min(250px, 70vw);
       display: flex;
       justify-content: space-between;
       pointer-events: none;
@@ -382,64 +370,54 @@
     }
 
     .diya-flame {
-      width: 10px;
-      height: 16px;
+      width: 9px;
+      height: 15px;
       background: radial-gradient(ellipse at bottom, #fff 0%, #ffcf40 45%, #ff4500 85%, transparent 100%);
       border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
-      box-shadow: 0 0 12px #ffaa00;
+      box-shadow: 0 0 10px #ffaa00;
     }
 
     .diya-base {
-      width: 30px;
-      height: 11px;
+      width: 26px;
+      height: 10px;
       background: var(--gold-gradient);
-      border-radius: 0 0 16px 16px;
+      border-radius: 0 0 14px 14px;
       margin-top: -2px;
     }
 
     /* ========================================================
-       MOBILE FULL-PAGE SNAP SECTIONS
-       ======================================================= */
-    .snap-section {
-      min-height: 100vh;
-      width: 100%;
-      scroll-snap-align: start;
-      scroll-snap-stop: always;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 30px 18px;
+       NORMAL COMPACT FLOW (NO EXCESSIVE EMPTY SPACE)
+       ======================================================== */
+    .palace-container {
       position: relative;
-    }
-
-    .inner-content {
+      z-index: 2;
       width: 100%;
-      max-width: 440px;
+      max-width: 580px;
       margin: 0 auto;
-      text-align: center;
+      padding: 30px 16px 60px;
     }
 
-    /* Ganesha */
-    .ganpati-frame {
-      position: relative;
-      margin-bottom: 14px;
-      display: inline-block;
+    .ganpati-section {
+      text-align: center;
+      padding: 20px 0 10px;
     }
+
     .ganpati-icon {
-      width: 82px;
-      height: 82px;
-      filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.65));
+      width: 78px;
+      height: 78px;
+      filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.6));
     }
+
     .shri-ganeshaya {
       font-family: var(--font-devanagari);
-      font-size: 24px;
+      font-size: 22px;
       color: var(--gold-light);
-      margin-bottom: 10px;
+      margin: 10px 0 8px;
     }
+
     .vakratunda-shloka {
       font-family: var(--font-serif);
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.8;
       font-style: italic;
       color: var(--ivory);
@@ -450,70 +428,86 @@
       background: radial-gradient(ellipse at 50% 30%, #460915 0%, #28040a 70%, #170104 100%);
       border: 1.5px solid var(--gold-antique);
       border-radius: 12px;
-      padding: 34px 20px;
-      position: relative;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.8);
+      padding: 30px 18px;
+      margin: 25px 0;
+      text-align: center;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.7);
     }
+
     .invitation-header-text {
       font-family: var(--font-display);
       font-size: 11px;
       letter-spacing: 3px;
       color: var(--gold-light);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
     }
+
     .couple-name {
       font-family: var(--font-display);
-      font-size: 32px;
+      font-size: 30px;
       letter-spacing: 2px;
       font-weight: 700;
     }
+
     .parentage {
       font-family: var(--font-serif);
       font-style: italic;
       font-size: 13.5px;
       color: var(--ivory-soft);
-      margin-top: 4px;
+      margin-top: 3px;
     }
+
     .ampersand {
       font-family: var(--font-script);
-      font-size: 40px;
+      font-size: 38px;
       color: var(--gold-light);
       margin: 4px 0;
       display: block;
     }
+
     .invitation-prose {
       font-family: var(--font-serif);
       font-size: 14px;
-      line-height: 1.7;
+      line-height: 1.75;
       color: var(--ivory);
-      margin-top: 16px;
+      margin-top: 14px;
     }
 
     /* Scratch Section */
+    .scratch-standalone-section {
+      margin: 25px auto;
+      max-width: 360px;
+      text-align: center;
+    }
+
     .scratch-card-box {
       border: 1px solid var(--gold-antique);
-      border-radius: 12px;
+      border-radius: 10px;
       background: radial-gradient(ellipse at center, #380710 0%, #1e0207 100%);
-      padding: 24px 16px;
-      box-shadow: 0 10px 35px rgba(0,0,0,0.7);
+      padding: 20px 14px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.7);
     }
+
     .scratch-lead-text {
       font-family: var(--font-display);
       font-size: 11.5px;
-      letter-spacing: 2.5px;
+      letter-spacing: 2px;
       color: var(--gold-light);
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       text-transform: uppercase;
     }
+
     .scratch-stage {
       position: relative;
       width: 100%;
-      height: 140px;
+      height: 125px;
       border: 1px solid var(--gold-antique);
       border-radius: 8px;
       overflow: hidden;
       touch-action: none;
     }
+
     .scratch-underlay {
       position: absolute;
       inset: 0;
@@ -524,25 +518,29 @@
       justify-content: center;
       padding: 10px;
     }
+
     .revealed-date {
       font-family: var(--font-display);
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 700;
       color: #fff2ba;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
     }
+
     .revealed-venue {
       font-family: var(--font-serif);
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--ivory);
       margin-top: 4px;
     }
+
     .revealed-time {
       font-family: var(--font-serif);
-      font-size: 13px;
+      font-size: 12.5px;
       color: var(--gold-antique);
       margin-top: 2px;
     }
+
     #scratchCanvas {
       position: absolute;
       top: 0;
@@ -553,34 +551,50 @@
       transition: opacity 0.6s ease;
     }
 
-    /* Countdown Full Screen */
-    #countdownSection {
+    /* Countdown Section (Appears after scratch) */
+    .countdown-standalone-section {
+      margin: 25px auto 35px;
+      max-width: 440px;
+      text-align: center;
       display: none;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
-    #countdownSection.show-unlocked {
-      display: flex;
+
+    .countdown-standalone-section.show-unlocked {
+      display: block;
     }
+
+    .countdown-standalone-section.fade-in-active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .countdown-title {
       font-family: var(--font-display);
-      font-size: 12px;
-      letter-spacing: 3px;
+      font-size: 11px;
+      letter-spacing: 2px;
       color: var(--gold-antique);
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       text-transform: uppercase;
     }
+
     .hearts-row {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
     }
+
     .heart-unit {
       position: relative;
-      width: 74px;
-      height: 74px;
+      width: 68px;
+      height: 68px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
+
     .heart-unit svg {
       position: absolute;
       inset: 0;
@@ -590,6 +604,7 @@
       stroke: var(--gold-antique);
       stroke-width: 1.5;
     }
+
     .heart-data {
       position: relative;
       z-index: 2;
@@ -598,40 +613,49 @@
       align-items: center;
       margin-top: 2px;
     }
+
     .heart-number {
       font-family: var(--font-display);
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 700;
       color: #fff4bf;
     }
+
     .heart-label {
       font-family: var(--font-serif);
-      font-size: 9px;
+      font-size: 8.5px;
       letter-spacing: 1px;
       color: var(--ivory-soft);
       text-transform: uppercase;
     }
 
-    /* Celebrations Grid */
+    /* Events */
+    .celebrations-wrap {
+      margin: 35px 0;
+      text-align: center;
+    }
+
     .section-headline {
       font-family: var(--font-display);
-      font-size: 24px;
+      font-size: 22px;
       letter-spacing: 3px;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
+
     .section-subtext {
       font-family: var(--font-serif);
       font-style: italic;
       color: var(--ivory-soft);
-      font-size: 14px;
-      margin-bottom: 22px;
+      font-size: 13.5px;
+      margin-bottom: 20px;
     }
+
     .events-grid {
       display: flex;
       flex-direction: column;
       gap: 14px;
-      width: 100%;
     }
+
     .royal-event-box {
       background: radial-gradient(ellipse at 50% 15%, #460915 0%, #260309 80%, #170104 100%);
       border: 1px solid var(--gold-antique);
@@ -639,110 +663,131 @@
       padding: 18px 14px;
       text-align: center;
     }
+
     .event-card-title {
       font-family: var(--font-display);
-      font-size: 18px;
+      font-size: 17px;
       letter-spacing: 2px;
       color: var(--gold-light);
       margin-bottom: 4px;
     }
+
     .event-card-date {
       font-family: var(--font-serif);
-      font-size: 14px;
+      font-size: 13.5px;
       color: #fff;
     }
+
     .event-card-time {
       font-family: var(--font-serif);
-      font-size: 13px;
+      font-size: 12.5px;
       color: var(--gold-antique);
     }
+
     .event-card-place {
       font-family: var(--font-serif);
-      font-size: 12.5px;
+      font-size: 12px;
       color: var(--ivory-soft);
       margin-top: 4px;
     }
 
-    /* Slider Full Screen */
+    /* Slider */
+    .story-section {
+      margin: 35px 0;
+      text-align: center;
+    }
+
+    .slider-stage-wrapper {
+      position: relative;
+      max-width: 360px;
+      margin: 15px auto 0;
+    }
+
     .slider-viewport {
       width: 100%;
-      height: 380px;
-      border-radius: 12px;
-      border: 2px solid var(--gold-antique);
+      height: 340px;
+      border-radius: 10px;
+      border: 1.5px solid var(--gold-antique);
       overflow: hidden;
       position: relative;
     }
+
     .slider-track {
       display: flex;
       width: 100%;
       height: 100%;
       transition: transform 0.45s ease;
     }
+
     .slider-slide {
       min-width: 100%;
       height: 100%;
       position: relative;
     }
+
     .slide-photo {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
+
     .slide-caption-bar {
       position: absolute;
-      bottom: 14px;
+      bottom: 12px;
       left: 0;
       right: 0;
       text-align: center;
       font-family: var(--font-serif);
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--gold-light);
     }
 
     /* Venue */
+    .venue-section {
+      margin: 35px 0 20px;
+      text-align: center;
+    }
+
     .venue-box {
       border: 1px solid var(--gold-antique);
-      border-radius: 12px;
+      border-radius: 10px;
       background: radial-gradient(circle at center, #380710 0%, #1c0207 100%);
-      padding: 30px 20px;
-      width: 100%;
+      padding: 24px 16px;
     }
+
     .venue-place-name {
       font-family: var(--font-display);
-      font-size: 24px;
+      font-size: 22px;
       letter-spacing: 2px;
       margin-bottom: 4px;
     }
+
     .venue-city {
       font-family: var(--font-serif);
-      font-size: 15px;
+      font-size: 14px;
       color: var(--ivory);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
+
     .venue-btn {
       display: inline-block;
       border: 1px solid var(--gold-antique);
       color: var(--gold-light);
-      padding: 10px 24px;
+      padding: 9px 22px;
       font-family: var(--font-display);
       font-size: 11px;
       letter-spacing: 2px;
       text-decoration: none;
-      border-radius: 30px;
+      border-radius: 25px;
     }
 
-    /* Scroll Down Indicator */
-    .scroll-down-hint {
-      margin-top: 20px;
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: var(--gold-light);
-      opacity: 0.6;
-      animation: pulseSubtle 2s infinite ease-in-out;
-    }
-    @keyframes pulseSubtle {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 0.9; }
+    .final-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 15px;
+      margin-top: 30px;
+      color: var(--ivory);
+      line-height: 1.7;
     }
   </style>
 </head>
@@ -757,21 +802,20 @@
 
   <div id="musicToggleBtn" class="music-widget">♫</div>
 
-  <!-- 1. ROYAL SLIM ARCH DOOR SCENE -->
+  <!-- 1. COMPACT ROYAL DOOR (TAP ANYWHERE ON DOOR TO OPEN) -->
   <div id="doorScene">
-    <div class="palace-fog-layer"></div>
     <div class="portal-camera-rig">
       <div class="sanctum-backlight"></div>
 
       <div class="royal-arch-portal">
         <svg class="arch-ornament-top" viewBox="0 0 50 26">
-          <path d="M25 0 C22 8 10 12 10 18 C10 23 17 26 25 26 C33 26 40 23 40 18 C40 12 28 8 25 0 Z" fill="var(--gold-antique)" />
+          <path d="M25 0 C22 8 10 12 10 18 C10 23 17 26 25 26 C33 26 40 23 40 18 C40 12 28 8 25 0 Z" />
         </svg>
 
         <div class="doors-assembly">
           <div class="door-light-chink"></div>
 
-          <!-- Left Leaf -->
+          <!-- Left Door Leaf -->
           <div class="grand-door-leaf leaf-left">
             <div class="door-carved-core">
               <div class="teak-panel teak-panel-arch">
@@ -802,14 +846,14 @@
             </div>
             <div class="central-meeting-stile"></div>
             <div class="palace-knocker">
-              <svg class="knocker-backplate" viewBox="0 0 70 95">
+              <svg viewBox="0 0 70 95">
                 <circle cx="35" cy="32" r="20" fill="var(--gold-antique)"/>
                 <ellipse cx="35" cy="58" rx="16" ry="22" fill="none" stroke="var(--gold-antique)" stroke-width="5"/>
               </svg>
             </div>
           </div>
 
-          <!-- Right Leaf -->
+          <!-- Right Door Leaf -->
           <div class="grand-door-leaf leaf-right">
             <div class="door-carved-core">
               <div class="teak-panel teak-panel-arch">
@@ -839,7 +883,7 @@
               </div>
             </div>
             <div class="palace-knocker">
-              <svg class="knocker-backplate" viewBox="0 0 70 95">
+              <svg viewBox="0 0 70 95">
                 <circle cx="35" cy="32" r="20" fill="var(--gold-antique)"/>
                 <ellipse cx="35" cy="58" rx="16" ry="22" fill="none" stroke="var(--gold-antique)" stroke-width="5"/>
               </svg>
@@ -848,10 +892,7 @@
         </div>
       </div>
 
-      <div class="door-action-pod">
-        <button id="openDoorBtn" class="door-enter-btn">✦ OPEN THE INVITATION ✦</button>
-        <div class="door-tap-subtext">Tap to enter</div>
-      </div>
+      <div class="door-tap-subtext">✦ Tap Door To Enter ✦</div>
 
       <div class="portal-base-diyas">
         <div><div class="diya-flame"></div><div class="diya-base"></div></div>
@@ -861,47 +902,42 @@
   </div>
 
   <!-- ========================================================
-       FULL PAGE SNAP CONTENT
+       CONTENT CONTAINER
        ======================================================== -->
+  <div class="palace-container">
 
-  <!-- SCREEN 1: GANPATI BAPPA -->
-  <section class="snap-section" id="ganpatiSection">
-    <div class="inner-content">
-      <div class="ganpati-frame">
-        <svg class="ganpati-icon" viewBox="0 0 100 100">
-          <path d="M50 15 C45 15, 38 18, 38 28 C38 36, 46 39, 46 44 C46 51, 37 54, 34 60 C31 66, 34 76, 42 81 C48 85, 56 83, 59 78 C62 73, 60 67, 57 65 C53 62, 48 64, 48 59 C48 56, 52 53, 56 48 C61 42, 63 35, 61 27 C59 20, 55 15, 50 15 Z" fill="var(--gold-antique)"/>
-        </svg>
-      </div>
+    <!-- 1. GANESH SHLOKA -->
+    <section class="ganpati-section">
+      <svg class="ganpati-icon" viewBox="0 0 100 100">
+        <path d="M50 15 C45 15, 38 18, 38 28 C38 36, 46 39, 46 44 C46 51, 37 54, 34 60 C31 66, 34 76, 42 81 C48 85, 56 83, 59 78 C62 73, 60 67, 57 65 C53 62, 48 64, 48 59 C48 56, 52 53, 56 48 C61 42, 63 35, 61 27 C59 20, 55 15, 50 15 Z" fill="var(--gold-antique)"/>
+      </svg>
       <div class="shri-ganeshaya">॥ श्री गणेशाय नमः ॥</div>
       <p class="vakratunda-shloka">
         वक्रतुण्ड महाकाय सूर्यकोटि समप्रभः ।<br />
         निर्विघ्नं कुरु मे देव शुभकार्येषु सर्वदा ॥
       </p>
-      <div class="scroll-down-hint">↓ SCROLL TO VIEW INVITATION ↓</div>
-    </div>
-  </section>
-
-  <!-- SCREEN 2: MAIN INVITATION CARD -->
-  <section class="snap-section">
-    <div class="inner-content">
-      <div class="royal-card">
-        <div class="invitation-header-text">Together With Their Families</div>
-        <div class="couple-name gold-text">ASHISH</div>
-        <div class="parentage">Son of Arun Jadhav</div>
-        <span class="ampersand">&amp;</span>
-        <div class="couple-name gold-text">AARTI</div>
-        <div class="parentage">Daughter of Chougule Family</div>
-        <p class="invitation-prose">
-          Cordially request the honour of your auspicious presence and blessings as we celebrate our sacred union.
-        </p>
+      <div class="ornament-divider">
+        <div class="ornament-line"></div>
+        <svg class="ornament-mandala" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/></svg>
+        <div class="ornament-line"></div>
       </div>
-      <div class="scroll-down-hint">↓ SCROLL TO REVEAL DATE ↓</div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SCREEN 3: SCRATCH TO REVEAL DATE -->
-  <section class="snap-section" id="scratchSection">
-    <div class="inner-content">
+    <!-- 2. MAIN CARD -->
+    <section class="royal-card">
+      <div class="invitation-header-text">Together With Their Families</div>
+      <div class="couple-name gold-text">ASHISH</div>
+      <div class="parentage">Son of Arun Jadhav</div>
+      <span class="ampersand">&amp;</span>
+      <div class="couple-name gold-text">AARTI</div>
+      <div class="parentage">Daughter of Chougule Family</div>
+      <p class="invitation-prose">
+        Cordially request the honour of your auspicious presence and blessings as we celebrate the sacred union of our hearts.
+      </p>
+    </section>
+
+    <!-- 3. SCRATCH CARD -->
+    <section class="scratch-standalone-section">
       <div class="scratch-card-box">
         <div class="scratch-lead-text">✦ Scratch To Reveal Date ✦</div>
         <div class="scratch-stage" id="scratchStage">
@@ -913,13 +949,10 @@
           <canvas id="scratchCanvas"></canvas>
         </div>
       </div>
-      <div class="scroll-down-hint" id="scratchHint">Scratch with your finger</div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SCREEN 4: COUNTDOWN (UNLOCKS AFTER SCRATCH) -->
-  <section class="snap-section" id="countdownSection">
-    <div class="inner-content">
+    <!-- 4. COUNTDOWN (APPEARS AFTER SCRATCH) -->
+    <section class="countdown-standalone-section" id="countdownSection">
       <div class="countdown-title">The Auspicious Muhurat Approaches</div>
       <div class="hearts-row">
         <div class="heart-unit">
@@ -939,13 +972,10 @@
           <div class="heart-data"><span class="heart-number" id="cSecs">00</span><span class="heart-label">Secs</span></div>
         </div>
       </div>
-      <div class="scroll-down-hint">↓ SCROLL TO CELEBRATIONS ↓</div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SCREEN 5: CELEBRATIONS -->
-  <section class="snap-section" id="eventsSection">
-    <div class="inner-content">
+    <!-- 5. EVENTS -->
+    <section class="celebrations-wrap">
       <h2 class="section-headline gold-text">The Celebrations</h2>
       <div class="section-subtext">Join our sacred moments</div>
       <div class="events-grid">
@@ -965,74 +995,78 @@
           <div class="event-card-place">Vadange, Kolhapur</div>
         </div>
       </div>
-      <div class="scroll-down-hint">↓ SCROLL TO OUR STORY ↓</div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SCREEN 6: OUR STORY -->
-  <section class="snap-section">
-    <div class="inner-content">
+    <!-- 6. OUR STORY -->
+    <section class="story-section">
       <h2 class="section-headline gold-text">Our Story</h2>
       <div class="section-subtext">Moments etched into eternity</div>
-      <div class="slider-viewport" id="sliderViewport">
-        <div class="slider-track" id="sliderTrack">
-          <div class="slider-slide">
-            <img class="slide-photo" src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Ashish & Aarti" />
-            <div class="slide-caption-bar">The Beginning of Forever</div>
-          </div>
-          <div class="slider-slide">
-            <img class="slide-photo" src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80" alt="Ashish & Aarti" />
-            <div class="slide-caption-bar">Two Souls, One Destiny</div>
+      <div class="slider-stage-wrapper">
+        <div class="slider-viewport" id="sliderViewport">
+          <div class="slider-track" id="sliderTrack">
+            <div class="slider-slide">
+              <img class="slide-photo" src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Couple" />
+              <div class="slide-caption-bar">The Beginning of Forever</div>
+            </div>
+            <div class="slider-slide">
+              <img class="slide-photo" src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80" alt="Couple" />
+              <div class="slide-caption-bar">Two Souls, One Destiny</div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="scroll-down-hint">Swipe photo left • Scroll down for venue</div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SCREEN 7: VENUE & FINAL -->
-  <section class="snap-section">
-    <div class="inner-content">
-      <h2 class="section-headline gold-text">The Venue</h2>
-      <div class="section-subtext">We eagerly await your blessings</div>
+    <!-- 7. VENUE -->
+    <section class="venue-section">
       <div class="venue-box">
         <div class="venue-place-name gold-text">Vadange</div>
         <div class="venue-city">Kolhapur, Maharashtra</div>
         <a class="venue-btn" href="https://maps.google.com/?q=Vadange,+Kolhapur" target="_blank">VIEW LOCATION</a>
       </div>
-      <p style="font-family: var(--font-serif); font-style: italic; margin-top: 25px; color: var(--ivory);">
+
+      <p class="final-quote">
         “Two hearts, two families, one beautiful beginning.”
       </p>
       <div class="gold-text" style="font-family: var(--font-display); font-size: 20px; margin-top: 10px;">
         ASHISH &amp; AARTI
       </div>
-    </div>
-  </section>
+    </section>
+
+  </div>
 
   <script>
     (function () {
       "use strict";
 
-      // 1. Audio & Door
-      const openDoorBtn = document.getElementById("openDoorBtn");
+      // 1. Inward Door Opening & Audio Trigger
       const doorScene = document.getElementById("doorScene");
       const audio = document.getElementById("weddingMusic");
       const musicToggle = document.getElementById("musicToggleBtn");
+      let isDoorOpened = false;
 
-      openDoorBtn.addEventListener("click", () => {
+      function openDoor() {
+        if (isDoorOpened) return;
+        isDoorOpened = true;
+
         if (audio) {
           audio.play().then(() => {
             musicToggle.classList.add("spinning");
           }).catch(e => console.log(e));
           musicToggle.classList.add("visible");
         }
+
         doorScene.classList.add("opening");
         setTimeout(() => {
           doorScene.classList.add("opened");
         }, 2200);
-      });
+      }
 
-      musicToggle.addEventListener("click", () => {
+      // Direct tap/click anywhere on doorScene to open inward
+      doorScene.addEventListener("click", openDoor);
+
+      musicToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
         if (audio.paused) {
           audio.play();
           musicToggle.classList.add("spinning");
@@ -1042,7 +1076,7 @@
         }
       });
 
-      // 2. Scratch & Auto-Unlock Countdown
+      // 2. Scratch & Reveal Countdown
       const scratchCanvas = document.getElementById("scratchCanvas");
       const scratchStage = document.getElementById("scratchStage");
       const countdownSection = document.getElementById("countdownSection");
@@ -1063,7 +1097,7 @@
         ctx.fillRect(0, 0, rect.width, rect.height);
 
         ctx.fillStyle = "#2c040b";
-        ctx.font = "bold 13px 'Cinzel Decorative', serif";
+        ctx.font = "bold 12.5px 'Cinzel Decorative', serif";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillText("✦ SCRATCH TO REVEAL ✦", rect.width / 2, rect.height / 2);
@@ -1074,7 +1108,7 @@
         if (isRevealed) return;
         ctx.globalCompositeOperation = "destination-out";
         ctx.beginPath();
-        ctx.arc(x, y, 22, 0, Math.PI * 2);
+        ctx.arc(x, y, 20, 0, Math.PI * 2);
         ctx.fill();
         checkProgress();
       }
@@ -1113,12 +1147,14 @@
           setTimeout(() => {
             scratchCanvas.style.display = "none";
             countdownSection.classList.add("show-unlocked");
-            countdownSection.scrollIntoView({ behavior: "smooth" });
+            setTimeout(() => {
+              countdownSection.classList.add("fade-in-active");
+            }, 50);
           }, 600);
         }
       }
 
-      // 3. Countdown
+      // 3. Countdown (26 Nov 2026)
       const weddingDate = new Date("November 26, 2026 12:00:00 GMT+0530").getTime();
       function updateCountdown() {
         const diff = weddingDate - new Date().getTime();
@@ -1132,7 +1168,7 @@
       setInterval(updateCountdown, 1000);
       updateCountdown();
 
-      // 4. Slider
+      // 4. Story Slider
       const sliderViewport = document.getElementById("sliderViewport");
       const track = document.getElementById("sliderTrack");
       let startX = 0, currentIdx = 0;
