@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ashish & Aarti | The Royal Wedding</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@200;300;400;500;600&family=Rozha+One&display=swap" rel="stylesheet">
+  <title>Ashish & Aarti | The Royal Wedding 💍✨</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@200;300;400;500;600&family=Rozha+One&family=Alex+Brush&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -13,16 +13,150 @@
     }
 
     body {
-      background: radial-gradient(circle at 50% 20%, #2f1728 0%, #1c0d18 55%, #10060e 100%);
+      background: #12060e;
       color: #e8d7cf;
       font-family: 'Cormorant Garamond', serif;
       overflow-x: hidden;
       min-height: 100vh;
       display: flex;
       justify-content: center;
+      position: relative;
     }
 
-    /* Outer Container matching the Tablet Frame in reel */
+    /* -----------------------------------------------------------
+       1. FULLSCREEN HERO COVER (PHOTO ENTRY)
+    ----------------------------------------------------------- */
+    #heroCover {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      padding-bottom: 60px;
+      transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 1s ease;
+      overflow: hidden;
+    }
+
+    /* Background Couple Image */
+    .hero-bg-image {
+      position: absolute;
+      inset: 0;
+      background: 
+        linear-gradient(180deg, rgba(18, 6, 14, 0.2) 0%, rgba(18, 6, 14, 0.7) 65%, rgba(14, 4, 10, 0.98) 100%),
+        url('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200') center/cover no-repeat;
+      filter: contrast(105%);
+      transform: scale(1.02);
+      transition: transform 4s ease-out;
+    }
+
+    #heroCover:hover .hero-bg-image {
+      transform: scale(1.06);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 440px;
+      padding: 0 20px;
+    }
+
+    .hero-tagline {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #cda763;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+
+    .hero-couple-names {
+      font-size: clamp(3rem, 7vw, 4.2rem);
+      color: #fff;
+      font-weight: 400;
+      letter-spacing: 3px;
+      line-height: 1.1;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+      margin-bottom: 8px;
+    }
+
+    .hero-lead-quote {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #f2e3db;
+      line-height: 1.6;
+      margin-bottom: 28px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.9);
+    }
+
+    .btn-open-invitation {
+      background: linear-gradient(135deg, rgba(205, 167, 99, 0.9), rgba(163, 122, 53, 0.95));
+      color: #1a0814;
+      border: 1px solid #ffffff;
+      padding: 14px 34px;
+      border-radius: 40px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(205, 167, 99, 0.6);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-open-invitation:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(205, 167, 99, 0.8);
+    }
+
+    /* Cover Slide Up */
+    .cover-slide-away {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Background Audio Floating Toggle Button */
+    .music-player-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 10000;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(36, 17, 31, 0.75);
+      border: 1px solid #cda763;
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      color: #cda763;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+
+    .music-rotating {
+      animation: spinMusic 4s linear infinite;
+    }
+
+    @keyframes spinMusic {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* -----------------------------------------------------------
+       2. MAIN VIEWPORT (SCREENSHOT ROYAL LUXURY THEME)
+    ----------------------------------------------------------- */
     .app-viewport {
       width: 100%;
       max-width: 480px;
@@ -37,7 +171,6 @@
       text-align: center;
     }
 
-    /* Ambient Gold Ornament Divider */
     .gold-ornament {
       display: flex;
       align-items: center;
@@ -60,9 +193,7 @@
       font-size: 0.9rem;
     }
 
-    /* -----------------------------------------------------------
-       SECTION 1: THE SACRED INVITATION CARD (SCREENSHOT STYLE)
-    ----------------------------------------------------------- */
+    /* Section 1 Card */
     .shahi-frame {
       width: 100%;
       border: 1px solid rgba(205, 167, 99, 0.45);
@@ -81,7 +212,6 @@
       pointer-events: none;
     }
 
-    /* Corner Diya Accents */
     .corner-diya {
       position: absolute;
       font-size: 1.1rem;
@@ -151,9 +281,7 @@
       margin-top: 25px;
     }
 
-    /* -----------------------------------------------------------
-       SECTION 2: COUNTDOWN & SCRATCH FOIL (EXACT REEL STYLE)
-    ----------------------------------------------------------- */
+    /* Countdown & Scratch */
     .section-caption {
       font-size: 0.75rem;
       letter-spacing: 3px;
@@ -194,7 +322,6 @@
       display: block;
     }
 
-    /* Rectangular Golden Scratch Box */
     .scratch-pod {
       position: relative;
       width: 100%;
@@ -258,9 +385,7 @@
       margin-bottom: 60px;
     }
 
-    /* -----------------------------------------------------------
-       SECTION 3: OUR STORY (REEL SWING PHOTO & STORY CHAPTERS)
-    ----------------------------------------------------------- */
+    /* Story Section */
     .story-section {
       width: 100%;
       margin-bottom: 60px;
@@ -314,9 +439,7 @@
       color: #baa193;
     }
 
-    /* -----------------------------------------------------------
-       SECTION 4: THE ITINERARY / FUNCTIONS (EXACT REEL TILES)
-    ----------------------------------------------------------- */
+    /* Functions */
     .function-card {
       width: 100%;
       border: 1px solid rgba(205, 167, 99, 0.35);
@@ -377,9 +500,33 @@
 </head>
 <body>
 
+  <!-- Floating Audio Player (Shehnai/Flute) -->
+  <div id="musicBtn" class="music-player-btn" onclick="toggleMusic()" title="Play Wedding Music">
+    🎵
+  </div>
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=indian-flute-ambient-112199.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- 1. FULLSCREEN HERO COVER (THEIR REAL PHOTO ENTRY) -->
+  <div id="heroCover">
+    <div class="hero-bg-image"></div>
+    <div class="hero-content">
+      <div class="hero-tagline">✦ Royal Wedding Celebration ✦</div>
+      <h1 class="hero-couple-names">Ashish & Aarti</h1>
+      <p class="hero-lead-quote">
+        "We joyfully invite you to celebrate the union of our hearts as we step into our forever."
+      </p>
+      <button class="btn-open-invitation" onclick="openWeddingInvitation()">
+        Open The Royal Invitation 💌
+      </button>
+    </div>
+  </div>
+
+  <!-- 2. MAIN WEDDING INVITATION (REVEALED ON SLIDE) -->
   <div class="app-viewport">
 
-    <!-- 1. SACRED TRADITIONAL INVITATION CARD -->
+    <!-- Sacred Traditional Card -->
     <div class="shahi-frame">
       <div class="shlok-header">
         ॥ श्री गणेशाय नमः ॥<br>
@@ -389,7 +536,6 @@
 
       <div class="sub-head">Royal Wedding Invitation</div>
 
-      <!-- Bride -->
       <div class="bride-box">
         <div class="person-title">Aarti</div>
         <div class="person-sub">The Bride</div>
@@ -400,7 +546,6 @@
 
       <div class="knot-and">&</div>
 
-      <!-- Groom -->
       <div class="groom-box">
         <div class="person-title">Ashish</div>
         <div class="person-sub">The Groom</div>
@@ -413,15 +558,13 @@
         सर्वे भवन्तु सुखिनः • May all be happy
       </div>
 
-      <!-- Corner Diyas matching reel -->
       <div class="corner-diya diya-bl">🪔</div>
       <div class="corner-diya diya-br">🪔</div>
     </div>
 
-    <!-- Gold Ornament Divider -->
     <div class="gold-ornament"><span>✦ ✦ ✦</span></div>
 
-    <!-- 2. COUNTDOWN & GOLDEN SCRATCH CARD -->
+    <!-- Countdown & Scratch Card -->
     <div class="section-caption">Until Two Souls Become One</div>
 
     <div class="countdown-boxes">
@@ -443,7 +586,7 @@
       </div>
     </div>
 
-    <!-- Rectangular Gold Foil Scratch Card -->
+    <!-- Red-Amber Metallic Foil Scratch Card -->
     <div class="scratch-pod">
       <div class="scratch-secret">
         <div class="secret-tag">Save The Auspicious Date</div>
@@ -454,10 +597,9 @@
     </div>
     <div class="scratch-footnote">• Scratch The Golden Foil •</div>
 
-    <!-- Gold Ornament Divider -->
     <div class="gold-ornament"><span>✦ ✦ ✦</span></div>
 
-    <!-- 3. OUR STORY (SWING FRAME + CHAPTERS) -->
+    <!-- Our Story -->
     <div class="story-section">
       <div class="section-caption" style="margin-bottom: 6px;">How It All Began</div>
       <h2 style="font-size: 2.2rem; color: #f7ede4; font-weight: 500;">Our Story</h2>
@@ -466,13 +608,11 @@
         "Some love stories are written in the stars — ours began with a single glance across a crowded room and has only grown more beautiful with every passing season."
       </p>
 
-      <!-- Swing Engagement Photo matching the reel -->
       <div class="story-hero-frame">
         <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800" alt="Ashish & Aarti Journey">
         <div style="font-size: 0.85rem; letter-spacing: 2px; color: #cda763; margin-top: 10px;">Ashish & Aarti</div>
       </div>
 
-      <!-- 3 Story Steps from Reel -->
       <div class="chapter-block">
         <div class="chapter-title">The Knowing</div>
         <div class="chapter-text">
@@ -495,10 +635,9 @@
       </div>
     </div>
 
-    <!-- Gold Ornament Divider -->
     <div class="gold-ornament"><span>✦ ✦ ✦</span></div>
 
-    <!-- 4. THE GRAND CELEBRATIONS (ITINERARY FROM REEL) -->
+    <!-- Celebrations / Itinerary -->
     <div class="section-caption" style="margin-bottom: 6px;">The Celebrations</div>
     <h2 style="font-size: 2rem; color: #f7ede4; font-weight: 500; margin-bottom: 25px;">Wedding Itinerary</h2>
 
@@ -543,7 +682,7 @@
       <div class="func-venue">
         <strong>Shubh Muhurat:</strong> 12:35 PM<br>
         <strong>Venue:</strong> Royal Palace Grand Lawns, Pune<br>
-        <strong>Followed by:</strong> Reception & Royal Dinner 🍽️
+        <strong>Followed by:</strong> Reception & Royal Dinner 🍽️️
       </div>
     </div>
 
@@ -554,7 +693,45 @@
   </div>
 
   <script>
-    // 1. LIVE COUNTDOWN TO 26 NOV 2026
+    // 1. OPEN INVITATION SLIDE TRANSITION
+    function openWeddingInvitation() {
+      const cover = document.getElementById('heroCover');
+      cover.classList.add('cover-slide-away');
+      
+      // Auto play background flute/shehnai on click
+      playMusic();
+    }
+
+    // 2. BACKGROUND MUSIC TOGGLE
+    const audio = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    let isPlaying = false;
+
+    function playMusic() {
+      audio.play().then(() => {
+        isPlaying = true;
+        musicBtn.classList.add('music-rotating');
+        musicBtn.innerText = '🎶';
+      }).catch(() => {
+        // User interaction required policy
+      });
+    }
+
+    function toggleMusic() {
+      if (isPlaying) {
+        audio.pause();
+        musicBtn.classList.remove('music-rotating');
+        musicBtn.innerText = '🔇';
+        isPlaying = false;
+      } else {
+        audio.play();
+        musicBtn.classList.add('music-rotating');
+        musicBtn.innerText = '🎶';
+        isPlaying = true;
+      }
+    }
+
+    // 3. LIVE COUNTDOWN TO 26 NOV 2026
     const targetDate = new Date("November 26, 2026 12:35:00").getTime();
 
     function updateCountdown() {
@@ -576,11 +753,10 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // 2. SCRATCH CARD (EXACT RED-GOLD SHIMMER FOIL IN REEL)
+    // 4. SCRATCH CARD (METALLIC FOIL)
     const canvas = document.getElementById('scratchCanvas');
     const ctx = canvas.getContext('2d');
 
-    // Gradient matching the exact red-amber metallic foil in reel screenshot
     const foilGrad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
     foilGrad.addColorStop(0, '#e11d48');
     foilGrad.addColorStop(0.35, '#ea580c');
