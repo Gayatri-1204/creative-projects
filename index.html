@@ -92,7 +92,9 @@
       transform: translateX(-5px);
     }
 
-    /* HOME SCREEN */
+    /* =========================================
+       PAGE 0: HOME SCREEN WITH LOVE METER
+    ========================================= */
     .home-header {
       margin-top: 1vh;
       text-align: center;
@@ -118,98 +120,79 @@
       text-shadow: 0 5px 30px rgba(255, 45, 85, 0.4);
     }
 
-    .home-mid-envelope-wrapper {
-      position: relative;
-      width: clamp(220px, 20vw, 300px);
-      height: clamp(140px, 14vw, 190px);
-      margin: 8px 0;
+    /* Interactive Love Meter Box */
+    .love-meter-card {
+      width: clamp(280px, 30vw, 420px);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 117, 143, 0.35);
+      backdrop-filter: blur(14px);
+      border-radius: 24px;
+      padding: clamp(16px, 2.5vh, 25px) clamp(20px, 2.5vw, 30px);
       display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      filter: drop-shadow(0 15px 30px rgba(0,0,0,0.7));
-      animation: floatMidEnvelope 3.5s ease-in-out infinite alternate;
-    }
-
-    @keyframes floatMidEnvelope {
-      0% { transform: translateY(0px) rotate(-1deg); }
-      100% { transform: translateY(-8px) rotate(1deg); }
-    }
-
-    .peeking-photo-card {
-      position: absolute;
-      bottom: 25px;
-      width: 70%;
-      background: #ffffff;
-      padding: 7px 7px 20px 7px;
-      border-radius: 8px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-      transform: translateY(-40px) rotate(-4deg);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      z-index: 2;
-      cursor: pointer;
-    }
-
-    .peeking-photo-card:hover {
-      transform: translateY(-65px) rotate(0deg) scale(1.08);
-      z-index: 10;
-    }
-
-    .peeking-photo-card img {
-      width: 100%;
-      height: clamp(100px, 10vw, 140px);
-      object-fit: cover;
-      border-radius: 5px;
-      display: block;
-    }
-
-    .peeking-photo-card .peeking-caption {
-      font-family: 'Great Vibes', cursive;
-      color: #333;
-      font-size: clamp(1rem, 1.3vw, 1.3rem);
-      text-align: center;
-      margin-top: 4px;
-      line-height: 1;
-    }
-
-    .mini-envelope-body {
-      position: relative;
-      width: 100%;
-      height: 80%;
-      background: #7a0c2b;
-      border-radius: 12px;
-      overflow: hidden;
-      z-index: 3;
-      border: 1px solid rgba(255, 77, 109, 0.3);
-      box-shadow: inset 0 0 15px rgba(0,0,0,0.4);
-    }
-
-    .mini-envelope-pocket {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #54081e;
-      clip-path: polygon(0 100%, 100% 100%, 100% 35%, 50% 70%, 0 35%);
-      z-index: 4;
-      pointer-events: none;
-    }
-
-    .mini-wax-seal {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: clamp(32px, 3vw, 42px);
-      height: clamp(32px, 3vw, 42px);
-      background: radial-gradient(circle, #ff4d6d, #c9184a);
-      border-radius: 50%;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-      display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      font-size: clamp(14px, 1.4vw, 18px);
-      z-index: 5;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6), inset 0 0 20px rgba(255, 77, 109, 0.15);
+      margin: 8px 0;
+    }
+
+    .love-meter-title {
+      font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ffccd5;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .meter-progress-track {
+      width: 100%;
+      height: 18px;
+      background: rgba(0, 0, 0, 0.45);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 77, 109, 0.4);
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 10px;
+    }
+
+    .meter-progress-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #ff4d6d, #c9184a, #ff758f);
+      border-radius: 20px;
+      transition: width 2s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 0 15px #ff4d6d;
+    }
+
+    .meter-reading-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 1.6vw, 1.7rem);
+      color: #ffe5ec;
+      font-weight: 700;
+      min-height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .measure-love-btn {
+      background: linear-gradient(135deg, #ff4d6d, #c9184a);
+      color: white;
+      border: none;
+      padding: 9px 24px;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(255, 77, 109, 0.5);
+      transition: all 0.3s ease;
+      margin-top: 6px;
+    }
+
+    .measure-love-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 25px rgba(255, 77, 109, 0.8);
     }
 
     .bouquet-grid-wrapper {
@@ -274,7 +257,9 @@
       letter-spacing: 1px;
     }
 
-    /* PAGE 1 */
+    /* =========================================
+       PAGE 1: SIDE PHOTO & AUTO-SCROLLING LETTER
+    ========================================= */
     .page1-layout {
       width: 100%;
       height: 100%;
@@ -368,7 +353,9 @@
       font-weight: 600;
     }
 
-    /* PAGE 2: CAN I HUG YOU? */
+    /* =========================================
+       PAGE 2: CAN I HUG YOU? INTERACTIVE
+    ========================================= */
     .page2-layout {
       width: 100%;
       height: 100%;
@@ -548,7 +535,7 @@
     }
 
     /* =========================================
-       PAGE 3: AESTHETIC FAIRY LIGHTS & POLAROID CLOTHESLINE
+       PAGE 3: AESTHETIC FAIRY LIGHTS & CLOTHESLINE
     ========================================= */
     .page3-layout {
       width: 100%;
@@ -579,7 +566,6 @@
       text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
     }
 
-    /* Clothesline Wire with Curve */
     .clothesline-container {
       position: relative;
       width: 100%;
@@ -591,7 +577,6 @@
       padding-top: 35px;
     }
 
-    /* SVG String with Lights */
     .wire-svg {
       position: absolute;
       top: 0;
@@ -602,7 +587,6 @@
       z-index: 1;
     }
 
-    /* Swinging Hanging Polaroid Card */
     .hanging-polaroid {
       position: relative;
       width: clamp(170px, 17vw, 230px);
@@ -616,7 +600,6 @@
       transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    /* Alternate natural gentle swings */
     .hanging-polaroid:nth-child(2) { animation: swingOne 4.5s ease-in-out infinite alternate; }
     .hanging-polaroid:nth-child(3) { animation: swingTwo 5.2s ease-in-out infinite alternate; margin-top: 15px; }
     .hanging-polaroid:nth-child(4) { animation: swingOne 4.8s ease-in-out infinite alternate; margin-top: 25px; }
@@ -638,7 +621,6 @@
       box-shadow: 0 25px 60px rgba(255, 77, 109, 0.6);
     }
 
-    /* Wooden Pin / Clip on Wire */
     .wooden-clip {
       position: absolute;
       top: -16px;
@@ -679,7 +661,7 @@
       line-height: 1;
     }
 
-    /* 3D FLIP MEMORY POPUP MODAL */
+    /* 3D FLIP MODAL */
     .flip-modal-overlay {
       display: none;
       position: fixed;
@@ -729,7 +711,6 @@
       box-shadow: 0 30px 70px rgba(0,0,0,0.8), 0 0 35px rgba(255, 77, 109, 0.5);
     }
 
-    /* Front side (Grand Polaroid) */
     .flip-card-front {
       background: #ffffff;
       display: flex;
@@ -753,7 +734,6 @@
       margin-top: 18px;
     }
 
-    /* Back side (Romantic Handwritten Love Letter) */
     .flip-card-back {
       background: linear-gradient(145deg, #2b040e, #140105);
       border: 1px solid #ff4d6d;
@@ -808,16 +788,14 @@
       <h1 class="home-main-title">Happy Boyfriend Day</h1>
     </div>
 
-    <!-- Middle Envelope with Peeking Photo -->
-    <div class="home-mid-envelope-wrapper">
-      <div class="peeking-photo-card" onclick="openFlipCard('https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700', 'You are my happiest thought every single day ❤️️')">
-        <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400" alt="Us Together">
-        <div class="peeking-caption">My Heart ❤️</div>
+    <!-- Interactive Love Meter (Photo Pop-up aivaji God Love Calculator) -->
+    <div class="love-meter-card">
+      <div class="love-meter-title">✨ My Love For You Meter ✨</div>
+      <div class="meter-progress-track">
+        <div id="loveFill" class="meter-progress-fill"></div>
       </div>
-      <div class="mini-envelope-body">
-        <div class="mini-wax-seal">💌</div>
-        <div class="mini-envelope-pocket"></div>
-      </div>
+      <div id="meterText" class="meter-reading-text">Tap below to test ❤️</div>
+      <button class="measure-love-btn" onclick="measureLove()">Calculate Love 💕</button>
     </div>
 
     <!-- Bouquets at bottom -->
@@ -879,14 +857,12 @@
     <div class="page2-layout">
       <div id="hugQuestionBox" class="hug-question-box">
         
-        <!-- Sticker standing / waiting[cite: 1] -->
         <div class="standing-sticker-card">
           <svg viewBox="0 0 350 350" width="100%" height="100%">
             <path d="M 175 35 Q 185 15 195 30 Q 205 45 175 70 Q 145 45 155 30 Q 165 15 175 35 Z" fill="#ff4d6d"/>
             <path d="M 65 115 Q 75 95 85 110 Q 95 125 65 150 Q 35 125 45 110 Q 55 95 65 115 Z" fill="#ff758f"/>
             <path d="M 285 105 Q 295 85 305 100 Q 315 115 285 140 Q 255 115 265 100 Q 275 85 285 105 Z" fill="#ff758f"/>
 
-            <!-- Bubu Bear[cite: 1] -->
             <g transform="translate(45, 40) rotate(-10 150 150)">
               <circle cx="80" cy="85" r="22" fill="#c49a75" stroke="#3d2314" stroke-width="6"/>
               <circle cx="80" cy="85" r="12" fill="#e8c9b0"/>
@@ -897,7 +873,6 @@
               <path d="M 125 118 Q 130 132 135 118 Z" fill="#ff4d6d" stroke="#3d2314" stroke-width="2"/>
             </g>
 
-            <!-- Dudu Panda waiting[cite: 1] -->
             <g transform="translate(10, -5) rotate(15 180 180)">
               <circle cx="160" cy="80" r="22" fill="#2b2d42" stroke="#222" stroke-width="6"/>
               <circle cx="250" cy="100" r="22" fill="#2b2d42" stroke="#222" stroke-width="6"/>
@@ -913,7 +888,6 @@
 
         <h2 class="hug-question-text">Can I hug you? 🥺👉👈</h2>
 
-        <!-- Buttons Row -->
         <div class="hug-btns-row">
           <button class="hug-btn-yes" onclick="openHugPopup()">Yes! 🥰</button>
           <button id="noBtn" class="hug-btn-no" onmouseover="dodgeNoButton()" onclick="dodgeNoButton()">No 🙈</button>
@@ -923,7 +897,7 @@
     </div>
   </div>
 
-  <!-- GRAND HUG POPUP[cite: 1] -->
+  <!-- GRAND HUG POPUP -->
   <div id="hugPopupModal" class="hug-popup-modal">
     <div class="hug-celebration-title">HAPPY BOYFRIEND DAY, MY LOVE! 🤗❤️</div>
     
@@ -934,9 +908,7 @@
     <button class="close-hug-popup-btn" onclick="closeHugPopup()">HUG YOU FOREVER 💕</button>
   </div>
 
-  <!-- =========================================
-       PAGE 3: AESTHETIC FAIRY LIGHTS & CLOTHESLINE
-  ========================================= -->
+  <!-- PAGE 3: AESTHETIC FAIRY LIGHTS & CLOTHESLINE -->
   <div id="page-rain" class="screen-page">
     <button class="back-btn" onclick="switchPage('page-home')">← Back to Bouquets</button>
 
@@ -945,10 +917,8 @@
       <div class="lights-hint">✦ Tap any polaroid to flip and read a love secret ✦</div>
 
       <div class="clothesline-container">
-        <!-- Curved wire with glowing fairy bulbs -->
         <svg class="wire-svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
           <path d="M 0,20 Q 300,75 600,45 Q 900,80 1200,25" fill="none" stroke="rgba(255, 182, 193, 0.45)" stroke-width="2.5"/>
-          <!-- Glowing fairy bulbs -->
           <circle cx="150" cy="48" r="5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
           <circle cx="300" cy="65" r="5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
           <circle cx="450" cy="55" r="5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
@@ -958,7 +928,6 @@
           <circle cx="1050" cy="48" r="5" fill="#fff" filter="drop-shadow(0 0 8px #ff758f)"/>
         </svg>
 
-        <!-- Hanging Polaroids with clips -->
         <div class="hanging-polaroid" onclick="openFlipCard('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600', 'I love you more than any words could ever explain. You are my greatest blessing! 🥰')">
           <div class="wooden-clip"></div>
           <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400" alt="Memory 1">
@@ -991,12 +960,10 @@
   <div id="flipModal" class="flip-modal-overlay">
     <div id="flipCardBox" class="flip-card-wrapper" onclick="toggleFlipCard()">
       <div class="flip-card-inner">
-        <!-- Front Side -->
         <div class="flip-card-front">
           <img id="flipModalImg" src="" alt="Couple Memory">
           <div class="flip-hint-tag">✦ Click to flip & read ✦</div>
         </div>
-        <!-- Back Side -->
         <div class="flip-card-back">
           <h2>My Heart Whispers...</h2>
           <p id="flipModalNote">"You are my favourite thought every single day!"</p>
@@ -1010,6 +977,41 @@
     function switchPage(targetId) {
       document.querySelectorAll('.screen-page').forEach(p => p.classList.remove('active'));
       document.getElementById(targetId).classList.add('active');
+    }
+
+    // HOME PAGE: LOVE METER LOGIC
+    function measureLove() {
+      const fill = document.getElementById('loveFill');
+      const text = document.getElementById('meterText');
+      
+      fill.style.width = '0%';
+      text.innerText = 'Calculating infinite love... ⏳';
+
+      setTimeout(() => {
+        fill.style.width = '100%';
+      }, 100);
+
+      setTimeout(() => {
+        text.innerText = '∞ Infinity % (Cannot Be Measured! ❤️)';
+        blastFloatingHearts();
+      }, 2000);
+    }
+
+    function blastFloatingHearts() {
+      const card = document.querySelector('.love-meter-card');
+      for (let i = 0; i < 20; i++) {
+        const h = document.createElement('div');
+        h.className = 'hug-heart-burst';
+        h.innerText = ['❤️', '💖', '✨', '🥰'][Math.floor(Math.random() * 4)];
+        const dx = (Math.random() - 0.5) * 400 + 'px';
+        const dy = (Math.random() - 0.5) * 300 - 50 + 'px';
+        h.style.setProperty('--dx', dx);
+        h.style.setProperty('--dy', dy);
+        h.style.left = '50%';
+        h.style.top = '50%';
+        card.appendChild(h);
+        setTimeout(() => h.remove(), 1600);
+      }
     }
 
     // PAGE 2: INTERACTIVE CAN I HUG YOU?
@@ -1053,7 +1055,7 @@
       document.getElementById('flipModalImg').src = picUrl;
       document.getElementById('flipModalNote').innerText = noteText;
       const cardBox = document.getElementById('flipCardBox');
-      cardBox.classList.remove('flipped'); // Start from front
+      cardBox.classList.remove('flipped');
       document.getElementById('flipModal').style.display = 'flex';
     }
 
