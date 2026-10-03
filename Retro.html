@@ -3,186 +3,161 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vintage Lo-Fi Cassette 📼</title>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+  <title>Our Love Story ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;1,400&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: radial-gradient(circle at center, #2e1c2b 0%, #150d18 100%);
+      background: radial-gradient(ellipse at bottom, #2b040e 0%, #150005 50%, #050002 100%);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: #ffd6e0;
-      font-family: 'Courier Prime', monospace;
-      overflow: hidden;
-      padding: 20px;
+      overflow-x: hidden;
+      padding: 40px 15px;
     }
-    .scene {
-      width: clamp(310px, 85vw, 420px);
-      height: 250px;
-      perspective: 1000px;
-      margin-bottom: 25px;
-    }
-    .cassette {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    .cassette.flipped { transform: rotateY(180deg); }
-    .side {
-      position: absolute;
-      inset: 0;
-      backface-visibility: hidden;
-      background: linear-gradient(135deg, #1f1f2e, #13131c);
-      border: 4px solid #ff758f;
-      border-radius: 20px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 0 25px rgba(255, 117, 143, 0.2);
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .side-b { transform: rotateY(180deg); }
-    .label-sticker {
-      background: #fdf0d5;
-      color: #3d0c1e;
-      border-radius: 10px;
-      padding: 8px 12px;
-      border: 2px dashed #ff4d6d;
+    .header {
       text-align: center;
+      margin-bottom: 30px;
     }
-    .tape-title { font-weight: 700; font-size: 1.1rem; }
-    .window-cutout {
-      background: #000;
-      height: 70px;
-      border-radius: 12px;
-      border: 2px solid #555;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
+    .header h2 { font-family: 'Great Vibes', cursive; font-size: clamp(2.4rem, 4vw, 3.5rem); color: #ff758f; }
+    .header h1 { font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); letter-spacing: 2px; }
+
+    /* Live Days Counter */
+    .counter-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 117, 143, 0.3);
+      backdrop-filter: blur(14px);
+      border-radius: 20px;
+      max-width: 480px;
+      margin: 0 auto 50px auto;
+      padding: 18px 24px;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    }
+    .counter-title { font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: #ffccd5; font-weight: 700; }
+    .counter-value { font-family: 'Cinzel', serif; font-size: 2rem; color: #ff4d6d; margin: 6px 0; font-weight: 900; }
+    .counter-sub { font-size: 0.85rem; color: #ff8fa3; }
+
+    /* Timeline Structure */
+    .timeline {
       position: relative;
+      max-width: 800px;
+      margin: 0 auto;
     }
-    .spool {
-      width: 48px;
-      height: 48px;
-      background: #ffffff;
-      border-radius: 50%;
-      border: 6px dashed #222;
-      box-shadow: 0 0 0 6px #ff758f;
-    }
-    .spinning { animation: spin 1.8s linear infinite; }
-    @keyframes spin { 100% { transform: rotate(360deg); } }
-    .controls { display: flex; gap: 15px; }
-    button {
-      background: linear-gradient(135deg, #ff4d6d, #c9184a);
-      color: white;
-      border: none;
-      padding: 10px 24px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-family: inherit;
-      font-weight: 700;
-      box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4);
-      transition: transform 0.2s;
-    }
-    button:hover { transform: scale(1.05); }
-    .note {
+    .timeline::after {
+      content: '';
       position: absolute;
-      font-size: 1.5rem;
-      pointer-events: none;
-      animation: floatNote 2s ease-out forwards;
+      width: 3px;
+      background: linear-gradient(180deg, #ff4d6d, transparent);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
     }
-    @keyframes floatNote {
-      0% { opacity: 1; transform: translate(0, 0) scale(0.6); }
-      100% { opacity: 0; transform: translate(var(--x), -120px) scale(1.4); }
+    .timeline-item {
+      padding: 15px 30px;
+      position: relative;
+      width: 50%;
+    }
+    .timeline-item.left { left: 0; text-align: right; }
+    .timeline-item.right { left: 50%; text-align: left; }
+    .timeline-node {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      background: #ff4d6d;
+      border: 4px solid #fff;
+      border-radius: 50%;
+      top: 24px;
+      z-index: 2;
+      box-shadow: 0 0 15px #ff4d6d;
+    }
+    .left .timeline-node { right: -11px; }
+    .right .timeline-node { left: -11px; }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 77, 109, 0.3);
+      backdrop-filter: blur(12px);
+      padding: 20px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transition: transform 0.3s;
+    }
+    .card:hover { transform: translateY(-5px); border-color: #ff4d6d; }
+    .card h3 { font-family: 'Cinzel', serif; font-size: 1.1rem; color: #ffccd5; margin-bottom: 5px; }
+    .card span.date { font-size: 0.8rem; color: #ff758f; font-weight: 700; display: block; margin-bottom: 8px; }
+    .card p { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: #ffe5ec; line-height: 1.6; }
+
+    @media (max-width: 768px) {
+      .timeline::after { left: 25px; }
+      .timeline-item { width: 100%; padding-left: 60px; padding-right: 15px; text-align: left !important; }
+      .timeline-item.right { left: 0; }
+      .left .timeline-node, .right .timeline-node { left: 14px; }
     }
   </style>
 </head>
 <body>
-  <div class="scene">
-    <div id="cassetteBox" class="cassette">
-      <div class="side side-a">
-        <div class="label-sticker">
-          <div class="tape-title">Side A: Late Night Coffee ☕</div>
-        </div>
-        <div class="window-cutout">
-          <div class="spool" id="spool1"></div>
-          <div class="spool" id="spool2"></div>
-        </div>
+  <div class="header">
+    <h2>The Beautiful Story of</h2>
+    <h1>Us & Our Forever</h1>
+  </div>
+
+  <div class="counter-card">
+    <div class="counter-title">✨ Walking Hand In Hand For ✨</div>
+    <div class="counter-value" id="daysCounter">Calculating...</div>
+    <div class="counter-sub">And every single second is a blessing! ❤️</div>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item left">
+      <div class="timeline-node"></div>
+      <div class="card">
+        <span class="date">Day 1</span>
+        <h3>The First "Hello"</h3>
+        <p>The moment our paths crossed. Who knew a simple conversation would turn into the most important chapter of my life?</p>
       </div>
-      <div class="side side-b">
-        <div class="label-sticker">
-          <div class="tape-title">Side B: Sunset Boulevard 🌅</div>
-        </div>
-        <div class="window-cutout">
-          <div class="spool" id="spool3"></div>
-          <div class="spool" id="spool4"></div>
-        </div>
+    </div>
+
+    <div class="timeline-item right">
+      <div class="timeline-node"></div>
+      <div class="card">
+        <span class="date">First Date</span>
+        <h3>Butterflies & Long Talks</h3>
+        <p>Laughing nervously, matching eyes, and realizing that time completely stopped when I was with you.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item left">
+      <div class="timeline-node"></div>
+      <div class="card">
+        <span class="date">Our First Fight & Makeup</span>
+        <h3>Stronger Together</h3>
+        <p>Proof that love isn't just about smooth sailing, but about choosing each other again and holding on tighter.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item right">
+      <div class="timeline-node"></div>
+      <div class="card">
+        <span class="date">Today & Beyond</span>
+        <h3>My Forever & Always</h3>
+        <p>Still my favorite person to laugh with, complain to, and love with all my heart.</p>
       </div>
     </div>
   </div>
 
-  <div class="controls">
-    <button onclick="toggleMusic()">▶ / ⏸ Play Tape</button>
-    <button onclick="flipTape()">🔄 Flip Side</button>
-  </div>
-
   <script>
-    let isPlaying = false, audioCtx, loopId;
-    const notes = [261.63, 329.63, 392.00, 523.25, 440.00];
+    // तुमची स्पेशल तारीख येथे सेट करा (Year, Month Index 0-11, Day)
+    const startDate = new Date(2023, 9, 3); // Example date
 
-    function initAudio() {
-      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function updateCounter() {
+      const now = new Date();
+      const diffTime = Math.abs(now - startDate);
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      document.getElementById('daysCounter').innerText = `${diffDays} Days Together`;
     }
-
-    function playNote(freq) {
-      if (!audioCtx) return;
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-      gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.2);
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.start();
-      osc.stop(audioCtx.currentTime + 1.2);
-    }
-
-    function toggleMusic() {
-      initAudio();
-      isPlaying = !isPlaying;
-      document.querySelectorAll('.spool').forEach(s => s.classList.toggle('spinning', isPlaying));
-      if (isPlaying) {
-        let i = 0;
-        loopId = setInterval(() => {
-          playNote(notes[i % notes.length]);
-          createNoteElement();
-          i++;
-        }, 500);
-      } else {
-        clearInterval(loopId);
-      }
-    }
-
-    function flipTape() {
-      document.getElementById('cassetteBox').classList.toggle('flipped');
-    }
-
-    function createNoteElement() {
-      const n = document.createElement('div');
-      n.className = 'note';
-      n.innerText = ['🎵', '🎶', '✨', '💖'][Math.floor(Math.random() * 4)];
-      n.style.setProperty('--x', `${(Math.random() - 0.5) * 160}px`);
-      n.style.left = '50%';
-      n.style.top = '40%';
-      document.body.appendChild(n);
-      setTimeout(() => n.remove(), 2000);
-    }
+    updateCounter();
   </script>
 </body>
 </html>
