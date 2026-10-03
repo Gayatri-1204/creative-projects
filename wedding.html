@@ -77,18 +77,6 @@
       text-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
     }
 
-    .shimmer-text {
-      background: linear-gradient(90deg, #d4af37 0%, #ffffff 50%, #d4af37 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: shimmer 4s linear infinite;
-    }
-
-    @keyframes shimmer {
-      to { background-position: 200% center; }
-    }
-
     /* Subtle scroll reveal system */
     .reveal {
       opacity: 0;
@@ -245,7 +233,6 @@
       transform: rotateY(105deg);
     }
 
-    /* Traditional Indian Palace Door Panels */
     .door-panel-decor {
       position: absolute;
       width: 80%;
@@ -276,7 +263,6 @@
       border-radius: 50% 50% 0 0 / 40% 40% 0 0;
     }
 
-    /* Heavy Brass Door Handles */
     .door-handle {
       position: absolute;
       top: 50%;
@@ -292,7 +278,6 @@
     .door-left .door-handle { right: 18px; }
     .door-right .door-handle { left: 18px; }
 
-    /* Door Scene Content / Invitation Cover */
     .door-content-overlay {
       position: absolute;
       z-index: 10;
@@ -376,7 +361,6 @@
       50% { opacity: 1; }
     }
 
-    /* Diyas flanking the Royal Entrance */
     .door-diya-flank {
       position: absolute;
       bottom: 28px;
@@ -486,7 +470,6 @@
 
     /* ========================================================
        SCENE 3: THE MAIN ROYAL WEDDING INVITATION CARD
-       (Single continuous royal page containing all core elements)
        ======================================================== */
     .royal-card {
       background: radial-gradient(ellipse at 50% 30%, #460915 0%, #29040b 70%, #1a0206 100%);
@@ -498,7 +481,6 @@
       margin-bottom: 70px;
     }
 
-    /* Intricate Indian Corner Borders */
     .corner-motif {
       position: absolute;
       width: 44px;
@@ -565,9 +547,7 @@
       margin: 20px auto 35px;
     }
 
-    /* ========================================================
-       SCRATCH-TO-REVEAL DATE COMPONENT
-       ======================================================== */
+    /* Scratch date */
     .scratch-wrapper {
       margin: 35px auto 45px;
       max-width: 380px;
@@ -596,7 +576,6 @@
       touch-action: none;
     }
 
-    /* Underneath revealed content */
     .scratch-underlay {
       position: absolute;
       top: 0;
@@ -636,7 +615,6 @@
       margin-top: 2px;
     }
 
-    /* Gold Foil Scratch Canvas */
     #scratchCanvas {
       position: absolute;
       top: 0;
@@ -648,9 +626,7 @@
       transition: opacity 0.6s ease;
     }
 
-    /* ========================================================
-       LIVE COUNTDOWN — 4 ELEGANT HEART SHAPES
-       ======================================================== */
+    /* Countdown: 4 Heart Shapes */
     .countdown-section {
       margin-top: 30px;
       text-align: center;
@@ -733,7 +709,8 @@
     }
 
     /* ========================================================
-       WEDDING EVENTS: "THE CELEBRATIONS"
+       REFINED WEDDING EVENTS: "THE CELEBRATIONS"
+       PREMIUM RECTANGULAR/SQUARE ROYAL INVITATION CARDS
        ======================================================== */
     .celebrations-wrap {
       margin: 80px 0;
@@ -756,68 +733,161 @@
       margin-bottom: 40px;
     }
 
+    /* 2x2 Grid for Tablet/Desktop, Stacked for Mobile while keeping rectangular/square proportion */
     .events-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 26px;
     }
 
-    /* Luxurious Royal Ornamented Cards for Celebrations */
-    .event-card {
-      background: linear-gradient(135deg, rgba(63, 9, 20, 0.8) 0%, rgba(34, 3, 8, 0.95) 100%);
-      border: 1px solid var(--gold-antique);
-      border-radius: 12px;
-      padding: 26px 20px;
+    @media (min-width: 620px) {
+      .events-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+    }
+
+    /* Luxury Invitation Page Panel (Rectangular Card) */
+    .royal-event-box {
       position: relative;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-      backdrop-filter: blur(5px);
+      background: radial-gradient(ellipse at 50% 15%, #460915 0%, #260309 80%, #170104 100%);
+      border: 1px solid var(--gold-antique);
+      border-radius: 8px;
+      padding: 30px 22px 26px;
+      text-align: center;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.65), inset 0 0 25px rgba(0,0,0,0.5);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+      cursor: pointer;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       overflow: hidden;
     }
 
-    .event-card::before {
-      content: "";
+    .royal-event-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 45px rgba(0,0,0,0.8), 0 0 25px rgba(212, 175, 55, 0.28);
+      border-color: #fff1b8;
+    }
+
+    /* Inner Gold Filigree Frame */
+    .event-card-inner-frame {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
-      background: var(--gold-gradient);
+      inset: 8px;
+      border: 1px dashed rgba(212, 175, 55, 0.4);
+      border-radius: 5px;
+      pointer-events: none;
+      transition: border-color 0.3s ease;
     }
 
-    .event-details {
-      flex: 1;
+    .royal-event-box:hover .event-card-inner-frame {
+      border-color: rgba(255, 242, 178, 0.7);
     }
 
-    .event-name {
+    /* Event Mini Corner Filigrees */
+    .event-corner {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border: 1.5px solid var(--gold-antique);
+      pointer-events: none;
+    }
+    .event-corner-tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+    .event-corner-tr { top: 12px; right: 12px; border-left: none; border-bottom: none; }
+    .event-corner-bl { bottom: 12px; left: 12px; border-right: none; border-top: none; }
+    .event-corner-br { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+
+    /* Event Motif Wrapper */
+    .event-icon-badge {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(90, 13, 29, 0.75) 0%, rgba(34, 3, 8, 0.9) 100%);
+      border: 1px solid var(--gold-antique);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      box-shadow: 0 0 16px rgba(212, 175, 55, 0.2);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .royal-event-box:hover .event-icon-badge {
+      transform: scale(1.08) rotate(4deg);
+      box-shadow: 0 0 22px rgba(212, 175, 55, 0.45);
+    }
+
+    .event-card-svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--gold-light);
+      fill: none;
+    }
+
+    /* Specific Thematic Highlights */
+    .box-mehendi {
+      border-color: rgba(212, 175, 55, 0.85);
+    }
+    .box-sangeet {
+      border-color: rgba(212, 175, 55, 0.85);
+    }
+    .box-haldi {
+      border-color: #d8a018;
+      background: radial-gradient(ellipse at 50% 15%, #4e141a 0%, #28040a 80%, #180205 100%);
+    }
+    .box-haldi .event-icon-badge {
+      border-color: #e5b324;
+      box-shadow: 0 0 16px rgba(229, 179, 36, 0.3);
+    }
+    .box-wedding {
+      border: 1.5px solid #ffd700;
+      background: radial-gradient(ellipse at 50% 10%, #580d1e 0%, #2e050d 75%, #1c0207 100%);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.8), 0 0 20px rgba(212, 175, 55, 0.25);
+    }
+    .box-wedding .event-card-inner-frame {
+      border: 1px solid rgba(255, 215, 0, 0.55);
+    }
+
+    .event-card-title {
       font-family: var(--font-display);
-      font-size: clamp(18px, 4.5vw, 24px);
-      letter-spacing: 2px;
+      font-size: clamp(20px, 4.8vw, 24px);
+      letter-spacing: 3px;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+
+    .event-card-date {
+      font-family: var(--font-serif);
+      font-size: 15.5px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 1px;
       margin-bottom: 6px;
     }
 
-    .event-date {
+    .event-card-time {
       font-family: var(--font-serif);
-      font-size: 15px;
-      color: var(--gold-light);
-      margin-bottom: 4px;
+      font-size: 14px;
+      color: var(--gold-antique);
+      letter-spacing: 1px;
+      margin-bottom: 10px;
     }
 
-    .event-time-venue {
+    .event-card-place {
       font-family: var(--font-serif);
       font-size: 13.5px;
       color: var(--ivory-soft);
       letter-spacing: 0.5px;
+      opacity: 0.9;
     }
 
-    .event-icon-motif {
-      width: 54px;
-      height: 54px;
-      opacity: 0.85;
-      margin-left: 15px;
-      flex-shrink: 0;
+    /* Small decorative florish divider inside event cards */
+    .card-mini-divider {
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-antique), transparent);
+      margin: 10px auto;
     }
 
     /* ========================================================
@@ -977,11 +1047,11 @@
        Plays Varad Varad after interaction
        ======================================================== -->
   <audio id="weddingMusic" loop preload="auto">
-    <!-- Place your legal MP3 file at assets/varad-varad.mp3 -->
+    <!-- Place your MP3 file at assets/varad-varad.mp3 -->
     <source src="assets/varad-varad.mp3" type="audio/mpeg" />
   </audio>
 
-  <!-- Elegant Floating Music Controller -->
+  <!-- Floating Music Controller -->
   <div id="musicToggleBtn" class="music-widget" aria-label="Toggle Wedding Music">♫</div>
 
   <!-- ========================================================
@@ -1062,7 +1132,7 @@
     <section class="ganpati-section reveal">
       <div class="ganpati-frame">
         <div class="ganpati-glow"></div>
-        <!-- Elegant Lord Ganesha Silhouette Motif -->
+        <!-- Lord Ganesha Silhouette Motif -->
         <svg class="ganpati-icon" viewBox="0 0 100 100" fill="none">
           <path d="M50 15 C45 15, 38 18, 38 28 C38 36, 46 39, 46 44 C46 51, 37 54, 34 60 C31 66, 34 76, 42 81 C48 85, 56 83, 59 78 C62 73, 60 67, 57 65 C53 62, 48 64, 48 59 C48 56, 52 53, 56 48 C61 42, 63 35, 61 27 C59 20, 55 15, 50 15 Z" fill="url(#goldGrad)" />
           <path d="M49 20 Q54 28 49 36" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round" />
@@ -1221,77 +1291,113 @@
 
     <!-- ========================================================
          WEDDING EVENTS: "THE CELEBRATIONS"
+         PREMIUM RECTANGULAR/SQUARE ROYAL INVITATION CARDS
          ======================================================== -->
     <section class="celebrations-wrap">
       <h2 class="section-headline gold-text reveal">The Celebrations</h2>
       <div class="section-subtext reveal">Join us in each step of our sacred journey</div>
 
       <div class="events-grid">
-        <!-- Mehendi -->
-        <div class="event-card reveal">
-          <div class="event-details">
-            <h3 class="event-name gold-text">Mehendi</h3>
-            <div class="event-date">24 November 2026</div>
-            <div class="event-time-venue">4:00 PM • At Groom's Home</div>
+        
+        <!-- CARD 1: MEHENDI -->
+        <div class="royal-event-box box-mehendi reveal">
+          <div class="event-card-inner-frame"></div>
+          <span class="event-corner event-corner-tl"></span>
+          <span class="event-corner event-corner-tr"></span>
+          <span class="event-corner event-corner-bl"></span>
+          <span class="event-corner event-corner-br"></span>
+
+          <!-- Mehendi Floral Mandala Badge -->
+          <div class="event-icon-badge">
+            <svg class="event-card-svg" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="3" stroke-width="1.5" />
+              <path d="M12 2C13 5 15 7 18 7C15 8 13 10 12 13C11 10 9 8 6 7C9 7 11 5 12 2Z" stroke-width="1.5" />
+              <path d="M12 22C13 19 15 17 18 17C15 16 13 14 12 11C11 14 9 16 6 17C9 17 11 19 12 22Z" stroke-width="1.5" />
+              <circle cx="12" cy="12" r="8" stroke-dasharray="2,2" stroke-width="1" />
+            </svg>
           </div>
-          <!-- Mehendi Henna Mandala Motif -->
-          <svg class="event-icon-motif" viewBox="0 0 100 100" fill="none" stroke="#d4af37" stroke-width="2">
-            <circle cx="50" cy="50" r="38" stroke-dasharray="3,3" />
-            <circle cx="50" cy="50" r="22" />
-            <circle cx="50" cy="50" r="6" fill="#d4af37" />
-            <path d="M50 12 L50 28 M50 72 L50 88 M12 50 L28 50 M72 50 L88 50" />
-            <path d="M23 23 L34 34 M66 66 L77 77 M77 23 L66 34 M34 66 L23 77" />
-          </svg>
+
+          <h3 class="event-card-title">MEHENDI</h3>
+          <div class="event-card-date">24 November 2026</div>
+          <div class="event-card-time">4:00 PM</div>
+          <div class="card-mini-divider"></div>
+          <div class="event-card-place">At Groom's Home</div>
         </div>
 
-        <!-- Sangeet -->
-        <div class="event-card reveal">
-          <div class="event-details">
-            <h3 class="event-name gold-text">Sangeet</h3>
-            <div class="event-date">24 November 2026</div>
-            <div class="event-time-venue">7:00 PM • At Groom's Home</div>
+        <!-- CARD 2: SANGEET -->
+        <div class="royal-event-box box-sangeet reveal">
+          <div class="event-card-inner-frame"></div>
+          <span class="event-corner event-corner-tl"></span>
+          <span class="event-corner event-corner-tr"></span>
+          <span class="event-corner event-corner-bl"></span>
+          <span class="event-corner event-corner-br"></span>
+
+          <!-- Sangeet Musical Dholak / Melodic Note Badge -->
+          <div class="event-icon-badge">
+            <svg class="event-card-svg" viewBox="0 0 24 24">
+              <path d="M9 18V5l12-2v13" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="6" cy="18" r="3" stroke-width="1.5" />
+              <circle cx="18" cy="16" r="3" stroke-width="1.5" />
+              <path d="M9 9l12-2" stroke-width="1.5"/>
+            </svg>
           </div>
-          <!-- Sangeet Musical Dholak / Shehnai Motif -->
-          <svg class="event-icon-motif" viewBox="0 0 100 100" fill="none" stroke="#d4af37" stroke-width="2">
-            <path d="M20 30 Q50 20 80 30 Q85 50 80 70 Q50 80 20 70 Q15 50 20 30 Z" />
-            <ellipse cx="20" cy="50" rx="6" ry="20" fill="rgba(212,175,55,0.2)"/>
-            <ellipse cx="80" cy="50" rx="6" ry="20" fill="rgba(212,175,55,0.2)"/>
-            <path d="M20 30 L80 70 M20 70 L80 30" stroke-width="1.2" stroke-dasharray="2,2"/>
-          </svg>
+
+          <h3 class="event-card-title">SANGEET</h3>
+          <div class="event-card-date">24 November 2026</div>
+          <div class="event-card-time">7:00 PM</div>
+          <div class="card-mini-divider"></div>
+          <div class="event-card-place">At Groom's Home</div>
         </div>
 
-        <!-- Haldi -->
-        <div class="event-card reveal">
-          <div class="event-details">
-            <h3 class="event-name gold-text">Haldi</h3>
-            <div class="event-date">25 November 2026</div>
-            <div class="event-time-venue">7:00 PM • At Groom's Home</div>
+        <!-- CARD 3: HALDI -->
+        <div class="royal-event-box box-haldi reveal">
+          <div class="event-card-inner-frame"></div>
+          <span class="event-corner event-corner-tl"></span>
+          <span class="event-corner event-corner-tr"></span>
+          <span class="event-corner event-corner-bl"></span>
+          <span class="event-corner event-corner-br"></span>
+
+          <!-- Haldi Golden Kalash & Lotus Motif Badge -->
+          <div class="event-icon-badge">
+            <svg class="event-card-svg" viewBox="0 0 24 24" style="stroke: #ffe066;">
+              <path d="M7 10C7 8 9 7 12 7C15 7 17 8 17 10L18 17C18 20 15 21 12 21C9 21 6 20 6 17L7 10Z" stroke-width="1.5" />
+              <path d="M9 7C9 4 12 3 12 3C12 3 15 4 15 7" stroke-width="1.5" />
+              <path d="M8 12C10 13 14 13 16 12" stroke-width="1.2" />
+              <circle cx="12" cy="16" r="1.5" fill="#ffe066" />
+            </svg>
           </div>
-          <!-- Haldi Kalash / Golden Bowl Motif -->
-          <svg class="event-icon-motif" viewBox="0 0 100 100" fill="none" stroke="#d4af37" stroke-width="2">
-            <path d="M30 40 Q50 32 70 40 L74 68 Q50 82 26 68 Z" fill="rgba(212,175,55,0.15)" />
-            <path d="M26 38 Q50 30 74 38" />
-            <path d="M34 32 Q50 14 66 32" stroke-width="1.5" />
-            <circle cx="50" cy="22" r="4" fill="#ffd700" />
-            <path d="M40 73 Q50 78 60 73" />
-          </svg>
+
+          <h3 class="event-card-title" style="color: #ffe685;">HALDI</h3>
+          <div class="event-card-date">25 November 2026</div>
+          <div class="event-card-time" style="color: #ffd24d;">7:00 PM</div>
+          <div class="card-mini-divider"></div>
+          <div class="event-card-place">At Groom's Home</div>
         </div>
 
-        <!-- Wedding -->
-        <div class="event-card reveal" style="border-width: 1.5px; border-color: #ffd700;">
-          <div class="event-details">
-            <h3 class="event-name gold-text" style="font-size: clamp(20px, 5vw, 26px);">The Wedding</h3>
-            <div class="event-date" style="color: #fff1b8;">26 November 2026</div>
-            <div class="event-time-venue">12:00 PM • Vadange, Kolhapur</div>
+        <!-- CARD 4: THE WEDDING (Grand Royal Card) -->
+        <div class="royal-event-box box-wedding reveal">
+          <div class="event-card-inner-frame"></div>
+          <span class="event-corner event-corner-tl"></span>
+          <span class="event-corner event-corner-tr"></span>
+          <span class="event-corner event-corner-bl"></span>
+          <span class="event-corner event-corner-br"></span>
+
+          <!-- Sacred Mandap Vows & Royal Knot Badge -->
+          <div class="event-icon-badge" style="border-color: #ffd700; background: radial-gradient(circle, #5b0e1e, #2b040a);">
+            <svg class="event-card-svg" viewBox="0 0 24 24" style="stroke: #ffd700;">
+              <path d="M4 20h16M5 20V9l7-5 7 5v11" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 20v-7a3 3 0 0 1 6 0v7" stroke-width="1.4"/>
+              <circle cx="12" cy="7" r="1" fill="#ffd700"/>
+            </svg>
           </div>
-          <!-- Royal Knot / Vows Mandap Motif -->
-          <svg class="event-icon-motif" viewBox="0 0 100 100" fill="none" stroke="#ffd700" stroke-width="2">
-            <path d="M15 85 L15 35 Q50 15 85 35 L85 85" />
-            <path d="M10 85 L90 85" stroke-width="3" />
-            <path d="M35 85 Q50 50 65 85" stroke-dasharray="2,2" />
-            <circle cx="50" cy="40" r="10" stroke="#ffd700" fill="rgba(255,215,0,0.2)"/>
-          </svg>
+
+          <h3 class="event-card-title" style="color: #fff2b2;">THE WEDDING</h3>
+          <div class="event-card-date" style="color: #fff8d6;">26 November 2026</div>
+          <div class="event-card-time" style="color: #ffd700;">12:00 PM</div>
+          <div class="card-mini-divider" style="background: linear-gradient(90deg, transparent, #ffd700, transparent);"></div>
+          <div class="event-card-place">Vadange, Kolhapur</div>
         </div>
+
       </div>
     </section>
 
@@ -1340,7 +1446,7 @@
         <div class="venue-place-name gold-text">Vadange</div>
         <div class="venue-city">Kolhapur, Maharashtra</div>
 
-        <!-- Google Maps Link (Ready for exact coordinate pin update) -->
+        <!-- Google Maps Link -->
         <a class="venue-btn" 
            href="https://maps.google.com/?q=Vadange,+Kolhapur" 
            target="_blank" 
@@ -1384,12 +1490,6 @@
 
   <!-- ========================================================
        VANILLA JAVASCRIPT LOGIC
-       - Door opening sequence & audio triggering
-       - Floating audio toggle (play/pause/mute)
-       - Canvas scratch-to-reveal algorithm (45% threshold)
-       - Live Heart Countdown (26 Nov 2026, 12:00 PM IST)
-       - Ambient gold particles & floating petal simulation
-       - IntersectionObserver scroll animations
        ======================================================== -->
   <script>
     (function () {
@@ -1411,26 +1511,20 @@
           musicToggle.classList.add("spinning");
           musicToggle.innerHTML = "♫";
         }).catch((err) => {
-          console.warn("Audio autoplay blocked by browser policy:", err);
+          console.warn("Audio playback gesture caught:", err);
           musicPlaying = false;
         });
         musicToggle.classList.add("visible");
       }
 
       openDoorBtn.addEventListener("click", () => {
-        // Start Varad Varad audio on real user gesture
         startAudio();
-
-        // 3D Door Opening animation sequence
         doorScene.classList.add("opening");
-
-        // Allow camera depth movement then fade door container away
         setTimeout(() => {
           doorScene.classList.add("opened");
         }, 2200);
       });
 
-      // Floating Music Button Controls
       musicToggle.addEventListener("click", () => {
         if (audio.paused) {
           audio.play();
@@ -1460,7 +1554,6 @@
         scratchCanvas.width = rect.width;
         scratchCanvas.height = rect.height;
 
-        // Draw Antique Gold Foil Simulation
         const grad = ctx.createLinearGradient(0, 0, rect.width, rect.height);
         grad.addColorStop(0, "#8a6616");
         grad.addColorStop(0.2, "#e5c05d");
@@ -1472,7 +1565,6 @@
         ctx.fillStyle = grad;
         ctx.fillRect(0, 0, rect.width, rect.height);
 
-        // Add subtle golden sparkle grain
         for (let i = 0; i < 450; i++) {
           ctx.fillStyle = Math.random() > 0.5 ? "rgba(255,255,255,0.3)" : "rgba(80,50,0,0.25)";
           ctx.fillRect(
@@ -1483,7 +1575,6 @@
           );
         }
 
-        // Gold Foil Cover Typography
         ctx.fillStyle = "#2c040b";
         ctx.font = "bold 13px 'Cinzel Decorative', serif";
         ctx.textAlign = "center";
@@ -1503,10 +1594,7 @@
         ctx.arc(x, y, 22, 0, Math.PI * 2, false);
         ctx.fill();
 
-        // Emit gold sparkle burst on scratching
         spawnScratchSparkles(x, y);
-
-        // Calculate progress every few scratches
         checkScratchProgress();
       }
 
@@ -1520,7 +1608,6 @@
         };
       }
 
-      // Mouse Listeners
       scratchCanvas.addEventListener("mousedown", (e) => {
         isScratching = true;
         const pos = getPos(e);
@@ -1533,7 +1620,6 @@
       });
       window.addEventListener("mouseup", () => { isScratching = false; });
 
-      // Touch Listeners
       scratchCanvas.addEventListener("touchstart", (e) => {
         isScratching = true;
         const pos = getPos(e);
@@ -1554,7 +1640,6 @@
         const totalPixels = imgData.data.length / 4;
         let cleared = 0;
 
-        // Sample every 16th pixel for high performance
         for (let i = 3; i < imgData.data.length; i += 64) {
           if (imgData.data[i] === 0) cleared++;
         }
@@ -1562,7 +1647,6 @@
         const sampledTotal = totalPixels / 16;
         scratchedPercentage = (cleared / sampledTotal) * 100;
 
-        // Auto-reveal if ~45-50% scratched
         if (scratchedPercentage >= 45) {
           isFullyRevealed = true;
           scratchCanvas.style.transition = "opacity 0.8s ease";
@@ -1608,7 +1692,7 @@
       updateCountdown();
 
       // ----------------------------------------------------
-      // 4. AMBIENT PARTICLES & ROSE PETALS CANVAS SIMULATION
+      // 4. AMBIENT PARTICLES & ROSE PETALS
       // ----------------------------------------------------
       const ambientCanvas = document.getElementById("ambientCanvas");
       const aCtx = ambientCanvas.getContext("2d");
@@ -1633,7 +1717,7 @@
           this.speedY = Math.random() * 0.7 + 0.3;
           this.speedX = (Math.random() - 0.5) * 0.5;
           this.opacity = Math.random() * 0.65 + 0.2;
-          this.type = Math.random() > 0.22 ? "sparkle" : "petal"; // 78% golden dust, 22% petals
+          this.type = Math.random() > 0.22 ? "sparkle" : "petal";
           this.angle = Math.random() * Math.PI * 2;
           this.rotSpeed = (Math.random() - 0.5) * 0.02;
         }
@@ -1656,7 +1740,6 @@
             aCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             aCtx.fill();
           } else {
-            // Subtle rose/burgundy petal
             aCtx.translate(this.x, this.y);
             aCtx.rotate(this.angle);
             aCtx.fillStyle = "#7e1329";
@@ -1668,7 +1751,6 @@
         }
       }
 
-      // Initialize 45 ambient particles
       for (let i = 0; i < 45; i++) {
         particles.push(new Particle());
       }
