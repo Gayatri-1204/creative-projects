@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Relationship Police FIR 🚨👮‍♂️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Cinzel:wght@700;900&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #1a0f14 0%, #080305 100%);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 25px 16px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Police Beacon Siren Lights */
+    .siren-lights {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      display: flex;
+      z-index: 100;
+    }
+
+    .siren-red {
+      flex: 1;
+      background: #e63946;
+      animation: flashRed 0.6s infinite alternate;
+    }
+
+    .siren-blue {
+      flex: 1;
+      background: #1d3557;
+      animation: flashBlue 0.6s infinite alternate;
+    }
+
+    @keyframes flashRed {
+      0% { opacity: 0.2; box-shadow: 0 0 10px #e63946; }
+      100% { opacity: 1; box-shadow: 0 0 35px #e63946; }
+    }
+
+    @keyframes flashBlue {
+      0% { opacity: 1; box-shadow: 0 0 35px #457b9d; }
+      100% { opacity: 0.2; box-shadow: 0 0 10px #457b9d; }
+    }
+
+    /* FIR Parchment Dossier */
+    .fir-dossier {
+      background: #fffdf7;
+      color: #1a1a1a;
+      border-radius: 12px;
+      padding: 30px 24px;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.9), 0 0 40px rgba(230, 57, 70, 0.25);
+      border: 2px solid #e9d8a6;
+      font-family: 'Courier Prime', monospace;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fir-header {
+      border-bottom: 2px solid #222;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .fir-dept {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #e63946;
+    }
+
+    .fir-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    .case-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      border-bottom: 1px dashed #666;
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+      color: #444;
+    }
+
+    /* Accused Profile */
+    .accused-info {
+      background: rgba(0,0,0,0.04);
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .accused-info strong {
+      color: #000;
+    }
+
+    /* Crimes Checklist */
+    .crimes-list {
+      margin-bottom: 20px;
+    }
+
+    .crime-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 10px 12px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .crime-item input {
+      margin-top: 4px;
+      accent-color: #e63946;
+      transform: scale(1.2);
+    }
+
+    .crime-item.checked {
+      background: #ffe3e3;
+      border-color: #e63946;
+    }
+
+    .crime-details h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #9b111e;
+    }
+
+    .crime-details p {
+      font-size: 0.75rem;
+      color: #555;
+      margin-top: 2px;
+    }
+
+    /* Sentence / Punishment Box */
+    .punishment-box {
+      border: 2px dashed #e63946;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      background: rgba(230, 57, 70, 0.05);
+      margin-bottom: 20px;
+    }
+
+    .punishment-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #e63946;
+      letter-spacing: 1px;
+    }
+
+    .punishment-desc {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-top: 4px;
+      color: #1a1a1a;
+    }
+
+    /* Large Rubber Stamp */
+    .bail-stamp {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-18deg) scale(2.5);
+      border: 5px solid #d90429;
+      color: #d90429;
+      font-size: 1.8rem;
+      font-weight: 900;
+      padding: 10px 24px;
+      border-radius: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 0 25px rgba(217, 4, 41, 0.5);
+      z-index: 50;
+    }
+
+    .bail-stamp.stamped {
+      opacity: 0.95;
+      transform: translate(-50%, -50%) rotate(-15deg) scale(1);
+    }
+
+    /* Verdict Button */
+    .verdict-btn {
+      width: 100%;
+      background: #e63946;
+      color: #fff;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+      transition: all 0.2s;
+    }
+
+    .verdict-btn:hover {
+      background: #c9184a;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Siren Effect -->
+  <div class="siren-lights">
+    <div class="siren-red"></div>
+    <div class="siren-blue"></div>
+  </div>
+
+  <div class="fir-dossier">
+    
+    <!-- Big Bail Stamp Triggered by JS -->
+    <div class="bail-stamp" id="bailStamp">BAIL GRANTED</div>
+
+    <div class="fir-header">
+      <div class="fir-dept">DEPARTMENT OF GIRLFRIEND SECURITY 🚨</div>
+      <h1 class="fir-title">FIRST INFORMATION REPORT</h1>
+    </div>
+
+    <div class="case-meta">
+      <span>CASE NO: #BF-IPC-302</span>
+      <span id="firDate">OCT 03, 2026</span>
+    </div>
+
+    <div class="accused-info">
+      <div><strong>ACCUSED:</strong> Boyfriend (Handsome Suspect)</div>
+      <div><strong>CRIME STATUS:</strong> Unbailable Cuteness</div>
+    </div>
+
+    <!-- Charges -->
+    <div class="crimes-list">
+      <div class="crime-item checked" onclick="toggleCrime(this)">
+        <input type="checkbox" checked>
+        <div class="crime-details">
+          <h4>Section 302 of Love</h4>
+          <p>Not sending selfies when looking unnecessarily handsome.</p>
+        </div>
+      </div>
+
+      <div class="crime-item checked" onclick="toggleCrime(this)">
+        <input type="checkbox" checked>
+        <div class="crime-details">
+          <h4>Section 420: Sleepy Felony</h4>
+          <p>Falling asleep on call without official 'Goodnight + Kisses'.</p>
+        </div>
+      </div>
+
+      <div class="crime-item checked" onclick="toggleCrime(this)">
+        <input type="checkbox" checked>
+        <div class="crime-details">
+          <h4>Section 144: Food Theft</h4>
+          <p>Stealing crispy french fries from my plate without clearance.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Punishment Verdict -->
+    <div class="punishment-box">
+      <div class="punishment-title">✦ Mandatory Punishment ✦</div>
+      <div class="punishment-desc">"Sentenced to 500 Forehead Kisses &amp; 1:00 AM Ice-Cream Run!"</div>
+    </div>
+
+    <button class="verdict-btn" onclick="grantBail()">Issue Arrest &amp; Grant Bail 🚨</button>
+
+  </div>
+
+  <script>
+    function toggleCrime(elem) {
+      elem.classList.toggle('checked');
+      const box = elem.querySelector('input');
+      box.checked = elem.classList.contains('checked');
+    }
+
+    function grantBail() {
+      const stamp = document.getElementById('bailStamp');
+      stamp.classList.add('stamped');
+
+      // Play little pop sound / vibration if supported
+      if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+
+      setTimeout(() => {
+        alert("🚨 VERDICT ANNOUNCED:\nAccused must serve 500 forehead kisses immediately! Bail granted under strict girlfriend custody. ❤️👮‍♂️");
+      }, 700);
+    }
+  </script>
+</body>
+</html>
