@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crack Your Daily Love Fortune 🥠</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Great+Vibes&family=Montserrat:wght@500;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(ellipse at center, #1b0a3d 0%, #0d041e 60%, #05010a 100%);
+      min-height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      color: #fff;
+      position: relative;
+    }
+
+    /* Magical Purple & Golden Glows */
+    .magic-glow-1 {
+      position: absolute;
+      top: -10%;
+      left: 20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.22), transparent 70%);
+      filter: blur(95px);
+      pointer-events: none;
+    }
+
+    .magic-glow-2 {
+      position: absolute;
+      bottom: -10%;
+      right: 20%;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(234, 179, 8, 0.16), transparent 70%);
+      filter: blur(95px);
+      pointer-events: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .tagline {
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #fbbf24;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .main-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: linear-gradient(180deg, #ffffff 0%, #e9d5ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .hint-text {
+      color: #c084fc;
+      font-size: 0.95rem;
+      margin-bottom: 35px;
+      letter-spacing: 1px;
+    }
+
+    /* Cookie Stage */
+    .cookie-stage {
+      position: relative;
+      width: 260px;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      margin-bottom: 30px;
+      perspective: 800px;
+    }
+
+    /* Unbroken Whole Cookie */
+    .cookie-whole {
+      width: 210px;
+      height: 170px;
+      animation: gentleFloat 3s ease-in-out infinite alternate;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .cookie-whole:hover {
+      transform: scale(1.08) rotate(-2deg);
+      filter: drop-shadow(0 0 25px rgba(251, 191, 36, 0.6));
+    }
+
+    @keyframes gentleFloat {
+      0% { transform: translateY(0px) rotate(-1deg); }
+      100% { transform: translateY(-10px) rotate(1deg); }
+    }
+
+    /* Broken Cookie Halves (Hidden Initially) */
+    .cookie-broken-box {
+      display: none;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cookie-half-left, .cookie-half-right {
+      width: 105px;
+      height: 165px;
+      transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .cookie-broken-box.cracked .cookie-half-left {
+      transform: translateX(-40px) rotate(-25deg);
+    }
+
+    .cookie-broken-box.cracked .cookie-half-right {
+      transform: translateX(40px) rotate(25deg);
+    }
+
+    /* Fortune Paper Slip (Revealed from Inside) */
+    .fortune-slip {
+      display: none;
+      position: absolute;
+      width: 250px;
+      background: #fffdf5;
+      color: #2b0d38;
+      border: 1px solid #eab308;
+      padding: 14px 16px;
+      border-radius: 8px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(251, 191, 36, 0.5);
+      z-index: 20;
+      transform: scale(0.2) translateY(30px);
+      animation: slipEmerge 0.6s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    @keyframes slipEmerge {
+      0% { transform: scale(0.2) translateY(30px); opacity: 0; }
+      100% { transform: scale(1.15) translateY(-25px); opacity: 1; }
+    }
+
+    .fortune-tag {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #a855f7;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .fortune-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      font-weight: 600;
+      color: #3b0764;
+    }
+
+    /* Action Buttons */
+    .btn-crack-again {
+      display: none;
+      background: linear-gradient(135deg, #a855f7, #6b21a8);
+      border: 1px solid #c084fc;
+      color: white;
+      padding: 12px 34px;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(168, 85, 247, 0.45);
+      transition: all 0.3s ease;
+      margin-top: 15px;
+    }
+
+    .btn-crack-again:hover {
+      transform: scale(1.06);
+      box-shadow: 0 10px 30px rgba(168, 85, 247, 0.7);
+    }
+
+    /* Golden Sparkles Animation */
+    .magic-sparkle {
+      position: absolute;
+      pointer-events: none;
+      animation: sparkleFly 1.6s ease-out forwards;
+      z-index: 1000;
+      user-select: none;
+    }
+
+    @keyframes sparkleFly {
+      0% { opacity: 1; transform: scale(0.4) translate(0, 0); }
+      100% { opacity: 0; transform: scale(1.6) translate(var(--dx), var(--dy)); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="magic-glow-1"></div>
+  <div class="magic-glow-2"></div>
+
+  <div class="container">
+    <div class="tagline">✦ Celestial Love Oracle ✦</div>
+    <h1 class="main-title">Love Fortune Cookie</h1>
+    <p id="subHint" class="hint-text">Tap the golden cookie to reveal your secret fortune ✨</p>
+
+    <div class="cookie-stage" onclick="crackCookie()">
+      
+      <!-- Uncracked Cookie SVG -->
+      <svg id="cookieWhole" class="cookie-whole" viewBox="0 0 200 170">
+        <defs>
+          <radialGradient id="cookieGrad" cx="50%" cy="40%" r="60%">
+            <stop offset="0%" stop-color="#fde047"/>
+            <stop offset="50%" stop-color="#eab308"/>
+            <stop offset="90%" stop-color="#b45309"/>
+            <stop offset="100%" stop-color="#78350f"/>
+          </radialGradient>
+        </defs>
+        <!-- Fortune Cookie Shape -->
+        <path d="M 30,120 Q 20,40 100,25 Q 180,40 170,120 Q 130,85 100,105 Q 70,85 30,120 Z" 
+              fill="url(#cookieGrad)" stroke="#78350f" stroke-width="4" filter="drop-shadow(0 15px 25px rgba(0,0,0,0.6))"/>
+        <!-- Inner Fold Shadow -->
+        <path d="M 100,30 Q 95,85 100,105" stroke="#78350f" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path d="M 65,95 Q 100,115 135,95" stroke="#92400e" stroke-width="4" stroke-linecap="round" fill="none"/>
+      </svg>
+
+      <!-- Broken Halves Container -->
+      <div id="cookieBroken" class="cookie-broken-box">
+        <!-- Left Half -->
+        <svg class="cookie-half-left" viewBox="0 0 100 170">
+          <path d="M 15,120 Q 5,40 85,25 L 85,105 Q 55,85 15,120 Z" 
+                fill="url(#cookieGrad)" stroke="#78350f" stroke-width="4"/>
+          <path d="M 85,25 Q 82,75 85,105" stroke="#78350f" stroke-width="5" fill="none"/>
+        </svg>
+
+        <!-- Right Half -->
+        <svg class="cookie-half-right" viewBox="0 0 100 170">
+          <path d="M 85,120 Q 95,40 15,25 L 15,105 Q 45,85 85,120 Z" 
+                fill="url(#cookieGrad)" stroke="#78350f" stroke-width="4"/>
+          <path d="M 15,25 Q 18,75 15,105" stroke="#78350f" stroke-width="5" fill="none"/>
+        </svg>
+      </div>
+
+      <!-- Secret Fortune Slip -->
+      <div id="fortuneSlip" class="fortune-slip">
+        <div class="fortune-tag">✦ TODAY'S LOVE FORTUNE ✦</div>
+        <div id="fortuneQuote" class="fortune-text">"You are someone's absolute favourite thought today."</div>
+      </div>
+
+    </div>
+
+    <button id="crackAgainBtn" class="btn-crack-again" onclick="resetCookie()">CRACK ANOTHER COOKIE 🥠</button>
+  </div>
+
+  <script>
+    const fortunes = [
+      `"Out of 8 billion smiles in this universe, yours is the only one that feels like home."`,
+      `"A lifetime with you will always feel too short, but I promise to love you in every single second of it."`,
+      `"You make ordinary days feel like poetry and quiet moments feel like magic."`,
+      `"Your presence is someone's greatest peace and favourite blessing."`,
+      `"No distance, no argument, and no bad day will ever change how deeply you are loved."`,
+      `"You are looking at a boy who is permanently, undeniably, and endlessly in love with you."`
+    ];
+
+    let isCracked = false;
+
+    function crackCookie() {
+      if (isCracked) return;
+      isCracked = true;
+
+      // Hide whole, show broken halves
+      document.getElementById('cookieWhole').style.display = 'none';
+      const brokenBox = document.getElementById('cookieBroken');
+      brokenBox.style.display = 'flex';
+
+      setTimeout(() => {
+        brokenBox.classList.add('cracked');
+      }, 50);
+
+      // Random Fortune Quote
+      const randomMsg = fortunes[Math.floor(Math.random() * fortunes.length)];
+      document.getElementById('fortuneQuote').innerText = randomMsg;
+
+      // Reveal Paper Slip
+      const slip = document.getElementById('fortuneSlip');
+      slip.style.display = 'block';
+
+      // Update Header Text
+      document.getElementById('subHint').innerText = "Your destiny has spoken ✨";
+      document.getElementById('crackAgainBtn').style.display = 'inline-block';
+
+      burstSparkles();
+    }
+
+    function resetCookie() {
+      isCracked = false;
+
+      // Reset Halves
+      const brokenBox = document.getElementById('cookieBroken');
+      brokenBox.classList.remove('cracked');
+      brokenBox.style.display = 'none';
+
+      // Hide Slip
+      document.getElementById('fortuneSlip').style.display = 'none';
+
+      // Show Whole Cookie
+      document.getElementById('cookieWhole').style.display = 'block';
+
+      document.getElementById('subHint').innerText = "Tap the golden cookie to reveal your secret fortune ✨";
+      document.getElementById('crackAgainBtn').style.display = 'none';
+    }
+
+    function burstSparkles() {
+      const items = ['✨', '⭐', '💫', '💖', '🥠', '🌟'];
+      for (let i = 0; i < 35; i++) {
+        const span = document.createElement('div');
+        span.className = 'magic-sparkle';
+        span.innerText = items[Math.floor(Math.random() * items.length)];
+        span.style.left = '50%';
+        span.style.top = '50%';
+        span.style.fontSize = (Math.random() * 16 + 20) + 'px';
+
+        const dx = (Math.random() - 0.5) * 500 + 'px';
+        const dy = (Math.random() - 0.5) * 400 + 'px';
+        span.style.setProperty('--dx', dx);
+        span.style.setProperty('--dy', dy);
+
+        document.querySelector('.cookie-stage').appendChild(span);
+        setTimeout(() => span.remove(), 1600);
+      }
+    }
+  </script>
+</body>
+</html>
