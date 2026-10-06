@@ -5,14 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>आशिष आणि आरती — शाही विवाह सोहळा</title>
   
-  <!-- Premium Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Great+Vibes&family=Marcellus&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* Creamy White & Gold Theme */
       --cream-deep: #fbf9f2;
       --cream-rich: #f4ecdc;
       --cream-velvet: #e8dcc4;
@@ -81,7 +79,6 @@
       transform: translateY(0);
     }
 
-    /* GOLDEN STAR DIVIDER */
     .royal-star-divider {
       display: flex;
       align-items: center;
@@ -116,7 +113,6 @@
       100% { transform: scale(1.1) rotate(15deg); filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.9)); }
     }
 
-    /* MUSIC FLOATING BUTTON */
     .music-widget {
       position: fixed;
       top: 18px;
@@ -153,7 +149,6 @@
       to { transform: rotate(360deg); }
     }
 
-    /* 1. OPENING: PALACE DOOR */
     #doorScene {
       position: fixed;
       inset: 0;
@@ -500,7 +495,6 @@
       100% { transform: scale(0.96, 1.04) rotate(-2deg); }
     }
 
-    /* MAIN PALACE CONTAINER */
     .palace-container {
       position: relative;
       z-index: 2;
@@ -510,10 +504,14 @@
       padding: 30px 18px 90px 18px;
     }
 
-    /* GANPATI SECTION */
+    /* GANPATI SECTION FIXED CENTER ALIGNMENT */
     .ganpati-section {
       text-align: center;
       padding: 35px 10px 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .ganpati-frame {
@@ -544,7 +542,6 @@
       filter: drop-shadow(0 0 12px rgba(184, 134, 11, 0.5));
     }
 
-    /* FIXED SHRI GANESHAYA FONT & STYLING */
     .shri-ganeshaya {
       font-family: var(--font-serif);
       font-size: clamp(22px, 5.2vw, 29px);
@@ -553,6 +550,8 @@
       letter-spacing: 1px;
       margin-bottom: 12px;
       text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+      text-align: center;
+      width: 100%;
     }
 
     .vakratunda-shloka {
@@ -563,9 +562,9 @@
       font-style: italic;
       max-width: 500px;
       margin: 0 auto;
+      text-align: center;
     }
 
-    /* MAIN WEDDING CARD */
     .royal-card {
       background: radial-gradient(ellipse at 50% 30%, #fffaf0 0%, #f4ecdc 70%, #e8dcc4 100%);
       border: 2px solid var(--gold-antique);
@@ -641,7 +640,6 @@
       margin: 18px auto 0;
     }
 
-    /* SCRATCH CARD SECTION */
     .scratch-standalone-section {
       margin: 0 auto;
       max-width: 390px;
@@ -729,7 +727,6 @@
       transition: opacity 0.6s ease;
     }
 
-    /* GOOGLE CALENDAR BUTTON */
     .calendar-btn-wrap {
       margin-top: 16px;
       display: none;
@@ -760,7 +757,6 @@
       box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
     }
 
-    /* COUNTDOWN */
     .countdown-standalone-section {
       margin: 0 auto;
       max-width: 520px;
@@ -851,7 +847,6 @@
       padding: 15px;
     }
 
-    /* CELEBRATIONS SECTION */
     .celebrations-wrap {
       margin: 10px 0;
     }
@@ -994,7 +989,6 @@
       margin: 6px auto;
     }
 
-    /* STORY PHOTO SLIDER */
     .story-section {
       margin: 10px 0;
     }
@@ -1120,7 +1114,6 @@
       box-shadow: 0 0 6px var(--gold-antique);
     }
 
-    /* VENUE */
     .venue-section {
       margin: 10px 0;
       text-align: center;
@@ -1173,7 +1166,6 @@
       border-color: #fff;
     }
 
-    /* WHATSAPP BLESSINGS CARD */
     .blessing-section {
       margin: 10px 0;
       text-align: center;
@@ -1238,7 +1230,6 @@
       box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
     }
 
-    /* FINAL */
     .final-section {
       text-align: center;
       padding: 30px 10px 20px;
@@ -1272,10 +1263,8 @@
 </head>
 <body>
 
-  <!-- Ambient Gold Dust Canvas -->
   <canvas id="ambientCanvas"></canvas>
 
-  <!-- SVG Gradients Definition -->
   <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="starGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1287,15 +1276,12 @@
     </defs>
   </svg>
 
-  <!-- Audio Element -->
   <audio id="weddingMusic" loop preload="auto">
     <source src="audio.mp3" type="audio/mpeg" />
   </audio>
 
-  <!-- Floating Music Toggle Button -->
   <div id="musicToggleBtn" class="music-widget" aria-label="Toggle Music">♫</div>
 
-  <!-- 1. OPENING: ROYAL PALACE ENTRANCE -->
   <div id="doorScene">
     <div class="palace-fog-layer"></div>
 
@@ -1306,7 +1292,6 @@
         <div class="palace-col col-left"><div class="col-capital"></div></div>
         <div class="palace-col col-right"><div class="col-capital"></div></div>
 
-        <!-- Arch Header -->
         <div class="palace-cusped-arch">
           <svg class="arch-jharokha-svg" viewBox="0 0 600 90" preserveAspectRatio="none">
             <path d="M0 90 C 80 80, 160 30, 240 50 C 270 58, 290 20, 300 10 C 310 20, 330 58, 360 50 C 440 30, 520 80, 600 90" 
@@ -1323,11 +1308,9 @@
           </svg>
         </div>
 
-        <!-- Double Doors -->
         <div class="doors-assembly">
           <div class="door-light-chink"></div>
 
-          <!-- Left Wing -->
           <div class="grand-door-wing wing-left">
             <div class="carved-panel-grid">
               <div class="wood-carve-cell"><div class="brass-stud"></div></div>
@@ -1338,7 +1321,6 @@
             <div class="grand-brass-handle"><div class="handle-hanging-ring"></div></div>
           </div>
 
-          <!-- Right Wing -->
           <div class="grand-door-wing wing-right">
             <div class="carved-panel-grid">
               <div class="wood-carve-cell"><div class="brass-stud"></div></div>
@@ -1351,7 +1333,6 @@
         </div>
       </div>
 
-      <!-- Action Button -->
       <div class="door-action-pod">
         <button id="openDoorBtn" class="door-enter-btn">
           ✦ पत्रिका उघडा ✦
@@ -1359,7 +1340,6 @@
         <div class="door-tap-subtext">प्रवेश करण्यासाठी क्लिक करा</div>
       </div>
 
-      <!-- Diyas -->
       <div class="portal-base-diyas">
         <div class="diya-unit">
           <div class="diya-flame"></div>
@@ -1373,10 +1353,8 @@
     </div>
   </div>
 
-  <!-- MAIN INVITATION CONTENT -->
   <div class="palace-container">
 
-    <!-- LORD GANESHA -->
     <section class="ganpati-section reveal">
       <div class="ganpati-frame">
         <div class="ganpati-glow"></div>
@@ -1391,7 +1369,6 @@
       </p>
     </section>
 
-    <!-- [DIVIDER 1] -->
     <div class="royal-star-divider reveal">
       <div class="divider-gold-line"></div>
       <svg class="divider-star-icon" viewBox="0 0 24 24">
@@ -1400,7 +1377,6 @@
       <div class="divider-gold-line right"></div>
     </div>
 
-    <!-- MAIN WEDDING CARD -->
     <section class="royal-card reveal">
       <svg class="corner-motif corner-tl" viewBox="0 0 40 40">
         <path d="M2,38 L2,10 Q2,2 10,2 L38,2" />
@@ -1440,7 +1416,6 @@
       </p>
     </section>
 
-    <!-- [DIVIDER 2] -->
     <div class="royal-star-divider reveal">
       <div class="divider-gold-line"></div>
       <svg class="divider-star-icon" viewBox="0 0 24 24">
@@ -1449,7 +1424,6 @@
       <div class="divider-gold-line right"></div>
     </div>
 
-    <!-- SCRATCH DATE CARD -->
     <section class="scratch-standalone-section reveal">
       <div class="scratch-card-box">
         <div class="scratch-lead-text">✦ तारीख पाहण्यासाठी स्क्रॅच करा ✦</div>
@@ -1462,7 +1436,6 @@
           <canvas id="scratchCanvas"></canvas>
         </div>
 
-        <!-- Google Calendar Button -->
         <div class="calendar-btn-wrap" id="calendarBtnWrap">
           <a class="royal-calendar-btn" 
              href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ashish+%26+Aarti+-+Wedding+Ceremony&dates=20261126T074500Z/20261126T114500Z&details=Bless+the+sacred+union+of+Ashish+%26+Aarti.+We+look+forward+to+welcoming+you!&location=Krushiraj+Multipurpose+Hall,+Vadange,+Kolhapur,+Maharashtra" 
@@ -1473,7 +1446,6 @@
       </div>
     </section>
 
-    <!-- LIVE COUNTDOWN -->
     <section class="countdown-standalone-section" id="countdownSection">
       <div class="countdown-title">शुभ मुहुर्ताची प्रतीक्षा</div>
 
@@ -1525,7 +1497,6 @@
       </div>
     </section>
 
-    <!-- [DIVIDER 3] -->
     <div class="royal-star-divider reveal">
       <div class="divider-gold-line"></div>
       <svg class="divider-star-icon" viewBox="0 0 24 24">
@@ -1534,13 +1505,11 @@
       <div class="divider-gold-line right"></div>
     </div>
 
-    <!-- CELEBRATIONS / EVENTS -->
     <section class="celebrations-wrap">
       <h2 class="section-headline gold-text reveal">विवाह सोहळा कार्यक्रम</h2>
       <div class="section-subtext reveal">आमच्या प्रत्येक आनंदात सहभागी व्हा</div>
 
       <div class="events-grid">
-        <!-- Mehendi -->
         <div class="royal-event-box reveal">
           <div class="event-card-inner-frame"></div>
           <span class="event-corner event-corner-tl"></span>
@@ -1564,7 +1533,6 @@
           <div class="event-card-place">निवास स्थान</div>
         </div>
 
-        <!-- Sangeet -->
         <div class="royal-event-box reveal">
           <div class="event-card-inner-frame"></div>
           <span class="event-corner event-corner-tl"></span>
@@ -1588,7 +1556,6 @@
           <div class="event-card-place">निवास स्थान</div>
         </div>
 
-        <!-- Haldi -->
         <div class="royal-event-box reveal">
           <div class="event-card-inner-frame"></div>
           <span class="event-corner event-corner-tl"></span>
@@ -1612,7 +1579,6 @@
           <div class="event-card-place">निवास स्थान</div>
         </div>
 
-        <!-- The Wedding -->
         <div class="royal-event-box box-wedding reveal">
           <div class="event-card-inner-frame"></div>
           <span class="event-corner event-corner-tl"></span>
@@ -1637,7 +1603,6 @@
       </div>
     </section>
 
-    <!-- [DIVIDER 4] -->
     <div class="royal-star-divider reveal">
       <div class="divider-gold-line"></div>
       <svg class="divider-star-icon" viewBox="0 0 24 24">
@@ -1646,7 +1611,6 @@
       <div class="divider-gold-line right"></div>
     </div>
 
-    <!-- OUR STORY SLIDER -->
     <section class="story-section reveal">
       <h2 class="section-headline gold-text">आमची आठवण</h2>
       <div class="section-subtext">आनंदाचे काही क्षण</div>
@@ -1657,35 +1621,30 @@
 
         <div class="slider-viewport" id="sliderViewport">
           <div class="slider-track" id="sliderTrack">
-            <!-- Slide 1 -->
             <div class="slider-slide">
               <img class="slide-photo" src="bapu.png.jpeg" alt="Ashish & Aarti Photo 1" />
               <div class="slide-gradient-overlay"></div>
               <div class="slide-caption-bar">एक नवीन सुरुवात</div>
             </div>
 
-            <!-- Slide 2 -->
             <div class="slider-slide">
               <img class="slide-photo" src="bapu.png" alt="Ashish & Aarti Photo 2" />
               <div class="slide-gradient-overlay"></div>
               <div class="slide-caption-bar">दोन आत्मे, एक प्रवास</div>
             </div>
 
-            <!-- Slide 3 -->
             <div class="slider-slide">
               <img class="slide-photo" src="bapu3.png" alt="Ashish & Aarti Photo 3" />
               <div class="slide-gradient-overlay"></div>
               <div class="slide-caption-bar">प्रेमाचे बंध</div>
             </div>
 
-            <!-- Slide 4 -->
             <div class="slider-slide">
               <img class="slide-photo" src="bapu4.png" alt="Ashish & Aarti Photo 4" />
               <div class="slide-gradient-overlay"></div>
               <div class="slide-caption-bar">सात वचनांची गाठ</div>
             </div>
 
-            <!-- Slide 5 -->
             <div class="slider-slide">
               <img class="slide-photo" src="bapu5.png" alt="Ashish & Aarti Photo 5" />
               <div class="slide-gradient-overlay"></div>
@@ -1701,7 +1660,6 @@
       </div>
     </section>
 
-    <!-- [DIVIDER 5] -->
     <div class="royal-star-divider reveal">
       <div class="divider-gold-line"></div>
       <svg class="divider-star-icon" viewBox="0 0 24 24">
@@ -1710,7 +1668,6 @@
       <div class="divider-gold-line right"></div>
     </div>
 
-    <!-- VENUE -->
     <section class="venue-section reveal">
       <h2 class="section-headline gold-text">विवाह स्थळ</h2>
       <div class="section-subtext">आपणा सर्वांचे स्वागत आहे</div>
@@ -1728,7 +1685,6 @@
       </div>
     </section>
 
-    <!-- [DIVIDER 6] -->
     <div class="royal-star-divider reveal">
       <div class="divider-gold-line"></div>
       <svg class="divider-star-icon" viewBox="0 0 24 24">
@@ -1737,7 +1693,6 @@
       <div class="divider-gold-line right"></div>
     </div>
 
-    <!-- WHATSAPP BLESSINGS SECTION -->
     <section class="blessing-section reveal">
       <h2 class="section-headline gold-text">शुभेच्छा व आशीर्वाद पाठवा</h2>
       <div class="section-subtext">तुमच्या प्रतिक्रिया थेट जोडीदाराला पाठवा</div>
@@ -1755,7 +1710,6 @@
       </div>
     </section>
 
-    <!-- [DIVIDER 7] -->
     <div class="royal-star-divider reveal">
       <div class="divider-gold-line"></div>
       <svg class="divider-star-icon" viewBox="0 0 24 24">
@@ -1764,7 +1718,6 @@
       <div class="divider-gold-line right"></div>
     </div>
 
-    <!-- FINAL MESSAGE -->
     <footer class="final-section reveal">
       <p class="final-quote">
         “दोन हृदये,<br />
@@ -1783,7 +1736,6 @@
 
   </div>
 
-  <!-- JAVASCRIPT -->
   <script>
     (function () {
       "use strict";
