@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Ashish & Aarti — White & Gold Royal Wedding Invitation</title>
+  <title>आशिष आणि आरती — शुभविवाह पत्रिका</title>
   
   <!-- Premium Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -624,25 +624,25 @@
 
     .revealed-date {
       font-family: var(--font-display);
-      font-size: clamp(16px, 4.2vw, 21px);
+      font-size: clamp(15px, 3.8vw, 19px);
       font-weight: 700;
       color: var(--gold-dark);
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       margin-bottom: 4px;
     }
 
     .revealed-venue {
       font-family: var(--font-serif);
-      font-size: 13.5px;
-      letter-spacing: 1.5px;
+      font-size: 13px;
+      letter-spacing: 1px;
       color: var(--text-main);
     }
 
     .revealed-time {
       font-family: var(--font-serif);
-      font-size: 12.5px;
+      font-size: 12px;
       color: var(--text-muted);
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       margin-top: 2px;
     }
 
@@ -878,31 +878,31 @@
     .event-card-title {
       font-family: var(--font-display);
       font-size: clamp(17px, 4vw, 21px);
-      letter-spacing: 2.5px;
+      letter-spacing: 2px;
       color: var(--gold-dark);
       margin-bottom: 6px;
     }
 
     .event-card-date {
       font-family: var(--font-serif);
-      font-size: 14.5px;
+      font-size: 14px;
       font-weight: 600;
       color: var(--text-main);
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
       margin-bottom: 4px;
     }
 
     .event-card-time {
       font-family: var(--font-serif);
-      font-size: 13px;
+      font-size: 12.5px;
       color: var(--gold-antique);
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
       margin-bottom: 6px;
     }
 
     .event-card-place {
       font-family: var(--font-serif);
-      font-size: 12.5px;
+      font-size: 12px;
       color: var(--text-muted);
       letter-spacing: 0.5px;
     }
@@ -977,8 +977,8 @@
       right: 0;
       text-align: center;
       font-family: var(--font-serif);
-      font-size: 14.5px;
-      letter-spacing: 1.5px;
+      font-size: 14px;
+      letter-spacing: 1px;
       color: #fff2b2;
       text-shadow: 0 2px 8px rgba(0,0,0,0.8);
       pointer-events: none;
@@ -1056,14 +1056,14 @@
 
     .venue-place-name {
       font-family: var(--font-display);
-      font-size: clamp(19px, 4.8vw, 26px);
-      letter-spacing: 2px;
+      font-size: clamp(18px, 4.5vw, 24px);
+      letter-spacing: 1.5px;
       margin-bottom: 5px;
     }
 
     .venue-city {
       font-family: var(--font-serif);
-      font-size: 15px;
+      font-size: 14.5px;
       color: var(--text-muted);
       margin-bottom: 22px;
     }
@@ -1077,8 +1077,8 @@
       color: var(--gold-dark);
       padding: 11px 26px;
       font-family: var(--font-display);
-      font-size: 11.5px;
-      letter-spacing: 2.2px;
+      font-size: 11px;
+      letter-spacing: 2px;
       text-decoration: none;
       border-radius: 30px;
       transition: all 0.3s ease;
@@ -1140,9 +1140,9 @@
       border-radius: 30px;
       padding: 12px 28px;
       font-family: var(--font-display);
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
-      letter-spacing: 1.5px;
+      letter-spacing: 1px;
       cursor: pointer;
       box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -1165,7 +1165,7 @@
     .final-quote {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: clamp(17px, 4.2vw, 22px);
+      font-size: clamp(16px, 4vw, 20px);
       line-height: 1.8;
       color: var(--text-main);
       max-width: 500px;
@@ -1182,7 +1182,7 @@
     .final-footer-text {
       font-family: var(--font-display);
       font-size: 11px;
-      letter-spacing: 3.5px;
+      letter-spacing: 3px;
       color: var(--gold-dark);
       text-transform: uppercase;
     }
@@ -1190,7 +1190,7 @@
 </head>
 <body>
 
-  <!-- Ambient Gold Dust & Falling Petals Canvas -->
+  <!-- Ambient Gold Dust Canvas -->
   <canvas id="ambientCanvas"></canvas>
 
   <!-- SVG Gradients Definition -->
@@ -1211,10 +1211,10 @@
   </audio>
 
   <!-- Floating Music Toggle Button -->
-  <div id="musicToggleBtn" class="music-widget" aria-label="Toggle Music">♫</div>
+  <div id="musicToggleBtn" class="music-widget" aria-label="संगीताचे बटन">♫</div>
 
   <!-- ========================================================
-       1. OPENING: WHITE PALACE ENTRANCE
+       1. OPENING: WHITE PALACE DOOR
        ======================================================== -->
   <div id="doorScene">
     <div class="portal-camera-rig">
@@ -1270,9 +1270,9 @@
       <!-- Action Button -->
       <div class="door-action-pod">
         <button id="openDoorBtn" class="door-enter-btn">
-          ✦ OPEN THE INVITATION ✦
+          ✦ पत्रिका उघडा ✦
         </button>
-        <div class="door-tap-subtext">Tap to enter</div>
+        <div class="door-tap-subtext">प्रवेश करण्यासाठी क्लिक करा</div>
       </div>
     </div>
   </div>
@@ -1286,7 +1286,7 @@
     <section class="ganpati-section reveal">
       <div class="ganpati-frame">
         <div class="ganpati-glow"></div>
-        <img class="ganpati-image-photo" src="bappa.png" alt="Shree Ganesh" onerror="this.src='bappa.png.jpeg';" />
+        <img class="ganpati-image-photo" src="bappa.png" alt="श्री गणेश" onerror="this.src='bappa.png.jpeg';" />
       </div>
 
       <div class="shri-ganeshaya">॥ श्री गणेशाय नमः ॥</div>
@@ -1329,20 +1329,20 @@
         <circle cx="16" cy="16" r="3" fill="#c5a059" />
       </svg>
 
-      <div class="invitation-header-text">Together With Their Families</div>
+      <div class="invitation-header-text">परिवारासह आदरपूर्वक निमंत्रण</div>
 
       <div class="couple-names-wrap">
-        <div class="couple-name gold-text">ASHISH</div>
-        <div class="parentage">Son of Arun Jadhav</div>
+        <div class="couple-name gold-text">आशिष</div>
+        <div class="parentage">चिरंजीव श्री. अरुण जाधव</div>
 
         <span class="ampersand">&amp;</span>
 
-        <div class="couple-name gold-text">AARTI</div>
-        <div class="parentage">Daughter of Chougule Family</div>
+        <div class="couple-name gold-text">आरती</div>
+        <div class="parentage">चि. सौ. कां. चौगुले परिवार यांची सुकन्या</div>
       </div>
 
       <p class="invitation-prose">
-        Cordially request the honour of your auspicious presence and blessings as we celebrate the sacred union of our hearts, vows, and destinies in marriage.
+        आमच्या आयुष्याच्या या पवित्र आणि आनंदाच्या प्रवासात, आपल्या सहकुटुंब सहपरिवार उपस्थित राहून नवविवाहित जोडप्याला आशीर्वाद द्यावेत, हीच नम्र विनंती.
       </p>
     </section>
 
@@ -1358,12 +1358,12 @@
     <!-- 5. SCRATCH DATE CARD -->
     <section class="scratch-standalone-section reveal">
       <div class="scratch-card-box">
-        <div class="scratch-lead-text">✦ Scratch To Reveal Date ✦</div>
+        <div class="scratch-lead-text">✦ शुभविवाह तारीख पाहण्यासाठी स्क्रॅच करा ✦</div>
         <div class="scratch-stage" id="scratchStage">
           <div class="scratch-underlay">
-            <div class="revealed-date">26 NOVEMBER 2026</div>
-            <div class="revealed-venue">KRUSHIRAJ MULTIPURPOSE HALL, VADANGE</div>
-            <div class="revealed-time">01:15 PM IST</div>
+            <div class="revealed-date">२६ नोव्हेंबर २०२६</div>
+            <div class="revealed-venue">कृषीराज मल्टिपर्पज हॉल, वडणगे </div>
+            <div class="revealed-time">दुपारी ०१:१५ वाजता</div>
           </div>
           <canvas id="scratchCanvas"></canvas>
         </div>
@@ -1373,7 +1373,7 @@
           <a class="royal-calendar-btn" 
              href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ashish+%26+Aarti+-+Wedding+Ceremony&dates=20261126T074500Z/20261126T114500Z&details=Bless+the+sacred+union+of+Ashish+%26+Aarti.+We+look+forward+to+welcoming+you!&location=Krushiraj+Multipurpose+Hall,+Vadange,+Kolhapur,+Maharashtra" 
              target="_blank" rel="noopener noreferrer">
-            📅 ADD TO GOOGLE CALENDAR
+            📅 कॅलेंडरमध्ये सेव्ह करा
           </a>
         </div>
       </div>
@@ -1381,7 +1381,7 @@
 
     <!-- 6. LIVE COUNTDOWN -->
     <section class="countdown-standalone-section" id="countdownSection">
-      <div class="countdown-title">The Auspicious Muhurat Approaches</div>
+      <div class="countdown-title">विवाहाचा शुभमुहूर्त जवळ येत आहे</div>
 
       <div class="hearts-row" id="countdownHearts">
         <div class="heart-unit">
@@ -1389,8 +1389,8 @@
             <path d="M50 82 C50 82 12 55 12 28 C12 12 25 6 36 6 C44 6 48 10 50 14 C52 10 56 6 64 6 C75 6 88 12 88 28 C88 55 50 82 50 82 Z" />
           </svg>
           <div class="heart-data">
-            <span class="heart-number" id="cDays">00</span>
-            <span class="heart-label">Days</span>
+            <span class="heart-number" id="cDays">००</span>
+            <span class="heart-label">दिवस</span>
           </div>
         </div>
 
@@ -1399,8 +1399,8 @@
             <path d="M50 82 C50 82 12 55 12 28 C12 12 25 6 36 6 C44 6 48 10 50 14 C52 10 56 6 64 6 C75 6 88 12 88 28 C88 55 50 82 50 82 Z" />
           </svg>
           <div class="heart-data">
-            <span class="heart-number" id="cHours">00</span>
-            <span class="heart-label">Hours</span>
+            <span class="heart-number" id="cHours">००</span>
+            <span class="heart-label">तास</span>
           </div>
         </div>
 
@@ -1409,8 +1409,8 @@
             <path d="M50 82 C50 82 12 55 12 28 C12 12 25 6 36 6 C44 6 48 10 50 14 C52 10 56 6 64 6 C75 6 88 12 88 28 C88 55 50 82 50 82 Z" />
           </svg>
           <div class="heart-data">
-            <span class="heart-number" id="cMins">00</span>
-            <span class="heart-label">Mins</span>
+            <span class="heart-number" id="cMins">००</span>
+            <span class="heart-label">मिनिटे</span>
           </div>
         </div>
 
@@ -1419,15 +1419,15 @@
             <path d="M50 82 C50 82 12 55 12 28 C12 12 25 6 36 6 C44 6 48 10 50 14 C52 10 56 6 64 6 C75 6 88 12 88 28 C88 55 50 82 50 82 Z" />
           </svg>
           <div class="heart-data">
-            <span class="heart-number" id="cSecs">00</span>
-            <span class="heart-label">Secs</span>
+            <span class="heart-number" id="cSecs">००</span>
+            <span class="heart-label">सेकंद</span>
           </div>
         </div>
       </div>
 
       <div id="countdownZeroMsg">
-        THE WAIT IS OVER<br />
-        <span style="font-size: 15px; color: var(--text-main);">THE WEDDING DAY IS HERE ❤️</span>
+        ती शुभघडी आली!<br />
+        <span style="font-size: 15px; color: var(--text-main);">आज विवाहाचा सोहळा संपन्न होत आहे ❤️</span>
       </div>
     </section>
 
@@ -1442,8 +1442,8 @@
 
     <!-- 7. CELEBRATIONS / EVENTS -->
     <section class="celebrations-wrap">
-      <h2 class="section-headline gold-text reveal">The Celebrations</h2>
-      <div class="section-subtext reveal">Join us in each step of our sacred journey</div>
+      <h2 class="section-headline gold-text reveal">विवाह सोहळा व कार्यक्रम</h2>
+      <div class="section-subtext reveal">आमच्या आनंदाच्या क्षणात सहभागी व्हा</div>
 
       <div class="events-grid">
         <!-- Mehendi -->
@@ -1463,11 +1463,11 @@
             </svg>
           </div>
 
-          <h3 class="event-card-title">MEHENDI</h3>
-          <div class="event-card-date">23 November 2026</div>
-          <div class="event-card-time">4:00 PM</div>
+          <h3 class="event-card-title">मेहेन्दी</h3>
+          <div class="event-card-date">२३ नोव्हेंबर २०२६</div>
+          <div class="event-card-time">संध्याकाळी ४:०० वाजता</div>
           <div class="card-mini-divider"></div>
-          <div class="event-card-place">At Family Residence</div>
+          <div class="event-card-place">निवासस्थानी</div>
         </div>
 
         <!-- Sangeet -->
@@ -1487,11 +1487,11 @@
             </svg>
           </div>
 
-          <h3 class="event-card-title">SANGEET</h3>
-          <div class="event-card-date">23 November 2026</div>
-          <div class="event-card-time">7:00 PM</div>
+          <h3 class="event-card-title">संगीत</h3>
+          <div class="event-card-date">२३ नोव्हेंबर २०२६</div>
+          <div class="event-card-time">संध्याकाळी ७:०० वाजता</div>
           <div class="card-mini-divider"></div>
-          <div class="event-card-place">At Family Residence</div>
+          <div class="event-card-place">निवासस्थानी</div>
         </div>
 
         <!-- Haldi -->
@@ -1511,11 +1511,11 @@
             </svg>
           </div>
 
-          <h3 class="event-card-title">HALDI</h3>
-          <div class="event-card-date">25 November 2026</div>
-          <div class="event-card-time">7:00 PM</div>
+          <h3 class="event-card-title">हळदी समारंभ</h3>
+          <div class="event-card-date">२५ नोव्हेंबर २०२६</div>
+          <div class="event-card-time">संध्याकाळी ७:०० वाजता</div>
           <div class="card-mini-divider"></div>
-          <div class="event-card-place">At Family Residence</div>
+          <div class="event-card-place">निवासस्थानी</div>
         </div>
 
         <!-- The Wedding -->
@@ -1534,11 +1534,11 @@
             </svg>
           </div>
 
-          <h3 class="event-card-title">THE WEDDING</h3>
-          <div class="event-card-date">26 November 2026</div>
-          <div class="event-card-time">01:15 PM</div>
+          <h3 class="event-card-title">शुभविवाह</h3>
+          <div class="event-card-date">२६ नोव्हेंबर २०२६</div>
+          <div class="event-card-time">दुपारी ०१:१५ वाजता</div>
           <div class="card-mini-divider"></div>
-          <div class="event-card-place">Krushiraj Multipurpose Hall, Vadange</div>
+          <div class="event-card-place">कृषीराज मल्टिपर्पज हॉल, वडणगे </div>
         </div>
       </div>
     </section>
@@ -1554,54 +1554,54 @@
 
     <!-- 8. OUR STORY SLIDER -->
     <section class="story-section reveal">
-      <h2 class="section-headline gold-text">Our Story</h2>
-      <div class="section-subtext">Moments etched into eternity</div>
+      <h2 class="section-headline gold-text">आमच्या आठवणी</h2>
+      <div class="section-subtext">आनंदाचे अनमोल क्षण</div>
 
       <div class="slider-stage-wrapper">
-        <button class="slider-nav-btn btn-prev" id="sliderPrevBtn" aria-label="Previous Photo">❮</button>
-        <button class="slider-nav-btn btn-next" id="sliderNextBtn" aria-label="Next Photo">❯</button>
+        <button class="slider-nav-btn btn-prev" id="sliderPrevBtn" aria-label="मागील फोटो">❮</button>
+        <button class="slider-nav-btn btn-next" id="sliderNextBtn" aria-label="पुढील फोटो">❯</button>
 
         <div class="slider-viewport" id="sliderViewport">
           <div class="slider-track" id="sliderTrack">
             <!-- Slide 1 -->
             <div class="slider-slide">
-              <img class="slide-photo" src="bapu.png.jpeg" alt="Ashish & Aarti Photo 1" />
+              <img class="slide-photo" src="bapu.png.jpeg" alt="फोटो १" />
               <div class="slide-gradient-overlay"></div>
-              <div class="slide-caption-bar">The Beginning of Forever</div>
+              <div class="slide-caption-bar">एकत्रित प्रवासाची सुरुवात</div>
             </div>
 
             <!-- Slide 2 -->
             <div class="slider-slide">
-              <img class="slide-photo" src="bapu.png" alt="Ashish & Aarti Photo 2" />
+              <img class="slide-photo" src="bapu.png" alt="फोटो २" />
               <div class="slide-gradient-overlay"></div>
-              <div class="slide-caption-bar">Two Souls, One Destiny</div>
+              <div class="slide-caption-bar">दोन आत्मे, एक भाग्य</div>
             </div>
 
             <!-- Slide 3 -->
             <div class="slider-slide">
-              <img class="slide-photo" src="bapu3.png" alt="Ashish & Aarti Photo 3" />
+              <img class="slide-photo" src="bapu3.png" alt="फोटो ३" />
               <div class="slide-gradient-overlay"></div>
-              <div class="slide-caption-bar">Whispers of Love</div>
+              <div class="slide-caption-bar">प्रेमाचे गोड क्षण</div>
             </div>
 
             <!-- Slide 4 -->
             <div class="slider-slide">
-              <img class="slide-photo" src="bapu4.png" alt="Ashish & Aarti Photo 4" />
+              <img class="slide-photo" src="bapu4.png" alt="फोटो ४" />
               <div class="slide-gradient-overlay"></div>
-              <div class="slide-caption-bar">Bound by Sacred Promises</div>
+              <div class="slide-caption-bar">पवित्र वचनांनी जोडलेले</div>
             </div>
 
             <!-- Slide 5 -->
             <div class="slider-slide">
-              <img class="slide-photo" src="bapu5.png" alt="Ashish & Aarti Photo 5" />
+              <img class="slide-photo" src="bapu5.png" alt="फोटो ५" />
               <div class="slide-gradient-overlay"></div>
-              <div class="slide-caption-bar">Towards Eternity</div>
+              <div class="slide-caption-bar">आयुष्याच्या वाटेवर</div>
             </div>
           </div>
         </div>
 
         <div class="slider-footer-info">
-          <div class="slider-counter" id="sliderCounter">1 / 5</div>
+          <div class="slider-counter" id="sliderCounter">१ / ५</div>
           <div class="slider-dots" id="sliderDots"></div>
         </div>
       </div>
@@ -1618,18 +1618,18 @@
 
     <!-- 9. VENUE -->
     <section class="venue-section reveal">
-      <h2 class="section-headline gold-text">The Wedding Venue</h2>
-      <div class="section-subtext">We eagerly await to welcome you</div>
+      <h2 class="section-headline gold-text">विवाह सोहळ्याचे ठिकाण</h2>
+      <div class="section-subtext">आपणा सर्वांचे स्वागत करण्यास आम्ही उत्सुक आहोत</div>
 
       <div class="venue-box">
-        <div class="venue-place-name gold-text">Krushiraj Multipurpose Hall</div>
-        <div class="venue-city">Vadange, Kolhapur, Maharashtra</div>
+        <div class="venue-place-name gold-text">कृषीराज मल्टिपर्पज हॉल</div>
+        <div class="venue-city">वाडगे, कोल्हापूर, महाराष्ट्र</div>
 
         <a class="venue-btn" href="https://maps.google.com/?q=Krushiraj+Multipurpose+Hall,+Vadange,+Kolhapur" target="_blank" rel="noopener noreferrer">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
           </svg>
-          VIEW LOCATION
+          नकाशात पहा (Google Maps)
         </a>
       </div>
     </section>
@@ -1645,18 +1645,18 @@
 
     <!-- WHATSAPP BLESSINGS SECTION -->
     <section class="blessing-section reveal">
-      <h2 class="section-headline gold-text">Shower Your Blessings</h2>
-      <div class="section-subtext">Send your love directly to the couple</div>
+      <h2 class="section-headline gold-text">शुभेच्छा व आशीर्वाद पाठवा</h2>
+      <div class="section-subtext">थेट व्हॉट्सॲपवर तुमचे प्रेम व्यक्त करा</div>
 
       <div class="blessing-box">
-        <input type="text" id="guestName" class="blessing-input" placeholder="Your Name (तुमचे नाव)" />
-        <textarea id="guestMessage" class="blessing-textarea" placeholder="Your Blessing / Wishes (तुमच्या शुभेच्छा व आशीर्वाद)..."></textarea>
+        <input type="text" id="guestName" class="blessing-input" placeholder="तुमचे नाव" />
+        <textarea id="guestMessage" class="blessing-textarea" placeholder="तुमच्या शुभेच्छा / आशीर्वाद..."></textarea>
         
         <button class="whatsapp-btn" onclick="sendWhatsAppBlessing()">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.077-1.782-.397-1.467-.608-2.42-2.1-2.493-2.199-.074-.099-.594-.789-.594-1.505 0-.715.373-1.066.506-1.212.132-.146.29-.182.387-.182.096 0 .193.002.277.006.09.004.21.033.32.298.114.277.391.954.425 1.024.034.07.057.151.011.242-.045.092-.068.149-.136.228-.068.079-.143.177-.205.237-.068.068-.139.141-.06.277.079.136.353.582.758.942.521.463.961.606 1.097.674.136.068.216.057.295-.034.08-.09.341-.397.432-.533.091-.136.182-.113.307-.068.125.045.795.375.932.443.136.068.227.102.261.159.034.057.034.329-.11.734z"/>
           </svg>
-          SEND ON WHATSAPP
+          व्हॉट्सॲपवर पाठवा
         </button>
       </div>
     </section>
@@ -1673,17 +1673,17 @@
     <!-- 10. FINAL MESSAGE -->
     <footer class="final-section reveal">
       <p class="final-quote">
-        “Two hearts,<br />
-        two families,<br />
-        one beautiful beginning.”
+        “दोन मनं,<br />
+        दोन परिवार,<br />
+        आणि एका सुंदर आयुष्याची सुरुवात.”
       </p>
 
       <div class="final-couple-names gold-text">
-        ASHISH &nbsp;&amp;&nbsp; AARTI
+        आशिष &nbsp;&amp;&nbsp; आरती
       </div>
 
       <div class="final-footer-text">
-        ✦ Forever Begins Here ✦
+        ✦ सहवासाची नवीन सुरुवात ✦
       </div>
     </footer>
 
@@ -1768,10 +1768,10 @@
         ctx.fillRect(0, 0, rect.width, rect.height);
 
         ctx.fillStyle = "#ffffff";
-        ctx.font = "bold 12px 'Cinzel Decorative', serif";
+        ctx.font = "bold 11px 'Cinzel Decorative', serif";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText("✦ SCRATCH TO REVEAL ✦", rect.width / 2, rect.height / 2);
+        ctx.fillText("✦ पाहण्यासाठी स्क्रॅच करा ✦", rect.width / 2, rect.height / 2);
       }
 
       window.addEventListener("load", setupScratchCanvas);
@@ -1872,10 +1872,10 @@
         const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const s = Math.floor((diff % (1000 * 60)) / 1000);
 
-        elDays.textContent = d < 10 ? "0" + d : d;
-        elHours.textContent = h < 10 ? "0" + h : h;
-        elMins.textContent = m < 10 ? "0" + m : m;
-        elSecs.textContent = s < 10 ? "0" + s : s;
+        elDays.textContent = d < 10 ? "०" + d : d;
+        elHours.textContent = h < 10 ? "०" + h : h;
+        elMins.textContent = m < 10 ? "०" + m : m;
+        elSecs.textContent = s < 10 ? "०" + s : s;
       }
       setInterval(updateCountdown, 1000);
       updateCountdown();
@@ -2008,10 +2008,10 @@
     // WHATSAPP
     function sendWhatsAppBlessing() {
       const hostWhatsAppNumber = "917038289296"; 
-      const name = document.getElementById("guestName").value.trim() || "Well-wisher";
-      const message = document.getElementById("guestMessage").value.trim() || "Heartiest Congratulations & Best Wishes for the wedding!";
+      const name = document.getElementById("guestName").value.trim() || "शुभचिंतक";
+      const message = document.getElementById("guestMessage").value.trim() || "विवाहाच्या हार्दिक शुभेच्छा आणि आशीर्वाद!";
 
-      const text = encodeURIComponent(`*Wedding Blessing for Ashish & Aarti* 💍❤️\n\n*From:* ${name}\n*Message:* ${message}`);
+      const text = encodeURIComponent(`*आशिष व आरती यांच्या विवाहासाठी शुभेच्छा* 💍❤️\n\n*नाव:* ${name}\n*संदेश:* ${message}`);
       const whatsappURL = `https://wa.me/${hostWhatsAppNumber}?text=${text}`;
 
       window.open(whatsappURL, "_blank");
