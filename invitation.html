@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>आशिष आणि आरती — शुभविवाह पत्रिका</title>
+  <title>आशिष आणि आरती — शाही विवाह सोहळा</title>
   
   <!-- Premium Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,14 +12,16 @@
 
   <style>
     :root {
-      --bg-white: #fcfbfa;
-      --card-white: #ffffff;
-      --gold-antique: #c5a059;
-      --gold-light: #e6c579;
-      --gold-dark: #8c6d28;
-      --gold-gradient: linear-gradient(135deg, #c5a059 0%, #f3e0aa 45%, #9a782a 80%, #dfbd68 100%);
-      --text-main: #2b2b2b;
-      --text-muted: #666666;
+      /* Royal Emerald & Rose Gold Theme */
+      --emerald-deep: #02140d;
+      --emerald-rich: #052c1a;
+      --emerald-velvet: #084529;
+      --gold-antique: #d4af37;
+      --gold-light: #f7e7a9;
+      --gold-dark: #866418;
+      --gold-gradient: linear-gradient(135deg, #d4af37 0%, #fff2b2 45%, #aa7c11 80%, #ffd700 100%);
+      --ivory: #faf5ea;
+      --ivory-soft: #f1e7d0;
       --font-display: 'Cinzel Decorative', serif;
       --font-serif: 'Playfair Display', serif;
       --font-body: 'Marcellus', serif;
@@ -36,17 +38,17 @@
 
     html {
       scroll-behavior: smooth;
-      background-color: var(--bg-white);
-      color: var(--text-main);
+      background-color: var(--emerald-deep);
+      color: var(--ivory);
       font-family: var(--font-body);
       overflow-x: hidden;
     }
 
     body {
-      background-color: var(--bg-white);
+      background-color: var(--emerald-deep);
       background-image: 
-        radial-gradient(circle at 50% 10%, rgba(197, 160, 89, 0.08) 0%, transparent 60%),
-        radial-gradient(circle at 50% 90%, rgba(197, 160, 89, 0.05) 0%, transparent 60%);
+        radial-gradient(circle at 50% 15%, rgba(8, 69, 41, 0.5) 0%, transparent 65%),
+        radial-gradient(circle at 50% 85%, rgba(8, 69, 41, 0.4) 0%, transparent 70%);
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
@@ -66,7 +68,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       display: inline-block;
-      text-shadow: 0 0 15px rgba(197, 160, 89, 0.2);
+      text-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
     }
 
     .reveal {
@@ -94,25 +96,25 @@
     .divider-gold-line {
       flex: 1;
       height: 1.5px;
-      background: linear-gradient(90deg, transparent 0%, rgba(197, 160, 89, 0.7) 60%, rgba(220, 180, 90, 1) 100%);
-      box-shadow: 0 0 6px rgba(197, 160, 89, 0.3);
+      background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.9) 60%, rgba(255, 242, 178, 1) 100%);
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
     }
 
     .divider-gold-line.right {
-      background: linear-gradient(90deg, rgba(220, 180, 90, 1) 0%, rgba(197, 160, 89, 0.7) 40%, transparent 100%);
+      background: linear-gradient(90deg, rgba(255, 242, 178, 1) 0%, rgba(212, 175, 55, 0.9) 40%, transparent 100%);
     }
 
     .divider-star-icon {
       width: 22px;
       height: 22px;
       fill: url(#starGoldGrad);
-      filter: drop-shadow(0 0 6px rgba(197, 160, 89, 0.6));
+      filter: drop-shadow(0 0 8px rgba(255, 225, 120, 0.85));
       animation: starBlink 3.5s infinite ease-in-out alternate;
     }
 
     @keyframes starBlink {
-      0% { transform: scale(0.92) rotate(0deg); }
-      100% { transform: scale(1.1) rotate(15deg); }
+      0% { transform: scale(0.92) rotate(0deg); filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.6)); }
+      100% { transform: scale(1.1) rotate(15deg); filter: drop-shadow(0 0 12px rgba(255, 235, 140, 1)); }
     }
 
     /* MUSIC FLOATING BUTTON */
@@ -124,14 +126,14 @@
       width: 42px;
       height: 42px;
       border-radius: 50%;
-      background: #ffffff;
+      background: radial-gradient(circle, var(--emerald-rich), var(--emerald-deep));
       border: 1px solid var(--gold-antique);
-      box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+      box-shadow: 0 0 16px rgba(212, 175, 55, 0.4);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--gold-dark);
+      color: var(--gold-light);
       font-size: 18px;
       opacity: 0;
       pointer-events: none;
@@ -152,9 +154,7 @@
       to { transform: rotate(360deg); }
     }
 
-    /* ========================================================
-       1. OPENING: WHITE PALACE DOOR
-       ======================================================== */
+    /* 1. OPENING: PALACE DOOR */
     #doorScene {
       position: fixed;
       inset: 0;
@@ -165,7 +165,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #f4efe6 radial-gradient(circle at 50% 40%, #ffffff 0%, #e8e1d5 80%);
+      background: #010805 radial-gradient(circle at 50% 40%, #031e11 0%, #010503 80%);
       overflow: hidden;
       transition: opacity 1.8s cubic-bezier(0.7, 0, 0.3, 1), visibility 1.8s;
     }
@@ -174,6 +174,14 @@
       pointer-events: none;
       opacity: 0;
       visibility: hidden;
+    }
+
+    .palace-fog-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse at 50% 100%, rgba(212, 175, 55, 0.08) 0%, rgba(3, 25, 14, 0.45) 50%, transparent 80%);
+      z-index: 2;
     }
 
     .portal-camera-rig {
@@ -194,7 +202,7 @@
     .sanctum-backlight {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at center 48%, #ffffff 0%, #fff4d0 35%, #e2c174 70%, #a98436 95%);
+      background: radial-gradient(ellipse at center 48%, #fff8d6 0%, #ffd768 22%, #d89617 45%, #105936 75%, #02180e 95%);
       opacity: 0;
       z-index: 1;
       filter: blur(10px);
@@ -221,9 +229,9 @@
       top: 0;
       bottom: 0;
       width: clamp(20px, 4.5vw, 44px);
-      background: linear-gradient(90deg, #d1c2a5 0%, #fbf8f2 35%, #ffffff 55%, #c8b592 100%);
-      border: 1px solid rgba(197, 160, 89, 0.5);
-      box-shadow: 0 0 25px rgba(0,0,0,0.1), inset 0 0 12px rgba(255,255,255,0.8);
+      background: linear-gradient(90deg, #010d07 0%, #063620 35%, #0c4f31 55%, #02140c 100%);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      box-shadow: 0 0 25px rgba(0,0,0,0.9), inset 0 0 12px rgba(0,0,0,0.8);
       z-index: 8;
     }
 
@@ -238,7 +246,7 @@
       height: 16px;
       background: var(--gold-gradient);
       border-radius: 3px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.8);
     }
 
     .palace-cusped-arch {
@@ -247,7 +255,7 @@
       left: clamp(18px, 4vw, 42px);
       right: clamp(18px, 4vw, 42px);
       height: clamp(50px, 10vh, 90px);
-      background: linear-gradient(180deg, #ffffff 0%, #f7f3ec 80%, transparent 100%);
+      background: linear-gradient(180deg, #02180e 0%, #042918 80%, transparent 100%);
       border-top: 2.5px solid var(--gold-antique);
       border-left: 2px solid var(--gold-antique);
       border-right: 2px solid var(--gold-antique);
@@ -256,7 +264,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.9);
       pointer-events: none;
     }
 
@@ -274,9 +282,9 @@
       display: flex;
       transform-style: preserve-3d;
       perspective: 1400px;
-      border: 2.5px solid var(--gold-antique);
+      border: 2.5px solid var(--gold-dark);
       border-top: none;
-      box-shadow: 0 0 40px rgba(0,0,0,0.12);
+      box-shadow: 0 0 40px rgba(0,0,0,0.95);
       border-radius: 110px 110px 0 0;
       overflow: hidden;
       z-index: 5;
@@ -289,9 +297,15 @@
       left: calc(50% - 1.5px);
       width: 3px;
       background: linear-gradient(180deg, transparent 5%, #fff2b2 35%, #ffd700 70%, transparent 95%);
-      box-shadow: 0 0 16px #ffcf40;
+      box-shadow: 0 0 16px #ffcf40, 0 0 24px rgba(255, 215, 0, 0.8);
       z-index: 9;
       pointer-events: none;
+      animation: seamBreath 3s infinite alternate ease-in-out;
+    }
+
+    @keyframes seamBreath {
+      0% { opacity: 0.6; filter: blur(0.5px); }
+      100% { opacity: 1; filter: blur(1.5px); }
     }
 
     .grand-door-wing {
@@ -299,9 +313,9 @@
       height: 100%;
       position: relative;
       background: 
-        radial-gradient(ellipse at 50% 40%, #ffffff 0%, #f5efe4 100%),
-        repeating-linear-gradient(45deg, rgba(197,160,89,0.06) 0px, rgba(197,160,89,0.06) 4px, transparent 4px, transparent 12px);
-      box-shadow: inset 0 0 40px rgba(197, 160, 89, 0.2);
+        radial-gradient(ellipse at 50% 40%, #052b19 0%, #01130a 100%),
+        repeating-linear-gradient(45deg, rgba(0,0,0,0.12) 0px, rgba(0,0,0,0.12) 4px, transparent 4px, transparent 12px);
+      box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.95);
       transform-style: preserve-3d;
       transition: transform 2.8s cubic-bezier(0.7, 0, 0.2, 1);
       display: flex;
@@ -313,12 +327,12 @@
 
     .wing-left {
       transform-origin: left center;
-      border-right: 1.5px solid rgba(197, 160, 89, 0.5);
+      border-right: 1.5px solid rgba(255, 225, 140, 0.45);
     }
 
     .wing-right {
       transform-origin: right center;
-      border-left: 1.5px solid rgba(197, 160, 89, 0.5);
+      border-left: 1.5px solid rgba(255, 225, 140, 0.45);
     }
 
     #doorScene.opening .wing-left { transform: rotateY(-118deg); }
@@ -336,14 +350,22 @@
 
     .wood-carve-cell {
       flex: 1;
-      border: 1.2px solid rgba(197, 160, 89, 0.6);
+      border: 1.2px solid rgba(212, 175, 55, 0.55);
       border-radius: 4px;
-      background: radial-gradient(circle at center, rgba(197, 160, 89, 0.08) 0%, rgba(255, 255, 255, 0.8) 100%);
-      box-shadow: inset 0 0 10px rgba(197, 160, 89, 0.15);
+      background: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, rgba(0, 0, 0, 0.45) 100%);
+      box-shadow: inset 0 0 12px rgba(0,0,0,0.85);
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    .wood-carve-cell::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border: 1px dashed rgba(212, 175, 55, 0.35);
+      border-radius: 2px;
     }
 
     .brass-stud {
@@ -351,7 +373,7 @@
       height: 10px;
       border-radius: 50%;
       background: var(--gold-gradient);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 0 5px rgba(212, 175, 55, 0.5);
     }
 
     .grand-brass-handle {
@@ -362,7 +384,7 @@
       border-radius: 50%;
       background: radial-gradient(circle, #ffe285 0%, #aa7c11 75%, #3d2301 100%);
       border: 2px solid #fff2b2;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.95), 0 0 8px rgba(212, 175, 55, 0.4);
       z-index: 10;
       transform: translateY(-50%);
     }
@@ -375,6 +397,7 @@
       height: 38px;
       border: 3.5px solid var(--gold-antique);
       border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.8);
     }
 
     .wing-left .grand-brass-handle { right: 10px; }
@@ -399,9 +422,9 @@
     }
 
     .door-enter-btn {
-      background: var(--gold-gradient);
-      color: #1a0206;
-      border: 1px solid #ffffff;
+      background: radial-gradient(circle at center, #fff0a8 0%, #caa030 65%, #7e5c0e 100%);
+      color: #02140d;
+      border: 1px solid #fff6ce;
       border-radius: 50px;
       padding: 12px 32px;
       font-family: var(--font-display);
@@ -409,13 +432,13 @@
       font-weight: 700;
       letter-spacing: 2px;
       cursor: pointer;
-      box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
+      box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5), inset 0 1px 3px #fff;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       outline: none;
     }
 
     .door-enter-btn:hover {
-      box-shadow: 0 8px 26px rgba(197, 160, 89, 0.6);
+      box-shadow: 0 8px 32px rgba(255, 215, 0, 0.7), inset 0 1px 4px #fff;
       transform: translateY(-2px);
     }
 
@@ -424,14 +447,60 @@
       font-style: italic;
       font-size: 11.5px;
       letter-spacing: 1.5px;
-      color: var(--text-muted);
+      color: var(--gold-light);
       margin-top: 8px;
       opacity: 0.9;
+      animation: pulseSubtle 2.2s infinite ease-in-out;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.9);
     }
 
-    /* ========================================================
-       MAIN CONTAINER & WHITE CARDS
-       ======================================================== */
+    @keyframes pulseSubtle {
+      0%, 100% { opacity: 0.55; }
+      50% { opacity: 1; }
+    }
+
+    .portal-base-diyas {
+      position: absolute;
+      bottom: 12px;
+      width: min(78vw, 460px);
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 11;
+    }
+
+    .diya-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      filter: drop-shadow(0 0 12px rgba(255, 170, 0, 0.7));
+    }
+
+    .diya-flame {
+      width: 11px;
+      height: 17px;
+      background: radial-gradient(ellipse at bottom, #fff 0%, #ffcf40 45%, #ff4500 85%, transparent 100%);
+      border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+      animation: flameWobble 2.5s infinite ease-in-out alternate;
+      box-shadow: 0 0 16px #ffaa00, 0 0 32px rgba(255, 120, 0, 0.5);
+    }
+
+    .diya-base {
+      width: 36px;
+      height: 14px;
+      background: var(--gold-gradient);
+      border-radius: 0 0 18px 18px;
+      margin-top: -2px;
+      border-top: 2px solid #084529;
+    }
+
+    @keyframes flameWobble {
+      0% { transform: scale(1) rotate(-1deg); }
+      50% { transform: scale(1.08, 0.94) rotate(1deg); }
+      100% { transform: scale(0.96, 1.04) rotate(-2deg); }
+    }
+
+    /* MAIN PALACE CONTAINER */
     .palace-container {
       position: relative;
       z-index: 2;
@@ -459,7 +528,7 @@
       position: absolute;
       width: 130px;
       height: 130px;
-      background: radial-gradient(circle, rgba(197, 160, 89, 0.25) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
       border-radius: 50%;
       top: 50%;
       left: 50%;
@@ -472,35 +541,37 @@
       width: 100px;
       height: 100px;
       object-fit: contain;
-      filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4));
+      filter: drop-shadow(0 0 14px rgba(212, 175, 55, 0.75));
     }
 
     .shri-ganeshaya {
       font-family: var(--font-devanagari);
       font-size: clamp(20px, 4.8vw, 27px);
-      color: var(--gold-dark);
+      color: var(--gold-light);
       letter-spacing: 2px;
       margin-bottom: 12px;
+      text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
     }
 
     .vakratunda-shloka {
       font-family: var(--font-serif);
       font-size: clamp(14px, 3.6vw, 17.5px);
       line-height: 1.85;
-      color: var(--text-muted);
+      color: var(--ivory);
       font-style: italic;
       max-width: 500px;
       margin: 0 auto;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
     }
 
     /* MAIN WEDDING CARD */
     .royal-card {
-      background: var(--card-white);
-      border: 1.5px solid var(--gold-antique);
+      background: radial-gradient(ellipse at 50% 30%, #0d4628 0%, #042817 70%, #02170d 100%);
+      border: 2px solid var(--gold-antique);
       border-radius: 12px;
       padding: clamp(32px, 6vw, 55px) clamp(16px, 4vw, 36px);
       position: relative;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.06), 0 0 20px rgba(197, 160, 89, 0.1);
+      box-shadow: 0 15px 50px rgba(0,0,0,0.7), 0 0 30px rgba(212, 175, 55, 0.15);
       margin-top: 10px;
     }
 
@@ -523,7 +594,7 @@
       font-family: var(--font-display);
       font-size: 12px;
       letter-spacing: 3px;
-      color: var(--gold-dark);
+      color: var(--gold-light);
       margin-bottom: 20px;
       text-transform: uppercase;
     }
@@ -545,15 +616,16 @@
       font-family: var(--font-serif);
       font-style: italic;
       font-size: 14px;
-      color: var(--text-muted);
+      color: var(--ivory-soft);
       letter-spacing: 1px;
       margin-top: 5px;
+      opacity: 0.9;
     }
 
     .ampersand {
       font-family: var(--font-script);
       font-size: clamp(34px, 8vw, 50px);
-      color: var(--gold-antique);
+      color: var(--gold-light);
       margin: 8px 0;
       display: block;
       line-height: 1;
@@ -564,7 +636,7 @@
       font-family: var(--font-serif);
       font-size: clamp(14px, 3.4vw, 16.5px);
       line-height: 1.8;
-      color: var(--text-main);
+      color: var(--ivory);
       max-width: 520px;
       margin: 18px auto 0;
     }
@@ -579,9 +651,9 @@
     .scratch-card-box {
       border: 1px solid var(--gold-antique);
       border-radius: 12px;
-      background: var(--card-white);
+      background: radial-gradient(ellipse at center, #0a3820 0%, #031e10 100%);
       padding: 22px 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06), 0 0 15px rgba(197, 160, 89, 0.1);
+      box-shadow: 0 10px 35px rgba(0,0,0,0.65), 0 0 20px rgba(212, 175, 55, 0.15);
       position: relative;
     }
 
@@ -589,7 +661,7 @@
       font-family: var(--font-display);
       font-size: 11.5px;
       letter-spacing: 2.5px;
-      color: var(--gold-dark);
+      color: var(--gold-light);
       margin-bottom: 14px;
       text-transform: uppercase;
     }
@@ -601,7 +673,7 @@
       border: 1px solid var(--gold-antique);
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
       user-select: none;
       -webkit-user-select: none;
       touch-action: none;
@@ -613,7 +685,7 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      background: #faf6ef;
+      background: radial-gradient(ellipse at center, #07301c, #02140b);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -624,25 +696,25 @@
 
     .revealed-date {
       font-family: var(--font-display);
-      font-size: clamp(15px, 3.8vw, 19px);
+      font-size: clamp(16px, 4.2vw, 21px);
       font-weight: 700;
-      color: var(--gold-dark);
-      letter-spacing: 1.5px;
+      color: #fff2ba;
+      letter-spacing: 2px;
       margin-bottom: 4px;
     }
 
     .revealed-venue {
       font-family: var(--font-serif);
-      font-size: 13px;
-      letter-spacing: 1px;
-      color: var(--text-main);
+      font-size: 13.5px;
+      letter-spacing: 1.5px;
+      color: var(--ivory);
     }
 
     .revealed-time {
       font-family: var(--font-serif);
-      font-size: 12px;
-      color: var(--text-muted);
-      letter-spacing: 1.5px;
+      font-size: 12.5px;
+      color: var(--gold-antique);
+      letter-spacing: 2px;
       margin-top: 2px;
     }
 
@@ -668,9 +740,9 @@
       display: inline-flex;
       align-items: center;
       gap: 9px;
-      background: var(--gold-gradient);
-      color: #1a0206;
-      border: 1px solid #ffffff;
+      background: radial-gradient(circle at center, #fff0a8 0%, #caa030 70%, #7e5c0e 100%);
+      color: #02140d;
+      border: 1px solid #fff6ce;
       border-radius: 30px;
       padding: 10px 22px;
       font-family: var(--font-display);
@@ -678,13 +750,13 @@
       font-weight: 700;
       letter-spacing: 1.5px;
       text-decoration: none;
-      box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+      box-shadow: 0 4px 18px rgba(212, 175, 55, 0.4);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .royal-calendar-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(197, 160, 89, 0.5);
+      box-shadow: 0 6px 24px rgba(255, 215, 0, 0.6);
     }
 
     /* COUNTDOWN */
@@ -708,7 +780,7 @@
       font-family: var(--font-display);
       font-size: 12px;
       letter-spacing: 3px;
-      color: var(--gold-dark);
+      color: var(--gold-antique);
       margin-bottom: 20px;
       text-transform: uppercase;
     }
@@ -727,7 +799,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.2));
+      filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.28));
     }
 
     .heart-unit svg {
@@ -735,7 +807,7 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      fill: #ffffff;
+      fill: #063420;
       stroke: var(--gold-antique);
       stroke-width: 1.6;
       stroke-linecap: round;
@@ -755,7 +827,7 @@
       font-family: var(--font-display);
       font-size: clamp(15px, 4.2vw, 21px);
       font-weight: 700;
-      color: var(--gold-dark);
+      color: #fff4bf;
       line-height: 1;
     }
 
@@ -763,7 +835,7 @@
       font-family: var(--font-serif);
       font-size: clamp(8px, 2.2vw, 9.5px);
       letter-spacing: 1.5px;
-      color: var(--text-muted);
+      color: var(--ivory-soft);
       margin-top: 3px;
       text-transform: uppercase;
     }
@@ -773,7 +845,7 @@
       font-family: var(--font-display);
       font-size: 17px;
       letter-spacing: 2px;
-      color: var(--gold-dark);
+      color: var(--gold-light);
       text-align: center;
       padding: 15px;
     }
@@ -795,7 +867,7 @@
       text-align: center;
       font-family: var(--font-serif);
       font-style: italic;
-      color: var(--text-muted);
+      color: var(--ivory-soft);
       font-size: 14.5px;
       margin-bottom: 35px;
     }
@@ -815,13 +887,13 @@
 
     .royal-event-box {
       position: relative;
-      background: var(--card-white);
+      background: radial-gradient(ellipse at 50% 15%, #0c4629 0%, #032414 80%, #02170d 100%);
       border: 1px solid var(--gold-antique);
       border-radius: 8px;
       padding: 26px 18px 22px;
       text-align: center;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.04);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.65), inset 0 0 25px rgba(0,0,0,0.5);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
       cursor: pointer;
       display: flex;
       flex-direction: column;
@@ -832,13 +904,14 @@
 
     .royal-event-box:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 35px rgba(197, 160, 89, 0.2);
+      box-shadow: 0 16px 45px rgba(0,0,0,0.8), 0 0 25px rgba(212, 175, 55, 0.28);
+      border-color: #fff1b8;
     }
 
     .event-card-inner-frame {
       position: absolute;
       inset: 6px;
-      border: 1px dashed rgba(197, 160, 89, 0.35);
+      border: 1px dashed rgba(212, 175, 55, 0.4);
       border-radius: 4px;
       pointer-events: none;
     }
@@ -859,52 +932,59 @@
       width: 52px;
       height: 52px;
       border-radius: 50%;
-      background: #faf6ef;
+      background: radial-gradient(circle, rgba(13, 69, 41, 0.75) 0%, rgba(3, 34, 18, 0.9) 100%);
       border: 1px solid var(--gold-antique);
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 14px;
-      box-shadow: 0 0 10px rgba(197, 160, 89, 0.15);
+      box-shadow: 0 0 14px rgba(212, 175, 55, 0.2);
     }
 
     .event-card-svg {
       width: 26px;
       height: 26px;
-      stroke: var(--gold-dark);
+      stroke: var(--gold-light);
       fill: none;
+    }
+
+    .box-wedding {
+      border: 1.5px solid #ffd700;
+      background: radial-gradient(ellipse at 50% 10%, #105934 0%, #05331c 75%, #021c0e 100%);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.8), 0 0 20px rgba(212, 175, 55, 0.25);
     }
 
     .event-card-title {
       font-family: var(--font-display);
       font-size: clamp(17px, 4vw, 21px);
-      letter-spacing: 2px;
-      color: var(--gold-dark);
+      letter-spacing: 2.5px;
+      color: var(--gold-light);
       margin-bottom: 6px;
     }
 
     .event-card-date {
       font-family: var(--font-serif);
-      font-size: 14px;
+      font-size: 14.5px;
       font-weight: 600;
-      color: var(--text-main);
-      letter-spacing: 0.5px;
+      color: #fff;
+      letter-spacing: 1px;
       margin-bottom: 4px;
     }
 
     .event-card-time {
       font-family: var(--font-serif);
-      font-size: 12.5px;
+      font-size: 13px;
       color: var(--gold-antique);
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
       margin-bottom: 6px;
     }
 
     .event-card-place {
       font-family: var(--font-serif);
-      font-size: 12px;
-      color: var(--text-muted);
+      font-size: 12.5px;
+      color: var(--ivory-soft);
       letter-spacing: 0.5px;
+      opacity: 0.9;
     }
 
     .card-mini-divider {
@@ -931,8 +1011,8 @@
       height: clamp(360px, 56vh, 460px);
       border-radius: 12px;
       border: 2px solid var(--gold-antique);
-      background: #ffffff;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.06), 0 0 20px rgba(197, 160, 89, 0.15);
+      background: #02190e;
+      box-shadow: 0 14px 45px rgba(0,0,0,0.7), 0 0 25px rgba(212, 175, 55, 0.2);
       overflow: hidden;
       touch-action: pan-y;
       user-select: none;
@@ -960,13 +1040,14 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      filter: sepia(10%) contrast(105%);
       pointer-events: none;
     }
 
     .slide-gradient-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 65%, rgba(20, 20, 20, 0.8) 100%);
+      background: linear-gradient(180deg, transparent 65%, rgba(2, 25, 14, 0.92) 100%);
       pointer-events: none;
     }
 
@@ -977,10 +1058,10 @@
       right: 0;
       text-align: center;
       font-family: var(--font-serif);
-      font-size: 14px;
-      letter-spacing: 1px;
-      color: #fff2b2;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+      font-size: 14.5px;
+      letter-spacing: 1.5px;
+      color: var(--gold-light);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.95);
       pointer-events: none;
     }
 
@@ -991,16 +1072,16 @@
       width: 38px;
       height: 38px;
       border-radius: 50%;
-      background: #ffffff;
+      background: rgba(4, 37, 21, 0.85);
       border: 1px solid var(--gold-antique);
-      color: var(--gold-dark);
+      color: var(--gold-light);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 15px;
       cursor: pointer;
       z-index: 10;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.8);
       transition: background 0.3s, transform 0.2s;
     }
 
@@ -1020,7 +1101,7 @@
       font-family: var(--font-display);
       font-size: 12.5px;
       letter-spacing: 2px;
-      color: var(--gold-dark);
+      color: var(--gold-light);
     }
 
     .slider-dots { display: flex; gap: 6px; }
@@ -1028,15 +1109,15 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: rgba(197, 160, 89, 0.3);
+      background: rgba(212, 175, 55, 0.3);
       transition: all 0.3s ease;
     }
 
     .slider-dot.active {
-      background: var(--gold-antique);
+      background: var(--gold-light);
       width: 18px;
       border-radius: 10px;
-      box-shadow: 0 0 6px var(--gold-antique);
+      box-shadow: 0 0 8px var(--gold-antique);
     }
 
     /* VENUE */
@@ -1048,23 +1129,23 @@
     .venue-box {
       border: 1px solid var(--gold-antique);
       border-radius: 12px;
-      background: var(--card-white);
+      background: radial-gradient(circle at center, #0a3820 0%, #031c10 100%);
       padding: 30px 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.65);
       position: relative;
     }
 
     .venue-place-name {
       font-family: var(--font-display);
-      font-size: clamp(18px, 4.5vw, 24px);
-      letter-spacing: 1.5px;
+      font-size: clamp(19px, 4.8vw, 26px);
+      letter-spacing: 2px;
       margin-bottom: 5px;
     }
 
     .venue-city {
       font-family: var(--font-serif);
-      font-size: 14.5px;
-      color: var(--text-muted);
+      font-size: 15px;
+      color: var(--ivory);
       margin-bottom: 22px;
     }
 
@@ -1074,21 +1155,21 @@
       gap: 9px;
       background: transparent;
       border: 1px solid var(--gold-antique);
-      color: var(--gold-dark);
+      color: var(--gold-light);
       padding: 11px 26px;
       font-family: var(--font-display);
-      font-size: 11px;
-      letter-spacing: 2px;
+      font-size: 11.5px;
+      letter-spacing: 2.2px;
       text-decoration: none;
       border-radius: 30px;
       transition: all 0.3s ease;
-      box-shadow: 0 0 10px rgba(197, 160, 89, 0.1);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
     }
 
     .venue-btn:hover, .venue-btn:active {
       background: var(--gold-gradient);
-      color: #ffffff;
-      border-color: transparent;
+      color: var(--emerald-deep);
+      border-color: #fff;
     }
 
     /* WHATSAPP BLESSINGS CARD */
@@ -1100,18 +1181,18 @@
     .blessing-box {
       border: 1px solid var(--gold-antique);
       border-radius: 12px;
-      background: var(--card-white);
+      background: radial-gradient(circle at center, #07331c 0%, #02170d 100%);
       padding: 28px 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.65);
     }
 
     .blessing-input, .blessing-textarea {
       width: 100%;
-      background: #faf6ef;
-      border: 1px solid rgba(197, 160, 89, 0.4);
+      background: rgba(2, 20, 13, 0.7);
+      border: 1px solid rgba(212, 175, 55, 0.45);
       border-radius: 8px;
       padding: 12px 14px;
-      color: var(--text-main);
+      color: var(--ivory);
       font-family: var(--font-body);
       font-size: 14px;
       margin-bottom: 12px;
@@ -1120,8 +1201,8 @@
     }
 
     .blessing-input:focus, .blessing-textarea:focus {
-      border-color: var(--gold-antique);
-      box-shadow: 0 0 8px rgba(197, 160, 89, 0.2);
+      border-color: var(--gold-light);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
     }
 
     .blessing-textarea {
@@ -1140,11 +1221,11 @@
       border-radius: 30px;
       padding: 12px 28px;
       font-family: var(--font-display);
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       cursor: pointer;
-      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       width: 100%;
       max-width: 290px;
@@ -1153,7 +1234,7 @@
 
     .whatsapp-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+      box-shadow: 0 8px 26px rgba(37, 211, 102, 0.55);
     }
 
     /* FINAL */
@@ -1165,9 +1246,9 @@
     .final-quote {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: clamp(16px, 4vw, 20px);
+      font-size: clamp(17px, 4.2vw, 22px);
       line-height: 1.8;
-      color: var(--text-main);
+      color: var(--ivory);
       max-width: 500px;
       margin: 0 auto 25px;
     }
@@ -1182,8 +1263,8 @@
     .final-footer-text {
       font-family: var(--font-display);
       font-size: 11px;
-      letter-spacing: 3px;
-      color: var(--gold-dark);
+      letter-spacing: 3.5px;
+      color: var(--gold-antique);
       text-transform: uppercase;
     }
   </style>
@@ -1198,8 +1279,8 @@
     <defs>
       <linearGradient id="starGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stop-color="#fff5cc" />
-        <stop offset="45%" stop-color="#c5a059" />
-        <stop offset="85%" stop-color="#8c6d28" />
+        <stop offset="45%" stop-color="#e8be48" />
+        <stop offset="85%" stop-color="#ab7f1b" />
         <stop offset="100%" stop-color="#ffd700" />
       </linearGradient>
     </defs>
@@ -1211,12 +1292,12 @@
   </audio>
 
   <!-- Floating Music Toggle Button -->
-  <div id="musicToggleBtn" class="music-widget" aria-label="संगीताचे बटन">♫</div>
+  <div id="musicToggleBtn" class="music-widget" aria-label="Toggle Music">♫</div>
 
-  <!-- ========================================================
-       1. OPENING: WHITE PALACE DOOR
-       ======================================================== -->
+  <!-- 1. OPENING: ROYAL PALACE ENTRANCE -->
   <div id="doorScene">
+    <div class="palace-fog-layer"></div>
+
     <div class="portal-camera-rig">
       <div class="sanctum-backlight"></div>
 
@@ -1229,11 +1310,13 @@
           <svg class="arch-jharokha-svg" viewBox="0 0 600 90" preserveAspectRatio="none">
             <path d="M0 90 C 80 80, 160 30, 240 50 C 270 58, 290 20, 300 10 C 310 20, 330 58, 360 50 C 440 30, 520 80, 600 90" 
                   stroke="url(#goldStroke)" stroke-width="3" fill="none" />
+            <path d="M40 90 C 120 75, 200 45, 260 55 C 285 60, 295 35, 300 25 C 305 35, 315 60, 340 55 C 400 45, 480 75, 560 90" 
+                  stroke="rgba(212,175,55,0.4)" stroke-width="1.5" stroke-dasharray="4,4" fill="none" />
             <defs>
               <linearGradient id="goldStroke" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#8c6d28"/>
-                <stop offset="50%" stop-color="#e6c579"/>
-                <stop offset="100%" stop-color="#8c6d28"/>
+                <stop offset="0%" stop-color="#836214"/>
+                <stop offset="50%" stop-color="#fff2b2"/>
+                <stop offset="100%" stop-color="#836214"/>
               </linearGradient>
             </defs>
           </svg>
@@ -1274,19 +1357,29 @@
         </button>
         <div class="door-tap-subtext">प्रवेश करण्यासाठी क्लिक करा</div>
       </div>
+
+      <!-- Diyas -->
+      <div class="portal-base-diyas">
+        <div class="diya-unit">
+          <div class="diya-flame"></div>
+          <div class="diya-base"></div>
+        </div>
+        <div class="diya-unit">
+          <div class="diya-flame"></div>
+          <div class="diya-base"></div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- ========================================================
-       MAIN INVITATION CONTENT
-       ======================================================== -->
+  <!-- MAIN INVITATION CONTENT -->
   <div class="palace-container">
 
-    <!-- 3. LORD GANESHA -->
+    <!-- LORD GANESHA -->
     <section class="ganpati-section reveal">
       <div class="ganpati-frame">
         <div class="ganpati-glow"></div>
-        <img class="ganpati-image-photo" src="bappa.png" alt="श्री गणेश" onerror="this.src='bappa.png.jpeg';" />
+        <img class="ganpati-image-photo" src="bappa.png" alt="Shree Ganesh" onerror="this.src='bappa.png.jpeg';" />
       </div>
 
       <div class="shri-ganeshaya">॥ श्री गणेशाय नमः ॥</div>
@@ -1306,43 +1399,43 @@
       <div class="divider-gold-line right"></div>
     </div>
 
-    <!-- 4. MAIN WEDDING CARD -->
+    <!-- MAIN WEDDING CARD -->
     <section class="royal-card reveal">
       <svg class="corner-motif corner-tl" viewBox="0 0 40 40">
         <path d="M2,38 L2,10 Q2,2 10,2 L38,2" />
         <path d="M8,30 L8,12 Q8,8 12,8 L30,8" />
-        <circle cx="16" cy="16" r="3" fill="#c5a059" />
+        <circle cx="16" cy="16" r="3" fill="#d4af37" />
       </svg>
       <svg class="corner-motif corner-tr" viewBox="0 0 40 40">
         <path d="M2,38 L2,10 Q2,2 10,2 L38,2" />
         <path d="M8,30 L8,12 Q8,8 12,8 L30,8" />
-        <circle cx="16" cy="16" r="3" fill="#c5a059" />
+        <circle cx="16" cy="16" r="3" fill="#d4af37" />
       </svg>
       <svg class="corner-motif corner-bl" viewBox="0 0 40 40">
         <path d="M2,38 L2,10 Q2,2 10,2 L38,2" />
         <path d="M8,30 L8,12 Q8,8 12,8 L30,8" />
-        <circle cx="16" cy="16" r="3" fill="#c5a059" />
+        <circle cx="16" cy="16" r="3" fill="#d4af37" />
       </svg>
       <svg class="corner-motif corner-br" viewBox="0 0 40 40">
         <path d="M2,38 L2,10 Q2,2 10,2 L38,2" />
         <path d="M8,30 L8,12 Q8,8 12,8 L30,8" />
-        <circle cx="16" cy="16" r="3" fill="#c5a059" />
+        <circle cx="16" cy="16" r="3" fill="#d4af37" />
       </svg>
 
-      <div class="invitation-header-text">परिवारासह आदरपूर्वक निमंत्रण</div>
+      <div class="invitation-header-text">परिवारासह आदरयुक्त निमंत्रण</div>
 
       <div class="couple-names-wrap">
         <div class="couple-name gold-text">आशिष</div>
-        <div class="parentage">चिरंजीव श्री. अरुण जाधव</div>
+        <div class="parentage">जाधव कुटुंबाचे सुपुत्र</div>
 
         <span class="ampersand">&amp;</span>
 
         <div class="couple-name gold-text">आरती</div>
-        <div class="parentage">चि. सौ. कां. चौगुले परिवार यांची सुकन्या</div>
+        <div class="parentage">चौगुले कुटुंबाची सुकन्या</div>
       </div>
 
       <p class="invitation-prose">
-        आमच्या आयुष्याच्या या पवित्र आणि आनंदाच्या प्रवासात, आपल्या सहकुटुंब सहपरिवार उपस्थित राहून नवविवाहित जोडप्याला आशीर्वाद द्यावेत, हीच नम्र विनंती.
+        आमच्या आयुष्यातील या पवित्र आणि आनंदाच्या मंगल प्रसंगी आपण आपल्या कुटुंबियांसह उपस्थित राहून नवदाम्पत्यास आशीर्वाद द्यावेत, हीच नम्र विनंती.
       </p>
     </section>
 
@@ -1355,14 +1448,14 @@
       <div class="divider-gold-line right"></div>
     </div>
 
-    <!-- 5. SCRATCH DATE CARD -->
+    <!-- SCRATCH DATE CARD -->
     <section class="scratch-standalone-section reveal">
       <div class="scratch-card-box">
-        <div class="scratch-lead-text">✦ शुभविवाह तारीख पाहण्यासाठी स्क्रॅच करा ✦</div>
+        <div class="scratch-lead-text">✦ तारीख पाहण्यासाठी स्क्रॅच करा ✦</div>
         <div class="scratch-stage" id="scratchStage">
           <div class="scratch-underlay">
             <div class="revealed-date">२६ नोव्हेंबर २०२६</div>
-            <div class="revealed-venue">कृषीराज मल्टिपर्पज हॉल, वडणगे </div>
+            <div class="revealed-venue">कृषिराज मल्टिपर्पज हॉल, वडणगे</div>
             <div class="revealed-time">दुपारी ०१:१५ वाजता</div>
           </div>
           <canvas id="scratchCanvas"></canvas>
@@ -1379,9 +1472,9 @@
       </div>
     </section>
 
-    <!-- 6. LIVE COUNTDOWN -->
+    <!-- LIVE COUNTDOWN -->
     <section class="countdown-standalone-section" id="countdownSection">
-      <div class="countdown-title">विवाहाचा शुभमुहूर्त जवळ येत आहे</div>
+      <div class="countdown-title">शुभ मुहुर्ताची प्रतीक्षा</div>
 
       <div class="hearts-row" id="countdownHearts">
         <div class="heart-unit">
@@ -1389,7 +1482,7 @@
             <path d="M50 82 C50 82 12 55 12 28 C12 12 25 6 36 6 C44 6 48 10 50 14 C52 10 56 6 64 6 C75 6 88 12 88 28 C88 55 50 82 50 82 Z" />
           </svg>
           <div class="heart-data">
-            <span class="heart-number" id="cDays">००</span>
+            <span class="heart-number" id="cDays">00</span>
             <span class="heart-label">दिवस</span>
           </div>
         </div>
@@ -1399,7 +1492,7 @@
             <path d="M50 82 C50 82 12 55 12 28 C12 12 25 6 36 6 C44 6 48 10 50 14 C52 10 56 6 64 6 C75 6 88 12 88 28 C88 55 50 82 50 82 Z" />
           </svg>
           <div class="heart-data">
-            <span class="heart-number" id="cHours">००</span>
+            <span class="heart-number" id="cHours">00</span>
             <span class="heart-label">तास</span>
           </div>
         </div>
@@ -1409,7 +1502,7 @@
             <path d="M50 82 C50 82 12 55 12 28 C12 12 25 6 36 6 C44 6 48 10 50 14 C52 10 56 6 64 6 C75 6 88 12 88 28 C88 55 50 82 50 82 Z" />
           </svg>
           <div class="heart-data">
-            <span class="heart-number" id="cMins">००</span>
+            <span class="heart-number" id="cMins">00</span>
             <span class="heart-label">मिनिटे</span>
           </div>
         </div>
@@ -1419,15 +1512,15 @@
             <path d="M50 82 C50 82 12 55 12 28 C12 12 25 6 36 6 C44 6 48 10 50 14 C52 10 56 6 64 6 C75 6 88 12 88 28 C88 55 50 82 50 82 Z" />
           </svg>
           <div class="heart-data">
-            <span class="heart-number" id="cSecs">००</span>
+            <span class="heart-number" id="cSecs">00</span>
             <span class="heart-label">सेकंद</span>
           </div>
         </div>
       </div>
 
       <div id="countdownZeroMsg">
-        ती शुभघडी आली!<br />
-        <span style="font-size: 15px; color: var(--text-main);">आज विवाहाचा सोहळा संपन्न होत आहे ❤️</span>
+        प्रतीक्षा संपली!<br />
+        <span style="font-size: 15px; color: var(--ivory);">विवाहाचा शुभ दिवस आला आहे ❤️️</span>
       </div>
     </section>
 
@@ -1440,10 +1533,10 @@
       <div class="divider-gold-line right"></div>
     </div>
 
-    <!-- 7. CELEBRATIONS / EVENTS -->
+    <!-- CELEBRATIONS / EVENTS -->
     <section class="celebrations-wrap">
-      <h2 class="section-headline gold-text reveal">विवाह सोहळा व कार्यक्रम</h2>
-      <div class="section-subtext reveal">आमच्या आनंदाच्या क्षणात सहभागी व्हा</div>
+      <h2 class="section-headline gold-text reveal">विवाह सोहळा कार्यक्रम</h2>
+      <div class="section-subtext reveal">आमच्या प्रत्येक आनंदात सहभागी व्हा</div>
 
       <div class="events-grid">
         <!-- Mehendi -->
@@ -1463,11 +1556,11 @@
             </svg>
           </div>
 
-          <h3 class="event-card-title">मेहेन्दी</h3>
+          <h3 class="event-card-title">मेहेंदी सोहळा</h3>
           <div class="event-card-date">२३ नोव्हेंबर २०२६</div>
-          <div class="event-card-time">संध्याकाळी ४:०० वाजता</div>
+          <div class="event-card-time">सायंकाळी ४:०० वाजता</div>
           <div class="card-mini-divider"></div>
-          <div class="event-card-place">निवासस्थानी</div>
+          <div class="event-card-place">निवास स्थान</div>
         </div>
 
         <!-- Sangeet -->
@@ -1487,11 +1580,11 @@
             </svg>
           </div>
 
-          <h3 class="event-card-title">संगीत</h3>
+          <h3 class="event-card-title">संगीत सोहळा</h3>
           <div class="event-card-date">२३ नोव्हेंबर २०२६</div>
           <div class="event-card-time">संध्याकाळी ७:०० वाजता</div>
           <div class="card-mini-divider"></div>
-          <div class="event-card-place">निवासस्थानी</div>
+          <div class="event-card-place">निवास स्थान</div>
         </div>
 
         <!-- Haldi -->
@@ -1503,42 +1596,42 @@
           <span class="event-corner event-corner-br"></span>
 
           <div class="event-icon-badge">
-            <svg class="event-card-svg" viewBox="0 0 24 24">
+            <svg class="event-card-svg" viewBox="0 0 24 24" style="stroke: #ffe066;">
               <path d="M7 10C7 8 9 7 12 7C15 7 17 8 17 10L18 17C18 20 15 21 12 21C9 21 6 20 6 17L7 10Z" stroke-width="1.5" />
               <path d="M9 7C9 4 12 3 12 3C12 3 15 4 15 7" stroke-width="1.5" />
               <path d="M8 12C10 13 14 13 16 12" stroke-width="1.2" />
-              <circle cx="12" cy="16" r="1.5" fill="#c5a059" />
+              <circle cx="12" cy="16" r="1.5" fill="#ffe066" />
             </svg>
           </div>
 
-          <h3 class="event-card-title">हळदी समारंभ</h3>
+          <h3 class="event-card-title" style="color: #ffe685;">हळदी सोहळा</h3>
           <div class="event-card-date">२५ नोव्हेंबर २०२६</div>
-          <div class="event-card-time">संध्याकाळी ७:०० वाजता</div>
+          <div class="event-card-time" style="color: #ffd24d;">सायंकाळी ४:०० वाजता</div>
           <div class="card-mini-divider"></div>
-          <div class="event-card-place">निवासस्थानी</div>
+          <div class="event-card-place">निवास स्थान</div>
         </div>
 
         <!-- The Wedding -->
-        <div class="royal-event-box reveal" style="border: 1.5px solid var(--gold-antique); background: #fffcf7;">
+        <div class="royal-event-box box-wedding reveal">
           <div class="event-card-inner-frame"></div>
           <span class="event-corner event-corner-tl"></span>
           <span class="event-corner event-corner-tr"></span>
           <span class="event-corner event-corner-bl"></span>
           <span class="event-corner event-corner-br"></span>
 
-          <div class="event-icon-badge">
-            <svg class="event-card-svg" viewBox="0 0 24 24">
+          <div class="event-icon-badge" style="border-color: #ffd700; background: radial-gradient(circle, #0d5431, #022413);">
+            <svg class="event-card-svg" viewBox="0 0 24 24" style="stroke: #ffd700;">
               <path d="M4 20h16M5 20V9l7-5 7 5v11" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M9 20v-7a3 3 0 0 1 6 0v7" stroke-width="1.4"/>
-              <circle cx="12" cy="7" r="1" fill="#c5a059"/>
+              <circle cx="12" cy="7" r="1" fill="#ffd700"/>
             </svg>
           </div>
 
-          <h3 class="event-card-title">शुभविवाह</h3>
-          <div class="event-card-date">२६ नोव्हेंबर २०२६</div>
-          <div class="event-card-time">दुपारी ०१:१५ वाजता</div>
-          <div class="card-mini-divider"></div>
-          <div class="event-card-place">कृषीराज मल्टिपर्पज हॉल, वडणगे </div>
+          <h3 class="event-card-title" style="color: #fff2b2;">विवाह सोहळा</h3>
+          <div class="event-card-date" style="color: #fff8d6;">२६ नोव्हेंबर २०२६</div>
+          <div class="event-card-time" style="color: #ffd700;">दुपारी ०१:१५ वाजता</div>
+          <div class="card-mini-divider" style="background: linear-gradient(90deg, transparent, #ffd700, transparent);"></div>
+          <div class="event-card-place">कृषिराज मल्टिपर्पज हॉल, वडणगे</div>
         </div>
       </div>
     </section>
@@ -1552,56 +1645,56 @@
       <div class="divider-gold-line right"></div>
     </div>
 
-    <!-- 8. OUR STORY SLIDER -->
+    <!-- OUR STORY SLIDER -->
     <section class="story-section reveal">
-      <h2 class="section-headline gold-text">आमच्या आठवणी</h2>
-      <div class="section-subtext">आनंदाचे अनमोल क्षण</div>
+      <h2 class="section-headline gold-text">आमची आठवण</h2>
+      <div class="section-subtext">आनंदाचे काही क्षण</div>
 
       <div class="slider-stage-wrapper">
-        <button class="slider-nav-btn btn-prev" id="sliderPrevBtn" aria-label="मागील फोटो">❮</button>
-        <button class="slider-nav-btn btn-next" id="sliderNextBtn" aria-label="पुढील फोटो">❯</button>
+        <button class="slider-nav-btn btn-prev" id="sliderPrevBtn" aria-label="Previous Photo">❮</button>
+        <button class="slider-nav-btn btn-next" id="sliderNextBtn" aria-label="Next Photo">❯</button>
 
         <div class="slider-viewport" id="sliderViewport">
           <div class="slider-track" id="sliderTrack">
             <!-- Slide 1 -->
             <div class="slider-slide">
-              <img class="slide-photo" src="bapu.png.jpeg" alt="फोटो १" />
+              <img class="slide-photo" src="bapu.png.jpeg" alt="Ashish & Aarti Photo 1" />
               <div class="slide-gradient-overlay"></div>
-              <div class="slide-caption-bar">एकत्रित प्रवासाची सुरुवात</div>
+              <div class="slide-caption-bar">एक नवीन सुरुवात</div>
             </div>
 
             <!-- Slide 2 -->
             <div class="slider-slide">
-              <img class="slide-photo" src="bapu.png" alt="फोटो २" />
+              <img class="slide-photo" src="bapu.png" alt="Ashish & Aarti Photo 2" />
               <div class="slide-gradient-overlay"></div>
-              <div class="slide-caption-bar">दोन आत्मे, एक भाग्य</div>
+              <div class="slide-caption-bar">दोन आत्मे, एक प्रवास</div>
             </div>
 
             <!-- Slide 3 -->
             <div class="slider-slide">
-              <img class="slide-photo" src="bapu3.png" alt="फोटो ३" />
+              <img class="slide-photo" src="bapu3.png" alt="Ashish & Aarti Photo 3" />
               <div class="slide-gradient-overlay"></div>
-              <div class="slide-caption-bar">प्रेमाचे गोड क्षण</div>
+              <div class="slide-caption-bar">प्रेमाचे बंध</div>
             </div>
 
             <!-- Slide 4 -->
             <div class="slider-slide">
-              <img class="slide-photo" src="bapu4.png" alt="फोटो ४" />
+              <img class="slide-photo" src="bapu4.png" alt="Ashish & Aarti Photo 4" />
               <div class="slide-gradient-overlay"></div>
-              <div class="slide-caption-bar">पवित्र वचनांनी जोडलेले</div>
+              <div class="slide-caption-bar">सात वचनांची गाठ</div>
             </div>
 
             <!-- Slide 5 -->
             <div class="slider-slide">
-              <img class="slide-photo" src="bapu5.png" alt="फोटो ५" />
+              <img class="slide-photo" src="bapu5.png" alt="Ashish & Aarti Photo 5" />
               <div class="slide-gradient-overlay"></div>
-              <div class="slide-caption-bar">आयुष्याच्या वाटेवर</div>
+              <div class="slide-caption-bar">सहजीवनाचा प्रवास</div>
             </div>
           </div>
         </div>
 
         <div class="slider-footer-info">
-          <div class="slider-counter" id="sliderCounter">१ / ५</div>
+          <div class="slider-counter" id="sliderCounter">1 / 5</div>
           <div class="slider-dots" id="sliderDots"></div>
         </div>
       </div>
@@ -1616,20 +1709,20 @@
       <div class="divider-gold-line right"></div>
     </div>
 
-    <!-- 9. VENUE -->
+    <!-- VENUE -->
     <section class="venue-section reveal">
-      <h2 class="section-headline gold-text">विवाह सोहळ्याचे ठिकाण</h2>
-      <div class="section-subtext">आपणा सर्वांचे स्वागत करण्यास आम्ही उत्सुक आहोत</div>
+      <h2 class="section-headline gold-text">विवाह स्थळ</h2>
+      <div class="section-subtext">आपणा सर्वांचे स्वागत आहे</div>
 
       <div class="venue-box">
-        <div class="venue-place-name gold-text">कृषीराज मल्टिपर्पज हॉल</div>
-        <div class="venue-city">वाडगे, कोल्हापूर, महाराष्ट्र</div>
+        <div class="venue-place-name gold-text">कृषिराज मल्टिपर्पज हॉल</div>
+        <div class="venue-city">वडणगे, कोल्हापूर, महाराष्ट्र</div>
 
         <a class="venue-btn" href="https://maps.google.com/?q=Krushiraj+Multipurpose+Hall,+Vadange,+Kolhapur" target="_blank" rel="noopener noreferrer">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
           </svg>
-          नकाशात पहा (Google Maps)
+          नकाशा पहा (LOCATION)
         </a>
       </div>
     </section>
@@ -1646,17 +1739,17 @@
     <!-- WHATSAPP BLESSINGS SECTION -->
     <section class="blessing-section reveal">
       <h2 class="section-headline gold-text">शुभेच्छा व आशीर्वाद पाठवा</h2>
-      <div class="section-subtext">थेट व्हॉट्सॲपवर तुमचे प्रेम व्यक्त करा</div>
+      <div class="section-subtext">तुमच्या प्रतिक्रिया थेट जोडीदाराला पाठवा</div>
 
       <div class="blessing-box">
-        <input type="text" id="guestName" class="blessing-input" placeholder="तुमचे नाव" />
-        <textarea id="guestMessage" class="blessing-textarea" placeholder="तुमच्या शुभेच्छा / आशीर्वाद..."></textarea>
+        <input type="text" id="guestName" class="blessing-input" placeholder="तुमचे नाव (Your Name)" />
+        <textarea id="guestMessage" class="blessing-textarea" placeholder="तुमच्या शुभेच्छा व आशीर्वाद (Your Blessing)..."></textarea>
         
         <button class="whatsapp-btn" onclick="sendWhatsAppBlessing()">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.077-1.782-.397-1.467-.608-2.42-2.1-2.493-2.199-.074-.099-.594-.789-.594-1.505 0-.715.373-1.066.506-1.212.132-.146.29-.182.387-.182.096 0 .193.002.277.006.09.004.21.033.32.298.114.277.391.954.425 1.024.034.07.057.151.011.242-.045.092-.068.149-.136.228-.068.079-.143.177-.205.237-.068.068-.139.141-.06.277.079.136.353.582.758.942.521.463.961.606 1.097.674.136.068.216.057.295-.034.08-.09.341-.397.432-.533.091-.136.182-.113.307-.068.125.045.795.375.932.443.136.068.227.102.261.159.034.057.034.329-.11.734z"/>
           </svg>
-          व्हॉट्सॲपवर पाठवा
+          व्हॉट्सअॅपवर पाठवा
         </button>
       </div>
     </section>
@@ -1670,12 +1763,12 @@
       <div class="divider-gold-line right"></div>
     </div>
 
-    <!-- 10. FINAL MESSAGE -->
+    <!-- FINAL MESSAGE -->
     <footer class="final-section reveal">
       <p class="final-quote">
-        “दोन मनं,<br />
-        दोन परिवार,<br />
-        आणि एका सुंदर आयुष्याची सुरुवात.”
+        “दोन हृदये,<br />
+        दोन कुटुंबे,<br />
+        एक सुंदर सुरुवात.”
       </p>
 
       <div class="final-couple-names gold-text">
@@ -1683,7 +1776,7 @@
       </div>
 
       <div class="final-footer-text">
-        ✦ सहवासाची नवीन सुरुवात ✦
+        ✦ सहजीवनाचा सुंदर प्रवास ✦
       </div>
     </footer>
 
@@ -1716,6 +1809,7 @@
       openDoorBtn.addEventListener("click", () => {
         startAudio();
         doorScene.classList.add("opening");
+        triggerGrandPetalShower();
 
         setTimeout(() => {
           doorScene.classList.add("opened");
@@ -1736,7 +1830,6 @@
         }
       });
 
-      // SCRATCH
       const scratchCanvas = document.getElementById("scratchCanvas");
       const scratchStage = document.getElementById("scratchStage");
       const countdownSection = document.getElementById("countdownSection");
@@ -1760,18 +1853,25 @@
         scratchCanvas.height = rect.height;
 
         const grad = ctx.createLinearGradient(0, 0, rect.width, rect.height);
-        grad.addColorStop(0, "#8c6d28");
-        grad.addColorStop(0.5, "#c5a059");
-        grad.addColorStop(1, "#604719");
+        grad.addColorStop(0, "#8a6616");
+        grad.addColorStop(0.25, "#e5c05d");
+        grad.addColorStop(0.5, "#fff6be");
+        grad.addColorStop(0.75, "#c6962f");
+        grad.addColorStop(1, "#7d5b12");
 
         ctx.fillStyle = grad;
         ctx.fillRect(0, 0, rect.width, rect.height);
 
-        ctx.fillStyle = "#ffffff";
-        ctx.font = "bold 11px 'Cinzel Decorative', serif";
+        for (let i = 0; i < 350; i++) {
+          ctx.fillStyle = Math.random() > 0.5 ? "rgba(255,255,255,0.35)" : "rgba(80,50,0,0.25)";
+          ctx.fillRect(Math.random() * rect.width, Math.random() * rect.height, Math.random() * 2 + 1, Math.random() * 2 + 1);
+        }
+
+        ctx.fillStyle = "#022413";
+        ctx.font = "bold 12px 'Cinzel Decorative', serif";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText("✦ पाहण्यासाठी स्क्रॅच करा ✦", rect.width / 2, rect.height / 2);
+        ctx.fillText("✦ तारीख पाहण्यासाठी स्क्रॅच करा ✦", rect.width / 2, rect.height / 2);
       }
 
       window.addEventListener("load", setupScratchCanvas);
@@ -1787,6 +1887,7 @@
         ctx.fill();
 
         triggerCountdownShow();
+        spawnScratchSparkles(x, y);
         checkScratchProgress();
       }
 
@@ -1848,7 +1949,6 @@
         }
       }
 
-      // COUNTDOWN
       const weddingDate = new Date("November 26, 2026 13:15:00 GMT+0530").getTime();
       const elDays = document.getElementById("cDays");
       const elHours = document.getElementById("cHours");
@@ -1872,15 +1972,14 @@
         const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const s = Math.floor((diff % (1000 * 60)) / 1000);
 
-        elDays.textContent = d < 10 ? "०" + d : d;
-        elHours.textContent = h < 10 ? "०" + h : h;
-        elMins.textContent = m < 10 ? "०" + m : m;
-        elSecs.textContent = s < 10 ? "०" + s : s;
+        elDays.textContent = d < 10 ? "0" + d : d;
+        elHours.textContent = h < 10 ? "0" + h : h;
+        elMins.textContent = m < 10 ? "0" + m : m;
+        elSecs.textContent = s < 10 ? "0" + s : s;
       }
       setInterval(updateCountdown, 1000);
       updateCountdown();
 
-      // SLIDER
       const sliderViewport = document.getElementById("sliderViewport");
       const sliderTrack = document.getElementById("sliderTrack");
       const slides = document.querySelectorAll(".slider-slide");
@@ -1943,7 +2042,6 @@
         else if (diffX < -40) prevSlide();
       });
 
-      // AMBIENT PARTICLES
       const ambientCanvas = document.getElementById("ambientCanvas");
       const aCtx = ambientCanvas.getContext("2d");
       let w, h;
@@ -1957,32 +2055,74 @@
       resizeAmbient();
 
       class Particle {
-        constructor() { this.reset(true); }
-        reset(initial = false) {
+        constructor(isShower = false) { 
+          this.reset(true, isShower); 
+        }
+        reset(initial = false, isShower = false) {
           this.x = Math.random() * w;
-          this.y = initial ? Math.random() * h : -30;
-          this.size = Math.random() * 2 + 1;
-          this.speedY = Math.random() * 0.6 + 0.2;
-          this.speedX = (Math.random() - 0.5) * 0.5;
-          this.opacity = Math.random() * 0.5 + 0.2;
+          this.y = initial ? (isShower ? -Math.random() * h : Math.random() * h) : -30;
+          this.size = Math.random() * 2.8 + 1.2;
+          this.speedY = isShower ? (Math.random() * 2.2 + 1.2) : (Math.random() * 0.7 + 0.3);
+          this.speedX = (Math.random() - 0.5) * 0.7;
+          this.opacity = Math.random() * 0.7 + 0.3;
+          this.type = Math.random() > 0.35 ? "petal" : "sparkle";
+          this.angle = Math.random() * Math.PI * 2;
+          this.rotSpeed = (Math.random() - 0.5) * 0.035;
+          this.petalColor = Math.random() > 0.5 ? "#105934" : "#084529";
         }
         update() {
           this.y += this.speedY;
-          this.x += this.speedX;
-          if (this.y > h + 30) this.reset(false);
+          this.x += Math.sin(this.angle) * 0.7 + this.speedX;
+          this.angle += this.rotSpeed;
+          if (this.y > h + 30 || this.x < -30 || this.x > w + 30) this.reset(false);
         }
         draw() {
           aCtx.save();
           aCtx.globalAlpha = this.opacity;
-          aCtx.fillStyle = "#c5a059";
-          aCtx.beginPath();
-          aCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-          aCtx.fill();
+          if (this.type === "sparkle") {
+            aCtx.fillStyle = "#ffd875";
+            aCtx.shadowBlur = 6;
+            aCtx.shadowColor = "#e5b73b";
+            aCtx.beginPath();
+            aCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            aCtx.fill();
+          } else {
+            aCtx.translate(this.x, this.y);
+            aCtx.rotate(this.angle);
+            aCtx.fillStyle = this.petalColor;
+            aCtx.shadowBlur = 5;
+            aCtx.shadowColor = "rgba(16, 89, 52, 0.4)";
+            aCtx.beginPath();
+            aCtx.ellipse(0, 0, this.size * 2.5, this.size * 4, 0, 0, Math.PI * 2);
+            aCtx.fill();
+          }
           aCtx.restore();
         }
       }
 
-      for (let i = 0; i < 30; i++) particles.push(new Particle());
+      for (let i = 0; i < 40; i++) particles.push(new Particle());
+
+      function triggerGrandPetalShower() {
+        for (let i = 0; i < 60; i++) {
+          particles.push(new Particle(true));
+        }
+      }
+
+      function spawnScratchSparkles(cx, cy) {
+        const stageRect = scratchStage.getBoundingClientRect();
+        for (let i = 0; i < 3; i++) {
+          const p = new Particle();
+          p.x = stageRect.left + cx + (Math.random() - 0.5) * 15;
+          p.y = stageRect.top + cy + (Math.random() - 0.5) * 15;
+          p.speedY = -Math.random() * 1.5 - 0.5;
+          p.speedX = (Math.random() - 0.5) * 2;
+          p.type = "sparkle";
+          p.size = Math.random() * 3 + 1.5;
+          p.opacity = 1;
+          particles.push(p);
+          if (particles.length > 90) particles.shift();
+        }
+      }
 
       function renderAmbient() {
         aCtx.clearRect(0, 0, w, h);
@@ -1994,7 +2134,6 @@
       }
       renderAmbient();
 
-      // SCROLL REVEAL
       const reveals = document.querySelectorAll(".reveal");
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -2005,13 +2144,13 @@
 
     })();
 
-    // WHATSAPP
     function sendWhatsAppBlessing() {
       const hostWhatsAppNumber = "917038289296"; 
-      const name = document.getElementById("guestName").value.trim() || "शुभचिंतक";
-      const message = document.getElementById("guestMessage").value.trim() || "विवाहाच्या हार्दिक शुभेच्छा आणि आशीर्वाद!";
 
-      const text = encodeURIComponent(`*आशिष व आरती यांच्या विवाहासाठी शुभेच्छा* 💍❤️\n\n*नाव:* ${name}\n*संदेश:* ${message}`);
+      const name = document.getElementById("guestName").value.trim() || "शुभचिंतक";
+      const message = document.getElementById("guestMessage").value.trim() || "आशिष व आरती यांच्या विवाहाबद्दल हार्दिक शुभेच्छा!";
+
+      const text = encodeURIComponent(`*आशिष व आरती - विवाह सोहळा शुभेच्छा* 💍❤️\n\n*नाव:* ${name}\n*संदेश:* ${message}`);
       const whatsappURL = `https://wa.me/${hostWhatsAppNumber}?text=${text}`;
 
       window.open(whatsappURL, "_blank");
