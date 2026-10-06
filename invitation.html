@@ -8,7 +8,7 @@
   <!-- Premium Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Great+Vibes&family=Marcellus&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Yatra+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Great+Vibes&family=Marcellus&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -26,7 +26,6 @@
       --font-serif: 'Playfair Display', serif;
       --font-body: 'Marcellus', serif;
       --font-script: 'Great Vibes', cursive;
-      --font-devanagari: 'Yatra One', cursive;
     }
 
     * {
@@ -545,11 +544,13 @@
       filter: drop-shadow(0 0 12px rgba(184, 134, 11, 0.5));
     }
 
+    /* FIXED SHRI GANESHAYA FONT & STYLING */
     .shri-ganeshaya {
-      font-family: var(--font-devanagari);
-      font-size: clamp(20px, 4.8vw, 27px);
-      color: var(--gold-antique);
-      letter-spacing: 2px;
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 5.2vw, 29px);
+      font-weight: 700;
+      color: var(--gold-dark);
+      letter-spacing: 1px;
       margin-bottom: 12px;
       text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
     }
@@ -1382,7 +1383,7 @@
         <img class="ganpati-image-photo" src="bappa.png" alt="Shree Ganesh" onerror="this.src='bappa.png.jpeg';" />
       </div>
 
-      <div class="shri-ganeshaya">॥ श्री गणेशाय नमः ॥</div>
+      <div class="shri-ganeshaya gold-text">॥ श्री गणेशाय नमः ॥</div>
 
       <p class="vakratunda-shloka">
         वक्रतुण्ड महाकाय सूर्यकोटि समप्रभः ।<br />
